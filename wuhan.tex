@@ -106,7 +106,7 @@ necessarily depend on the assumptions about $r$ and $g(\tau)$.
 
 
 \begin{figure}[t]
-\includegraphics[width=\textwidth]{../fig/comparison.pdf}
+\includegraphics[width=\textwidth]{comparison.pdf}
 \caption{
 Early estimates of $\mathcal R_0$ and associated assumptions about $r$ and $g(\tau)$.
 }
@@ -135,44 +135,13 @@ large effects on the estimates of $\mathcal R_0$
 For example, when the relative mean generation interval is long ($r\bar{G}\approx 2$ based on the estimates by \cite{zhaoncov}),
 varying $\kappa$ from 0 to 1 reduces the estimate of $\mathcal R_0$ by more than a two fold.
 
-To assess the amount of uncertainties in the estimate of $\mathcal R_0$,
-we come up with distributions that span over the assumptions made by other people:
 \begin{equation}
 \begin{aligned}
-r &\sim \mathrm{Gamma}(\alpha=5, \beta=5/0.15)\\
-\bar{G} &\sim \mathrm{Gamma}(\alpha=10, \beta=10/8.5)\\
-\kappa &\sim \mathrm{Gamma}(\alpha=10, \beta=10/0.35)\\
+\mathcal R_i &\sim \textrm{distrib}(\theta_i)\\
+\bar G_i &\sim \textrm{distrib}(\theta_i)\\
+\kappa &\sim \textrm{distrib}(\theta_i)\\
 \end{aligned}
 \end{equation}
-These give median estimate of $\mathcal R_0$ of 2.37 with 95\% qunatile of 1.26--9.01.
-
-\begin{table}[!th]
-\begin{center}
-\begin{tabular}{l|c|c|c|c}
-Study & $\mathcal R_0$ & $r$ ($\textrm{days}^{-1}$) & $\bar G$ (days) & $\kappa$ \\
-\hline
-\cite{imaincov} & 2.5 (1.5--3.5) & 0.14 (0.05--0.21) & 8.4 & unspecified$^\ast$ \\
-\hline
-\cite{majumderncov} & 2.0--3.3 & 0.07--0.20 & 6--10 & 0 \\
-\hline
-\cite{readncov} & 3.8 (3.6--4.0) & 0.25 (0.25--0.26)$^\dagger$ & 7.6 & 0.5 \\
-\hline
-\cite{riouncov} & 2.2 (1.4--3.8) & 0.09 (0.03--0.27) & 7--14 & 0.5\\
-\hline
-\cite{zhaoncov} & 5.47 (4.16--7.1)$^\ddagger$ & 0.25 (0.21--0.30) & 7.6--8.4 & 0.2
-\end{tabular}
-\end{center}
-\caption{
-\textbf{Parameter estimates and assumptions}
-Exponential growth rate $r$ is calculated by using the following formula: $r = (\mathcal R_0^\kappa - 1)/(\kappa \bar{G})$.
-$^\ast$We assume $\kappa = 0.5$ to calculate $r$.
-$^\dagger$Exponential growth rate $r$ is calculated by using the exact formula for the SEIR model \citep{ma2014estimating}.
-$^\ddagger$Assuming no increase in the reporting rate.
-}
-\end{table}
-
-
-
 
 \bibliography{wuhan}
 

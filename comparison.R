@@ -5,11 +5,10 @@ source("../data/estimate.R")
 g0 <- ggplot(Rdata) +
   geom_point(aes(est, study)) +
   geom_segment(aes(lwr, study, xend=upr, yend=study)) +
-  scale_x_continuous("Exponential growth rate") +
+  scale_x_continuous("Basic reproductive number") +
   theme(
     axis.title.y = element_blank()
   )
-
 
 g1 <- ggplot(rdata) +
   geom_point(aes(est, study)) +

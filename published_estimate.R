@@ -1,0 +1,21 @@
+Rdata <- data.frame(
+  study=c("Imai et al. (2020)", "Riou and Althaus (2020)", "Read et al. (2020)",
+          "Zhao et al. (2020)", "Majumder et al. (2020)", "Liu et al. (2020)"),
+  est=c(2.5, 2.2, 3.8, 5.47, NA, 2.92),
+  lwr=c(1.5, 1.4, 3.6, 4.16, 2, 2.28),
+  upr=c(3.5, 3.8, 4, 7.1, 3.1, 3.67)
+)
+
+gdata <- data.frame(
+  study=c("Imai et al. (2020)", "Riou and Althaus (2020)", "Read et al. (2020)",
+          "Zhao et al. (2020)", "Majumder et al. (2020)", "Liu et al. (2020)"),
+  est=c(8.4, NA, 7.6, NA, NA, 8.4),
+  lwr=c(8.4, 7, 7.6, 7.6, 6, 8.4),
+  upr=c(8.4, 14, 7.6, 8.4, 10, 8.4)
+)
+
+kappadata <- data.frame(
+  study=c("Imai et al. (2020)", "Riou and Althaus (2020)", "Read et al. (2020)",
+          "Zhao et al. (2020)", "Majumder et al. (2020)", "Liu et al. (2020)"),
+  est=c(NA, 0.5, 0.5, 0.2, 0, 0.2)
+)

@@ -42,7 +42,7 @@ g1 <- ggplot(rdata2) +
   geom_point(data=avg_r, aes(median, study), col=2) +
   geom_segment(aes(lwr, study, xend=upr, yend=study)) +
   geom_segment(data=avg_r, aes(lwr, study, xend=upr, yend=study), col=2) +
-  scale_x_continuous("Exponential growth rate") +
+  scale_x_continuous(expression(Exponentia~ growth~rate~(days^{-1}))) +
   theme(
     axis.title.y = element_blank()
   )
@@ -52,7 +52,7 @@ g2 <- ggplot(gdata) +
   geom_point(data=avg_gen, aes(median, study), col=2) +
   geom_segment(aes(lwr, study, xend=upr, yend=study)) +
   geom_segment(data=avg_gen, aes(lwr, study, xend=upr, yend=study), col=2) +
-  scale_x_continuous("Mean generation time") +
+  scale_x_continuous("Mean generation time (days)") +
   theme(
     axis.title.y = element_blank()
   )
@@ -68,4 +68,4 @@ g3 <- ggplot(kappadata) +
 
 gtot <- arrangeGrob(g1, g2, g3, nrow=1)
 
-ggsave("compare_assumption.pdf", gtot, width=12, height=4)
+ggsave("compare_assumption.pdf", gtot, width=12, height=3)

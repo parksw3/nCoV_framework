@@ -19,6 +19,20 @@ R0all <- Rdata %>%
                 labels=c("base", "growth rate", "GI mean", "GI variation", "all"))
   )
 
+R0all %>%
+  filter(type!="all", type!="base") %>%
+  mutate(
+    width=upr-lwr
+  ) %>%
+  merge(summarize(group_by(Rdata, study), bwidth=upr-lwr)) %>%
+  mutate(
+    ww=width>bwidth
+  ) %>%
+  summarize(
+    sum(ww)
+  )
+
+
 g1 <- ggplot(R0all) +
   geom_point(aes(study, est, col=type), position=position_dodge(0.5)) +
   geom_errorbar(aes(study, ymin=lwr, ymax=upr, col=type), position=position_dodge(0.5),

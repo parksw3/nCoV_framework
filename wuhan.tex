@@ -51,7 +51,7 @@
 \begin{flushleft}{
 	\Large
 	\textbf\newline{
-		Evaluating uncertainties associated with early estimates of the basic reproduction number during the novel coronavirus (2019-nCoV) outbreak
+		Evaluating uncertainties associated with early estimates of the basic reproductive number during the novel coronavirus (2019-nCoV) outbreak
 	}
 }
 \newline
@@ -78,16 +78,16 @@ Jonathan Dushoff\textsuperscript{2,3}
 
 \section{Introduction}
 
-Since the end of December 2019, a novel coronavirus (2019-nCoV) continues to
-spread in China and in other parts of the world.
-As of January 27th, 2020, the World Health Organization has
+Since December 2019, a novel coronavirus (2019-nCoV) has been
+spreading in China and in other parts of the world.
+As of January 27th, 2020, the World Health Organization (WHO) has
 confirmed 2798 cases, including 37 confirmed cases in 11 different
 countries, outside China \citep{who27report}.
-Although the virus is suspected to have originated
+Although the virus is believed to have originated
 from animal reservoirs, a recent case from Viet Nam
-demonstrated its ability to transmit between
+demonstrated its ability to directly transmit between
 humans \citep{who26report},
-posing a greater threat for a wider spread.
+posing a greater threat for its spread.
 
 Many researchers have been rushing to publish their 
 analysis of the outbreak \citep{imaincov, riouncov,readncov,zhaoncov,majumderncov,liuncov} 
@@ -97,7 +97,7 @@ reproductive number $\mathcal R_0$ (i.e., the
 average number of secondary cases generated 
 by a primary case in a fully susceptible population).
 The basic reproductive number is of particular interest 
-because it allows prediction about the final size of an epidemic.
+because it allows prediction about the final size of an epidemic \citep{anderson1991infectious, ma2006generality, arino2007final, andreasen2011final, miller2012note}.
 While their efforts are valuable, their analyses rely on several
 assumptions that could immediately affect their estimates of $\mathcal R_0$ and
 the associated uncertainties.
@@ -107,35 +107,27 @@ associated with parameter estimates
 across a wide range of models.
 Our results indicate that most published estimates of $\mathcal R_0$
 are likely to be overly confident. 
-We also lay down several principles that needs to be taken into
-consideration.
+We also lay down several principles that need to be taken into
+consideration when fitting models to early incidence data.
 
-\section{Methods and results}
+\section{Methods}
 
-Early in an outbreak, $\mathcal R_0$ cannot be estimated directly.
-Instead, estimates of $\mathcal R_0$ are often inferred from
-the exponential growth rate $r$, which can be estimated reliably from incidence data.
+Early in an outbreak, $\mathcal R_0$ cannot be estimated directly;
+instead, estimates of $\mathcal R_0$ are often inferred from
+the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{chowell2003sars, mills2004transmissibility, nishiura2009transmission, nishiura2010pros, ma2014estimating}.
 Given estimates of the exponential growth rate $r$ and the distribution $g(\tau)$ of
 generation intervals (i.e., the time between when a person become 
-infected and that person infects another person), the basic reproduction
-number can be estimated via the Euler-Lotka equation:
+infected and that person infects another person \citep{svensson2007note}), the basic reproductive
+number can be estimated via the Euler-Lotka equation \citep{wallinga2007generation}:
 \begin{equation}
 1/\mathcal R_0 = \int \exp(-r\tau) g(\tau) d\tau.
 \end{equation}
 In other words, estimates of $\mathcal R_0$
-will depend on the assumptions about the
-exponential growth rate $r$ and the shape of generation-interval distribution $g(\tau)$.
+must depend on the assumptions about the
+exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
 
-\begin{figure}[t]
-\includegraphics[width=\textwidth]{compare_assumption.pdf}
-\caption{
-Early estimates of $\mathcal R_0$ and associated assumptions about $r$ and $g(\tau)$.
-}
-\end{figure}
-
-We use the gamma approximation framework to first characterize the
-amount of uncertainty present in the underlying parameters and then 
-to assess the 
+We use the gamma approximation framework \citep{park2019practical} to first characterize the
+amount of uncertainty present in the underlying parameters and then assess the 
 degree to which these uncertainties
 affect the estimate of $\mathcal R_0$.
 Assuming that generation intervals follow a gamma distribution 
@@ -146,38 +138,83 @@ we have
 \label{eq:gamma}
 \end{equation}
 This equation demonstrates that a generation-interval distribution
-that assumes a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
+that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
 will give a higher estimate of $\mathcal R_0$ for the same value of $r$.
 
 First, we gather information on estimates of $\mathcal R_0$ and their
 assumptions about the underlying generation-interval distributions from preprint servers (e.g., bioRxiv, medRxiv, and SSRN).
-For each study, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appropriate probability distribution (either uniform or gamma) that roughly matches the estimated or assumed values and uncertainty ranges.
-For example, \cite{imaincov} estimated $\mathcal R_0 = 2.6$ (95\% CI: 1.5--3.5);
-we model this parameter as a gamma distribution with mean of 2.6 and a shape parameter of 28, which has a 95.2\% probability of containing a value between 1.5 and 3.5.
-Then, we draw 100,000 random samples from these distributions and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
+For each study $i$, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appropriate probability distribution (either uniform or gamma) that roughly matches the estimated or assumed values and their uncertainty ranges:
 \begin{equation}
-r = \frac{\mathcal R_0^\kappa - 1}{\kappa \bar{G}}
+\begin{aligned}
+\mathcal R_{0i} &\sim D_{i, \mathcal R}(\theta_{i, \mathcal R})\\
+{\bar G}_i &\sim D_{i, G}(\theta_{i, G})\\
+\kappa_i &\sim D_{i, \kappa}(\theta_{i, \kappa})\\
+\end{aligned}
 \end{equation}
+where $D$ is a probability distribution and $\theta$ is a parameter set of the probability distribution $D$.
+For example, \cite{imaincov} estimated $\mathcal R_0 = 2.6$ (95\% CI: 1.5--3.5);
+we model this parameter as a gamma distribution with mean of 2.6 and a shape parameter of 28, which has a 95\% probability of containing a value between 1.5 and 3.5.
+Then, we draw 100,000 random samples from these distributions ($\mathcal R_{0i}^n$, ${\bar G}_i^n$, and $\kappa_i^n$ where $n = 1, \dots, 100,000$) and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
+\begin{equation}
+r_i^n = \frac{{\mathcal R_{0i}^n}^{\kappa_i^n} - 1}{\kappa_i^n \bar{G}_i^n}.
+\end{equation}
+This allows us to approximte the probability distribution of the exponential growth rate as a discrete probability distribution.
 
-To define ranges of appropriate uncertainties for each parameter ($r$, $\bar G$, and $\kappa$),
+To define appropriate ranges of uncertainties for each parameter ($r$, $\bar G$, and $\kappa$),
 we use a Bayesian multilevel modeling approach by assuming that all \emph{observed} (i.e., estimated or assumed) parameter values come from the same distribution:
 \begin{equation}
 \begin{aligned}
-r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
-\bar{G}_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_G, \mathrm{shape}=\alpha_G),\\
-\kappa_i &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
+r_i^n &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
+\bar{G}_i^n &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_G, \mathrm{shape}=\alpha_G),\\
+\kappa_i^n &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
 (\mu_r, \alpha_r, \mu_G, \alpha_G, \mu_\kappa) &\sim \mathrm{Gamma}(\mathrm{shape}=0.1, \mathrm{rate}=0.1),
 \end{aligned}
 \end{equation}
-where $i$ represents the index across 6 studies that we consider.
-We use an exponential distribution to model $\kappa_i$ to account for the fact that the IDEA model, which \cite{majumderncov} uses, assumes that the generation-interval distribution is fixed ($\kappa = 0$).
-Hyperparameters $\mu_r$, $\alpha_r$, $\mu_G$, $\alpha_G$, and $\mu_\kappa$ are estimated with a Markov Chain Monte Carlo (MCMC) by drawing a random set for $r_i$, $\bar{G}_i$, and $\kappa_i$ at each MCMC step from the 100,000 samples that we calculated previously.
+where $n$ is randomly selected between 1 and 100,000 at each Metropolis-Hastings step;
+this approach is analogous to Bayesian methods for analyzing phylogenetic data, which can rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
+We use an exponential distribution to model $\kappa_i$ to account for the fact that the IDEA model, which \cite{majumderncov} uses, assumes a fixed generation interval ($\kappa = 0$).
 We run 4 parallel chains that consist of 100,000 burnin steps and 100,000 sampling steps.
 Posterior samples are thinned every 200 steps.
-Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.
+Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all parameters \citep{gelman1992inference}.
+
+\section{Results}
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{compare_assumption.pdf}
+\caption{
+\textbf{Comparisons of estimated and assumed parameter values with their average values calculated from the multilevel model.}
+I'm a caption
+}
+\label{fig:assumption}
+\end{figure}
+
+\fref{assumption} compares the estimated and assumed values of the exponential growth rate $r$, mean generation interval $\bar G$, and the squared coefficient of variation $\kappa$ of the generation-interval distribution with the average values ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
+We find that there is a large uncertainty associated with the underlying parameters;
+many models rely on stronger assumptions that ignore these uncertainties.
+Surprisingly, no studies take into account how the variability in generation intervals (represented by $\kappa$) affects their estimates of $\mathcal R_0$, even though the assumed values range from 0 to 0.5 across different models.
+% For example, assuming $r = 0.15\,\mathrm{days}^{-1}$ and $\bar{G} = 8\,\mathrm{days}$, 
+% varying $\kappa$ from 0 to 0.5 reduce the estimate of $\mathcal R_0$ frmo 3.3 to 2.6.
+
+To evaluate how the uncertainty in each parameter affects the estimate of $\mathcal R_0$,
+we replace the estimated or assumed values of $r$, $\bar G$, and $\kappa$ with the average values ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate the basic reproductive number $\mathcal R_0$ (\fref{R0}).
+We find that incorporating uncertainties one at a time increases the width of the confidence intervals in most cases (15 out 18).
+We estimate  narrower confidence intervals for \cite{liuncov} and \cite{majumderncov} when we include uncertainties in $\kappa$ because they assume narrow generation-interval distributions ($\kappa = 0.2$ and $\kappa=0$, respectively);
+when lower values of $\kappa$ are used, their estimates of $\mathcal R_0$ becomes less sensitive to the values of $r$ and $\bar G$.
+We estimate narrower confidence intervals for \citep{riouncov} because the range of uncertainty in the mean generation time $\bar G$ that they consider is much wider than ours (\fref{assumption}).
+
+We also find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimate of $\mathcal R_0$ and the width of the confidence interval (\fref{R0}).
+For example, recalculating $\mathcal R_0$ by \cite{majumderncov} using the average $r$ values gives $\mathcal R_0 = 4.0$ (95\% CI: 2.3--10.1), which is much wider than the range they reported (2.0--3.1).
 
 
 
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{compare_R0.pdf}
+\caption{
+\textbf{Effect of uncertainties in underlying parameters on the estimate of the basic reproductive number.}
+I'm a caption
+}
+\label{fig:R0}
+\end{figure}
 
 
 \pagebreak

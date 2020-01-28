@@ -143,15 +143,40 @@ with the mean $\bar G$ and the squared coefficient of variation $\kappa$,
 we have
 \begin{equation}
 \mathcal R_0 = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
+\label{eq:gamma}
 \end{equation}
 This equation demonstrates that a generation-interval distribution
 that assumes a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
 will give a higher estimate of $\mathcal R_0$ for the same value of $r$.
 
-First, we gathered information on estimates of $\mathcal R_0$ and their
+First, we gather information on estimates of $\mathcal R_0$ and their
 assumptions about the underlying generation-interval distributions from preprint servers (e.g., bioRxiv, medRxiv, and SSRN).
-Then, we model each parameter ($\mathcal R_0$, $\bar G$, and $\kappa$) with an appropriate probability distribution (either uniform or gamma) that matches the reported estimates or assumptions.
-For example, \cite{imaincov} estimated $\mathcal R_0 = 2.5$
+For each study, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appropriate probability distribution (either uniform or gamma) that roughly matches the estimated or assumed values and uncertainty ranges.
+For example, \cite{imaincov} estimated $\mathcal R_0 = 2.6$ (95\% CI: 1.5--3.5);
+we model this parameter as a gamma distribution with mean of 2.6 and a shape parameter of 28, which has a 95.2\% probability of containing a value between 1.5 and 3.5.
+Then, we draw 100,000 random samples from these distributions and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
+\begin{equation}
+r = \frac{\mathcal R_0^\kappa - 1}{\kappa \bar{G}}
+\end{equation}
+
+To define ranges of appropriate uncertainties for each parameter ($r$, $\bar G$, and $\kappa$),
+we use a Bayesian multilevel modeling approach by assuming that all \emph{observed} (i.e., estimated or assumed) parameter values come from the same distribution:
+\begin{equation}
+\begin{aligned}
+r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
+\bar{G}_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_G, \mathrm{shape}=\alpha_G),\\
+\kappa_i &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
+(\mu_r, \alpha_r, \mu_G, \alpha_G, \mu_\kappa) &\sim \mathrm{Gamma}(\mathrm{shape}=0.1, \mathrm{rate}=0.1),
+\end{aligned}
+\end{equation}
+where $i$ represents the index across 6 studies that we consider.
+We use an exponential distribution to model $\kappa_i$ to account for the fact that the IDEA model, which \cite{majumderncov} uses, assumes that the generation-interval distribution is fixed ($\kappa = 0$).
+Hyperparameters $\mu_r$, $\alpha_r$, $\mu_G$, $\alpha_G$, and $\mu_\kappa$ are estimated with a Markov Chain Monte Carlo (MCMC) by drawing a random set for $r_i$, $\bar{G}_i$, and $\kappa_i$ at each MCMC step from the 100,000 samples that we calculated previously.
+We run 4 parallel chains that consist of 100,000 burnin steps and 100,000 sampling steps.
+Posterior samples are thinned every 200 steps.
+Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.
+
+
 
 
 

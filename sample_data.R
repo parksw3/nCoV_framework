@@ -1,6 +1,6 @@
 source("sample_author.R")
 
-nsample <- 10000
+nsample <- 100000
 
 set.seed(101)
 sample_data <- list(

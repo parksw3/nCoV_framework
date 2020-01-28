@@ -1,7 +1,7 @@
 library(MCMCpack)
 load("sample_data.rda")
 
-nsample <- 10000
+nsample <- 100000
 
 priorfun <- function(theta) {
   sum(dgamma(theta, 0.1, 0.1, log=TRUE))
@@ -37,7 +37,7 @@ postfun <- function(theta) {
 }
 
 V <- matrix(0, 5, 5)
-diag(V) <- c(1e-3, 40, 0.2, 50, 0.03)
+diag(V) <- c(5e-3, 40, 0.5, 50, 0.03)
 
 reslist <- vector('list', 4)
 

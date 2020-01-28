@@ -110,12 +110,12 @@ are likely to be overly confident.
 We also lay down several principles that needs to be taken into
 consideration.
 
-\section*{Early estimates of $\mathcal R_0$}
+\section{Methods and results}
 
 Early in an outbreak, $\mathcal R_0$ cannot be estimated directly.
 Instead, estimates of $\mathcal R_0$ are often inferred from
-the exponential growth rate $r$ can be estimated reliably from incidence data.
-Given estimates of the exponential growth rate $r$ and the distribution $g(\tau)$ of 
+the exponential growth rate $r$, which can be estimated reliably from incidence data.
+Given estimates of the exponential growth rate $r$ and the distribution $g(\tau)$ of
 generation intervals (i.e., the time between when a person become 
 infected and that person infects another person), the basic reproduction
 number can be estimated via the Euler-Lotka equation:
@@ -123,8 +123,8 @@ number can be estimated via the Euler-Lotka equation:
 1/\mathcal R_0 = \int \exp(-r\tau) g(\tau) d\tau.
 \end{equation}
 In other words, estimates of $\mathcal R_0$
-necessarily depends on the assumptions about 
-growth rate $r$ and the shape of generation-interval distribution $g(\tau)$.
+will depend on the assumptions about the
+exponential growth rate $r$ and the shape of generation-interval distribution $g(\tau)$.
 
 \begin{figure}[t]
 \includegraphics[width=\textwidth]{compare_assumption.pdf}
@@ -133,36 +133,29 @@ Early estimates of $\mathcal R_0$ and associated assumptions about $r$ and $g(\t
 }
 \end{figure}
 
-We use the gamma approximation framework to demonstrate
-how assumptions about $r$ and $g(\tau)$
-affects $\mathcal R_0$.
+We use the gamma approximation framework to first characterize the
+amount of uncertainty present in the underlying parameters and then 
+to assess the 
+degree to which these uncertainties
+affect the estimate of $\mathcal R_0$.
 Assuming that generation intervals follow a gamma distribution 
 with the mean $\bar G$ and the squared coefficient of variation $\kappa$, 
 we have
 \begin{equation}
 \mathcal R_0 = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
 \end{equation}
-This equation demonstrates that generation-interval distributions
-with a larger mean (higher $\bar{G}$) or less variability (lower $\kappa$)
-will give a higher estimate of $\mathcal R_0$.
-Likewise, strong assumptions about $\bar{G}$ and $\kappa$ will give
-estimates of $\mathcal R_0$ with narrow confidence intervals.
+This equation demonstrates that a generation-interval distribution
+that assumes a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
+will give a higher estimate of $\mathcal R_0$ for the same value of $r$.
 
-Figure 1 clearly demonstrates the lack of uncertainties in the underlying parameters
-of the current $\mathcal R_0$ estimates.
-In particular, no studies properly propagate uncertainties associated with the
-amount of variability in generation intervals, which can have 
-large effects on the estimates of $\mathcal R_0$
-For example, when the relative mean generation interval is long ($r\bar{G}\approx 2$ based on the estimates by \cite{zhaoncov}),
-varying $\kappa$ from 0 to 1 reduces the estimate of $\mathcal R_0$ by more than a two fold.
+First, we gathered information on estimates of $\mathcal R_0$ and their
+assumptions about the underlying generation-interval distributions from preprint servers (e.g., bioRxiv, medRxiv, and SSRN).
+Then, we model each parameter ($\mathcal R_0$, $\bar G$, and $\kappa$) with an appropriate probability distribution (either uniform or gamma) that matches the reported estimates or assumptions.
+For example, \cite{imaincov} estimated $\mathcal R_0 = 2.5$
 
-\begin{equation}
-\begin{aligned}
-\mathcal R_i &\sim \textrm{distrib}(\theta_i)\\
-\bar G_i &\sim \textrm{distrib}(\theta_i)\\
-\kappa &\sim \textrm{distrib}(\theta_i)\\
-\end{aligned}
-\end{equation}
+
+
+\pagebreak
 
 \bibliography{wuhan}
 

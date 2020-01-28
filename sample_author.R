@@ -1,10 +1,11 @@
 sample_imai <- function(n=1) {
-  # qgamma(0.025, 20, 20/2.5)
-  # qgamma(0.975, 20, 20/2.5)
+  # qgamma(0.025, 20, 20/2.6)
+  # qgamma(0.975, 20, 20/2.6)
+  # qgamma(0.5, 20, 20/2.6)
   dplyr::data_frame(
     gbar=8.4,
     kappa=0.5,
-    R=rgamma(n, 20, rate=20/2.5),
+    R=rgamma(n, 20, rate=20/2.6),
     r=(R^kappa-1)/(kappa*gbar),
     rho=r*gbar
   )

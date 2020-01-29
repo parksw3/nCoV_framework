@@ -13,6 +13,9 @@ current: target
 vim_session:
 	bash -cl "vmt"
 
+Sources += wuhan.tex irdm.tex
+## wuhan.pdf: wuhan.tex
+
 ######################################################################
 
 ### Makestuff
@@ -32,6 +35,7 @@ makestuff/Makefile:
 -include makestuff/os.mk
 
 ## -include makestuff/wrapR.mk
+-include makestuff/texdeps.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk

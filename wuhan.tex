@@ -62,11 +62,14 @@
 
 \section*{Abstract}
 
+As the novel coronavirus (2019-nCoV) continues to spread, 
+
+
 \pagebreak
 
 \section{Introduction}
 
-Since December 2019, a novel coronavirus (2019-nCoV) has been
+Since December 2019, the novel coronavirus (2019-nCoV) has been
 spreading in China and in other parts of the world.
 As of January 28th, 2020, the World Health Organization (WHO) has
 confirmed 4593 cases, including 56 confirmed cases in 14 different
@@ -91,10 +94,8 @@ the associated uncertainties.
 Here, we present a statistical framework for evaluating uncertainties 
 associated with parameter estimates
 across a wide range of models.
-Our results indicate that most published estimates of $\mathcal R_0$
+Our results indicate that most early estimates of $\mathcal R_0$ for the outbreak
 are likely to be overly confident.
-We also lay down several principles that need to be taken into
-consideration when fitting models to early incidence data.
 
 \section{Methods}
 
@@ -168,7 +169,7 @@ For each study $i$, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appr
 \end{equation}
 where $D$ is a probability distribution and $\theta$ is a parameter set of the probability distribution $D$.
 For example, Study 2 estimated $\mathcal R_0 = 2.92$ (95\% CI: 2.28--3.67);
-we model this parameter as a gamma distribution with mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for the list of all distributions).
+we model this parameter as a gamma distribution with mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for the list of distributions that we assume).
 Then, we draw 100,000 random samples from these distributions ($\mathcal R_{0i}^n$, ${\bar G}_i^n$, and $\kappa_i^n$ where $n = 1, \dots, 100,000$) and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
 \begin{equation}
 r_i^n = \frac{{\mathcal R_{0i}^n}^{\kappa_i^n} - 1}{\kappa_i^n \bar{G}_i^n}.
@@ -202,7 +203,7 @@ Constant distributions assume a fixed values according to Table 1.
 }
 \end{table}
 
-To define appropriate ranges of uncertainties for each parameter ($r$, $\bar G$, and $\kappa$),
+To capture the average ranges of uncertainties for each parameter ($r$, $\bar G$, and $\kappa$),
 we use a Bayesian multilevel modeling approach by assuming that all \emph{observed} (i.e., estimated or assumed) parameter values come from the same distribution:
 \begin{equation}
 \begin{aligned}
@@ -230,24 +231,24 @@ I'm a caption
 \label{fig:assumption}
 \end{figure}
 
-\fref{assumption} compares the estimated and assumed values of the exponential growth rate $r$, mean generation interval $\bar G$, and the squared coefficient of variation $\kappa$ of the generation-interval distribution with the average values ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
+\fref{assumption} compares the estimated (or assumed) values of the exponential growth rate $r$, mean generation interval $\bar G$, and the squared CV $\kappa$ of the generation-interval distribution with the average values ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variability in generation intervals (represented by $\kappa$) affects their estimates of $\mathcal R_0$, even though the assumed values range from 0 to 0.5 across different models.
 
 To evaluate how the uncertainty in each parameter affects the estimate of $\mathcal R_0$,
-we replace the estimated or assumed values of $r$, $\bar G$, and $\kappa$ with the average values ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate the basic reproductive number $\mathcal R_0$ (\fref{R0}).
+we replace the estimated (or assumed) values of $r$, $\bar G$, and $\kappa$ with the average values ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate the basic reproductive number $\mathcal R_0$ (\fref{R0}).
 We find that incorporating uncertainties one at a time increases the width of the confidence intervals in most cases (15 out 18).
 We estimate narrower confidence intervals for Study 2 and Study 3 when we include uncertainties in $\kappa$ because they assume narrow generation-interval distributions ($\kappa = 0.2$ and $\kappa=0$, respectively);
-when lower values of $\kappa$ are used, their estimates of $\mathcal R_0$ becomes less sensitive to the values of $r$ and $\bar G$.
-We estimate narrower confidence intervals when we use the average mean generation time for Study 5 because the range of uncertainty in the mean generation time $\bar G$ that they consider is much wider than ours (\fref{assumption}).
+when lower values of $\kappa$ are used, their estimates of $\mathcal R_0$ become less sensitive to the values of $r$ and $\bar G$.
+We estimate narrower confidence intervals when we use the average mean generation time $\mu_G$ to recalculate $\mathcal R_0$ for Study 5 because the range of uncertainty in the mean generation time $\bar G$ that they consider is much wider than ours (\fref{assumption}).
 
 We also find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of $\mathcal R_0$ and the width of associated confidence intervals (\fref{R0}).
 For example, recalculating $\mathcal R_0$ for Study 3 by using the average $r$ values gives $\mathcal R_0 = 4.0$ (95\% CI: 2.3--10.1), which is much wider than the range they reported (2.0--3.1).
 There are two explanations for this result.
 First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on $\mathcal R_0$ under the gamma approximation framework \eref{gamma},
-$r$ has greater overall effect on $\mathcal R_0$ because there is more uncertainty associated with our estimate of $\mu_r$ than with $\mu_G$.
-Second, assuming a fixed generation time makes their estimate of $\mathcal R_0$ too sensitive to $r$ and $\bar G$.
+$r$ has greater overall effect on $\mathcal R_0$ because there is more uncertainty associated with our estimate of $\mu_r$ (95\% CI: 0.12--0.28 days$^{-1}$) than with $\mu_G$ (95\% CI: 6.6--10.2 days).
+Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of $\mathcal R_0$ too sensitive to $r$ and $\bar G$.
 
 \begin{figure}[t]
 \includegraphics[width=\textwidth]{compare_R0.pdf}
@@ -267,10 +268,21 @@ In fact, our results show that incorporating uncertainties in all parameters can
 
 \section{Discussion}
 
-Estimating the basic reproductive number is crucial for predicting the course of an outbreak and planning intervention strategies.
-When the basic reproductive numbers are estimated from a wide range of models that rely on different assumptions, 
-it can difficult to assess the statistical validity of these estimates.
-Here, we present a simple framework for evaluating estimates of the basic reproductive number and associated model assumptions using the gamma approximation of the generation-interval distribution \citep{park2019practical}.
+Estimating the basic reproductive number $\mathcal R_0$ is crucial for predicting the course of an outbreak and planning intervention strategies.
+When $\mathcal R_0$ is estimated from a wide range of models that rely on different assumptions, it can difficult to assess the statistical validity of these estimates.
+Here, we present a simple framework that allows us to evaluate the validity of the estimates of $\mathcal R_0$ and associated model assumptions using the gamma approximation of the generation-interval distribution \citep{park2019practical}. 
+We then apply the framework to the preliminary estimates of $\mathcal R_0$ during the novel coronavirus outbreak.
+Our results demonstrates the importance of accounting for uncertainties associated with the underlying generation-interval distributions, especially with the amount of dispersion in the generation intervals:
+assuming a narrow generation-interval distribution can make the estimate of $\mathcal R_0$ too sensitive to the estimates of the exponential growth rate $r$.
+
+Narrow confidence intervals associated with early estimates of $\mathcal R_0$ partly depend on the statistical approches that the estimates rely on.
+Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
+Although the formula for the cumulative curve (e.g., logistic model) is much simpler and familiar to many people, 
+fitting a model to cumulative number of cases can bias the parameter estimate and give overly narrow confidence intervals as it violates the ``independence of error'' assumption \citep{ma2014estimating, king2015avoidable}.
+For example, fitting the exponential growth model to the daily number of confirmed 2019-nCoV cases give $r=??$ (95\% CI: ?? -- ??), whereas fitting the same model to the daily number of cumulative confirmed cases give $r=??$ (95\% CI: ?? -- ??).
+We strongly emphasize that all models should be fitted to raw incidence data for any future analyses.
+
+Concluding paragraph with a message?
 
 
 \pagebreak

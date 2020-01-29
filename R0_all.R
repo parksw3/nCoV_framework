@@ -1,3 +1,5 @@
+library(coda)
+
 load("sample_data.rda")
 load("MCMC_all.rda")
 

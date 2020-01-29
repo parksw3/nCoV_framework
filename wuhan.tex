@@ -78,21 +78,22 @@ humans \citep{who26report},
 posing a greater threat for its spread.
 
 As the disease continues to spread, 
-many researchers have been rushing to publish their 
+many researchers are rushing to publish their 
 analysis of the outbreak and, in particular, their
 estimates of the basic reproductive number $\mathcal R_0$ (i.e., the 
 average number of secondary cases generated 
 by a primary case in a fully susceptible population \citep{anderson1991infectious, diekmann1990definition}).
-Estimating the basic reproductive number is of particular interest during an outbreak
+Estimating the basic reproductive number is of interest during an outbreak
 because it allows prediction about the final size of the outbreak \citep{anderson1991infectious, ma2006generality, arino2007final, andreasen2011final, miller2012note} and the required level of intervention \citep{anderson1991infectious}.
 However, it can be difficult to assess the validity of the estimates of $\mathcal R_0$ (as well as the associated degrees of uncertainty)
-when the estimation methods and their underlying assumptions vary widely.
+when the estimation methods and their underlying assumptions vary widely,
+especially since these assumptions can directly affect the estimates.
 
-Here, we present a simple, statistical framework for evaluating uncertainties 
+Here, we present a simple framework for evaluating uncertainties 
 associated with the estimates of $\mathcal R_0$
 across a wide range of models using a generation-interval based approach and compare early estimates of $\mathcal R_0$ of the 2019-nCoV outbreak.
 Our results indicate that most early estimates of $\mathcal R_0$ for the outbreak
-are likely to be overly confident.
+are likely to have been overly confident.
 
 \section{Methods}
 
@@ -106,15 +107,17 @@ number can be estimated via the Euler-Lotka equation \citep{wallinga2007generati
 \begin{equation}
 1/\mathcal R_0 = \int \exp(-r\tau) g(\tau) d\tau.
 \end{equation}
-In other words, estimates of $\mathcal R_0$
+In other words, estimates of $\mathcal R_0$ must
 depend on the assumptions about the
 exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
 
-Here, we use the gamma approximation framework \citep{park2019practical} to characterize the
-amount of uncertainty present in the underlying parameters and assess the 
+Here, we use the gamma approximation framework \citep{park2019practical} to (1) 
+characterize the
+amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution
+and (2) assess the 
 degree to which these uncertainties
 affect the estimate of $\mathcal R_0$.
-Assuming that generation intervals follow a gamma distribution 
+Assuming that generation intervals follow a gamma distribution
 with the mean $\bar G$ and the squared coefficient of variation (CV$^2$) $\kappa$, 
 we have
 \begin{equation}
@@ -156,22 +159,17 @@ First, we gathered information on estimates of $\mathcal R_0$ and their
 assumptions about the underlying generation-interval distributions from
 6 articles that were uploaded to
 preprint servers between January 24th, 2020 and January 26th, 2020 (Table 1).
-For each study $i$, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appropriate probability distribution (either uniform or gamma) that roughly matches the estimated or assumed values and their uncertainty ranges:
-\begin{equation}
-\begin{aligned}
-\mathcal R_{0i} &\sim D_{i, \mathcal R}(\theta_{i, \mathcal R})\\
-{\bar G}_i &\sim D_{i, G}(\theta_{i, G})\\
-\kappa_i &\sim D_{i, \kappa}(\theta_{i, \kappa})\\
-\end{aligned}
-\end{equation}
-where $D$ is a probability distribution and $\theta$ is a parameter set of the probability distribution $D$.
+For each study $i$, we model $\mathcal R_{0i}$, $\bar G_i$, and $\kappa_i$ with appropriate probability distributions (either uniform or gamma) that roughly captures the reported values and their uncertainty ranges.
 For example, Study 2 estimated $\mathcal R_0 = 2.92$ (95\% CI: 2.28--3.67);
-we model this parameter as a gamma distribution with mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for the list of distributions that we assume).
-Then, we draw 100,000 random samples from these distributions ($\mathcal R_{0i}^n$, ${\bar G}_i^n$, and $\kappa_i^n$ where $n = 1, \dots, 100,000$) and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
+we model this parameter as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for the list of distributions that we assume).
+If a study assumed a fixed value for a parameter, we hold that parameters constant as well, using the same assumed value.
+
+We draw 100,000 random samples from the probability distributions that represent the estimates of $\mathcal R_0$ and the assumed values of $\bar G$ and $\kappa$
+and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
 \begin{equation}
-r_i^n = \frac{{\mathcal R_{0i}^n}^{\kappa_i^n} - 1}{\kappa_i^n \bar{G}_i^n}.
+r_i = \frac{{\mathcal R_{0i}}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
 \end{equation}
-This allows us to approximate the probability distribution of the exponential growth rate as a discrete probability distribution.
+This allows us to approximate the probability distributions of the estimated exponential growth rates by each study.
 
 \begin{table}[t]
 \begin{center}
@@ -200,21 +198,22 @@ Constant distributions assume a fixed values according to Table 1.
 }
 \end{table}
 
-To capture the average ranges of uncertainties in each parameter ($r$, $\bar G$, and $\kappa$),
-we use a Bayesian multilevel modeling approach by assuming that all \emph{observed} (i.e., estimated or assumed) parameter values come from the same distribution:
+We calculate the pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) with a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same Gamma distribution:
 \begin{equation}
 \begin{aligned}
-r_i^n &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
-\bar{G}_i^n &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_G, \mathrm{shape}=\alpha_G),\\
-\kappa_i^n &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
-(\mu_r, \alpha_r, \mu_G, \alpha_G, \mu_\kappa) &\sim \mathrm{Gamma}(\mathrm{shape}=0.1, \mathrm{rate}=0.1),
+r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
+\bar{G}_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_G, \mathrm{shape}=\alpha_G),\\
+\kappa_i &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
 \end{aligned}
 \end{equation}
-where $n$ is randomly selected between 1 and 100,000 at each Metropolis-Hastings step;
-this approach is analogous to Bayesian methods for analyzing phylogenetic data, which can rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
-We use an exponential distribution to model $\kappa_i$ since one model assumes a fixed generation interval ($\kappa = 0$).
-We run 4 parallel chains that consist of 100,000 burnin steps and 100,000 sampling steps.
-Posterior samples are thinned every 200 steps.
+We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing random samples at each Metropolis-Hastings step from 100,000 samples that we calculated earlier;
+this approach is analogous to Bayesian methods for analyzing phylogenetic data, which pften rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
+Weak priors are assumed on the hyperparameters:
+\begin{equation}
+(\mu_r, \alpha_r, \mu_G, \alpha_G, \mu_\kappa) \sim \mathrm{Gamma}(\mathrm{shape}=0.1, \mathrm{rate}=0.1).
+\end{equation}
+We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.
+Posterior samples are thinned every 400 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all parameters \citep{gelman1992inference}.
 
 \section{Results}
@@ -232,6 +231,20 @@ I'm a caption
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variability in generation intervals (represented by $\kappa$) affects their estimates of $\mathcal R_0$, even though the assumed values range from 0 to 0.5 across different studies.
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{figure2.pdf}
+\caption{
+\textbf{Effects of $r$, $\bar G$, and $\kappa$ on the estimates of $\mathcal R_0$.}
+I'm a caption
+}
+\label{fig:eff}
+\end{figure}
+
+To evaluate how the uncertainty in each parameter affects the estimate of $\mathcal R_0$,
+we 
+
+
 
 To evaluate how the uncertainty in each parameter affects the estimate of $\mathcal R_0$,
 we replace the estimated (or assumed) values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate the basic reproductive number $\mathcal R_0$ (\fref{R0}).
@@ -274,8 +287,9 @@ Narrow confidence intervals associated with early estimates of $\mathcal R_0$ pa
 Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
 Although the formula for the cumulative curve (e.g., logistic model) is much simpler and familiar to many people, 
 fitting a model to cumulative number of cases can bias the parameter estimate and give overly narrow confidence intervals as it violates the ``independence of error'' assumption \citep{ma2014estimating, king2015avoidable}.
-For example, fitting the exponential growth model to the daily number of confirmed 2019-nCoV cases give $r=??$ (95\% CI: ?? -- ??), whereas fitting the same model to the daily number of cumulative confirmed cases give $r=??$ (95\% CI: ?? -- ??).
-We strongly emphasize that all models should be fitted to raw incidence data for any future analyses.
+We emphasize that all models should be fitted to raw incidence data for any future analyses.
+
+
 
 Concluding paragraph with a message?
 

@@ -7,6 +7,8 @@ priorfun <- function(theta) {
   sum(dgamma(theta, 0.1, 0.1, log=TRUE))
 }
 
+sample_data$`Majumder et al. (2020)`$kappa <- 0.02
+
 postfun <- function(theta) {
   mean_r <- theta[1]
   shape_r <- theta[2]
@@ -16,7 +18,9 @@ postfun <- function(theta) {
   shape_gbar <- theta[4]
   rate_gbar <- shape_gbar/mean_gbar
   
-  rate_kappa <- 1/theta[5]
+  mean_kappa <- theta[5]
+  shape_kappa <- theta[6]
+  rate_kappa <- shape_kappa/mean_kappa
   
   ss <- sample(nsample, 1)
   
@@ -26,7 +30,7 @@ postfun <- function(theta) {
   
   ll <- sum(dgamma(r, shape=shape_r, rate=rate_r, log=TRUE)) +
     sum(dgamma(gbar, shape=shape_gbar, rate=rate_gbar, log=TRUE)) +
-    sum(dexp(kappa, rate=rate_kappa, log=TRUE)) +
+    sum(dgamma(kappa, shape=shape_kappa, rate=rate_kappa, log=TRUE)) +
     priorfun(theta)
   
   if (is.na(ll) || is.nan(ll)) {
@@ -36,17 +40,17 @@ postfun <- function(theta) {
   ll
 }
 
-V <- matrix(0, 5, 5)
-diag(V) <- c(5e-3, 40, 0.5, 50, 0.03)
+V <- matrix(0, 6, 6)
+diag(V) <- c(5e-3, 50, 0.5, 60, 0.04, 1)
 
 reslist <- vector('list', 4)
 
 for (i in 1:4) {
   reslist[[i]] <- MCMCmetrop1R(postfun,
-                               theta.init=c(0.2, 10, 8, 70, 0.2),
-                               thin=200,
-                               burnin=100000,
-                               mcmc=100000,
+                               theta.init=c(0.2, 10, 8, 70, 0.2, 1),
+                               thin=400,
+                               burnin=200000,
+                               mcmc=200000,
                                verbose=50000,
                                seed=i,
                                V=V)

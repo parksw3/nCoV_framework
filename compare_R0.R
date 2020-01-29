@@ -32,6 +32,15 @@ R0all %>%
     sum(ww)
   )
 
+R0all %>%
+  filter(type=="all") %>%
+  mutate(
+    width=upr-lwr
+  ) %>%
+  merge(summarize(group_by(Rdata, study), bwidth=upr-lwr)) %>%
+  mutate(
+    ww=width>bwidth
+  )
 
 g1 <- ggplot(R0all) +
   geom_point(aes(study, est, col=type), position=position_dodge(0.5)) +

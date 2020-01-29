@@ -117,7 +117,7 @@ amount of uncertainty present in the underlying parameters and then assess the
 degree to which these uncertainties
 affect the estimate of $\mathcal R_0$.
 Assuming that generation intervals follow a gamma distribution 
-with the mean $\bar G$ and the squared coefficient of variation $\kappa$, 
+with the mean $\bar G$ and the squared coefficient of variation (CV$^2$) $\kappa$, 
 we have
 \begin{equation}
 \mathcal R_0 = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
@@ -127,10 +127,37 @@ This equation demonstrates that a generation-interval distribution
 that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
 will give a higher estimate of $\mathcal R_0$ for the same value of $r$.
 
+\begin{table}[t]
+\begin{center}
+\footnotesize
+\begin{tabular}{l|l|l|l}
+ & Basic reproductive number & mean generation time (days) & CV$^2$ generation time \\
+\hline
+Study 1 & 2.5 (1.5--3.5)$^\ast$ & 8.4 & unspecified$^\dagger$ \\
+\hline
+Study 2 & 2.92 (95\% CI: 2.28--3.67) & 8.4 & 0.2 \\
+\hline
+Study 3 & 2.0--3.1 & 6--10 & 0 \\
+\hline
+Study 4 & 3.8 (95\% CI: 3.6--4.0) & 7.6 & 0.5 \\
+\hline
+Study 5 & 2.2 (90\% CI: 1.4--3.8) & 7--14 & 0.5\\
+\hline
+Study 6 & 5.47 (95\% CI: 4.16--7.10)$^\ddagger$ & 7.6--8.4 & 0.2
+\end{tabular}
+\end{center}
+\caption{
+\textbf{Estimates of the basic reproductive number and their assumptions about the generation-interval distributions.}
+$^\ast$We treated these intervals as a 95\% confidence interval in our analysis.
+$^\dagger$We assumed $\kappa = 0.5$ in our analysis.
+$^\ddagger$The authors presented $\mathcal R_0$ estimates under different assumptions; we used their baseline scenario in our analysis.
+}
+\end{table}
+
 First, we gathered information on estimates of $\mathcal R_0$ and their
 assumptions about the underlying generation-interval distributions from
 6 articles that were uploaded to
-preprint servers (e.g., bioRxiv, medRxiv, and SSRN) between January 24th, 2020 and January 26th, 2020.
+preprint servers between January 24th, 2020 and January 26th, 2020 (Table 1).
 For each study $i$, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appropriate probability distribution (either uniform or gamma) that roughly matches the estimated or assumed values and their uncertainty ranges:
 \begin{equation}
 \begin{aligned}
@@ -140,13 +167,40 @@ For each study $i$, we model $\mathcal R_0$, $\bar G$, and $\kappa$ with an appr
 \end{aligned}
 \end{equation}
 where $D$ is a probability distribution and $\theta$ is a parameter set of the probability distribution $D$.
-For example, one study estimated $\mathcal R_0 = 2.6$ (95\% CI: 1.5--3.5);
-we model this parameter as a gamma distribution with mean of 2.6 and a shape parameter of 28, which has a 95\% probability of containing a value between 1.5 and 3.5.
+For example, Study 2 estimated $\mathcal R_0 = 2.92$ (95\% CI: 2.28--3.67);
+we model this parameter as a gamma distribution with mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for the list of all distributions).
 Then, we draw 100,000 random samples from these distributions ($\mathcal R_{0i}^n$, ${\bar G}_i^n$, and $\kappa_i^n$ where $n = 1, \dots, 100,000$) and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
 \begin{equation}
 r_i^n = \frac{{\mathcal R_{0i}^n}^{\kappa_i^n} - 1}{\kappa_i^n \bar{G}_i^n}.
 \end{equation}
 This allows us to approximate the probability distribution of the exponential growth rate as a discrete probability distribution.
+
+\begin{table}[t]
+\begin{center}
+\footnotesize
+\begin{tabular}{l|l|l|l}
+ & Basic reproductive number & mean generation time (days) & CV$^2$ generation time \\
+\hline
+Study 1 & $\mathrm{Gamma}(\alpha=28, \beta=28/2.6)$ & constant & constant \\
+\hline
+Study 2 & $\mathrm{Gamma}(\alpha=67, \beta=67/2.92)$ & constant & constant \\
+\hline
+Study 3 & N.A. & $\mathrm{Uniform}(6, 10)$ & constant\\
+\hline
+Study 4 & $\mathrm{Gamma}(\alpha=1400, \beta=1400/3.8)$ & constant & constant \\
+\hline
+Study 5 & $\mathrm{Gamma}(\alpha=12, \beta=12/2.2)$ & $\mathrm{Uniform}(7, 14)$ & constant\\
+\hline
+Study 6 & $\mathrm{Gamma}(\alpha=54, \beta=54/5.47)$ & $\mathrm{Uniform}(7.6, 8.4)$ & constant
+\end{tabular}
+\end{center}
+\caption{
+\textbf{Probability distributions for the estimates of $\mathcal R_0$ and for the assumed values of $\bar G$ and $\kappa$.}
+The probability distribution for the exponential growth rate $r$ for each study is obtained by drawing random samples from these distributions and taking the inverse of \eref{gamma}.
+The gamma distribution is parameterized by shape $\alpha$ and rate $\beta$ parameters.
+Constant distributions assume a fixed values according to Table 1.
+}
+\end{table}
 
 To define appropriate ranges of uncertainties for each parameter ($r$, $\bar G$, and $\kappa$),
 we use a Bayesian multilevel modeling approach by assuming that all \emph{observed} (i.e., estimated or assumed) parameter values come from the same distribution:

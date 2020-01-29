@@ -14,7 +14,7 @@ sample_majumder <- function(n=1) {
   dplyr::data_frame(
     gbar=runif(n, min=6,max=10),
     kappa=0,
-    r=runif(n, max=log(2)/6, min=log(3.1)/10),
+    r=0.114,
     R=exp(r*gbar),
     rho=r*gbar
   )

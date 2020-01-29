@@ -68,9 +68,9 @@
 
 Since December 2019, a novel coronavirus (2019-nCoV) has been
 spreading in China and in other parts of the world.
-As of January 27th, 2020, the World Health Organization (WHO) has
-confirmed 2798 cases, including 37 confirmed cases in 11 different
-countries, outside China \citep{who27report}.
+As of January 28th, 2020, the World Health Organization (WHO) has
+confirmed 4593 cases, including 56 confirmed cases in 14 different
+countries, outside China \citep{who28report}.
 Although the virus is believed to have originated
 from animal reservoirs, a recent case from Viet Nam
 demonstrated its ability to directly transmit between
@@ -78,32 +78,30 @@ humans \citep{who26report},
 posing a greater threat for its spread.
 
 Many researchers have been rushing to publish their 
-analysis of the outbreak \citep{imaincov, riouncov,readncov,zhaoncov,majumderncov,liuncov} 
-and, in particular, their
-estimates of the basic 
-reproductive number $\mathcal R_0$ (i.e., the 
+analysis of the outbreak and, in particular, their
+estimates of the basic reproductive number $\mathcal R_0$ (i.e., the 
 average number of secondary cases generated 
-by a primary case in a fully susceptible population).
+by a primary case in a fully susceptible population \citep{anderson1991infectious, diekmann1990definition}).
 The basic reproductive number is of particular interest 
 because it allows prediction about the final size of an epidemic \citep{anderson1991infectious, ma2006generality, arino2007final, andreasen2011final, miller2012note}.
-While their efforts are valuable, their analyses rely on several
+While their efforts are valuable, their analyses rely on
 assumptions that could immediately affect their estimates of $\mathcal R_0$ and
 the associated uncertainties.
 
-Here, we present a simple framework for evaluating uncertainties 
+Here, we present a statistical framework for evaluating uncertainties 
 associated with parameter estimates
 across a wide range of models.
 Our results indicate that most published estimates of $\mathcal R_0$
-are likely to be overly confident. 
+are likely to be overly confident.
 We also lay down several principles that need to be taken into
 consideration when fitting models to early incidence data.
 
 \section{Methods}
 
 Early in an outbreak, $\mathcal R_0$ cannot be estimated directly;
-instead, estimates of $\mathcal R_0$ are often inferred from
+instead, $\mathcal R_0$ is often inferred from
 the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{chowell2003sars, mills2004transmissibility, nishiura2009transmission, nishiura2010pros, ma2014estimating}.
-Given estimates of the exponential growth rate $r$ and the distribution $g(\tau)$ of
+Given an estimate of the exponential growth rate $r$ and a distribution $g(\tau)$ of
 generation intervals (i.e., the time between when a person become 
 infected and that person infects another person \citep{svensson2007note}), the basic reproductive
 number can be estimated via the Euler-Lotka equation \citep{wallinga2007generation}:
@@ -111,10 +109,10 @@ number can be estimated via the Euler-Lotka equation \citep{wallinga2007generati
 1/\mathcal R_0 = \int \exp(-r\tau) g(\tau) d\tau.
 \end{equation}
 In other words, estimates of $\mathcal R_0$
-must depend on the assumptions about the
+depend on the assumptions about the
 exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
 
-We use the gamma approximation framework \citep{park2019practical} to first characterize the
+Here, we use the gamma approximation framework \citep{park2019practical} to first characterize the
 amount of uncertainty present in the underlying parameters and then assess the 
 degree to which these uncertainties
 affect the estimate of $\mathcal R_0$.

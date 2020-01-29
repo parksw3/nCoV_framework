@@ -1,6 +1,7 @@
 library(ggplot2); theme_set(theme_bw())
 library(gridExtra)
 source("published_estimate.R")
+source("study_number.R")
 
 load("sample_data.rda")
 
@@ -37,28 +38,28 @@ avg_kappa <- data.frame(
   study="Average"
 )
 
-g1 <- ggplot(rdata2) +
-  geom_point(aes(est, study)) +
+g1 <- ggplot(merge(rdata2, study_number)) +
+  geom_point(aes(est, anon)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon)) +
   geom_point(data=avg_r, aes(median, study), col=2) +
-  geom_segment(aes(lwr, study, xend=upr, yend=study)) +
   geom_segment(data=avg_r, aes(lwr, study, xend=upr, yend=study), col=2) +
   scale_x_continuous(expression(Exponentia~ growth~rate~(days^{-1}))) +
   theme(
     axis.title.y = element_blank()
   )
 
-g2 <- ggplot(gdata) +
-  geom_point(aes(est, study)) +
+g2 <- ggplot(merge(gdata, study_number)) +
+  geom_point(aes(est, anon)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon)) +
   geom_point(data=avg_gen, aes(median, study), col=2) +
-  geom_segment(aes(lwr, study, xend=upr, yend=study)) +
   geom_segment(data=avg_gen, aes(lwr, study, xend=upr, yend=study), col=2) +
   scale_x_continuous("Mean generation time (days)") +
   theme(
     axis.title.y = element_blank()
   )
 
-g3 <- ggplot(kappadata) +
-  geom_point(aes(est, study)) +
+g3 <- ggplot(merge(kappadata, study_number)) +
+  geom_point(aes(est, anon)) +
   geom_point(data=avg_kappa, aes(median, study), col=2) +
   geom_segment(data=avg_kappa, aes(lwr, study, xend=upr, yend=study), col=2) +
   scale_x_continuous("Squared coefficient of variation") +

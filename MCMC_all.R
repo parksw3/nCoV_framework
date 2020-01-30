@@ -5,7 +5,7 @@ nsample <- 100000
 
 priorfun <- function(theta) {
   sum(dgamma(theta[-c(1, 3)], 0.1, 0.1/1, log=TRUE)) +
-    dgamma(theta[1], 0.1, 0.1/0.1, log=TRUE) +
+    dgamma(theta[1], 0.1, 0.1*7, log=TRUE) +
     dgamma(theta[3], 0.1, 0.1/7, log=TRUE)
 }
 
@@ -43,7 +43,7 @@ postfun <- function(theta) {
 }
 
 V <- matrix(0, 6, 6)
-diag(V) <- c(5e-3, 50, 0.5, 60, 0.04, 1)
+diag(V) <- c(5e-3, 50, 0.5, 100, 0.2, 1)
 
 reslist <- vector('list', 4)
 

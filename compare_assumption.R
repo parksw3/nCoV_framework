@@ -50,7 +50,7 @@ g1 <- ggplot(rdata3) +
              size=c(1, 1, 1, 1, 1, 1, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
                lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
-  scale_x_continuous(expression(Exponentia~ growth~rate~(days^{-1}))) +
+  scale_x_continuous(expression(Exponential~growth~rate~(days^{-1}))) +
   theme(
     axis.title.y = element_blank()
   )
@@ -82,6 +82,8 @@ g3 <- ggplot(kappadata2) +
   geom_point(aes(est, anon), shape=c(2, 16, 16, 16, 16, 16, 16),
              col=c(1, 1, 1, 1, 1, 1, 2),
              size=c(1, 1, 1, 1, 1, 1, 4)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
   scale_x_continuous("Squared coefficient of variation") +
   theme(
     axis.title.y = element_blank()

@@ -186,7 +186,7 @@ We also evaluate the estimates of $\mathcal R_0$ across different studies by
 replacing the their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculating the basic reproductive number $\mathcal R_0$ (\fref{R0}).
 We find that incorporating uncertainties one at a time increases the width of the confidence intervals all but two cases.
 We estimate narrower confidence intervals for Study 2 when we use our pooled estimate of the squared CV in generation time $\mu_\kappa$ to recalculate $\mathcal R_0$ because they assume a narrow generation-interval distribution ($\kappa=0$);
-when lower values of $\kappa$ are used, their estimates of $\mathcal R_0$ become less sensitive to the values of $r$ and $\bar G$.
+when lower values of $\kappa$ are used, their estimates of $\mathcal R_0$ become less sensitive to the values of $r$ and $\bar G$. \jd{don't know what this last part means. Doesn't lower kappa mean exactly the opposite? It's what's making the estimate volatile?}
 We estimate narrower confidence intervals for Study 5 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate $\mathcal R_0$ because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than ours (\fref{assumption}).
 
 % We find that accounting for uncertainties in the estimate of $r$ (i.e., replacing the estimated $r$ values with $\mu_r$) has the largest effect on the estimates of $\mathcal R_0$ and the width of associated confidence intervals (\fref{R0}).
@@ -200,7 +200,7 @@ We estimate narrower confidence intervals for Study 5 when we use our pooled est
 \includegraphics[width=\textwidth]{compare_R0.pdf}
 \caption{
 \textbf{Effect of uncertainties in underlying parameters on the estimate of the basic reproductive number.}
-I'm a caption
+I'm a caption; \emph{No you're not.}
 }
 \label{fig:R0}
 \end{figure}
@@ -208,9 +208,9 @@ I'm a caption
 When we incorporate all uncertainties by using posterior samples for $\mu_r$, $\mu_G$, and $\mu_\kappa$ to recalculate $\mathcal R_0$ and compare it with the reported $\mathcal R_0$ estimates.
 We estimate the average $\mathcal R_0$ to be 3.1 (95\% CI: 2.1--5.7).
 While our pooled estimate of $\mathcal R_0$ is similar to other reported values, our calculation gives wider confidence intervals than all of them.
-This result does not imply that our assumptions are too weak;
+This result does not imply that assumptions based on the pooled estimate are too weak; \jd{better in Discussion?}
 we believe that this confidence interval accurately reflects the level of uncertainties present in the information that were available when these models were fitted.
-In fact, our results show that incorporating uncertainties in all parameters can give narrower confidence intervals than doing so one at a time because nonlinear effects of parameters could cancel out and give appropriately wide confidence intervals.
+In fact, our results show that incorporating uncertainties in all parameters can give narrower confidence intervals than doing so one at a time because nonlinear effects of parameters could cancel out and give appropriately wide confidence intervals. \jd{Are you sure? I don't think we have a mechanism for cancelling; I think that the narrow GIs cause instability.}
 
 \section{Discussion}
 

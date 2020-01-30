@@ -47,9 +47,9 @@ rdata3 <- mutate(merge(rdata2, study_number)) %>%
 
 g1 <- ggplot(rdata3) +
   geom_point(aes(est, anon), col=c(1, 1, 1, 1, 1, 1, 2),
-             size=c(1, 1, 1, 1, 1, 1, 4)) +
+             size=c(2, 2, 2, 2, 2, 2, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.5)) +
   scale_x_continuous(expression(Exponential~growth~rate~(days^{-1}))) +
   theme(
     axis.title.y = element_blank()
@@ -63,9 +63,9 @@ gdata2 <- mutate(merge(gdata, study_number)) %>%
 
 g2 <- ggplot(gdata2) +
   geom_point(aes(est, anon), col=c(1, 1, 1, 1, 1, 1, 2),
-             size=c(1, 1, 1, 1, 1, 1, 4)) +
+             size=c(2, 2, 2, 2, 2, 2, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.5)) +
   scale_x_continuous("Mean generation time (days)") +
   theme(
     axis.title.y = element_blank()
@@ -81,9 +81,9 @@ kappadata2 <- mutate(merge(kappadata, study_number)) %>%
 g3 <- ggplot(kappadata2) +
   geom_point(aes(est, anon), shape=c(2, 16, 16, 16, 16, 16, 16),
              col=c(1, 1, 1, 1, 1, 1, 2),
-             size=c(1, 1, 1, 1, 1, 1, 4)) +
+             size=c(2, 2, 2, 2, 2, 2, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.5)) +
   scale_x_continuous("Squared coefficient of variation") +
   theme(
     axis.title.y = element_blank()
@@ -91,4 +91,4 @@ g3 <- ggplot(kappadata2) +
 
 gtot <- arrangeGrob(g1, g2, g3, nrow=1)
 
-ggsave("compare_assumption.pdf", gtot, width=12, height=3)
+ggsave("compare_assumption.pdf", gtot, width=10, height=3)

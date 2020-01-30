@@ -22,7 +22,7 @@ R0all <- Rdata_adj %>%
   ) %>%
   merge(study_number) %>%
   mutate(
-    anon=ifelse(type=="all", "Pooled estimate", anon)
+    anon=ifelse(type=="all", "Pooled estimate", as.character(anon))
   )
   
 R0all %>%
@@ -33,9 +33,6 @@ R0all %>%
   merge(summarize(group_by(Rdata_adj, study), bwidth=upr-lwr)) %>%
   mutate(
     ww=width>bwidth
-  ) %>%
-  summarize(
-    sum(ww)
   )
 
 R0all %>%

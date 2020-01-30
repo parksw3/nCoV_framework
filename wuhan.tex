@@ -158,7 +158,7 @@ We inferred point estimates, uniform distributions (shown in orange) or confiden
 \label{fig:assumption}
 \end{figure}
 
-\fref{assumption} compares the estimated (or assumed) values of the exponential growth rate $r$, mean generation interval $\bar G$, and the squared CV $\kappa$ of the generation-interval distribution with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
+\fref{assumption} compares the estimated (or assumed) values of the exponential growth rate $r$, mean generation interval $\bar G$, and the squared coefficient of variation (CV) $\kappa$ of the generation-interval distribution with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variability in generation intervals (represented by $\kappa$) affects their estimates of $\mathcal R_0$, even though the assumed values range from 0 to 0.5 across different studies.
@@ -343,7 +343,8 @@ Weakly informative priors are assumed on the hyperparameters:
 \begin{aligned}
 \mu_r &\sim \mathrm{Gamma}(\mathrm{mean}=1\,\mathrm{week}^{-1},\,\mathrm{shape}=0.1)\\
 \mu_G &\sim \mathrm{Gamma}(\mathrm{mean}=1\,\mathrm{week},\,\mathrm{shape}=0.1)\\
-(\mu_\kappa, \alpha_r, \alpha_G, \alpha_\kappa) &\sim \mathrm{Gamma}(\mathrm{mean}=1,\,\mathrm{shape}=0.1).
+\mu_G &\sim \mathrm{Gamma}(\mathrm{mean}=0.5,\,\mathrm{shape}=0.1)\\
+(\alpha_r, \alpha_G, \alpha_\kappa) &\sim \mathrm{Gamma}(\mathrm{mean}=1,\,\mathrm{shape}=0.1).
 \end{aligned}
 \end{equation}
 We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.

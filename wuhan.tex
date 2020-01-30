@@ -154,8 +154,8 @@ For example, Study 2 estimated $\mathcal R_0 = 2.92$ (95\% CI: 2.28--3.67);
 we model this parameter as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for the list of distributions that we assume).
 If a study assumed a fixed value for a parameter, we hold that parameters constant as well, using the same assumed value.
 
-We draw 100,000 random samples from the probability distributions that represent the estimates of $\mathcal R_0$ and the assumed values of $\bar G$ and $\kappa$
-and calculate the exponential growth rate $r$ via the inverse of \eref{gamma}:
+For each study, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions that represent the estimates of $\mathcal R_0$ and the assumed values of $\bar G$ and $\kappa$
+and calculating the exponential growth rate $r$ via the inverse of \eref{gamma}:
 \begin{equation}
 r_i = \frac{{\mathcal R_{0i}}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
 \end{equation}
@@ -197,8 +197,8 @@ r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 \kappa_i &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
 \end{aligned}
 \end{equation}
-We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing random samples at each Metropolis-Hastings step from 100,000 samples that we calculated earlier;
-this approach is analogous to Bayesian methods for analyzing phylogenetic data, which pften rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
+We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
+this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
 \jd{use mean (not rate) and shape; specify units for the means. Use this as an opportunity to question your choices maybe. Consider using 1 week and 1/week for the means.}
 Weak priors are assumed on the hyperparameters:
 \begin{equation}

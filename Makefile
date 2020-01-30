@@ -14,7 +14,10 @@ vim_session:
 	bash -cl "vmt"
 
 Sources += wuhan.tex irdm.tex
-## wuhan.pdf: wuhan.tex
+wuhan.pdf: wuhan.tex compare_R0.Rout
+
+compare_R0.Rout: compare_R0.R
+	Rscript compare_R0.R >compare_R0.Rout
 
 ######################################################################
 

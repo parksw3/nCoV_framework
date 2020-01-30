@@ -4,9 +4,10 @@ load("sample_data.rda")
 nsample <- 100000
 
 priorfun <- function(theta) {
-  sum(dgamma(theta[-c(1, 3)], 0.1, 0.1/1, log=TRUE)) +
+  sum(dgamma(theta[-c(1, 3, 5)], 0.1, 0.1/1, log=TRUE)) +
     dgamma(theta[1], 0.1, 0.1*7, log=TRUE) +
-    dgamma(theta[3], 0.1, 0.1/7, log=TRUE)
+    dgamma(theta[3], 0.1, 0.1/7, log=TRUE) +
+    dgamma(theta[5], 0.1, 0.1/0.5, log=TRUE)
 }
 
 sample_data$`Majumder et al. (2020)`$kappa <- 0.02
@@ -43,7 +44,7 @@ postfun <- function(theta) {
 }
 
 V <- matrix(0, 6, 6)
-diag(V) <- c(5e-3, 50, 0.5, 100, 0.2, 1)
+diag(V) <- c(2e-3, 50, 1, 200, 0.1, 0.5)/10
 
 reslist <- vector('list', 4)
 

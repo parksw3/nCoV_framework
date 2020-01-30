@@ -55,6 +55,6 @@ g1 <- ggplot(dd_combine) +
   geom_point(aes(type, est)) +
   geom_errorbar(aes(type, min=lwr, max=upr), width=0) +
   xlab("Uncertainty type") +
-  scale_y_continuous("Basic reproductive number", limits=c(2, 5.6), expand=c(0, 0))
+  scale_y_continuous("Basic reproductive number", limits=c(2, 6), expand=c(0, 0))
 
 ggsave("figure2.pdf", g1, width=6, height=4)

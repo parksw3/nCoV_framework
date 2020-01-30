@@ -13,14 +13,15 @@ R0all <- Rdata_adj %>%
     type="base"
   ) %>%
   bind_rows(
-    R0_r, R0_gbar, R0_kappa
+    R0_r, R0_gbar, R0_kappa,
+    filter(R0_all, study=="Imai et al. (2020)")
   ) %>%
   mutate(
     type=factor(type, levels=c("base", "r", "gbar", "kappa", "all"),
                 labels=c("base", "growth rate", "GI mean", "GI variation", "all"))
   ) %>%
   merge(study_number)
-
+  
 R0all %>%
   filter(type!="all", type!="base") %>%
   mutate(
@@ -45,8 +46,8 @@ R0all %>%
   )
 
 g1 <- ggplot(R0all) +
-  geom_hline(data=R0_all, aes(yintercept=lwr), lty=2) +
-  geom_hline(data=R0_all, aes(yintercept=upr), lty=2) +
+  geom_hline(data=R0_all, aes(yintercept=lwr), lty=2, col="#C77CFF") +
+  geom_hline(data=R0_all, aes(yintercept=upr), lty=2, col="#C77CFF") +
   geom_point(aes(anon, est, col=type), position=position_dodge(0.5)) +
   geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=type), position=position_dodge(0.5),
                 width=0) +

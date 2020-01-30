@@ -8,12 +8,12 @@ load("R0_gbar.rda")
 load("R0_kappa.rda")
 load("R0_all.rda")
 
-R0all <- Rdata %>%
+R0all <- Rdata_adj %>%
   mutate(
     type="base"
   ) %>%
   bind_rows(
-    R0_r, R0_gbar, R0_kappa, R0_all
+    R0_r, R0_gbar, R0_kappa
   ) %>%
   mutate(
     type=factor(type, levels=c("base", "r", "gbar", "kappa", "all"),
@@ -26,7 +26,7 @@ R0all %>%
   mutate(
     width=upr-lwr
   ) %>%
-  merge(summarize(group_by(Rdata, study), bwidth=upr-lwr)) %>%
+  merge(summarize(group_by(Rdata_adj, study), bwidth=upr-lwr)) %>%
   mutate(
     ww=width>bwidth
   ) %>%
@@ -45,6 +45,8 @@ R0all %>%
   )
 
 g1 <- ggplot(R0all) +
+  geom_hline(data=R0_all, aes(yintercept=lwr), lty=2) +
+  geom_hline(data=R0_all, aes(yintercept=upr), lty=2) +
   geom_point(aes(anon, est, col=type), position=position_dodge(0.5)) +
   geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=type), position=position_dodge(0.5),
                 width=0) +

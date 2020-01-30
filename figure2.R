@@ -57,12 +57,7 @@ g1 <- ggplot(dd_combine) +
   geom_point(aes(type, est)) +
   geom_errorbar(aes(type, min=lwr, max=upr), width=0) +
   xlab("Uncertainty type") +
-  scale_y_continuous("Basic reproductive number", limits=c(2, 6)) +
-  theme(
-    panel.grid = element_blank(),
-    panel.border = element_blank(),
-    axis.line = element_line()
-  )
+  scale_y_continuous("Basic reproductive number", limits=c(2, 6))
 
 dd_combine2 <- compfun(r_narrow)
 

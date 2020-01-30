@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 wuhan.pdf
+wuhan_DC.pdf
 *.log
 *.bbl
 *.gz

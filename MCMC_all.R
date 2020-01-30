@@ -4,7 +4,9 @@ load("sample_data.rda")
 nsample <- 100000
 
 priorfun <- function(theta) {
-  sum(dgamma(theta, 0.1, 0.1, log=TRUE))
+  sum(dgamma(theta[-c(1, 3)], 0.1, 0.1/1, log=TRUE)) +
+    dgamma(theta[1], 0.1, 0.1/0.1, log=TRUE) +
+    dgamma(theta[3], 0.1, 0.1/7, log=TRUE)
 }
 
 sample_data$`Majumder et al. (2020)`$kappa <- 0.02

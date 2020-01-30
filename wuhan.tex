@@ -189,15 +189,19 @@ We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) u
 \begin{aligned}
 r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 \bar{G}_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_G, \mathrm{shape}=\alpha_G),\\
-\kappa_i &\sim \mathrm{Exponential}(\mathrm{mean}=\mu_\kappa),\\
+\kappa_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_\kappa, \mathrm{shape}=\alpha_\kappa).\\
 \end{aligned}
 \end{equation}
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing random samples at each Metropolis-Hastings step from 100,000 samples that we calculated earlier;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which pften rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
 \jd{use mean (not rate) and shape; specify units for the means. Use this as an opportunity to question your choices maybe. Consider using 1 week and 1/week for the means.}
-Weak priors are assumed on the hyperparameters:
+Weakly informative priors are assumed on the hyperparameters:
 \begin{equation}
-(\mu_r, \alpha_r, \mu_G, \alpha_G, \mu_\kappa) \sim \mathrm{Gamma}(\mathrm{shape}=0.1, \mathrm{rate}=0.1).
+\begin{aligned}
+\mu_r &\sim \mathrm{Gamma}(\mathrm{mean}=0.1\,\mathrm{day}^{-1},\,\mathrm{shape}=0.1)\\
+\mu_G &\sim \mathrm{Gamma}(\mathrm{mean}=1\,\mathrm{week},\,\mathrm{shape}=0.1)\\
+(\mu_\kappa, \alpha_r, \alpha_G, \alpha_\kappa) &\sim \mathrm{Gamma}(\mathrm{mean}=1,\,\mathrm{shape}=0.1).
+\end{aligned}
 \end{equation}
 We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.
 Posterior samples are thinned every 400 steps.

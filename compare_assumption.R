@@ -19,50 +19,69 @@ rdata2 <- sample_data %>%
   bind_rows(.id="study")
 
 avg_r <- data.frame(
-  median=median(unlist(unlist(MCMC_all[,1]))),
+  est=median(unlist(unlist(MCMC_all[,1]))),
   lwr=quantile(unlist(unlist(MCMC_all[,1])), 0.025),
   upr=quantile(unlist(unlist(MCMC_all[,1])), 0.975),
-  study="Average"
+  anon="Pooled estimate"
 )
 
 avg_gen <- data.frame(
-  median=median(unlist(unlist(MCMC_all[,3]))),
+  est=median(unlist(unlist(MCMC_all[,3]))),
   lwr=quantile(unlist(unlist(MCMC_all[,3])), 0.025),
   upr=quantile(unlist(unlist(MCMC_all[,3])), 0.975),
-  study="Average"
+  anon="Pooled estimate"
 )
 
 avg_kappa <- data.frame(
-  median=median(unlist(unlist(MCMC_all[,5]))),
+  est=median(unlist(unlist(MCMC_all[,5]))),
   lwr=quantile(unlist(unlist(MCMC_all[,5])), 0.025),
   upr=quantile(unlist(unlist(MCMC_all[,5])), 0.975),
-  study="Average"
+  anon="Pooled estimate"
 )
 
-g1 <- ggplot(merge(rdata2, study_number)) +
-  geom_point(aes(est, anon)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon)) +
-  geom_point(data=avg_r, aes(median, study), col=2) +
-  geom_segment(data=avg_r, aes(lwr, study, xend=upr, yend=study), col=2) +
+rdata3 <- mutate(merge(rdata2, study_number)) %>%
+  bind_rows(avg_r) %>%
+  mutate(
+    anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 6:1)))
+  )
+
+g1 <- ggplot(rdata3) +
+  geom_point(aes(est, anon), col=c(1, 1, 1, 1, 1, 1, 2),
+             size=c(1, 1, 1, 1, 1, 1, 4)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
   scale_x_continuous(expression(Exponentia~ growth~rate~(days^{-1}))) +
   theme(
     axis.title.y = element_blank()
   )
 
-g2 <- ggplot(merge(gdata, study_number)) +
-  geom_point(aes(est, anon)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon)) +
-  geom_point(data=avg_gen, aes(median, study), col=2) +
-  geom_segment(data=avg_gen, aes(lwr, study, xend=upr, yend=study), col=2) +
+gdata2 <- mutate(merge(gdata, study_number)) %>%
+  bind_rows(avg_gen) %>%
+  mutate(
+    anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 6:1)))
+  )
+
+g2 <- ggplot(gdata2) +
+  geom_point(aes(est, anon), col=c(1, 1, 1, 1, 1, 1, 2),
+             size=c(1, 1, 1, 1, 1, 1, 4)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 2)) +
   scale_x_continuous("Mean generation time (days)") +
   theme(
     axis.title.y = element_blank()
   )
 
-g3 <- ggplot(merge(kappadata, study_number)) +
-  geom_point(aes(est, anon)) +
-  geom_point(data=avg_kappa, aes(median, study), col=2) +
-  geom_segment(data=avg_kappa, aes(lwr, study, xend=upr, yend=study), col=2) +
+kappadata2 <- mutate(merge(kappadata, study_number)) %>%
+  bind_rows(avg_kappa) %>%
+  mutate(
+    anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 6:1))),
+    est=ifelse(anon=="Study 1", 0.5, est)
+  )
+
+g3 <- ggplot(kappadata2) +
+  geom_point(aes(est, anon), shape=c(2, 16, 16, 16, 16, 16, 16),
+             col=c(1, 1, 1, 1, 1, 1, 2),
+             size=c(1, 1, 1, 1, 1, 1, 4)) +
   scale_x_continuous("Squared coefficient of variation") +
   theme(
     axis.title.y = element_blank()

@@ -324,7 +324,6 @@ Constant distributions assume a fixed values according to Table 1.
 }
 \end{table}
 
-\jd{Fix exponential?}
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same Gamma distribution:
 \begin{equation}
 \begin{aligned}
@@ -335,7 +334,6 @@ r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 \end{equation}
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
-\jd{use mean (not rate) and shape; specify units for the means. Use this as an opportunity to question your choices maybe. Consider using 1 week and 1/week for the means.}
 Weakly informative priors are assumed on the hyperparameters:
 \begin{equation}
 \begin{aligned}

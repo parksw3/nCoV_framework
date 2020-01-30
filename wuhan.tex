@@ -196,18 +196,23 @@ We estimate narrower confidence intervals for Study 2 and Study 6 when we use ou
 when higher values of $\kappa$ are used, their estimates of $\mathcal R_0$ become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
 We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate $\mathcal R_0$ because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than ours (\fref{assumption}).
 
-% We find that accounting for uncertainties in the estimate of $r$ (i.e., replacing the estimated $r$ values with $\mu_r$) has the largest effect on the estimates of $\mathcal R_0$ and the width of associated confidence intervals (\fref{R0}).
-% For example, recalculating $\mathcal R_0$ for Study 3 by using the average $r$ values gives $\mathcal R_0 = 4.0$ (95\% CI: 2.3--10.1), which is much wider than the range they reported (2.0--3.1).
-% There are two explanations for this result.
-% First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on $\mathcal R_0$ under the gamma approximation framework \eref{gamma},
-% $r$ has greater overall effect on $\mathcal R_0$ because there is more uncertainty associated with our estimate of $\mu_r$ (95\% CI: 0.12--0.28 days$^{-1}$) than with $\mu_G$ (95\% CI: 6.6--10.2 days).
-% Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of $\mathcal R_0$ too sensitive to $r$ and $\bar G$.
+Consistent with our previous observations (\fref{eff}),
+we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of $\mathcal R_0$ (\fref{R0}).
+For example, recalculating $\mathcal R_0$ for Study 6 by using our pooled estimate of $r$ gives $\mathcal R_0 = 4.0$ (95\% CI: 2.3--10.1), which is much wider than the range they reported (2.0--3.1).
+There are two explanations for this result.
+First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on $\mathcal R_0$ under the gamma approximation framework \eref{gamma},
+$r$ has a greater overall effect on $\mathcal R_0$ because it is associated with more uncertainty;
+the range of the 95\% confidence interval on $\mu_r$ spaans over more than a two-fold difference, whereas the range of the 95\% confidence intervals on $\mu_G$ does not.
+Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of $\mathcal R_0$ too sensitive to $r$ and $\bar G$ as explained previously.
 
 \begin{figure}[t]
 \includegraphics[width=\textwidth]{compare_R0.pdf}
 \caption{
-\textbf{Effect of uncertainties in underlying parameters on the estimate of the basic reproductive number.}
-I'm a caption; \emph{No you're not.}
+\textbf{Sensitivity of the reported $\mathcal R_0$ estimates with respect to our pooled estimates of the underlying parameters.}
+We replace the reported paramaeter values (growth rate $r$, GI mean $\bar G$, and GI variation $\kappa$) with our correponding pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate $\mathcal R_0$.
+The pooled estimate of $\mathcal R_0$ is calculated from the joint posterior distribution of $\mu_r$, $\mu_G$, and $\mu_\kappa$;
+horizontal dashed lines represent the 95\% confidence intervals of our pooled estimate of $\mathcal R_0$.
+The reported $\mathcal R_0$ estimates (base) have been adjusted to show the approximate 95\% confidence interval using the probability distributions that we defined if they had relied on different measures for parameter uncertainties.
 }
 \label{fig:R0}
 \end{figure}
@@ -215,14 +220,13 @@ I'm a caption; \emph{No you're not.}
 Finally, we incorporate all uncertainties by using posterior samples for $\mu_r$, $\mu_G$, and $\mu_\kappa$ to recalculate $\mathcal R_0$ and compare it with the reported $\mathcal R_0$ estimates.
 We estimate the average $\mathcal R_0$ to be 3.1 (95\% CI: 2.1--5.7).
 While our pooled estimate of $\mathcal R_0$ is similar to other reported values, our calculation gives wider confidence intervals than all of them.
-This result does not imply that assumptions based on the pooled estimate are too weak; \jd{better in Discussion?}
-we believe that this confidence interval accurately reflects the level of uncertainties present in the information that were available when these models were fitted.
-In fact, our results show that incorporating uncertainties in all parameters can give narrower confidence intervals than doing so one at a time because nonlinear effects of parameters could cancel out and give appropriately wide confidence intervals. \jd{Are you sure? I don't think we have a mechanism for cancelling; I think that the narrow GIs cause instability.}
+This result does not imply that assumptions based on the pooled estimate are too weak;
+we believe that this confidence interval accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
 
 \section{Discussion}
 
 Estimating the basic reproductive number $\mathcal R_0$ is crucial for predicting the course of an outbreak and planning intervention strategies.
-Here, we used a simple framework \citep{park2019practical} to compare  estimates of $\mathcal R_0$ for the novel coronavirus outbreak.
+Here, we used a simple framework \citep{park2019practical} to compare estimates of $\mathcal R_0$ for the novel coronavirus outbreak.
 Our results demonstrate the importance of accounting for uncertainties associated with the underlying generation-interval distributions, including with the amount of dispersion in the generation intervals:
 although our pooled estimates are relatively insensitive to the estimated uncertainty, our analysis of individual studies shows that assuming too narrow a generation-interval distribution can make the estimate of $\mathcal R_0$ too sensitive to the estimates of the exponential growth rate $r$.
 
@@ -230,11 +234,6 @@ Narrow confidence intervals associated with early estimates of $\mathcal R_0$ pa
 Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
 Although the formula for the cumulative curve (e.g., logistic model) is much simpler and familiar to many people, fitting a model to cumulative number of without accounting for problems with the dependent error structure can both bias parameter narrow confidence intervals \citep{ma2014estimating, king2015avoidable}.
 Naive fits to cumulative incidence data should be avoided.
-
-Here, we considered studies that were published between January 24th, 2020 and Janury 26th, 2020.
-As the epidemic continues and more data becomes available, 
-some of these analyses 
-
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
 
@@ -266,14 +265,13 @@ This equation demonstrates that a generation-interval distribution
 that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
 will give a higher estimate of $\mathcal R_0$ for the same value of $r$.
 
-For each study, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions that represent the estimates of $\mathcal R_0$ and the assumed values of $\bar G$ and $\kappa$
-and calculating the exponential growth rate $r$ via the inverse of \eref{gamma}:
+For each study, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of $\mathcal R_0$ and the assumed values of $\bar G$ and $\kappa$ and calculating the exponential growth rate $r$ via the inverse of \eref{gamma}:
 \begin{equation}
 r_i = \frac{{\mathcal R_{0i}}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
 \end{equation}
 This allows us to approximate the probability distributions of the estimated exponential growth rates by each study.
 
-We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same Gamma distribution:
+We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
 \begin{equation}
 \begin{aligned}
 r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
@@ -283,6 +281,8 @@ r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 \end{equation}
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
+Since the gamma distribution does not allow zeroes, we use $\kappa =0.02$ instead for Study 6.
+
 Weakly informative priors are assumed on the hyperparameters:
 \begin{equation}
 \begin{aligned}
@@ -295,7 +295,6 @@ Weakly informative priors are assumed on the hyperparameters:
 We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.
 Posterior samples are thinned every 400 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.
-
 
 \pagebreak
 

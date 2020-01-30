@@ -6,3 +6,6 @@ wuhan.pdf
 *.log
 *.bbl
 *.gz
+*.aux
+*.blg
+*.out

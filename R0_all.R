@@ -1,4 +1,5 @@
 library(coda)
+library(dplyr)
 
 load("sample_data.rda")
 load("MCMC_all.rda")

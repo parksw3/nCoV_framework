@@ -45,6 +45,7 @@
 
 \newcommand{\swp}[1]{\comment{magenta}{SWP}{#1}}
 \newcommand{\jd}[1]{\comment{magenta}{JD}{#1}}
+\newcommand{\bmb}[1]{\comment{magenta}{BMB}{#1}}
 \newcommand{\new}[1]{\textcolor{blue}{#1}}
 
 \begin{document}
@@ -295,6 +296,16 @@ Weakly informative priors are assumed on the hyperparameters:
 We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.
 Posterior samples are thinned every 400 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.
+
+\bmb{general comments (Daniel may have taken notes on these already):
+  \begin{itemize}
+  \item try flatter-at-origin priors (e.g. half-Cauchy)?
+  \item Stan implementation?
+  \item comment on broader uncertainty context (King/Rohani on observation + process error, major reporting irregularities, non-stationarity \ldots)
+  \item cite Elderd et al on point estimates??
+  \item colorspace package ({\tt scale\_colour\_discrete\_qualitative} or other) for Figure 3?
+  \end{itemize}
+}
 
 \pagebreak
 

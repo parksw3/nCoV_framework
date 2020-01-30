@@ -8,8 +8,6 @@ r <- unlist(unlist(MCMC_all[,1]))
 gbar <- unlist(unlist(MCMC_all[,3]))
 kappa <- unlist(unlist(MCMC_all[,5]))
 
-r_narrow <- (r + median(r))/2
-
 compfun <- function(x) {
   dd <- data.frame(
     est=(1+median(kappa)*median(gbar)*median(x))^(1/median(kappa)),
@@ -59,12 +57,4 @@ g1 <- ggplot(dd_combine) +
   xlab("Uncertainty type") +
   scale_y_continuous("Basic reproductive number", limits=c(2, 6))
 
-dd_combine2 <- compfun(r_narrow)
-
-g2 <- g1 %+% dd_combine2
-
-gtot <- arrangeGrob(g1 + ggtitle("A. Jan 24th - Jan 26th"),
-            g2 + ggtitle("B. Speculative scenario"),
-            nrow=1)
-
-ggsave("figure2.pdf", gtot, width=8, height=3)
+ggsave("figure2.pdf", g1, width=6, height=4)

@@ -83,7 +83,7 @@ We evaluate six disparate models posted online between January 24--26, 2020 that
 
 Our results indicate that many early estimates of \Ro\ were likely overly confident.
 
-\section{newResults}
+\section{Results}
 
 \begin{table}[t]
 \begin{center}
@@ -154,8 +154,8 @@ We then constructed a family of parameter sets for each study, and used these in
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{compare_assumption.pdf}
 \caption{
-\textbf{Comparisons of estimated and assumed parameter values with their average values calculated from the multilevel model.}
-I'm a caption; \emph{no, you're not.}
+\textbf{Parameter values.}
+We inferred point estimates, uniform distributions (shown in orange) or confidence intervals (purple) for each parameter from each study, and combined them into pooled estimates (see text).
 }
 \label{fig:assumption}
 \end{figure}
@@ -164,6 +164,7 @@ I'm a caption; \emph{no, you're not.}
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variability in generation intervals (represented by $\kappa$) affects their estimates of $\mathcal R_0$, even though the assumed values range from 0 to 0.5 across different studies.
+It is also interesting that none of the six studies explicitly or implicitly assumed an exponentially distributed generation interval.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{figure2.pdf}
@@ -178,12 +179,14 @@ Surprisingly, no studies take into account how the variability in generation int
 \label{fig:eff}
 \end{figure}
 
-\fref{eff} demonstrates the degree to which how the uncertainty in each parameter propogates to the uncertainties in $\mathcal R_0$.
-\swp{JD: can you explain figure 2?}
+\fref{eff} shows the effects of propagating uncertainty in different combinations would affect estimates and CIs for our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
+Propagating error from the growth rate (which all but one of the models did) is absolutely crucial. 
+Propagating error from the generation interval also has important effects, however.
+Once these two are included, the impact of leaving out uncertainty in the dispersion would be small, in this particular example.
 
-Finally, we assess the validity of estimates of $\mathcal R_0$ across different studies by 
+We also evaluate the estimates of $\mathcal R_0$ across different studies by 
 replacing the their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculating the basic reproductive number $\mathcal R_0$ (\fref{R0}).
-We find that incorporating uncertainties one at a time increases the width of the confidence intervals in most cases (16 out 18).
+We find that incorporating uncertainties one at a time increases the width of the confidence intervals all but two cases.
 We estimate narrower confidence intervals for Study 2 when we use our pooled estimate of the squared CV in generation time $\mu_\kappa$ to recalculate $\mathcal R_0$ because they assume a narrow generation-interval distribution ($\kappa=0$);
 when lower values of $\kappa$ are used, their estimates of $\mathcal R_0$ become less sensitive to the values of $r$ and $\bar G$.
 We estimate narrower confidence intervals for Study 5 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate $\mathcal R_0$ because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than ours (\fref{assumption}).

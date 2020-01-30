@@ -14,13 +14,16 @@ R0all <- Rdata_adj %>%
   ) %>%
   bind_rows(
     R0_r, R0_gbar, R0_kappa,
-    filter(R0_all, study=="Imai et al. (2020)")
+    mutate(filter(R0_all, study=="Imai et al. (2020)"))
   ) %>%
   mutate(
     type=factor(type, levels=c("base", "r", "gbar", "kappa", "all"),
                 labels=c("base", "growth rate", "GI mean", "GI variation", "all"))
   ) %>%
-  merge(study_number)
+  merge(study_number) %>%
+  mutate(
+    anon=ifelse(type=="all", "Pooled estimate", anon)
+  )
   
 R0all %>%
   filter(type!="all", type!="base") %>%

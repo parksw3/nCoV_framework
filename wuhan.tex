@@ -44,6 +44,7 @@
 \newcommand{\rev}[1]{}
 
 \newcommand{\swp}[1]{\comment{magenta}{SWP}{#1}}
+\newcommand{\jd}[1]{\comment{magenta}{JD}{#1}}
 \newcommand{\new}[1]{\textcolor{blue}{#1}}
 
 \begin{document}
@@ -76,15 +77,18 @@ from animal reservoirs, a recent case from Viet Nam
 demonstrated its ability to directly transmit between
 humans \citep{who26report},
 posing a greater threat for its spread.
+\jd{It is spread primarily from person to person; that's been obvious for a while and is now confirmed. We should find a better cite and leave Viet Nam out of it.}
 
+\jd{What's up with the line breaks??}
 As the disease continues to spread, 
-many researchers are rushing to publish their 
-analysis of the outbreak and, in particular, their
+many researchers have published
+analyses of the outbreak, many focusing in particular on
 estimates of the basic reproductive number $\mathcal R_0$ (i.e., the 
 average number of secondary cases generated 
 by a primary case in a fully susceptible population \citep{anderson1991infectious, diekmann1990definition}).
 Estimating the basic reproductive number is of interest during an outbreak
-because it allows prediction about the final size of the outbreak \citep{anderson1991infectious, ma2006generality, arino2007final, andreasen2011final, miller2012note} and the required level of intervention \citep{anderson1991infectious}.
+because it provides information about the level of intervention required to interrupt transmission \citep{anderson1991infectious}, and about the final size of the outbreak \citep{anderson1991infectious, ma2006generality}.
+\jd{We really only need one cite for this whole s., but I think Ma will make David happy.}
 However, it can be difficult to assess the validity of the estimates of $\mathcal R_0$ (as well as the associated degrees of uncertainty)
 when the estimation methods and their underlying assumptions vary widely,
 especially since these assumptions can directly affect the estimates.
@@ -99,7 +103,7 @@ are likely to have been overly confident.
 
 Early in an outbreak, $\mathcal R_0$ cannot be estimated directly;
 instead, $\mathcal R_0$ is often inferred from
-the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{chowell2003sars, mills2004transmissibility, nishiura2009transmission, nishiura2010pros, ma2014estimating}.
+the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{mills2004transmissibility, nishiura2009transmission, ma2014estimating}. \jd{Trimmed references; in particular, don't really want to point people to Chowell for stats.}
 Given an estimate of the exponential growth rate $r$ and a distribution $g(\tau)$ of
 generation intervals (i.e., the time between when a person become 
 infected and that person infects another person \citep{svensson2007note}), the basic reproductive
@@ -117,6 +121,7 @@ amount of uncertainty present in the exponential growth rates and the shape of t
 and (2) assess the 
 degree to which these uncertainties
 affect the estimate of $\mathcal R_0$.
+\jd{We should cite another group as well about this approximation.}
 Assuming that generation intervals follow a gamma distribution
 with the mean $\bar G$ and the squared coefficient of variation (CV$^2$) $\kappa$, 
 we have
@@ -198,7 +203,8 @@ Constant distributions assume a fixed values according to Table 1.
 }
 \end{table}
 
-We calculate the pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) with a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same Gamma distribution:
+\jd{Are you still using exponential?}
+We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same Gamma distribution:
 \begin{equation}
 \begin{aligned}
 r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
@@ -208,6 +214,7 @@ r_i &\sim \mathrm{Gamma}(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 \end{equation}
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing random samples at each Metropolis-Hastings step from 100,000 samples that we calculated earlier;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which pften rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
+\jd{use mean (not rate) and shape; specify units for the means.}
 Weak priors are assumed on the hyperparameters:
 \begin{equation}
 (\mu_r, \alpha_r, \mu_G, \alpha_G, \mu_\kappa) \sim \mathrm{Gamma}(\mathrm{shape}=0.1, \mathrm{rate}=0.1).

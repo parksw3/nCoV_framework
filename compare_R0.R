@@ -1,5 +1,6 @@
 library(ggplot2); theme_set(theme_bw())
 library(gridExtra)
+library(dplyr)
 source("published_estimate.R")
 source("study_number.R")
 
@@ -51,7 +52,7 @@ g1 <- ggplot(R0all) +
   geom_point(aes(anon, est, col=type), position=position_dodge(0.5)) +
   geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=type), position=position_dodge(0.5),
                 width=0) +
-  scale_y_continuous("Basic reproductive number") +
+  scale_y_continuous("Basic reproductive number", breaks=c(2, 4, 6, 8, 10)) +
   theme(
     axis.title.x = element_blank(),
     legend.position = "top",

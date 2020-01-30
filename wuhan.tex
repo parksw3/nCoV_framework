@@ -102,7 +102,7 @@ However, it can be difficult to assess the validity of the estimates of \Ro (as 
 
 Here, we show that a wide range of approaches to estimating \Ro\ can be understood and compared in terms of estimates for three quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 The generation interval, which is defined as the time between when an individual becomes infected and when that individual infects another individual \citep{svensson2007note}, plays a key role in shaping the relationship between $r$ and \Ro\ \citep{wearing2005appropriate, roberts2007model, wallinga2007generation, park2019practical};
-early in an epidemic, information is scarce and, inevitably, there is large uncertainty around contact tracing (affecting the estimates of generation intervals) and case reports (affecting the estimates of exponential growth rate).
+early in an epidemic, information is scarce and, inevitably, there is large uncertainty around case reports (affecting the estimates of exponential growth rate) and contact tracing (affecting the estimates of generation intervals).
 We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty should propagate error from all three sources.
 
 We evaluate six disparate models posted online between January 24--26, 2020 that estimated \Ro\ for the 2019-nCoV outbreak. We use our framework to construct pooled estimates for the underlying parameters. We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. We also use our framework to unravel which assumptions of these different models led to their different estimates and confidence intervals.
@@ -138,7 +138,7 @@ $^\ddagger$The authors presented \Ro estimates under different assumptions; we u
 }
 \end{table}
 
-We gathered information on estimates of \Ro and their assumptions about the underlying generation-interval distributions from 6 articles that were uploaded to preprint servers between January 24th, 2020 and January 26th, 2020 (Table 1).
+We gathered information on estimates of \Ro and their assumptions about the underlying generation-interval distributions from 6 articles that were published online between January 24th, 2020 and January 26th, 2020 (Table 1).
 For each study $i$, we analyze explicitly or implicitly reported distributions of the reproductive number $\mathcal R_{0i}$, the mean generation interval $\bar G_i$, and the generation-interval dispersion parameter $\kappa_i$ (equivalent to the squared coefficient of variation for a Gamma distribution).
 We used Gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
 For example, Study 2 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
@@ -146,6 +146,7 @@ we model this parameter as a Gamma distribution with a mean of 2.92 and a shape 
 We then constructed a family of parameter sets for each study, and used these in a Bayesian multilevel model to build a distribution of pooled estimates (see Methods).
 \dc{the “uniform” part relates to G, right? If so, it’s not clear
 neither here, nor later, only in Table 2}
+\swp{This is coincidence... Not sure how to explain it...}
 
 \newcommand{\gammdist}{\mathrm{Gamma}}
 \begin{table}[t]
@@ -183,6 +184,7 @@ We find that there is a large uncertainty associated with the underlying paramet
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variation in generation intervals affects their estimates of \Ro:
 all studies assumed fixed values for $\kappa$, ranging from 0 to 0.5.
+Assuming fixed parameter values can lead to overly strong conclusions \citep{elderd2006uncertainty}.
 It is also interesting that none of the six studies explicitly or implicitly assumed an exponentially distributed generation interval (i.e., $\kappa=1$).
 
 \begin{figure}[t]
@@ -270,6 +272,8 @@ We have provided a basis for evaluating and comparing exponential-growth based e
 
 \section{Methods}
 
+\subsection{Gamma approximation framework for linking $r$ and $\mathcal R_0$}
+
 Early in an outbreak, $\mathcal R_0$ cannot be estimated directly;
 instead, $\mathcal R_0$ is often inferred from
 the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{mills2004transmissibility, nishiura2009transmission, ma2014estimating}.
@@ -294,16 +298,34 @@ This equation demonstrates that a generation-interval distribution
 that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
 will give a higher estimate of $\mathcal R_0$ for the same value of $r$.
 
+\subsection{Description of the studies}
+
+We reviewed six modeling studies of the novel coronavirus outbreak that were published online between January 24th, 2020 and January 26th, 2020 (Table 1).
+Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were upload on preprint servers (bioRxiv, medRxiv, and SSRN), and one report was published from Imperial College London \citep{imaincov}.
+\cite{imaincov} and \cite{rioucov} estimated the basic reproduction number by simulating branching process models 
+
+
+majumder 26th
+read 21st
+zhao 22nd
+liu 23rd
+Two based on 18th.
+
+\subsection{Statistical framework}
+
 For each study, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of $\mathcal R_0$ and the assumed values of $\bar G$ and $\kappa$ and calculating the exponential growth rate $r$ via the inverse of \eref{gamma}:
 \begin{equation}
 r_i = \frac{{\mathcal R_{0i}}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
 \end{equation}
-This allows us to approximate the probability distributions of the estimated exponential growth rates by each study.
+This allows us to approximate the probability distributions of the estimated exponential growth rates by each study;
+uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
 
 \dc{I think I understand why you do that. But I’m worried the uncertainty for r comes
 artificially from whatever methods the Studies used, not the actual observation process we
 would have by observing (imperfectly) directly the cases. I guess the studies have all more or
 less the same incidence data... why not estimating uncertainty for r directly from incidence}
+\swp{that is exactly the point... we want to be able to reflect their methods... added a sentence about it.}
+
 
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
 \begin{equation}
@@ -339,7 +361,6 @@ describing the methods of those 6 studies...}
   \item try flatter-at-origin priors (e.g. half-Cauchy)?
   \item Stan implementation?
   \item comment on broader uncertainty context (King/Rohani on observation + process error, major reporting irregularities, non-stationarity \ldots)
-  \item cite Elderd et al on point estimates??
   \item colorspace package ({\tt scale\_colour\_discrete\_qualitative} or other) for Figure 3?
   \end{itemize}
 }

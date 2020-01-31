@@ -11,3 +11,7 @@ wuhan_DC.pdf
 *.blg
 *.out
 *.Rout
+\#*
+.texdeps/
+makestuff/
+target.mk

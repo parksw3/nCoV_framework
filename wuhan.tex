@@ -210,8 +210,7 @@ Red points and lines: median and 95\% confidence intervals of our pooled estimat
 %% \jd{The pictures with linear scale for Ro (and r) are fine, and the Ro ones look similar. But I would say that it's a good principle to use log scales for things like Ro and r, where it's more or less clear that the important distances are multiplicative.}
 %% \jd{I have no problem doing this in the next round, though. Time is important.}
 \fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
-Comparing the models that include only some sources of uncertainty to the confidences intervals from the ``all'' model, we see that propagating error from the growth rate (which all but one of the models did) is absolutely crucial: the middle bar, which lacks growth-rate uncertainty is far too narrow.
-%% \jd{I really dislike these in-text numbers, plus it misses the point that the cruciality of them depends primarily on something else (the comparison of things that leave them out with the last two bars). Who wanted this and why? I can write something about the comparison above instead?}.
+Comparing the models that include only some sources of uncertainty to the ``all'' model, we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: the middle bar, which lacks growth-rate uncertainty, is far too narrow.
 %% uncertainty on \Ro, measured with our 95\% CI, is more than two fold in this case (95\% CI: 2.22--5.16).
 Propagating error from the generation interval also has important effects. 
 %% however (95\% CI: 2.59--4.12).
@@ -240,16 +239,17 @@ replacing their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates 
 We find that incorporating uncertainties one at a time increases the width of the confidence intervals all but three cases.
 We estimate slightly narrower confidence intervals for Study 2 and Study 6 when we use our pooled estimate of the squared CV in generation time $\mu_\kappa$ to recalculate \Ro because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
 when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
-We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than ours (\fref{assumption}).
+We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
 
 Consistent with our previous observations (\fref{eff}),
 we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro (\fref{R0}).
 For example, recalculating \Ro for Study 6 by using our pooled estimate of $r$ gives $\mathcal R_0 = 3.9$ (95\% CI: 2.3--9.8), which is much wider than the range they reported (2.0--3.1).
 There are two explanations for this result.
 First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on \Ro under the gamma approximation framework \eref{gamma},
-$r$ has a greater overall effect on \Ro because it is associated with more uncertainty;
-the range of the 95\% confidence interval on $\mu_r$ spans over more than a two-fold difference, whereas the range of the 95\% confidence intervals on $\mu_G$ does not.
-Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$ as explained previously.
+$r$ has a greater overall effect on \Ro because it is associated with more uncertainty (\fref{assumption}).
+%% \jd{I am less against these words, although I don't love having them. But we would need a bit more precision (easiest would be to report >2.4, < 1.6 or something (I made the specific numbers up).
+%% the range of the 95\% confidence interval on $\mu_r$ spans over more than a two-fold difference, whereas the range of the 95\% confidence intervals on $\mu_G$ does not.
+Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$ as discussed previously.
 
 \begin{figure}[!th]
 \includegraphics[width=\textwidth]{compare_R0.pdf}
@@ -265,11 +265,12 @@ The reported \Ro estimates (\textbf{base}) have been adjusted to show the approx
 \end{figure}
 
 Finally, we incorporate all uncertainties by using posterior samples for $\mu_r$, $\mu_G$, and $\mu_\kappa$ to recalculate \Ro and compare it with the reported \Ro estimates.
-We estimate the average \Ro to be 3.1 (95\% CI: 2.1--5.7).
-While our pooled estimate of \Ro is similar to other reported values, our calculation gives wider confidence intervals than all of them.
+Our estimated \Ro from the pooled distribution has a median of 3.1 (95\% CI: 2.1--5.7).
+While the point estimate of \Ro is similar to other reported values from this date range, the confidence intervals are wider than those of other studies.
 This result does not imply that assumptions based on the pooled estimate are too weak;
 we believe that this confidence interval accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
-\swp{Bryan: any comment about why R0 isn’t at the lower end of previous estimates? (Guess someone might ask this)}
+%% \swp{Bryan: any comment about why R0 isn’t at the lower end of previous estimates? (Guess someone might ask this)}
+%% \jd{Why should it be at lower end?}
 
 \section{Discussion}
 

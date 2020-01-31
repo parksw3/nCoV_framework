@@ -46,10 +46,10 @@ rdata3 <- mutate(merge(rdata2, study_number)) %>%
   )
 
 g1 <- ggplot(rdata3) +
-  geom_point(aes(est, anon), col=c(1, 1, 1, 1, 1, 1, 2),
+  geom_point(aes(est, anon), col=c("purple", "purple", 1, "purple", "purple", "purple", 2),
              size=c(2, 2, 2, 2, 2, 2, 4)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.5)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c("purple", "purple", 1, "purple", "purple", "purple", 2),
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
   scale_x_continuous(expression(Exponential~growth~rate~(days^{-1}))) +
   theme(
     axis.title.y = element_blank()
@@ -62,10 +62,10 @@ gdata2 <- mutate(merge(gdata, study_number)) %>%
   )
 
 g2 <- ggplot(gdata2) +
-  geom_point(aes(est, anon), col=c(1, 1, 1, 1, 1, 1, 2),
+  geom_point(aes(est, anon), col=c(1, 1, "orange", 1, "orange", "orange", 2),
              size=c(2, 2, 2, 2, 2, 2, 4)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.5)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, "orange", 1, "orange", "orange", 2),
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
   scale_x_continuous("Mean generation time (days)") +
   theme(
     axis.title.y = element_blank()
@@ -83,7 +83,7 @@ g3 <- ggplot(kappadata2) +
              col=c(1, 1, 1, 1, 1, 1, 2),
              size=c(2, 2, 2, 2, 2, 2, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.5)) +
+               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
   scale_x_continuous("Squared coefficient of variation") +
   theme(
     axis.title.y = element_blank()

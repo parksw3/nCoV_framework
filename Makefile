@@ -20,6 +20,7 @@ compare_R0.pdf: compare_R0.Rout ;
 compare_R0.Rout: compare_R0.R
 	Rscript $< > $@
 
+Ignore += compare_R0.jpg
 compare_R0.jpg: compare_R0.pdf
 	$(convert)
 

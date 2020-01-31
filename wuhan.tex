@@ -100,9 +100,11 @@ Jonathan Dushoff\textsuperscript{3,4,5,*}
 
 \section*{Abstract}
 A novel coronavirus (2019-nCoV) has recently emerged as a global threat. 
-As epidemic progresses, many disease modelers have been prioritized their attention to estimate the basic reproductive number, which is defined as average number of secondary cases caused by a primary case.
+As epidemic progresses, many disease modelers have prioritized their attention to estimating the basic reproductive number \Ro, which is defined as the average number of secondary cases caused by a primary case.
 While their efforts are extremely valuable, their modeling approaches and, inevitably, their estimates vary widely.
-
+Here, we present a novel framework for comparing different estimates of \Ro\ across a wide range of models by decomposing it into three key quantities (the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$) and apply our framework to arly estimates of \Ro\ for the 2019-nCoV outbreak.
+Our results demonstrate the importance of propagating uncertainties in all three quantities, in particular in the mean generation interval.
+We recommend that more efforts should be 
 
 \pagebreak
 
@@ -296,8 +298,8 @@ In fact, as epidemics progress and more data becomes available, it is likely tha
 We strongly emphasize the value of attention to accurate characterization of the transmission chains via contact tracing and better statistical framework for inferring generation-interval distributions from such data \citep{britton2019estimation}.
 A combined effort between public-health workers and modelers in this direction will be crucial for predicting the course of an epidemic and controlling it.
 %% \jd{Leave the medical folks out; we don't want to add to the pressure on them during an outbreak.}
-We also emphasize the value of transparency from modelers. 
-Model estimates during an outbreak, even in pre-prints, should include code links and complete explanations. 
+We also emphasize the value of transparency from modelers.
+Model estimates during an outbreak, even in pre-prints, should include code links and complete explanations.
 Ideally, the code should not rely on closed-source programs.
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components: the exponential growth rate, mean generation interval, and generation interval dispersion. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.

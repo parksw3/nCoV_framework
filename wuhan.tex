@@ -207,23 +207,16 @@ It is also interesting that none of the six studies explicitly or implicitly ass
 \includegraphics[width=\textwidth]{compare_assumption.pdf}
 \caption{
 \textbf{Comparisons of the reported parameter values with our pooled estimates.}
-We inferred point estimates, uniform distributions (shown in orange) or confidence intervals (purple) for each parameter from each study, and combined them into pooled estimates (see text).
-Black points and lines: reported parameter values and ranges of uncertainties considered.
-Black triangle: we assumed $\kappa=0.5$ for Study 1 as they do not report the parameter values that they used.
-Red points and lines: median and 95\% confidence intervals of our pooled estimates.
+We inferred point estimates (black), uniform distributions (orange) or confidence intervals (purple) for each parameter from each study, and combined them into pooled estimates (red; see text).
+Open triangle: we assumed $\kappa=0.5$ for Study 1 as they do not report their generation interval dispersion.
 }
 \label{fig:assumption}
 \end{figure}
 
-%% \jd{The pictures with linear scale for Ro (and r) are fine, and the Ro ones look similar. But I would say that it's a good principle to use log scales for things like Ro and r, where it's more or less clear that the important distances are multiplicative.}
-%% \jd{I have no problem doing this in the next round, though. Time is important.}
 \fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
-Comparing the models that include only some sources of uncertainty to the ``all'' model, we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: the middle bar, which lacks growth-rate uncertainty, is far too narrow.
-%% uncertainty on \Ro, measured with our 95\% CI, is more than two fold in this case (95\% CI: 2.22--5.16).
-Propagating error from the generation interval also has important effects. 
-%% however (95\% CI: 2.59--4.12).
+Comparing the models that include only some sources of uncertainty to the ``all'' model, we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: the middle bar (\textbf{GI mean}), which lacks growth-rate uncertainty, is far too narrow.
+Propagating error from the generation interval also has important effects.
 Once these two are included, the impact of leaving out uncertainty in the dispersion is small, though noticeable, in this particular example.
-%% -- propagating errors from $r$ and $\bar G$ gives 95\% CI of 2.16--5.58 whereas propagating all errors gives 95\% CI of 2.06--5.89 (compare \textbf{growth rate + GI mean} with \textbf{all} in \fref{eff}).
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{figure2.pdf}
@@ -236,8 +229,6 @@ We compare estimates of \Ro under five scenarios that propagate different combin
 \textbf{growth rate + GI mean}: \Ro estimates based on the the joint posterior distributions of $\mu_r$ and $\mu_G$ while using a median estimate of $\mu_\kappa$.
 \textbf{all}: \Ro estimates based on the joint posterior distributions of  $\mu_r$, $\mu_G$, and $\mu_\kappa$.
 Vertical lines represent the 95\% confidence intervals.
-%% \jsw{why not show all combinations}
-%% {We discussed this, but came down on the side of simplicity. There are no examples I can think of where people included uncertainty in κ but left out one of the two big ones.}
 }
 \label{fig:eff}
 \end{figure}
@@ -251,12 +242,10 @@ We estimate narrower confidence intervals for Study 4 when we use our pooled est
 
 Consistent with our previous observations (\fref{eff}),
 we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro (\fref{R0}).
-For example, recalculating \Ro for Study 6 by using our pooled estimate of $r$ gives $\mathcal R_0 = 3.9$ (95\% CI: 2.3--9.8), which is much wider than the range they reported (2.0--3.1).
+For example, recalculating \Ro for Study 6 by using our pooled estimate of $r$ gives $\mathcal R_0 = 3.9$ (95\% CI: 2.3--9.8), which is much wider than the uncertainty range they reported (2.0--3.1).
 There are two explanations for this result.
 First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on \Ro under the gamma approximation framework (\eref{gamma} in Methods),
 $r$ has a greater overall effect on \Ro because it is associated with more uncertainty (\fref{assumption}).
-%% \jd{I am less against these words, although I don't love having them. But we would need a bit more precision (easiest would be to report >2.4, < 1.6 or something (I made the specific numbers up).
-%% the range of the 95\% confidence interval on $\mu_r$ spans over more than a two-fold difference, whereas the range of the 95\% confidence intervals on $\mu_G$ does not.
 Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$ as discussed previously.
 
 \begin{figure}[!th]
@@ -277,8 +266,6 @@ Our estimated \Ro from the pooled distribution has a median of 3.1 (95\% CI: 2.1
 While the point estimate of \Ro is similar to other reported values from this date range, the confidence intervals are wider than those of other studies.
 This result does not imply that assumptions based on the pooled estimate are too weak;
 we believe that this confidence interval accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
-%% \swp{Bryan: any comment about why R0 isn’t at the lower end of previous estimates? (Guess someone might ask this)}
-%% \jd{Why should it be at lower end?}
 
 \section{Discussion}
 

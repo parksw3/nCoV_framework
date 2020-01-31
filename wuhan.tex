@@ -116,8 +116,8 @@ We also use our framework to unravel which assumptions of these different models
 \begin{table}[t]
 \begin{center}
 \scriptsize
-\begin{tabular}{l|l|l|l|c}
- & Basic reproductive number & Mean generation time (days) & CV$^2$ generation time & Reference \\
+\begin{tabular}{l|p{3.5cm}|p{2.5cm}|p{2.5cm}|l}
+ & Basic reproductive\newline number \Ro\ & Mean generation\newline time $\bar G$ (days) & Generation interval\newline dispersion $\kappa$ \\
 \hline
 Study 1 & 2.5 (1.5--3.5)$^\ast$ & 8.4 & unspecified$^\dagger$ & \cite{imaincov} \\
 \hline
@@ -153,21 +153,21 @@ We then constructed a family of parameter sets -- which include $r$, $\bar G$, a
 \newcommand{\gammdist}{\mathrm{Gamma}}
 \begin{table}[t]
 \begin{center}
-\footnotesize
-\begin{tabular}{l|l|l|l}
- & Basic reproductive number & Mean generation time (days) & CV$^2$ generation time \\
+\scriptsize
+\begin{tabular}{l|p{4.5cm}|p{2.5cm}|p{2.5cm}}
+ & Basic reproductive\newline number \Ro\ & Mean generation\newline time $\bar G$ (days) & Generation interval\newline dispersion $\kappa$  \\
 \hline
-Study 1 & $\gammdist(\alpha=28, \beta=28/2.6)$ & constant & constant \\
+Study 1 & $\gammdist(\alpha=28, \beta=28/2.6)$ & 8.4 & 0.5 \\
 \hline
-Study 2 & $\gammdist(\alpha=67, \beta=67/2.92)$ & constant & constant \\
+Study 2 & $\gammdist(\alpha=67, \beta=67/2.92)$ & 8.4 & 0.2 \\
 \hline
-Study 3 & $\gammdist(\alpha=1400, \beta=1400/3.8)$ & constant & constant \\
+Study 3 & $\gammdist(\alpha=1400, \beta=1400/3.8)$ & 7.6 & 0.5 \\
 \hline
-Study 4 & $\gammdist(\alpha=12, \beta=12/2.2)$ & $\mathrm{Uniform}(7, 14)$ & constant\\
+Study 4 & $\gammdist(\alpha=12, \beta=12/2.2)$ & $\mathrm{Uniform}(7, 14)$ & 0.5\\
 \hline
-Study 5 & $\gammdist(\alpha=54, \beta=54/5.47)$ & $\mathrm{Uniform}(7.6, 8.4)$ & constant\\
+Study 5 & $\gammdist(\alpha=54, \beta=54/5.47)$ & $\mathrm{Uniform}(7.6, 8.4)$ & 0.2\\
 \hline
-Study 6 & N.A.$^\ast$ & $\mathrm{Uniform}(6, 10)$ & constant\\
+Study 6 & $\exp(r \bar G)^\ast$ & $\mathrm{Uniform}(6, 10)$ & 0\\
 \hline
 \end{tabular}
 \end{center}
@@ -175,7 +175,7 @@ Study 6 & N.A.$^\ast$ & $\mathrm{Uniform}(6, 10)$ & constant\\
 \textbf{Probability distributions for \Ro, $\bar G$, and $\kappa$.}
 We use these probability distributions to obtain a probability distribution for the exponential growth rate $r$.
 The Gamma distribution is parameterized by shape $\alpha$ and rate $\beta$ parameters.
-Constant distributions assume fixed values according to Table 1.
+Constant values are fixed according to Table 1.
 $^\ast$Study 6 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
 Instead of modeling \Ro with a probability distribution and recalculating $r$, we use $r=0.114\,\mathrm{days}^{-1}$, which explains all uncertainty in \Ro they report, when combined with the range of $\bar G$ they consider.
 }

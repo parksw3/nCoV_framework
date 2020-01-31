@@ -4,6 +4,9 @@
 \usepackage{graphicx}
 %\usepackage{adjustbox}
 
+\usepackage{lineno}
+\linenumbers
+
 \newcommand{\eref}[1]{(\ref{eq:#1})}
 \newcommand{\fref}[1]{Fig.~\ref{fig:#1}}
 \newcommand{\Fref}[1]{Fig.~\ref{fig:#1}}
@@ -61,15 +64,16 @@
 }
 \newline
 \\
-Sang Woo Park\textsuperscript{?}
+Sang Woo Park\textsuperscript{1}
 David Champredon\textsuperscript{?}
+David Earn\textsuperscript{?}
 Michael Li\textsuperscript{?}
 Joshua S. Weitz\textsuperscript{?}
 Bryan T. Grenfell\textsuperscript{?}
 Jonathan Dushoff\textsuperscript{?}
 \\
 \bigskip
-\textbf{1} Department of ???
+\textbf{1} Department of Ecology and Evolutionary Biology, Princeton University, NJ, USA
 \\
 \textbf{2} Department of ???
 \\
@@ -340,7 +344,6 @@ artificially from whatever methods the Studies used, not the actual observation 
 would have by observing (imperfectly) directly the cases. I guess the studies have all more or
 less the same incidence data... why not estimating uncertainty for r directly from incidence}
 \swp{that is exactly the point... we want to be able to reflect their methods... added a sentence about it.}
-
 
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
 \begin{equation}

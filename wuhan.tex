@@ -285,6 +285,8 @@ and the effect of uncertainty in the mean generation time will become more impor
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
 \jsw{remind us what they are: 
 three simple components: the growth rate, mean generation interval, and generation interval dispersion.}
+\jsw{Here is my take: you are doing a Nate Silver-esque approach, pooling estimates in a smart way without necessarily redoing all the models. Isn't that right? That's cool!  
+But, I have one nagging worry: the folks measured r - yet this method says that they measured the uncertainty incorrectly... My nagging worry has to do with the structure of the multi-level modeling scheme. Aren't they all using the same data? Or are they measuring different data types (because the multi-level scheme you use has the data in parallel, whereas I think the data used may be nested in ways I don't yet understand).}
 
 \section{Methods}
 
@@ -351,6 +353,7 @@ r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
 Since the gamma distribution does not allow zeros, we use $\kappa =0.02$ instead for Study 6.
+\jsw{Just a question: was the data the same?  I assume the models fit to different data?  I like this idea, except for the fact that these are not different outbreaks. I feel like this kind of multilevel model would be right if we had the same fundameental disease dynamics taking palce in different places. But what happens if the models are just different, even if the data is the same.  Again, I have a small philosophical doubt with the implication that the i-s denote the same disease mechanism... and why are all the hyper-parameters gammas?}
 
 Weakly informative priors are assumed on the hyperparameters:
 \begin{equation}

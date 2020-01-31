@@ -136,7 +136,7 @@ We also use our framework to unravel which assumptions of these different models
 \begin{center}
 \scriptsize
 \begin{tabular}{l|p{3.5cm}|p{2.5cm}|p{2.5cm}|l}
- & Basic reproductive\newline number \Ro\ & Mean generation\newline time $\bar G$ (days) & Generation interval\newline dispersion $\kappa$ \\
+ & Basic reproductive\newline number \Ro\ & Mean generation\newline time $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$ \\
 \hline
 Study 1 & 2.5 (1.5--3.5)$^\ast$ & 8.4 & unspecified$^\dagger$ & \cite{imaincov} \\
 \hline
@@ -174,7 +174,7 @@ We then constructed a family of parameter sets -- which include $r$, $\bar G$, a
 \begin{center}
 \scriptsize
 \begin{tabular}{l|p{4.5cm}|p{2.5cm}|p{2.5cm}}
- & Basic reproductive\newline number \Ro\ & Mean generation\newline time $\bar G$ (days) & Generation interval\newline dispersion $\kappa$  \\
+ & Basic reproductive\newline number \Ro\ & Mean generation\newline time $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$  \\
 \hline
 Study 1 & $\gammdist(\mathrm{mean}=2.6, \alpha=28)$ & 8.4 & 0.5 \\
 \hline
@@ -200,7 +200,7 @@ Instead of modeling \Ro with a probability distribution and recalculating $r$, w
 }
 \end{table}
 
-\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the squared coefficient of variation (CV) $\kappa$ of the generation-interval distribution from different studies with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
+\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variation in generation intervals affects their estimates of \Ro:
@@ -241,7 +241,7 @@ Vertical lines represent the 95\% confidence intervals.
 We also evaluate the estimates of \Ro across different studies by 
 replacing their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculating the basic reproductive number \Ro (\fref{R0}).
 We find that incorporating uncertainties one at a time increases the width of the confidence intervals all but three cases.
-We estimate slightly narrower confidence intervals for Study 2 and Study 6 when we use our pooled estimate of the squared CV in generation time $\mu_\kappa$ to recalculate \Ro because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
+We estimate slightly narrower confidence intervals for Study 2 and Study 6 when we use our pooled estimate of the generation-interval dispersion $\mu_\kappa$ to recalculate \Ro because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
 when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
 We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
 
@@ -322,7 +322,7 @@ exponential growth rate $r$ and the shape of the generation-interval distributio
 
 Here, we use the gamma approximation framework \citep{mcbryde2009early, nishiura2009transmission, roberts2011early, park2019practical} to (1) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (2) assess the degree to which these uncertainties affect the estimate of \Ro.
 Assuming that generation intervals follow a gamma distribution
-with the mean $\bar G$ and the squared coefficient of variation (CV$^2$) $\kappa$, 
+with the mean $\bar G$ and the squared coefficient of variation $\kappa$, 
 we have
 \begin{linenomath*}
 \begin{equation}

@@ -192,7 +192,7 @@ many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variation in generation intervals affects their estimates of \Ro:
 all studies assumed fixed values for $\kappa$, ranging from 0 to 0.5.
 Assuming fixed parameter values can lead to overly strong conclusions \citep{elderd2006uncertainty}.
-It is also interesting that none of the six studies explicitly or implicitly assumed an exponentially distributed generation interval (i.e., $\kappa=1$).
+It is also interesting that none of the six studies explicitly or implicitly assumed an exponentially distributed generation interval (i.e., $\kappa=1$), an assumption which used to be extremely common, particularly implicitly.
 
 \begin{figure}[t]
 \includegraphics[width=\textwidth]{compare_assumption.pdf}
@@ -206,8 +206,10 @@ Red points and lines: median and 95\% confidence intervals of our pooled estimat
 \label{fig:assumption}
 \end{figure}
 
-\fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
+\jd{The pictures with linear scale for Ro (and r) are fine, and the Ro ones look similar. But I would say that it's a good principle to use log scales for things like Ro and r, where it's more or less clear that the important distances are multiplicative.}
+\fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
 Propagating error from the growth rate (which all but one of the models did) is absolutely crucial:
+\jd{I really dislike these in-text numbers, plus it misses the point that the cruciality of them depends primarily on something else (the comparison of things that leave them out with the last two bars). Who wanted this and why? I can write something about the comparison above instead?}.
 uncertainty on \Ro, measured with our 95\% CI, is more than two fold in this case (95\% CI: 2.22--5.16).
 Propagating error from the generation interval also has important effects, however (95\% CI: 2.59--4.12).
 Once these two are included, the impact of leaving out uncertainty in the dispersion would be small, in this particular example -- 

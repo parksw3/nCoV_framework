@@ -104,7 +104,7 @@ As the epidemic progresses, many disease modelers have prioritized estimating th
 While these efforts are extremely valuable, their modeling approaches and the resulting estimates vary widely.
 Here, we present a framework for comparing different estimates of \Ro\ across a wide range of models by decomposing it into three key quantities (the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$) and apply our framework to early estimates of \Ro\ for the 2019-nCoV outbreak.
 Our results emphasize the importance of propagating uncertainties in all three quantities, in particular in the shape of the generation-interval distribution.
-While rapid response during an outbreak can be valuable, avoiding over-confidence is also important.
+While rapid response during an outbreak is important, careful consideration of methodology is also important.
 Modelers should work with field-workers to develop better methods for characterizing generation intervals.
 
 \pagebreak
@@ -290,7 +290,7 @@ Of the six studies that we reviewed, two of them directly fit their models to cu
 This approach can be appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence instead of raw incidence can both bias parameters and give overly narrow confidence intervals, if the result non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
 Naive fits to cumulative incidence data should be avoided.
 
-There are many real-world sources of noise in real-world incidence data, including both dynamical, or ``process'', noise (randomness that directly or indirectly affects disease transmission); and observation noise (randomness underlying how many of the true cases are reported).  
+There are many sources of noise in real-world incidence data, including both dynamical, or ``process'', noise (randomness that directly or indirectly affects disease transmission); and observation noise (randomness underlying how many of the true cases are reported).  
 Disease modelers face the choice of incorporating one or both of these in their data-fitting and modeling steps. 
 This is not always a serious problem, particularly if the goal is inferring parameters rather than directly making forecasts (e.g., \cite{ma2014estimating}).
 Modelers should be aware of the possibility that ignoring one kind of error can give overly narrow confidence intervals (e.g., \cite{king2015avoidable}).
@@ -342,7 +342,7 @@ will give a higher estimate of \Ro for the same value of $r$.
 \subsection{Description of the studies}
 
 We reviewed 6 modeling studies of the novel coronavirus outbreak that were published online between January 24th, 2020 and January 26th, 2020 (Table 1).
-Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were uploaded to preprint servers (bioRxiv, medRxiv, and SSRN), and one report was posted on the website of Imperial College London \citep{imaincov}.
+Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were uploaded to pre-print servers (bioRxiv, medRxiv, and SSRN), and one report was posted on the website of Imperial College London \citep{imaincov}.
 There is a wide variation in their statistical methods and the amount of data they used to infer \Ro.
 \cite{imaincov} and \cite{riouncov} simulated branching process models and compared the predicted number of cases from their models with the estimated number of total cases by January 18th.
 \cite{readncov} fitted a deterministic, metapopulation Susceptible-Exposed-Infected-Recovered (SEIR) model to incidence data between January 1st and January 21st from major cities in China and other countries.

@@ -207,15 +207,16 @@ Red points and lines: median and 95\% confidence intervals of our pooled estimat
 \label{fig:assumption}
 \end{figure}
 
-\jd{The pictures with linear scale for Ro (and r) are fine, and the Ro ones look similar. But I would say that it's a good principle to use log scales for things like Ro and r, where it's more or less clear that the important distances are multiplicative.}
-\jd{I have no problem doing this in the next round, though. Time is important.}
+%% \jd{The pictures with linear scale for Ro (and r) are fine, and the Ro ones look similar. But I would say that it's a good principle to use log scales for things like Ro and r, where it's more or less clear that the important distances are multiplicative.}
+%% \jd{I have no problem doing this in the next round, though. Time is important.}
 \fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
-Propagating error from the growth rate (which all but one of the models did) is absolutely crucial:
-\jd{I really dislike these in-text numbers, plus it misses the point that the cruciality of them depends primarily on something else (the comparison of things that leave them out with the last two bars). Who wanted this and why? I can write something about the comparison above instead?}.
-uncertainty on \Ro, measured with our 95\% CI, is more than two fold in this case (95\% CI: 2.22--5.16).
-Propagating error from the generation interval also has important effects, however (95\% CI: 2.59--4.12).
-Once these two are included, the impact of leaving out uncertainty in the dispersion would be small, in this particular example -- 
-propagating errors from $r$ and $\bar G$ gives 95\% CI of 2.16--5.58 whereas propagating all errors gives 95\% CI of 2.06--5.89 (compare \textbf{growth rate + GI mean} with \textbf{all} in \fref{eff}).
+Comparing the models that include only some sources of uncertainty to the confidences intervals from the ``all'' model, we see that propagating error from the growth rate (which all but one of the models did) is absolutely crucial: the middle bar, which lacks growth-rate uncertainty is far too narrow.
+%% \jd{I really dislike these in-text numbers, plus it misses the point that the cruciality of them depends primarily on something else (the comparison of things that leave them out with the last two bars). Who wanted this and why? I can write something about the comparison above instead?}.
+%% uncertainty on \Ro, measured with our 95\% CI, is more than two fold in this case (95\% CI: 2.22--5.16).
+Propagating error from the generation interval also has important effects. 
+%% however (95\% CI: 2.59--4.12).
+Once these two are included, the impact of leaving out uncertainty in the dispersion is small, though noticeable, in this particular example.
+%% -- propagating errors from $r$ and $\bar G$ gives 95\% CI of 2.16--5.58 whereas propagating all errors gives 95\% CI of 2.06--5.89 (compare \textbf{growth rate + GI mean} with \textbf{all} in \fref{eff}).
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{figure2.pdf}
@@ -228,7 +229,8 @@ We compare estimates of \Ro under five scenarios that propagate different combin
 \textbf{growth rate + GI mean}: \Ro estimates based on the the joint posterior distributions of $\mu_r$ and $\mu_G$ while using a median estimate of $\mu_\kappa$.
 \textbf{all}: \Ro estimates based on the joint posterior distributions of  $\mu_r$, $\mu_G$, and $\mu_\kappa$.
 Vertical lines represent the 95\% confidence intervals.
-\jsw{why not show all combinations}
+%% \jsw{why not show all combinations}
+%% {We discussed this, but came down on the side of simplicity. There are no examples I can think of where people included uncertainty in κ but left out one of the two big ones.}
 }
 \label{fig:eff}
 \end{figure}

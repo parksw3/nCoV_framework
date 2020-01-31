@@ -4,7 +4,8 @@
 \usepackage{graphicx}
 %\usepackage{adjustbox}
 
-\usepackage{lineno}
+\usepackage{xcolor}
+\usepackage{lineno}\renewcommand\thelinenumber{\color{gray}\arabic{linenumber}}
 \linenumbers
 
 \newcommand{\eref}[1]{(\ref{eq:#1})}
@@ -65,21 +66,21 @@
 \newline
 \\
 Sang Woo Park\textsuperscript{1}
-David Champredon\textsuperscript{?}
-David Earn\textsuperscript{?}
+David Champredon\textsuperscript{2}
+David J.\,D.\ Earn\textsuperscript{3,4}
 Michael Li\textsuperscript{?}
 Joshua S. Weitz\textsuperscript{?}
 Bryan T. Grenfell\textsuperscript{?}
-Jonathan Dushoff\textsuperscript{?}
+Jonathan Dushoff\textsuperscript{?,4}
 \\
 \bigskip
-\textbf{1} Department of Ecology and Evolutionary Biology, Princeton University, NJ, USA
+\textbf{1} Department of Ecology and Evolutionary Biology, Princeton University, Princeton, New Jersey, USA
 \\
-\textbf{2} Department of ???
+\textbf{2} Department of Pathology and Laboratory Medicine, University of Western Ontario, London, Ontario, Canada
 \\
-\textbf{3} Department of ???
+\textbf{3} Department of Mathematics and Statistics, McMaster University, Hamilton, ON, Canada
 \\
-\textbf{4} Department of ???
+\textbf{4} M.\,G.\,DeGroote Institute for Infectious Disease Research, McMaster University, Hamilton, ON, Canada
 \\
 \textbf{5} Department of ???
 \\
@@ -280,15 +281,17 @@ Although the formula for the cumulative curve (e.g., logistic model) is much sim
 Naive fits to cumulative incidence data should be avoided.
 \jsw{Ok... it's not strictly speaking a logistical model fit is it?  Also, this sentence is quite loose ('familiar to many people', which people).}
 
-More broadly, disease modelers should always consider different sources of uncertainties in the data generating process.
+More broadly, disease modelers should carefully consider different sources of uncertainties in the data generating process.
 Two main sources are process error, which refers to stochasticity in the process of disease spread, and observation error, which often refers to imperfect reporting.
+When the amount observation error dominates the noise in the data, ignoring process error and fitting phenomenological models can give sensible answers.
 
-
-Our results indicate that the uncertainty in the estimates of the exponential growth rate $r$ matters the most.
-However, as the epidemic progresses and more data becomes available, inference on epidemic trajectories will become more precise.
+Here, we only focused on estimates of \Ro that were published within a very short frame of time.
+Although our analysis reflects a snapshot of a fast moving epidemic, our lessons will hold: uncertainties in generation-interval distribution is important.
+As the epidemic progresses and more data becomes available, inference on epidemic trajectories will become more precise.
 Uncertainty in the exponential growth rate will eventually decrease, 
 and the effect of uncertainty in the mean generation time will become more important.
-Furthermore, 
+
+
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
 \jsw{remind us what they are: 
@@ -304,10 +307,12 @@ Early in an outbreak, \Ro is difficult to estimate directly;
 instead, \Ro is often inferred from the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{mills2004transmissibility, nishiura2009transmission, ma2014estimating}.
 Given an estimate of the exponential growth rate $r$ and an \emph{instrinsic} generation-interval distribution $g(\tau)$ \citep{champredon2015intrinsic}, the basic reproductive
 number can be estimated via the Euler-Lotka equation \citep{wallinga2007generation}:
+\begin{linenomath*}
 \begin{equation}
 1/\mathcal R_0 = \int \exp(-r\tau) g(\tau) d\tau.
 \label{eq:euler}
 \end{equation}
+\end{linenomath*}
 In other words, estimates of \Ro must
 depend on the assumptions about the
 exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
@@ -316,10 +321,12 @@ Here, we use the gamma approximation framework \citep{mcbryde2009early, nishiura
 Assuming that generation intervals follow a gamma distribution
 with the mean $\bar G$ and the squared coefficient of variation (CV$^2$) $\kappa$, 
 we have
+\begin{linenomath*}
 \begin{equation}
 \mathcal R_0 = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
 \label{eq:gamma}
 \end{equation}
+\end{linenomath*}
 This equation demonstrates that a generation-interval distribution
 that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
 will give a higher estimate of \Ro for the same value of $r$.
@@ -337,9 +344,11 @@ There is a wide variation in their statistical methods and the amount of data th
 \subsection{Statistical framework}
 
 For each study, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of \Ro and the assumed values of $\bar G$ and $\kappa$ and calculating the exponential growth rate $r$ via the inverse of \eref{gamma}:
+\begin{linenomath*}
 \begin{equation}
 r_i = \frac{{\mathcal R_{0i}}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
 \end{equation}
+\end{linenomath*}
 This allows us to approximate the probability distributions of the estimated exponential growth rates by each study;
 uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
 
@@ -350,6 +359,7 @@ less the same incidence data... why not estimating uncertainty for r directly fr
 \swp{that is exactly the point... we want to be able to reflect their methods... added a sentence about it.}
 
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
+\begin{linenomath*}
 \begin{equation}
 \begin{aligned}
 r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
@@ -357,12 +367,14 @@ r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 \kappa_i &\sim \gammdist(\mathrm{mean}=\mu_\kappa, \mathrm{shape}=\alpha_\kappa).\\
 \end{aligned}
 \end{equation}
+\end{linenomath*}
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
 Since the gamma distribution does not allow zeros, we use $\kappa =0.02$ instead for Study 6.
 \jsw{Just a question: was the data the same?  I assume the models fit to different data?  I like this idea, except for the fact that these are not different outbreaks. I feel like this kind of multilevel model would be right if we had the same fundameental disease dynamics taking palce in different places. But what happens if the models are just different, even if the data is the same.  Again, I have a small philosophical doubt with the implication that the i-s denote the same disease mechanism... and why are all the hyper-parameters gammas?}
 
 Weakly informative priors are assumed on the hyperparameters:
+\begin{linenomath*}
 \begin{equation}
 \begin{aligned}
 \mu_r &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week}^{-1},\,\mathrm{shape}=0.1)\\
@@ -371,6 +383,7 @@ Weakly informative priors are assumed on the hyperparameters:
 (\alpha_r, \alpha_G, \alpha_\kappa) &\sim \gammdist(\mathrm{mean}=1,\,\mathrm{shape}=0.1).
 \end{aligned}
 \end{equation}
+\end{linenomath*}
 We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.
 Posterior samples are thinned every 400 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.

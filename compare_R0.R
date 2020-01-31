@@ -53,7 +53,7 @@ g1 <- ggplot(R0all) +
   ## tricks, failed ...
   geom_hline(data=R0_all, aes(yintercept=lwr), lty=2, col=all_col, alpha=0.5) +
   geom_hline(data=R0_all, aes(yintercept=upr), lty=2, col=all_col, alpha=0.5) +
-  geom_point(aes(anon, est, col=type), position=position_dodge(0.5)) +
+  geom_point(aes(anon, est, col=type, shape=type), position=position_dodge(0.5)) +
   geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=type), position=position_dodge(0.5),
                 width=0) +
   scale_y_continuous("Basic reproductive number", breaks=c(2, 4, 6, 8, 10)) +

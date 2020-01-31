@@ -202,7 +202,7 @@ Instead of modeling \Ro with a probability distribution and recalculating $r$, w
 }
 \end{table}
 
-\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
+\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variation in generation intervals affects their estimates of \Ro:
@@ -220,7 +220,7 @@ Open triangle: we assumed $\kappa=0.5$ for Study 1 as they do not report their g
 \label{fig:assumption}
 \end{figure}
 
-\fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which represent a reasonable proxy for the state of knowledge as of 26 January. 
+\fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which may represent a reasonable proxy for the state of knowledge as of 26 January. 
 Comparing the models that include only some sources of uncertainty to the ``all'' model, we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: the middle bar (\textbf{GI mean}), which lacks growth-rate uncertainty, is far too narrow.
 Propagating error from the generation interval also has important effects.
 Once these two are included, the impact of leaving out uncertainty in the dispersion is small, though noticeable, in this particular example.
@@ -273,9 +273,9 @@ Our estimated \Ro from the pooled distribution has a median of 3.1 (95\% CI: 2.1
 While the point estimate of \Ro is similar to other reported values from this date range, the confidence intervals are wider than those of other studies.
 This result does not imply that assumptions based on the pooled estimate are too weak;
 we believe that this confidence interval more accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
+In fact, because the pooled estimate does not account for overlap in data sources used by the models, we feel that it is more likely to be over-confident than under-confident.
 Our median estimate averages over the various studies, and therefore particular studies have higher or lower median estimates.
 Here, our focus is on certainty, not on the reason for these discrepancies.
-%% JD: WE should add a citation to the model-ensemble literature and say we don't explore but there's some reason to think that the pooled version might be relatively good.
 
 \section{Discussion}
 
@@ -373,6 +373,9 @@ r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
 Since the gamma distribution does not allow zeros, we use $\kappa =0.02$ instead for Study 6.
+We note that this approach does not account for non-independence between the parameter estimates made by different modelers. 
+As we add more models, we expect the pooled estimates to become sharper even when the models no longer add more information.
+Thus, the pooled estimator should be interpreted with care.
 
 Weakly informative priors are assumed on the hyperparameters:
 \begin{linenomath*}

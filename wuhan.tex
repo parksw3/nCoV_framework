@@ -55,7 +55,7 @@
 \begin{flushleft}{
 	\Large
 	\textbf\newline{
-		Reconciling early-outbreak preliminary estimates of the basic reproductive number: a new framework and applications to the novel coronavirus (2019-nCoV) outbreak
+		Reconciling early-outbreak preliminary estimates of the basic reproductive number and its uncertainty: a new framework and applications to the novel coronavirus (2019-nCoV) outbreak
 	}
 }
 \newline
@@ -63,6 +63,7 @@
 Sang Woo Park\textsuperscript{?}
 David Champredon\textsuperscript{?}
 Michael Li\textsuperscript{?}
+Joshua S. Weitz\textsuperscript{?}
 Bryan T. Grenfell\textsuperscript{?}
 Jonathan Dushoff\textsuperscript{?}
 \\
@@ -98,14 +99,17 @@ As the disease continues to spread, many researchers have published analyses of 
 Estimating the basic reproductive number is of interest during an outbreak because it provides information about the level of intervention required to interrupt transmission \citep{anderson1991infectious}, and about the final size of the outbreak \citep{anderson1991infectious, ma2006generality}.
 We congratulate these researchers for their timely contribution and those who made the data publicly available.
 However, it can be difficult to assess the validity of the estimates of \Ro (as well as the associated degrees of uncertainty) when the estimation methods and their underlying assumptions vary widely, especially since these assumptions can directly affect the estimates.
-\dc{Even if this is not directly addressed here, don’t you also want to talk about observation error/delays, which are clearly present with this outbreak?}
 
 Here, we show that a wide range of approaches to estimating \Ro\ can be understood and compared in terms of estimates for three quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 The generation interval, which is defined as the time between when an individual becomes infected and when that individual infects another individual \citep{svensson2007note}, plays a key role in shaping the relationship between $r$ and \Ro\ \citep{wearing2005appropriate, roberts2007model, wallinga2007generation, park2019practical};
-early in an epidemic, information is scarce and, inevitably, there is large uncertainty around case reports (affecting the estimates of exponential growth rate) and contact tracing (affecting the estimates of generation intervals).
+therefore, estimates of $\mathcal R_0$ from different models directly depend on their implicit assumptions about the shape of the generation-interval distribution and the exponential growth rate.
+Early in an epidemic, information is scarce and, inevitably, there is large uncertainty around case reports (affecting the estimates of the exponential growth rate) and contact tracing (affecting the estimates of the generation-interval distribution).
 We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty should propagate error from all three sources.
 
-We evaluate six disparate models posted online between January 24--26, 2020 that estimated \Ro\ for the 2019-nCoV outbreak. We use our framework to construct pooled estimates for the underlying parameters. We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. We also use our framework to unravel which assumptions of these different models led to their different estimates and confidence intervals.
+We evaluate six disparate models published online between January 24--26, 2020 that estimated \Ro\ for the 2019-nCoV outbreak \citep{imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}. 
+We use our framework to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$. 
+We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. 
+We also use our framework to unravel which assumptions of these different models led to their different estimates and confidence intervals.
 
 \section{Results}
 
@@ -139,21 +143,19 @@ $^\ddagger$The authors presented \Ro estimates under different assumptions; we u
 \end{table}
 
 We gathered information on estimates of \Ro and their assumptions about the underlying generation-interval distributions from 6 articles that were published online between January 24th, 2020 and January 26th, 2020 (Table 1).
-For each study $i$, we analyze explicitly or implicitly reported distributions of the reproductive number $\mathcal R_{0i}$, the mean generation interval $\bar G_i$, and the generation-interval dispersion parameter $\kappa_i$ (equivalent to the squared coefficient of variation for a Gamma distribution).
-We used Gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
+As none of these studies report their estimates of the exponential growth rate, we first recalculate the exponential growth rate that correspond their model assumptions.
+We do so by modeling explicitly or implicitly reported distributions of the reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion parameter $\kappa$ with appropriate probability distributions;
+we used Gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
 For example, Study 2 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
-we model this parameter as a Gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
-We then constructed a family of parameter sets for each study, and used these in a Bayesian multilevel model to build a distribution of pooled estimates (see Methods).
-\dc{the “uniform” part relates to G, right? If so, it’s not clear
-neither here, nor later, only in Table 2}
-\swp{This is coincidence... Not sure how to explain it...}
+we model this estimate as a Gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
+We then constructed a family of parameter sets -- which include $r$, $\bar G$, and $\kappa$ -- for each study and used these in a Bayesian multilevel model to build a distribution of pooled estimates (see Methods).
 
 \newcommand{\gammdist}{\mathrm{Gamma}}
 \begin{table}[t]
 \begin{center}
 \footnotesize
 \begin{tabular}{l|l|l|l}
- & Basic reproductive number & mean generation time (days) & CV$^2$ generation time \\
+ & Basic reproductive number & Mean generation time (days) & CV$^2$ generation time \\
 \hline
 Study 1 & $\gammdist(\alpha=28, \beta=28/2.6)$ & constant & constant \\
 \hline

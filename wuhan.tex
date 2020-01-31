@@ -298,9 +298,7 @@ and the effect of uncertainty in the generation-interval distribution will becom
 We strongly emphasize the need for accurate characterization of the transmission chains via contact tracing and better statistical framework for inferring generation-interval distributions from such data \citep{britton2019estimation}.
 A combined effort between healthcare workers and modelers in this direction will be crucial for predicting the course of an epidemic and controlling it.
 
-We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
-\jsw{remind us what they are: 
-three simple components: the growth rate, mean generation interval, and generation interval dispersion.}
+We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components: the exponential growth rate, mean generation interval, and generation interval dispersion. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
 \jsw{Here is my take: you are doing a Nate Silver-esque approach, pooling estimates in a smart way without necessarily redoing all the models. Isn't that right? That's cool!  
 But, I have one nagging worry: the folks measured r - yet this method says that they measured the uncertainty incorrectly... My nagging worry has to do with the structure of the multi-level modeling scheme. Aren't they all using the same data? Or are they measuring different data types (because the multi-level scheme you use has the data in parallel, whereas I think the data used may be nested in ways I don't yet understand).}
 
@@ -342,7 +340,7 @@ will give a higher estimate of \Ro for the same value of $r$.
 
 \subsection{Description of the studies}
 
-We reviewed six modeling studies of the novel coronavirus outbreak that were published online between January 24th, 2020 and January 26th, 2020 (Table 1).
+We reviewed 6 modeling studies of the novel coronavirus outbreak that were published online between January 24th, 2020 and January 26th, 2020 (Table 1).
 Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were upload on preprint servers (bioRxiv, medRxiv, and SSRN), and one report was published from Imperial College London \citep{imaincov}.
 There is a wide variation in their statistical methods and the amount of data they used to infer \Ro.
 \cite{imaincov} and \cite{riouncov} simulated branching process models and compared the predicted number of cases from their models with the estimated number of total cases by January 18th.

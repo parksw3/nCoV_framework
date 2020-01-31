@@ -286,16 +286,13 @@ This is not always a serious problem, particularly if the goal is inferring para
 Modelers should be aware of the possibility that ignoring one kind of error can give overly narrow confidence intervals (e.g., \citep{king2015avoidable}).
 
 Here, we focused on the estimates of \Ro that were published within a very short frame of time (January 24th--26th).
-Although our analysis only reflects a snapshot of a fast-moving epidemic, our lessons will hold: understanding uncertainties in generation-interval distribution is important.
-As the epidemic progresses and more data becomes available, inference on epidemic trajectories will become more precise.
-Uncertainty in the exponential growth rate will inevitably decrease,
-and the effect of uncertainty in the generation-interval distribution will become even more important.
+Although our analysis only reflects a snapshot of a fast-moving epidemic, our lessons will hold: confidence intervals must combine different sources of uncertainty. 
+In fact, as epidemics progress and more data becomes available, it is likely that inferences about exponential growth rate will become more precise; thus the risk of over-confidence when uncertainty about the generation-interval distribution is neglected will become greater.
+
 We strongly emphasize the need for accurate characterization of the transmission chains via contact tracing and better statistical framework for inferring generation-interval distributions from such data \citep{britton2019estimation}.
 A combined effort between healthcare workers and modelers in this direction will be crucial for predicting the course of an epidemic and controlling it.
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components: the exponential growth rate, mean generation interval, and generation interval dispersion. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
-\jsw{Here is my take: you are doing a Nate Silver-esque approach, pooling estimates in a smart way without necessarily redoing all the models. Isn't that right? That's cool!  
-But, I have one nagging worry: the folks measured r - yet this method says that they measured the uncertainty incorrectly... My nagging worry has to do with the structure of the multi-level modeling scheme. Aren't they all using the same data? Or are they measuring different data types (because the multi-level scheme you use has the data in parallel, whereas I think the data used may be nested in ways I don't yet understand).}
 
 \mli{Nevertheless, this is our best approximation in estimating the potential growth rate, and R0 and its uncertainty from these studies. To confidently evaluate and compare these parameters across studies, we would need to know the assumptions made from each research and be able to reproduce their estimates. Initial estimates of R0 is essential to guide control; however, discrepancies in parameter estimates (and uncertainties) across studies using similar information of the same outbreak can be a potential step back in making control. (i.e., are these ranges in R0 estimates due to assumptions modelers make, or is R0 more uncertain when we think?). To aid policymakers to guide control, we suggest modelers to (1) propagate uncertainties in parameters and honestly report them, (2) reproducible methods. 
 }

@@ -357,12 +357,6 @@ r_i = \frac{{\mathcal R_{0i}}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
 This allows us to approximate the probability distributions of the estimated exponential growth rates by each study;
 uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
 
-\dc{I think I understand why you do that. But I’m worried the uncertainty for r comes
-artificially from whatever methods the Studies used, not the actual observation process we
-would have by observing (imperfectly) directly the cases. I guess the studies have all more or
-less the same incidence data... why not estimating uncertainty for r directly from incidence}
-\swp{that is exactly the point... we want to be able to reflect their methods... added a sentence about it.}
-
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
 \begin{linenomath*}
 \begin{equation}
@@ -376,7 +370,6 @@ r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\alpha_r),\\
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step;
 this approach is analogous to Bayesian methods for analyzing phylogenetic data, which often rely on drawing random samples of phylogenetic trees from a discrete set to account for phylogenetic uncertainty \citep{pagel2004bayesian,bedford2014integrating}.
 Since the gamma distribution does not allow zeros, we use $\kappa =0.02$ instead for Study 6.
-\jsw{Just a question: was the data the same?  I assume the models fit to different data?  I like this idea, except for the fact that these are not different outbreaks. I feel like this kind of multilevel model would be right if we had the same fundameental disease dynamics taking palce in different places. But what happens if the models are just different, even if the data is the same.  Again, I have a small philosophical doubt with the implication that the i-s denote the same disease mechanism... and why are all the hyper-parameters gammas?}
 
 Weakly informative priors are assumed on the hyperparameters:
 \begin{linenomath*}
@@ -394,14 +387,6 @@ Posterior samples are thinned every 400 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.
 95\% confidence intervals are calculated by taking 2.5\% and 97.5\% quantiles from the posterior distribution.
 \texttt{R} code is available in GitHub (https://github.com/parksw3/nCoV\_framework).
-
-
-\bmb{general comments (Daniel may have taken notes on these already):
-  \begin{itemize}
-  \item (\textbf{later on}) try flatter-at-origin priors (e.g. half-Cauchy)? Stan implementation?
-  \item comment on broader uncertainty context (King/Rohani on observation + process error, major reporting irregularities, non-stationarity \ldots)
-  \end{itemize}
-}
 
 \section*{Acknowledgements}
 

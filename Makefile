@@ -13,7 +13,7 @@ current: target
 vim_session:
 	bash -cl "vmt"
 
-Sources += ncov.tex irdm.tex
+Sources += ncov.tex
 ncov.pdf: ncov.tex compare_R0.Rout
 
 compare_R0.Rout: compare_R0.R

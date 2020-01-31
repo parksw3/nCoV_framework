@@ -14,10 +14,11 @@ vim_session:
 	bash -cl "vmt"
 
 Sources += ncov.tex
-ncov.pdf: ncov.tex compare_R0.Rout
+ncov.pdf: compare_R0.pdf ncov.tex
 
+compare_R0.pdf: compare_R0.Rout ;
 compare_R0.Rout: compare_R0.R
-	Rscript compare_R0.R >compare_R0.Rout
+	Rscript $< > $@
 
 compare_R0.jpg: compare_R0.pdf
 	$(convert)

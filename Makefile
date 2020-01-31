@@ -19,6 +19,9 @@ ncov.pdf: ncov.tex compare_R0.Rout
 compare_R0.Rout: compare_R0.R
 	Rscript compare_R0.R >compare_R0.Rout
 
+compare_R0.jpg: compare_R0.pdf
+	$(convert)
+
 ######################################################################
 
 ### Makestuff

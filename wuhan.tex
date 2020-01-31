@@ -287,16 +287,16 @@ Here, we used a simple framework \citep{park2019practical} to compare estimates 
 Our results demonstrate the importance of accounting for uncertainties associated with the underlying generation-interval distributions, including with the amount of dispersion in the generation intervals:
 although our pooled estimates are relatively insensitive to the estimated uncertainty, our analysis of individual studies shows that assuming too narrow a generation-interval distribution can make the estimate of \Ro too sensitive to the estimates of the exponential growth rate $r$.
 
-Narrow confidence intervals associated with early estimates of \Ro partly depend on the statistical approaches used to estimate the exponential growth rate $r$.
-Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
-Although the formula for the cumulative curve (e.g., logistic model) is much simpler and familiar to many people, fitting a model to cumulative incidence, instead of raw incidence, can both bias parameter and give narrow confidence intervals if non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
-Naive fits to cumulative incidence data should be avoided.
-\jsw{Ok... it's not strictly speaking a logistical model fit is it?  Also, this sentence is quite loose ('familiar to many people', which people).}
+In this study, we focused on propagating errors arising from implicit or explicit estimates of growth rate and generation intervals. Other key issues underlying early estimates of \Ro\ include statistical independence and types of noise. 
 
-More broadly, disease modelers always need to consider all potential sources of uncertainties in the data generating process and weigh their importance.
-Two main sources are process error, which refers to stochasticity in the process of disease spread, and observation error, which often refers to imperfect reporting.
-When the amount observation error dominates the noise in the data, ignoring process error and fitting phenomenological models can give sensible answers \citep{ma2014estimating}.
-In general, however, ignoring process error and fitting deterministic models can give overly narrow confidence intervals \citep{king2015avoidable}.
+Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
+This approach can be appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence instead of raw incidence can both bias parameters and give overly narrow confidence intervals, if the result non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
+Naive fits to cumulative incidence data should be avoided.
+
+There are many real-world sources of noise in real-world incidence data, including both dynamical, or ``process'', noise (randomness that directly or indirectly affects disease transmission); and observation noise (randomness underlying how many of the true cases are reported).  
+Disease modelers face the choice of incorporating one or both of these in their data-fitting and modeling steps. 
+This is not always a serious problem, particularly if the goal is inferring parameters rather than directly making forecasts (e.g., \citep{ma2014estimating}).
+Modelers should be aware of the possibility that ignoring one kind of error can give overly narrow confidence intervals (e.g., \citep{king2015avoidable}).
 
 Here, we focused on the estimates of \Ro that were published within a very short frame of time (January 24th--26th).
 Although our analysis only reflects a snapshot of a fast-moving epidemic, our lessons will hold: understanding uncertainties in generation-interval distribution is important.

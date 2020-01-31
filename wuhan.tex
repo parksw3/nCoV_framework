@@ -48,6 +48,7 @@
 \newcommand{\jd}[1]{\comment{magenta}{JD}{#1}}
 \newcommand{\bmb}[1]{\comment{magenta}{BMB}{#1}}
 \newcommand{\dc}[1]{\comment{magenta}{DC}{#1}}
+\newcommand{\jsw}[1]{\comment{magenta}{JSW}{#1}}
 \newcommand{\new}[1]{\textcolor{blue}{#1}}
 
 \begin{document}
@@ -219,6 +220,7 @@ We compare estimates of \Ro under five scenarios that propagate different combin
 \textbf{growth rate + GI mean}: \Ro estimates based on the the joint posterior distributions of $\mu_r$ and $\mu_G$ while using a median estimate of $\mu_\kappa$.
 \textbf{all}: \Ro estimates based on the joint posterior distributions of  $\mu_r$, $\mu_G$, and $\mu_\kappa$.
 Vertical lines represent the 95\% confidence intervals.
+\jsw{why not show all combinations}
 }
 \label{fig:eff}
 \end{figure}
@@ -232,7 +234,7 @@ We estimate narrower confidence intervals for Study 4 when we use our pooled est
 
 Consistent with our previous observations (\fref{eff}),
 we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro (\fref{R0}).
-For example, recalculating \Ro for Study 6 by using our pooled estimate of $r$ gives $\mathcal R_0 = 4.0$ (95\% CI: 2.3--10.1), which is much wider than the range they reported (2.0--3.1).
+For example, recalculating \Ro for Study 6 by using our pooled estimate of $r$ gives $\mathcal R_0 = 3.9$ (95\% CI: 2.3--9.8), which is much wider than the range they reported (2.0--3.1).
 There are two explanations for this result.
 First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on \Ro under the gamma approximation framework \eref{gamma},
 $r$ has a greater overall effect on \Ro because it is associated with more uncertainty;
@@ -269,6 +271,7 @@ Narrow confidence intervals associated with early estimates of \Ro partly depend
 Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
 Although the formula for the cumulative curve (e.g., logistic model) is much simpler and familiar to many people, fitting a model to cumulative incidence, instead of raw incidence, can both bias parameter and give narrow confidence intervals if non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
 Naive fits to cumulative incidence data should be avoided.
+\jsw{Ok... it's not strictly speaking a logistical model fit is it?  Also, this sentence is quite loose ('familiar to many people', which people).}
 
 More broadly, disease modelers should always consider uncertainties in the data generating processes.
 Process vs obs noise.
@@ -280,6 +283,8 @@ and the effect of uncertainty in the mean generation time will become more impor
 
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
+\jsw{remind us what they are: 
+three simple components: the growth rate, mean generation interval, and generation interval dispersion.}
 
 \section{Methods}
 

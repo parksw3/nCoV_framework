@@ -282,22 +282,18 @@ Although the formula for the cumulative curve (e.g., logistic model) is much sim
 Naive fits to cumulative incidence data should be avoided.
 \jsw{Ok... it's not strictly speaking a logistical model fit is it?  Also, this sentence is quite loose ('familiar to many people', which people).}
 
-More broadly, disease modelers should carefully consider different sources of uncertainties in the data generating process.
+More broadly, disease modelers always need to consider all potential sources of uncertainties in the data generating process and weigh their importance.
 Two main sources are process error, which refers to stochasticity in the process of disease spread, and observation error, which often refers to imperfect reporting.
 When the amount observation error dominates the noise in the data, ignoring process error and fitting phenomenological models can give sensible answers \citep{ma2014estimating}.
 In general, however, ignoring process error and fitting deterministic models can give overly narrow confidence intervals \citep{king2015avoidable}.
 
-
-Here, we focused on estimates of \Ro that were published within a very short frame of time (January 24th--26th).
+Here, we focused on the estimates of \Ro that were published within a very short frame of time (January 24th--26th).
 Although our analysis only reflects a snapshot of a fast-moving epidemic, our lessons will hold: understanding uncertainties in generation-interval distribution is important.
 As the epidemic progresses and more data becomes available, inference on epidemic trajectories will become more precise.
-Uncertainty in the exponential growth rate will inevitably decrease, 
-and the effect of uncertainty in the mean generation time will become more important.
-We strongly emphasize that more efforts should be put into tracing the chain of transmission and accurately characterizing the generation-interval distribution of the novel coronavirus.
-
-% A recent epidemiological analysis of 452 patients from Wuhan \citep{nejmncov} revealed large uncertainty in the serial-interval distributions (mean: 7.5 days; 95\% CI: 5.3--19).
-% The serial interval, which is defined as the time between symptom onset of an infector and an infectee, is closely linked to the generation-interval distribution \citep{svensson2007note}.
-% Their results suggest that there is likely even more uncertainty in the generation time of the novel coronavirus.
+Uncertainty in the exponential growth rate will inevitably decrease,
+and the effect of uncertainty in the generation-interval distribution will become even more important.
+We strongly emphasize the need for accurate characterization of the transmission chains via contact tracing and better statistical framework for inferring generation-interval distributions from such data \citep{britton2019estimation}.
+Combined efforts is crucial for predicting the course of an epidemic and controlling the outbreak.
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
 \jsw{remind us what they are: 

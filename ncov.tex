@@ -101,11 +101,14 @@ Jonathan Dushoff\textsuperscript{3,4,5,*}
 \section*{Abstract}
 A novel coronavirus (2019-nCoV) has recently emerged as a global threat. 
 As the epidemic progresses, many disease modelers have prioritized estimating the basic reproductive number \Ro, defined as the average number of secondary cases caused by a primary case.
-While these efforts are extremely valuable, their modeling approaches and the resulting estimates vary widely.
+These efforts are extremely valuable;
+however, their modeling approaches and the resulting estimates vary widely, despite relying on similar data source.
 Here, we present a framework for comparing different estimates of \Ro\ across a wide range of models by decomposing it into three key quantities (the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$) and apply our framework to early estimates of \Ro\ for the 2019-nCoV outbreak.
 Our results emphasize the importance of propagating uncertainties in all three quantities, in particular in the shape of the generation-interval distribution.
 While rapid response during an outbreak is important, careful consideration of methodology is also worthwhile.
 Modelers should work with field-workers to develop better methods for characterizing generation intervals.
+\dc{This implies it is not currently the case but we do not give any justification for this assertion in this paper... that may be unfair. I know people in the UK put a lot of effort into this for Ebola. Maybe you have the same people in China doing the same thing. My point is that we should say it is not currently shared publicly.}
+\swp{Modelers should continue to work closely with field-workers to develop better methods for characterizing generation intervals and make their analyses and data publicly available?}
 
 \pagebreak
 
@@ -128,7 +131,8 @@ Early in an epidemic, information is scarce and, inevitably, there is large unce
 We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty should propagate error from all three sources.
 
 We evaluate six disparate models published online between January 24--26, 2020 that estimated \Ro\ for the 2019-nCoV outbreak \citep{imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}. 
-We use our framework to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$. 
+We use our framework to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$;
+the pooled estimates reflect the amount of uncertainties present in modeling approaches and their underlying assumptions.
 We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. 
 We also use our framework to unravel which assumptions of these different models led to their different estimates and confidence intervals.
 
@@ -169,7 +173,8 @@ We do so by modeling explicitly or implicitly reported distributions of the repr
 we used Gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
 For example, Study 2 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a Gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
-We then constructed a family of parameter sets -- which include $r$, $\bar G$, and $\kappa$ -- for each study and used these in a Bayesian multilevel model to build a distribution of pooled estimates (see Methods).
+We then constructed a family of parameter sets -- which include $r$, $\bar G$, and $\kappa$ -- for each study and used these in a Bayesian multilevel model to build a distribution of pooled estimates: $\mu_r$, $\mu_G$, and $\mu_\kappa$.
+The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches, while accounting for the uncertainties in the assumptions they make (see Methods).
 
 \newcommand{\gammdist}{\mathrm{Gamma}}
 \begin{table}[t]
@@ -202,13 +207,13 @@ Instead of modeling \Ro with a probability distribution and recalculating $r$, w
 }
 \end{table}
 
-\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) that we calculate from our multilevel model.
+\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
 Surprisingly, no studies take into account how the variation in generation intervals affects their estimates of \Ro:
 all studies assumed fixed values for $\kappa$, ranging from 0 to 0.5.
 Assuming fixed parameter values can lead to overly strong conclusions \citep{elderd2006uncertainty}.
-It is also interesting that none of the six studies explicitly or implicitly assumed an exponentially distributed generation interval (i.e., $\kappa=1$), an assumption which used to be extremely common, particularly implicitly.
+It is also worth to noting that none of the six studies explicitly or implicitly assumed an exponentially distributed generation interval (i.e., $\kappa=1$), an assumption which used to be extremely common, particularly implicitly (e.g., \cite{may1987transmission, anderson1991infectious, pybus2001epidemic, ferguson2005strategies}).
 
 \begin{figure}[t]
 \includegraphics[width=\textwidth]{compare_assumption.pdf}
@@ -220,7 +225,7 @@ Open triangle: we assumed $\kappa=0.5$ for Study 1 as they do not report their g
 \label{fig:assumption}
 \end{figure}
 
-\fref{eff} shows how propagating uncertainty ($\mu_r$, $\mu_G$, and $\mu_\kappa$) in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which may represent a reasonable proxy for the state of knowledge as of 26 January. 
+\fref{eff} shows how propagating uncertainty in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which may represent a reasonable proxy for the state of knowledge as of 26 January.
 Comparing the models that include only some sources of uncertainty to the ``all'' model, we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: the middle bar (\textbf{GI mean}), which lacks growth-rate uncertainty, is far too narrow.
 Propagating error from the generation interval also has important effects.
 Once these two are included, the impact of leaving out uncertainty in the dispersion is small, though noticeable, in this particular example.
@@ -241,8 +246,9 @@ Vertical lines represent the 95\% confidence intervals.
 \end{figure}
 
 We also evaluate the estimates of \Ro across different studies by 
-replacing their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculating the basic reproductive number \Ro (\fref{R0}).
-We find that incorporating uncertainties one at a time increases the width of the confidence intervals all but three cases.
+replacing their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$, respectively) one at a time and recalculating the basic reproductive number \Ro (\fref{R0}).
+This procedure allows us to assess the sensitivity of the estimates of \Ro across appropriate ranges of uncertainties and test how underlying assumptions drive the sensitiivty.
+We find that incorporating uncertainties one at a time increases the width of the confidence intervals in all but three cases.
 We estimate slightly narrower confidence intervals for Study 2 and Study 6 when we use our pooled estimate of the generation-interval dispersion $\mu_\kappa$ to recalculate \Ro because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
 when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
 We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
@@ -307,6 +313,7 @@ A combined effort between public-health workers and modelers in this direction w
 We also emphasize the value of transparency from modelers.
 Model estimates during an outbreak, even in pre-prints, should include code links and complete explanations.
 Ideally, the code should not rely on closed-source programs.
+\dc{I agree in principle but that's too harsh. People should be free to use whatever they want (Matlab...) as long as they publish the methods and code.}
 
 We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro\ in terms of three simple components: the exponential growth rate, mean generation interval, and generation interval dispersion. We are hopeful that this will provide a guide to understanding and reconciling different estimates early in an epidemic.
 
@@ -328,7 +335,7 @@ In other words, estimates of \Ro must
 depend on the assumptions about the
 exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
 
-Here, we use the gamma approximation framework \citep{mcbryde2009early, nishiura2009transmission, roberts2011early, park2019practical} to (1) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (2) assess the degree to which these uncertainties affect the estimate of \Ro.
+Here, we use the gamma approximation framework \citep{mcbryde2009early, nishiura2009transmission, roberts2011early, park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
 Assuming that generation intervals follow a gamma distribution
 with the mean $\bar G$ and the squared coefficient of variation $\kappa$, 
 we have
@@ -391,9 +398,10 @@ Weakly informative priors are assumed on the hyperparameters:
 \end{aligned}
 \end{equation}
 \end{linenomath*}
-We run 4 parallel Markov Chain Monte Carlo (MCMC) chains that consist of 200,000 burnin steps and 200,000 sampling steps.
+We run 4 independent Markov Chain Monte Carlo chains that consist of 200,000 burnin steps and 200,000 sampling steps.
 Posterior samples are thinned every 400 steps.
-Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference}.
+Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference} --
+trace plots and marginal posterior distribution plots are presented in Appendix.
 95\% confidence intervals are calculated by taking 2.5\% and 97.5\% quantiles from the posterior distribution.
 \texttt{R} code is available in GitHub (https://github.com/parksw3/nCoV\_framework).
 
@@ -404,5 +412,30 @@ We thank Ben Bolker for providing useful comments on the manuscript.
 \pagebreak
 
 \bibliography{ncov}
+
+\pagebreak
+\appendix
+\renewcommand\thefigure{A\arabic{figure}}
+\setcounter{figure}{0}    
+\section*{Appendix}
+
+\begin{figure}[!h]
+\includegraphics[width=\textwidth]{posterior_chain.pdf}
+\caption{
+\textbf{Trace plots of the multilevel model.}
+Each chain is represented by a different color.
+}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!h]
+\includegraphics[width=\textwidth]{posterior_dist.pdf}
+\caption{
+\textbf{Marginal posterior distributions of the multilevel model.}
+Each chain is represented by a different color.
+}
+\end{figure}
+
 
 \end{document}

@@ -65,5 +65,5 @@ g1 <- ggplot(R0all) +
     legend.title = element_blank()
   )
 
-ggsave("compare_R0.pdf", g1, width=6, height=4)
-ggsave("compare_R0.png", g1, width=6, height=4)
+ggsave("compare_R0.pdf", g1, width=7, height=4)
+ggsave("compare_R0.png", g1, width=7, height=4)

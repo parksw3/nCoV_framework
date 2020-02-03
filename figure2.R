@@ -1,5 +1,6 @@
 library(coda)
-library(ggplot2); theme_set(theme_bw(base_size=18))
+library(ggplot2); theme_set(theme_bw(base_size=16))
+library(gridExtra)
 
 load("sample_data.rda")
 load("MCMC_all.rda")
@@ -51,10 +52,13 @@ compfun <- function(x) {
 
 dd_combine <- compfun(r)
 
+dd_combine2 <- compfun((r + median(r)*3)/4)
+
 g1 <- ggplot(dd_combine) +
   geom_point(aes(type, est), size=7) +
   geom_errorbar(aes(type, min=lwr, max=upr), width=0, lwd=2) +
   xlab("Uncertainty type") +
+  ggtitle("A. Baseline") +
   scale_y_continuous("Basic reproductive number", limits=c(2, 4.6), expand=c(0, 0)) +
   theme(
     panel.grid.major.x = element_blank(),
@@ -64,4 +68,20 @@ g1 <- ggplot(dd_combine) +
     axis.line = element_line()
   )
 
-ggsave("figure2.pdf", g1, width=8, height=4)
+g2 <- ggplot(dd_combine2) +
+  geom_point(aes(type, est), size=7) +
+  geom_errorbar(aes(type, min=lwr, max=upr), width=0, lwd=2) +
+  xlab("Uncertainty type") +
+  ggtitle("B. Reduced uncertainty in the growth rate") +
+  scale_y_continuous("Basic reproductive number", limits=c(2.3, 3.8), expand=c(0, 0)) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.border = element_blank(),
+    axis.line = element_line()
+  )
+
+gtot <- arrangeGrob(g1, g2, nrow=1)
+
+ggsave("figure2.pdf", gtot, width=12, height=6)

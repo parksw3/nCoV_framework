@@ -147,7 +147,7 @@ We also use our framework to tease apart which assumptions of these different mo
 \begin{center}
 \scriptsize
 \begin{tabular}{l|p{3.5cm}|p{2.5cm}|p{2.7cm}|l}
- & Basic reproductive\newline number \Ro & Mean generation\newline time $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$ \\
+ & Basic reproductive\newline number \Ro & Mean generation\newline interval $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$ \\
 \hline
 Study 1 & 2.5 (1.5--3.5)$^\ast$ & 8.4 & unspecified$^\dagger$ & \cite{imaincov} \\
 \hline
@@ -186,7 +186,7 @@ The pooled estimates, which are represented as probability distributions rather 
 \begin{center}
 \scriptsize
 \begin{tabular}{l|p{4.5cm}|p{2.5cm}|p{2.7cm}}
- & Basic reproductive\newline number \Ro & Mean generation\newline time $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$  \\
+ & Basic reproductive\newline number \Ro & Mean generation\newline interval $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$  \\
 \hline
 Study 1 & $\gammdist(\mathrm{mean}=2.6, \alpha=28)$ & 8.4 & 0.5 \\
 \hline
@@ -196,9 +196,9 @@ Study 3 & $\gammdist(\mathrm{mean}=3.8, \alpha=1400)$ & 7.6 & 0.5 \\
 \hline
 Study 4 & $\gammdist(\mathrm{mean}=2.2, \alpha=12)$ & $\mathrm{Uniform}(7, 14)$ & 0.5\\
 \hline
-Study 5 & $\gammdist(\mathrm{mean}=5.47, \alpha=54)$ & $\mathrm{Uniform}(7.6, 8.4)$ & 0.2\\
+Study 5 & $\gammdist(\mathrm{mean}=5.47, \alpha=54)$ & $\mathrm{Uniform}(7.6, 8.4)^\ast$ & 0.2\\
 \hline
-Study 6 & $\exp(r \bar G)^\ast$ & $\mathrm{Uniform}(6, 10)$ & 0\\
+Study 6 & $\exp(r \bar G)^\dagger$ & $\mathrm{Uniform}(6, 10)$ & 0\\
 \hline
 \end{tabular}
 \end{center}
@@ -207,7 +207,9 @@ Study 6 & $\exp(r \bar G)^\ast$ & $\mathrm{Uniform}(6, 10)$ & 0\\
 We use these probability distributions to obtain a probability distribution for the exponential growth rate $r$.
 The Gamma distribution is parameterized by its mean and shape $\alpha$.
 Constant values are fixed according to Table 1.
-$^\ast$Study 6 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
+$^\ast$We do not account for this uncertainty during our recalculation of the exponential growth rate $r$ because the reported estimate of $\mathcal R_0$ and its uncertainty assumes $\bar G = 8$; the original article reports three $\mathcal R_0$ (and 95\% CIs) estimates using three different values of $\bar G$: 7.6 (MERS-like), 8 (average), and 8.4 (SARS-like).
+We still account for this uncertainty in our pooled estimates ($\mu_G$).
+$^\dagger$Study 6 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
 Instead of modeling \Ro with a probability distribution and recalculating $r$, we use $r=0.114\,\mathrm{days}^{-1}$, which explains all uncertainty in \Ro they report, when combined with the range of $\bar G$ they consider.
 }
 \end{table}
@@ -256,15 +258,15 @@ This procedure allows us to assess the sensitivity of the estimates of \Ro acros
 We find that incorporating uncertainties one at a time increases the width of the confidence intervals in all but three cases.
 We estimate slightly narrower confidence intervals for Study 2 and Study 6 when we use our pooled estimate of the generation-interval dispersion $\mu_\kappa$ to recalculate \Ro because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
 when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
-We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation time $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation time $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
+We estimate narrower confidence intervals for Study 4 when we use our pooled estimate of the mean generation interval $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation interval $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
 
 Consistent with our previous observations (\fref{eff}),
 we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro (\fref{R0}).
 For example, recalculating \Ro for Study 6 by using our pooled estimate of $r$ gives $\Ro = 3.9$ (95\% CI: 2.3--9.8), which is much wider than the uncertainty range they reported (2.0--3.1).
 There are two explanations for this result.
-First, even though the exponential growth rate $r$ and the mean generation time $\bar G$ have identical effects on \Ro under the gamma approximation framework (\eref{gamma} in Methods),
+First, even though the exponential growth rate $r$ and the mean generation interval $\bar G$ have identical effects on \Ro under the gamma approximation framework (\eref{gamma} in Methods),
 $r$ has a greater overall effect on \Ro because it is associated with more uncertainty (\fref{assumption}).
-Second, assuming a fixed generation time ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$ as discussed previously.
+Second, assuming a fixed generation interval ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$ as discussed previously.
 
 \begin{figure}[!th]
 \includegraphics[width=\textwidth]{compare_R0.pdf}

@@ -66,7 +66,7 @@ g2 <- ggplot(gdata2) +
              size=c(2, 2, 2, 2, 2, 2, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, "orange", 1, "orange", "orange", 2),
                lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
-  scale_x_continuous("Mean generation time (days)") +
+  scale_x_continuous("Mean generation interval (days)") +
   theme(
     axis.title.y = element_blank()
   )

@@ -51,8 +51,8 @@ sample_zhao <- function(n=1) {
     gbar=runif(n, 7.6, 8.4),
     kappa=0.2,
     R=rgamma(n, 54, rate=54/5.47),
-    r=(R^kappa-1)/(kappa*gbar),
-    rho=r*gbar
+    r=(R^kappa-1)/(kappa*8), ## using average gbar to calculate r; this better reflects what the authors do.
+    rho=r*8
   )
 }
 

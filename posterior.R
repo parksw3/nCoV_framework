@@ -97,7 +97,7 @@ MCMC_summ <- gather(MCMC_data, key, value, -nn, -chain) %>%
   mutate(key=factor(key, levels=parnames))
 
 gpost <- ggplot(MCMC_summ) +
-  geom_density(aes(value, col=chain)) +
+  geom_histogram(aes(value), position="identity", fill=NA, bins=50) +
   facet_wrap(~key, scale="free", nrow=3,
              labeller = label_parsed)  +
   scale_x_continuous("Parameter values", limits=c(0, NA), expand=c(0, 0)) +

@@ -102,8 +102,7 @@ Jonathan Dushoff\textsuperscript{3,4,5,*}
 
 \section*{Abstract}
 A novel coronavirus (2019-nCoV) has recently emerged as a global threat. 
-As the epidemic progresses, many disease modelers have prioritized
-\bmb{focused on? (this is what we say in the body of the paper)} estimating the basic reproductive number \Ro, the average number of secondary cases caused by a primary case.
+As the epidemic progresses, many disease modelers have focused on estimating the basic reproductive number \Ro, the average number of secondary cases caused by a primary case.
 These efforts are valuable;
 however, their modeling approaches and the resulting estimates vary widely, despite relying on similar data sources. \bmb{why is this a problem/opportunity? ``however'' suggests some sort of problem, but it isn't explicitly stated what it is \ldots}
 % don't need {\ } after \Ro because we use xspace
@@ -140,7 +139,7 @@ We evaluate six disparate models published online between January 24--26, 2020 t
 We use our framework to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$;
 the pooled estimates reflect the uncertainties present in modeling approaches and their underlying assumptions.
 We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. 
-We also use our framework to unravel \bmb{tease apart?} which assumptions of these different models led to their different estimates and confidence intervals.
+We also use our framework to tease apart which assumptions of these different models led to their different estimates and confidence intervals.
 
 \section{Results}
 
@@ -240,7 +239,6 @@ Once these two are included, the impact of leaving out uncertainty in the disper
 \includegraphics[width=\textwidth]{figure2.pdf}
 \caption{
   \textbf{Effects of $r$, $\bar G$, and $\kappa$ on the estimates of \Ro.}
-  \bmb{May I suggest that you use {\tt theme\_set(theme\_bw(base\_size=18))} (or some large value) rather than (or in addition to) increasing the sizes of the points and lines?}
 We compare estimates of \Ro under five scenarios that propagate different combinations of uncertainties.
 \textbf{base}: \Ro estimates based on the median estimates of $\mu_r$, $\mu_G$, and $\mu_\kappa$.
 \textbf{growth rate}: \Ro estimates based on the the posterior distribution of $\mu_r$ while using median estimates of $\mu_G$ and $\mu_\kappa$.

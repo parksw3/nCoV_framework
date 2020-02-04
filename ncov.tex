@@ -171,7 +171,7 @@ Study 7 & 2.0--3.1 & 6--10 & 0 & \cite{majumderncov} \\
 Estimates of \Ro and their assumptions about the shape of the generation interval distributions were collected from 6 studies.
 $^\ast$We treat these intervals as a 95\% confidence interval in our analysis.
 $^\dagger$We assume $\kappa = 0.5$ in our analysis.
-$^\ddagger$The authors presented \Ro estimates under different assumptions; we use their baseline scenario in our analysis.
+$^\ddagger$The authors presented \Ro estimates under different assumptions regarding the reporting rate; we use their baseline scenario in our analysis to remain consistent with other studies, which do not account for changes in the reporting rate.
 }
 \end{table}
 
@@ -302,7 +302,7 @@ This result does not imply that assumptions based on the pooled estimate are too
 we believe that this confidence interval more accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
 In fact, because the pooled estimate does not account for overlap in data sources used by the models, we feel that it is more likely to be over-confident than under-confident.
 Our median estimate averages over the various studies, and therefore particular studies have higher or lower median estimates;
-for example, Study 6 appears to be an outlier but the authors, in fact, explore several different scenarios with changes in reporting rate, under which their estimates of \Ro are similar to other estimates.
+for example, Study 6 may appears to be an outlier but, in fact, the authors explore several different scenarios that allows for changes in reporting rate over time, under which their estimates of \Ro are similar to other estimates.
 Here, our focus is on certainty, not on the reason for these discrepancies.
 
 \section{Discussion}
@@ -312,10 +312,16 @@ Here, we used a simple framework \citep{park2019practical} to compare estimates 
 Our results demonstrate the importance of accounting for uncertainties associated with the underlying generation-interval distributions, including with the amount of dispersion in the generation intervals:
 although our pooled estimates are relatively insensitive to the estimated uncertainty, our analysis of individual studies shows that assuming too narrow a generation-interval distribution can make the estimate of \Ro too sensitive to the estimates of the exponential growth rate $r$.
 
-In this study, we focused on propagating errors arising from implicit or explicit estimates of growth rate and generation intervals. Other key issues underlying early estimates of \Ro include statistical independence and types of noise. 
+In this study, we focused on propagating errors arising from implicit or explicit estimates of growth rate and generation intervals.
+These estimates of the exponential growth rate depend on how incidence has been reported.
+For emerging pathogens such as 2019-nCoV, we expect the reporting rate to increase over time due to limited resources and uncertainty in case definition initially;
+for example, \cite{zhaoncov} (Study 6) found that that estimates of \Ro could change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 16--20.
+
+Other key issues underlying early estimates of \Ro include statistical independence and types of noise.
+
 
 Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
-This approach can be appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence instead of raw incidence can both bias parameters and give overly narrow confidence intervals, if the result non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
+This approach can be appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence instead of raw incidence can both bias parameters and give overly narrow confidence intervals, if the resulting non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
 Naive fits to cumulative incidence data should therefore be avoided.
 
 Many sources of noise affect real-world incidence data, including both dynamical, or ``process'', noise (randomness that directly or indirectly affects disease transmission); and observation noise (randomness underlying how many of the true cases are reported).  

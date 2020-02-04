@@ -313,12 +313,7 @@ Our results demonstrate the importance of accounting for uncertainties associate
 although our pooled estimates are relatively insensitive to the estimated uncertainty, our analysis of individual studies shows that assuming too narrow a generation-interval distribution can make the estimate of \Ro too sensitive to the estimates of the exponential growth rate $r$.
 
 In this study, we focused on propagating errors arising from implicit or explicit estimates of growth rate and generation intervals.
-These estimates of the exponential growth rate depend on how incidence has been reported.
-For emerging pathogens such as 2019-nCoV, we expect the reporting rate to increase over time due to limited resources and uncertainty in case definition initially;
-for example, \cite{zhaoncov} (Study 6) found that that estimates of \Ro could change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 16--20.
-
 Other key issues underlying early estimates of \Ro include statistical independence and types of noise.
-
 
 Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
 This approach can be appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence instead of raw incidence can both bias parameters and give overly narrow confidence intervals, if the resulting non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
@@ -329,7 +324,11 @@ Disease modelers face the choice of incorporating one or both of these in their 
 This is not always a serious problem, particularly if the goal is inferring parameters rather than directly making forecasts (e.g., \cite{ma2014estimating}).
 Modelers should be aware of the possibility that ignoring one kind of error can give overly narrow confidence intervals (e.g., \cite{king2015avoidable}).
 
-There are other important phenomena not covered by our simple framework. Examples that seem relevant to this outbreak include: changing reporting rates, changing generation intervals, and reporting delays (including the effects of weekends and holidays.)
+There are other important phenomena not covered by our simple framework. 
+Examples that seem relevant to this outbreak include: changing reporting rates, reporting delays (including the effects of weekends and holidays), and changing generation intervals.
+For emerging pathogens such as 2019-nCoV, we expect the reporting rate to increase over time due to limited resources and uncertainty in case definition initially;
+for example, \cite{zhaoncov} (Study 6) found that that estimates of \Ro could change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 16--20.
+
 \jd{This \P\ should be fleshed out and citated.}
 
 Here, we focused on the estimates of \Ro that were published within a very short frame of time (January 23--26).
@@ -380,10 +379,10 @@ will give a higher estimate of \Ro for the same value of $r$.
 
 \subsection{Description of the studies}
 
-We reviewed 6 modeling studies of the novel coronavirus outbreak that were published online between January 23 and January 26, 2020 (Table 1).
-Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were uploaded to pre-print servers (bioRxiv, medRxiv, and SSRN), and one report was posted on the website of Imperial College London \citep{imaincov}.
+We reviewed 7 modeling studies of the novel coronavirus outbreak that were published online between January 23 and January 26, 2020 (Table 1).
+Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were uploaded to pre-print servers (bioRxiv, medRxiv, and SSRN); one report was posted on the website of Imperial College London \citep{imaincov}; and one report was posted on nextstrain.org \citep{bedfordncov}.
 They vary widely in their statistical methods and in the amount of data used to infer \Ro.
-\cite{imaincov} and \cite{riouncov} simulated branching process models and compared the predicted number of cases from their models with the estimated number of total cases by January 18.
+\cite{bedfordncov}, \cite{imaincov}, and \cite{riouncov} simulated branching process models and compared the predicted number of cases from their models with the estimated number of total cases by January 18 (between 1,000 and 9,7000 \citep{imaincov0}).
 \cite{readncov} fitted a deterministic, metapopulation Susceptible-Exposed-Infected-Recovered (SEIR) model to incidence data between January 1 and January 21 from major cities in China and other countries.
 \cite{zhaoncov} and \cite{liuncov} fitted exponential growth models to incidence data up to January 22 and January 23, respectively, and inferred \Ro via the Euler-Lotka equation (\eref{euler}).
 \cite{majumderncov} fitted the Incidence Decay and Exponential Adjustment (IDEA) model \citep{fisman2013idea} to incidence data up to January 26, which is equivalent to fitting an exponential growth model and assuming a fixed generation-interval distribution.

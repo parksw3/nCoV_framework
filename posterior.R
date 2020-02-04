@@ -7,7 +7,7 @@ library(gridExtra)
 
 load("MCMC_all.rda")
 
-parnames <- c("mu[r]~(days^{-1})", "alpha[r]", "mu[G]~(days)", "alpha[G]", "mu[kappa]", "alpha[kappa]")
+parnames <- c("mu[r]~(days^{-1})", "sigma[r]", "mu[G]~(days)", "sigma[G]", "mu[kappa]", "sigma[kappa]")
 
 gelman.diag(MCMC_all)
 
@@ -35,10 +35,10 @@ g1 <- ggplot(MCMC_data) +
   )
 
 g2 <- ggplot(MCMC_data) +
-  geom_line(aes(nn, `alpha[r]`, col=chain)) +
+  geom_line(aes(nn, `sigma[r]`, col=chain)) +
   scale_x_continuous("MCMC steps (thinned every 400 steps)", expand=c(0, 0),
                      breaks=c(0, 100, 200, 300, 400), limits=c(0, 500)) +
-  scale_y_continuous(expression(alpha[r])) +
+  scale_y_continuous(expression(sigma[r])) +
   scale_colour_manual(values=colorspace::qualitative_hcl(4)) +
   theme(
     panel.grid = element_blank(),
@@ -57,10 +57,10 @@ g3 <- ggplot(MCMC_data) +
   )
 
 g4 <- ggplot(MCMC_data) +
-  geom_line(aes(nn, `alpha[G]`, col=chain)) +
+  geom_line(aes(nn, `sigma[G]`, col=chain)) +
   scale_x_continuous("MCMC steps (thinned every 400 steps)", expand=c(0, 0),
                      breaks=c(0, 100, 200, 300, 400), limits=c(0, 500)) +
-  scale_y_continuous(expression(alpha[G])) +
+  scale_y_continuous(expression(sigma[G])) +
   scale_colour_manual(values=colorspace::qualitative_hcl(4)) +
   theme(
     panel.grid = element_blank(),
@@ -79,10 +79,10 @@ g5 <- ggplot(MCMC_data) +
   )
 
 g6 <- ggplot(MCMC_data) +
-  geom_line(aes(nn, `alpha[kappa]`, col=chain)) +
+  geom_line(aes(nn, `sigma[kappa]`, col=chain)) +
   scale_x_continuous("MCMC steps (thinned every 400 steps)", expand=c(0, 0),
                      breaks=c(0, 100, 200, 300, 400), limits=c(0, 500)) +
-  scale_y_continuous(expression(alpha[kappa])) +
+  scale_y_continuous(expression(sigma[kappa])) +
   scale_colour_manual(values=colorspace::qualitative_hcl(4)) +
   theme(
     panel.grid = element_blank(),
@@ -97,7 +97,7 @@ MCMC_summ <- gather(MCMC_data, key, value, -nn, -chain) %>%
   mutate(key=factor(key, levels=parnames))
 
 gpost <- ggplot(MCMC_summ) +
-  geom_histogram(aes(value), position="identity", fill=NA, bins=50) +
+  geom_density(aes(value, col=chain), position="identity") +
   facet_wrap(~key, scale="free", nrow=3,
              labeller = label_parsed)  +
   scale_x_continuous("Parameter values", limits=c(0, NA), expand=c(0, 0)) +

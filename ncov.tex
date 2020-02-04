@@ -409,20 +409,24 @@ We note that this approach does not account for non-independence between the par
 As we add more models, we expect the pooled estimates to become sharper even when the models no longer add more information.
 Thus, the pooled estimator should be interpreted with care.
 
-We use weakly informative priors on hyperparameters representing pooled means and uninformative priors on hyperparameters representing between-study standard deviations:
+We use weakly informative priors on hyperparameters representing pooled means and noninformative priors on hyperparameters representing between-study standard deviations:
 \begin{linenomath*}
 \begin{equation}
 \begin{aligned}
 \mu_r &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week}^{-1},\,\mathrm{shape}=2)\\
 \mu_G &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week},\,\mathrm{shape}=2)\\
 \mu_\kappa &\sim \gammdist(\mathrm{mean}=0.5,\,\mathrm{shape}=2)\\
-(\sigma_r, \sigma_G, \sigma_\kappa) &\sim \textrm{Half-Normal}(0, 10).
+(\sigma_r, \sigma_G, \sigma_\kappa) &\sim \textrm{half-normal}(0, 10).
 \end{aligned}
 \end{equation}
 \end{linenomath*}
+We initially imposed Gamma priors with low shape parameters ($< 1$) on between-study shape parameters (i.e., the inverse of the between-study squared coefficient of variation) of our hierarchical model but later found out that the resulting posterior distribution could be sensitive to our choices of shape parameters of the Gamma priors \citep{gelman2006prior}.
+Furthermore, imposing strong priors (e.g., half-$t$ with 4 degrees of freedom and a standard deviation of 1) on between-study shape parameters \textit{a priori} assumes that there is large between-study variance and has a strong effect on the resulting posterior.
+On the other hand, imposing weak priors (e.g., half-Cauchy with a scale of 5) on between-study shape parameters \textit{a priori} allows for very low between-study variance and leads to poor mixing.
+Therefore, we followed recommendations outlined in \citep{gelman2006prior} by reparameterizing the hierarchical model in terms of its mean and standard deviation and imposing a noninformative but proper prior distributions on between-study standard deviations: $\textrm{half-normal}(0, 10)$.
 
-
-We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
+We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 b
+urnin steps and 500,000 sampling steps.
 Posterior samples are thinned every 1000 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference};
 trace plots and marginal posterior distribution plots are presented in Appendix.

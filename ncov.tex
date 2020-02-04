@@ -136,7 +136,7 @@ therefore, estimates of \Ro from different models directly depend on their impli
 Early in an epidemic, information is scarce and there is inevitably a great deal of uncertainty surrounding both case reports (affecting the estimates of the exponential growth rate) and contact tracing (affecting the estimates of the generation-interval distribution).
 We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty should propagate error from all three sources \citep{elderd2006uncertainty}.
 
-We evaluate seven disparate models published online between January 23--26, 2020 that estimated \Ro for the 2019-nCoV outbreak \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}. 
+We compare seven disparate models published online between January 23--26, 2020 that estimated \Ro for the 2019-nCoV outbreak \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}. 
 We use our framework to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$;
 the pooled estimates reflect the uncertainties present in modeling approaches and their underlying assumptions.
 We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. 
@@ -263,7 +263,7 @@ Vertical lines represent the 95\% confidence intervals.
 \label{fig:eff}
 \end{figure}
 
-We also evaluate the estimates of \Ro across different studies by 
+We also compare the estimates of \Ro across different studies by 
 replacing their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$, respectively) one at a time and recalculating the basic reproductive number \Ro (\fref{R0}).
 This procedure allows us to assess the sensitivity of the estimates of \Ro across appropriate ranges of uncertainties and test how underlying assumptions drive the sensitivity.
 We find that incorporating uncertainties one at a time increases the width of the confidence intervals in all but 7 cases.
@@ -327,9 +327,11 @@ Modelers should be aware of the possibility that ignoring one kind of error can 
 There are other important phenomena not covered by our simple framework. 
 Examples that seem relevant to this outbreak include: changing reporting rates, reporting delays (including the effects of weekends and holidays), and changing generation intervals.
 For emerging pathogens such as 2019-nCoV, we expect the reporting rate to increase over time due to limited resources and uncertainty in case definition initially;
-for example, \cite{zhaoncov} (Study 6) found that that estimates of \Ro could change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 16--20.
-
-\jd{This \P\ should be fleshed out and citated.}
+in particular, \cite{zhaoncov} (Study 6) found that estimates of \Ro could change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 16--20.
+Delays between key epidemiological timings (e.g., infection, symptom onset, and detection) can also shift the shape of an observed epidemic curve and, therefore, affect parameter estimates as well as predictions of the course of an outbreak \citep{harris1990reporting, tsuzuki2017dynamics, tariq2019assessing}.
+Even if there is a constant delay between infection and detection, we would expect the associated confidence intervals to be affected (estimates of the growth rate will be unbiased).
+Finally, generation intervals can become shorter throughout an epidemic as intervention strategies, such as quarantine, can reduce the infectious period \citep{hethcote2002effects}.
+Disease modelers who want to make serious inference about an outbreak should consider all these factors.
 
 Here, we focused on the estimates of \Ro that were published within a very short frame of time (January 23--26).
 Although our analysis only reflects a snapshot of a fast-moving epidemic, our lessons will hold: confidence intervals must combine different sources of uncertainty. 
@@ -339,11 +341,10 @@ We strongly emphasize the value of attention to accurate characterization of the
 A combined effort between public-health workers and modelers in this direction will be crucial for predicting the course of an epidemic and controlling it.
 We also emphasize the value of transparency from modelers.
 Model estimates during an outbreak, even in pre-prints, should include code links and complete explanations.
-For maximal reproducibility, the code should not rely on closed-source software.
-\dc{I agree in principle but that's too harsh. People should be free to use whatever they want (Matlab...) as long as they publish the methods and code.}
-\bmb{We could leave this out, or phrase it positively (``Methods based on open-source tools allow for maximal reproducibility.'')}
+We suggest using methods based on open-source tools allow for maximal reproducibility.
 
-We have provided a basis for evaluating and comparing exponential-growth based estimates of \Ro in terms of three simple components: the exponential growth rate, mean generation interval, and generation interval dispersion. We hope this will help researchers understand and reconcile disparate estimates early in an epidemic.
+We have provided a basis for comparing exponential-growth based estimates of \Ro in terms of three simple components: the exponential growth rate, mean generation interval, and generation interval dispersion. 
+We hope this will help researchers understand and reconcile disparate estimates early in an epidemic.
 
 \section{Methods}
 

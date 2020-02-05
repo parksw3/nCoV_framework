@@ -269,14 +269,11 @@ Consistent with our previous observations (\fref{eff}),
 we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro\ in most cases (\fref{R0}).
 For example, recalculating \Ro for Study 7 by using our pooled estimate of $r$ gives $\Ro = 3.9$ (95\% CI: 2.3--8.6), which is much wider than the uncertainty range they reported (2.0--3.1).
 There are two explanations for this result.
-\jd{Reword below.} \swp{Not sure why you want to reword this. We went over this paragraph so many times.}
-First, even though the exponential growth rate $r$ and the mean generation interval $\bar G$ have identical effects on \Ro under the gamma approximation framework (\eref{gamma} in Methods),
-$r$ has a greater overall effect on \Ro because it is associated with more uncertainty (\fref{assumption}).
+First, even though the exponential growth rate $r$ and the mean generation interval $\bar G$ have identical mathematical effects on \Ro in our framework (\eref{gamma} in Methods),
+$r$ is more influential in this case because it is associated with more uncertainty (\fref{assumption}).
 Second, assuming a fixed generation interval ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$.
 One exception is Study 1: we find this estimate of \Ro is most sensitive to generation-interval dispersion $\kappa$.
-Since Study 1 assumes an exponentially distributed generation interval ($\kappa=1$), its estimate of \Ro becomes more sensitive to $r$ and $\bar G$ when a narrower generation-interval distribution is assumed ($\kappa < 1$), resulting in a wider confidence interval.
-\jd{Are these really both the same Study 1? I'd like to take a minute to think about this \P.}
-\swp{Clarified this.}
+This is because Study 1 assumes an exponentially distributed generation interval ($\kappa=1$): estimates that include this assumption make \Ro relatively insensitive and thus tend have particularly narrow confidence intervals.
 
 \begin{figure}[!th]
 \includegraphics[width=\textwidth]{compare_R0.pdf}
@@ -303,8 +300,6 @@ Here, our focus is on estimating uncertainty, not on identifying potential expla
 
 \section{Discussion}
 
-\jd{Should we lead with the Bayesian fit or the approximation framework? The fit is useful but crude. The approximation is the part I hope will stick.}
-\swp{How about this?}
 Estimating the basic reproductive number \Ro is crucial for predicting the course of an outbreak and planning intervention strategies.
 Here, we use a gamma approximation \citep{park2019practical} to decompose \Ro estimates into three key quantities ($r$, $\bar G$, and $\kappa$) and apply a multilevel Bayesian framework to compare estimates of \Ro for the novel coronavirus outbreak.
 Our results demonstrate the importance of accounting for uncertainties associated with the underlying generation-interval distributions, including uncertainties in the amount of dispersion in the generation intervals:
@@ -329,9 +324,9 @@ Finally, generation intervals can become shorter throughout an epidemic as inter
 Accounting for these factors is crucial for making accurate inferences.
 
 Here, we focused on the estimates of \Ro that were published within a very short time frame (January 23--26).
-\swp{During early phases of an outbreak, it is reasonable to assume that the epidemic grows exponentially \citep{anderson1991infectious}. However, as the number of susceptible individuals decreases, the epidemic will saturate, and estimates of \Ro should no longer rely solely on $r$.}
+During early phases of an outbreak, it is reasonable to assume that the epidemic grows exponentially \citep{anderson1991infectious}. However, as the number of susceptible individuals decreases, the epidemic will saturate, and estimates of $r$ used for \Ro should account for the possibilty that $r$ is decreasing through time.
 Although our analysis only reflects a snapshot of a fast-moving epidemic, we expect certain lessons to hold: confidence intervals must combine different sources of uncertainty. 
-In fact, as epidemics progress and more data becomes available, it is likely that inferences about exponential growth rate \swp{(and other epidemiological parameters)} will become more precise; thus the risk of over-confidence when uncertainty about the generation-interval distribution is neglected will become greater.
+In fact, as epidemics progress and more data becomes available, it is likely that inferences about exponential growth rate (and other epidemiological parameters) will become more precise; thus the risk of over-confidence when uncertainty about the generation-interval distribution is neglected will become greater.
 
 We strongly emphasize the value of attention to accurate characterization of the transmission chains via contact tracing and better statistical frameworks for inferring generation-interval distributions from such data \citep{britton2019estimation}.
 A combined effort between public-health workers and modelers in this direction will be crucial for predicting the course of an epidemic and controlling it.
@@ -427,10 +422,8 @@ We use weakly informative priors on hyperparameters representing pooled means an
 \end{equation}
 \end{linenomath*}
 Here, we followed recommendations outlined in \cite{gelman2006prior} by reparameterizing the hierarchical gamma model in terms of its mean and standard deviation and imposing a noninformative but proper prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
-We initially tried gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) of our hierarchical model but such priors can over-penalize the resulting posterior distribution, depending on their shape parameters \citep{gelman2006prior}.
+We had initially tried gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) of our hierarchical model but found this put too much on large between-study variances; this is in fact a known problem \citep{gelman2006prior}, and thus was a poor prior choice.
 We also found that imposing strong priors on between-study shape parameters can be problematic as they \textit{a priori} assume large between-study variance, whereas imposing weak priors can allow for very low between-study variance and lead to poor mixing.
-\jd{Talk?}
-\swp{???}
 
 We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
 Posterior samples are thinned every 1000 steps.

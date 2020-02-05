@@ -52,6 +52,7 @@
 
 \newcommand{\swp}[1]{\comment{magenta}{SWP}{#1}}
 \newcommand{\jd}[1]{\comment{magenta}{JD}{#1}}
+\newcommand{\djde}[1]{\comment{magenta}{DJDE}{#1}}
 \newcommand{\bmb}[1]{\comment{magenta}{BMB}{#1}}
 \newcommand{\dc}[1]{\comment{magenta}{DC}{#1}}
 \newcommand{\jsw}[1]{\comment{magenta}{JSW}{#1}}
@@ -106,8 +107,11 @@ A novel coronavirus (2019-nCoV) has recently emerged as a global threat.
 As the epidemic progresses, many disease modelers have focused on estimating the basic reproductive number \Ro, the average number of secondary cases caused by a primary case in an otherwise susceptible population.
 The modeling approaches and resulting estimates of \Ro vary widely, despite relying on similar data sources.
 Here, we present a framework for comparing and combining different estimates of \Ro across a wide range of models by decomposing the basic reproductive number into three key quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
-We then apply our framework to early estimates of \Ro for the 2019-nCoV outbreak.
-Our results emphasize the importance of propagating uncertainties including the shape of the generation-interval distribution in efforts to estimate \Ro at the outset of an epidemic.
+We then apply our framework to early estimates of \Ro for the 2019-nCoV outbreak, estimating the \Ro from the pooled distribution as 2.9 (95\% CI: 2.1-4.5).
+Our results emphasize the importance of propagating propagating uncertainties in all components of \Ro, including the shape of the generation-interval distribution in efforts to estimate \Ro at the outset of an epidemic.
+
+\swp{JSW suggests including our pooled estimate of R in the abstract. Not sure if we want that.}
+\swp{DJDE suggests using overline G rather than bar G. I think overline looks ugly.}
 
 \pagebreak
 
@@ -127,7 +131,7 @@ Here, we show that a wide range of approaches to estimating \Ro can be understoo
 The generation interval, defined as the interval between the time when an individual becomes infected and the time when that individual infects another individual \citep{svensson2007note}, plays a key role in shaping the relationship between $r$ and \Ro \citep{wearing2005appropriate, roberts2007model, wallinga2007generation, park2019practical};
 therefore, estimates of \Ro from different models directly depend on their implicit assumptions about the shape of the generation-interval distribution and the exponential growth rate.
 Early in an epidemic, information is scarce and there is inevitably a great deal of uncertainty surrounding both case reports (affecting the estimates of the exponential growth rate) and contact tracing (affecting the estimates of the generation-interval distribution).
-We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty of \Ro should propagate error from all three sources \citep{elderd2006uncertainty}.
+We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty in \Ro should propagate error from all three sources \citep{elderd2006uncertainty}.
 
 We compare seven disparate models published online between January 23--26, 2020 that estimated \Ro for the 2019-nCoV outbreak \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}. 
 We use our framework to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$;
@@ -264,7 +268,7 @@ We find that incorporating uncertainties one at a time increases the width of th
 We estimate narrower confidence intervals for Study 3, Study 6, and Study 7 when we use our pooled estimate of the generation-interval dispersion $\mu_\kappa$ to recalculate \Ro because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
 when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
 We estimate narrower confidence intervals for Study 5 and Study 7 when we use our pooled estimate of the mean generation interval $\mu_G$ to recalculate \Ro (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation interval $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
-We also estimate narrower confidence intervals for Study 1 when we replace their estimated $r$ or $\bar G$ with our pooled estimtates for similar reasons.
+We also estimate narrower confidence intervals for Study 1 when we replace their estimated $r$ or $\bar G$ with our pooled estimates for similar reasons.
 
 Consistent with our previous observations (\fref{eff}),
 we find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro\ in most cases (\fref{R0}).
@@ -311,7 +315,7 @@ Other key issues underlying early estimates of \Ro include statistical independe
 \jsw{Why is this here? Fine sentence, but belongs 2 paragraphs down and is largely redundant.}
 \swp{I proprose we drop these two sentences.}
 
-Of the six studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
+Of the seven studies that we reviewed, two of them directly fit their models to cumulative number of confirmed cases.
 This approach can be appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence instead of raw incidence can both bias parameters and give overly narrow confidence intervals, if the resulting non-independent error structures are not taken into account \citep{ma2014estimating, king2015avoidable}.
 Naive fits to cumulative incidence data should therefore be avoided.
 \jsw{Continue to this paragraph which builds on the point of growth rate r}
@@ -324,8 +328,8 @@ Modelers should be aware of the possibility that ignoring one kind of error can 
 
 There are other important phenomena not covered by our simple framework. 
 Examples that seem relevant to this outbreak include: changing reporting rates, reporting delays (including the effects of weekends and holidays), and changing generation intervals.
-For emerging pathogens such as 2019-nCoV, we expect the reporting rate to increase over time due to limited resources and uncertainty in case definition initially;
-for example, \cite{zhaoncov} (Study 6) found that estimates of \Ro could change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 16--20.
+For emerging pathogens such as 2019-nCoV, we expect the reporting rate likely to be very low until sufficient resources become available and case definitions become certain;
+for example, \cite{zhaoncov} (Study 6) demonstrated that estimates of \Ro can change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 17, when the official diagnostic protocols were released \citep{who17protocol}, and January 20.
 Delays between key epidemiological timings (e.g., infection, symptom onset, and detection) can also shift the shape of an observed epidemic curve and, therefore, affect parameter estimates as well as predictions of the course of an outbreak \citep{harris1990reporting, tsuzuki2017dynamics, tariq2019assessing}.
 Even though a constant delay between infection and detection may not affect the estimate of the growth rate, it can still affect the associated confidence intervals.
 Finally, generation intervals can become shorter throughout an epidemic as intervention strategies, such as quarantine, can reduce the infectious period \citep{hethcote2002effects}.
@@ -342,7 +346,7 @@ Model estimates during an outbreak, even in pre-prints, should include code link
 We suggest using methods based on open-source tools allow for maximal reproducibility.
 
 In summary, we have provided a basis for comparing exponential-growth based estimates of \Ro and its associated uncertainty in terms of three components: the exponential growth rate, mean generation interval, and generation interval dispersion. 
-We hope this framework will help researchers understand and reconcile disparate estimates of disease strength early in an epidemic.
+We hope this framework will help researchers understand and reconcile disparate estimates of disease transmission early in an epidemic.
 
 \section{Methods}
 

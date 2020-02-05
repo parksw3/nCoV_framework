@@ -171,9 +171,9 @@ $^\ddagger$The authors presented \Ro estimates under different assumptions regar
 We gathered information on estimates of \Ro and their assumptions about the underlying generation-interval distributions from 7 articles that were published online between January 23 and January 26, 2020 (Table 1).
 As most studies do not report their estimates of the exponential growth rate or the associated confidence intervals, we first recalculate the exponential growth rate that correspond to their model assumptions.
 We do so by modeling explicitly or implicitly reported distributions of the reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion parameter $\kappa$ with appropriate probability distributions;
-we used Gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
+we used gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
-we model this estimate as a Gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
+we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
 We then constructed a family of parameter sets --- which include $r$, $\bar G$, and $\kappa$ --- for each study and used these in a Bayesian multilevel model to build a distribution of pooled estimates for each parameter ($\mu_r$, $\mu_G$, and $\mu_\kappa$).
 The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches, while accounting for the uncertainties in the assumptions they make (see Methods).
 
@@ -203,7 +203,7 @@ Study 7 & $\exp(r \bar G)^\dagger$ & $\mathrm{Uniform}(6, 10)$ & 0\\
 \caption{
 \textbf{Probability distributions for \Ro, $\bar G$, and $\kappa$.}
 We use these probability distributions to obtain a probability distribution for the exponential growth rate $r$.
-The Gamma distribution is parameterized by its mean and shape $\alpha$.
+The gamma distribution is parameterized by its mean and shape $\alpha$.
 Constant values are fixed according to Table 1.
 $^\ast$We do not account for this uncertainty during our recalculation of the exponential growth rate $r$ because the reported estimate of $\mathcal R_0$ and its uncertainty assumes $\bar G = 8$; the original article reports three $\mathcal R_0$ (and 95\% CIs) estimates using three different values of $\bar G$: 7.6 (MERS-like), 8 (average), and 8.4 (SARS-like).
 We still account for this uncertainty in our pooled estimates ($\mu_G$).
@@ -426,10 +426,9 @@ We use weakly informative priors on hyperparameters representing pooled means an
 \end{aligned}
 \end{equation}
 \end{linenomath*}
-We initially imposed Gamma priors with low shape parameters ($< 1$) on between-study shape parameters (i.e., the inverse of the between-study squared coefficient of variation) of our hierarchical model but later found out that the resulting posterior distribution could be sensitive to our choices of shape parameters of the Gamma priors \citep{gelman2006prior}.
-Furthermore, imposing strong priors (e.g., half-$t$ with 4 degrees of freedom and a standard deviation of 1) on between-study shape parameters \textit{a priori} assumes that there is large between-study variance and has a strong effect on the resulting posterior.
-On the other hand, imposing weak priors (e.g., half-Cauchy with a scale of 5) on between-study shape parameters \textit{a priori} allows for very low between-study variance and leads to poor mixing.
-Therefore, we followed recommendations outlined in \citep{gelman2006prior} by reparameterizing the hierarchical model in terms of its mean and standard deviation and imposing a noninformative but proper prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
+Here, we followed recommendations outlined in \citep{gelman2006prior} by reparameterizing the hierarchical gamma model in terms of its mean and standard deviation and imposing a noninformative but proper prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
+We initially imposed gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) of our hierarchical model but such priors can over-penalize the resulting posterior distribution, depending on their shape parameters \citep{gelman2006prior}.
+We also found that imposing strong priors on between-study shape parameters can be problematic as they \textit{a priori} assume large between-study variance, whereas imposing weak priors can allow for very low between-study variance and lead to poor mixing.
 
 We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
 Posterior samples are thinned every 1000 steps.

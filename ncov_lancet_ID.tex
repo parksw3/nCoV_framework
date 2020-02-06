@@ -110,21 +110,21 @@ Jonathan Dushoff\textsuperscript{2,3,4,*}
 
 \subsection*{Background}
 
-A novel coronavirus (2019-nCoV) has recently emerged as a global threat. 
+A novel coronavirus (2019-nCoV) has recently emerged as a global threat.
 As the epidemic progresses, many disease modelers have focused on estimating the basic reproductive number \Ro, the average number of secondary cases caused by a primary case in an otherwise susceptible population.
 The modeling approaches and resulting estimates of \Ro vary widely, despite relying on similar data sources.
 We present a framework for comparing and combining different estimates of \Ro across a wide range of models.
 
 \subsection*{Methods}
 
-We decompose the basic reproductive number into three key quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
-We use a Bayesian multilevel model to assess uncertainties associated with these quantities.
-We apply our framework to compare early estimates of \Ro for the 2019-nCoV outbreak.
+We decompose \Ro into three key quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
+We use a Bayesian multilevel model tomeasure uncertainties associated with these quantities.
+We assess early estimates of \Ro for the 2019-nCoV outbreak across these ranges of uncertainties.
 
 \subsection*{Findings}
 
-We find that most estimates rely on strong assumptions, particularly about the generation-interval dispersion.
-
+We find that most early estimates of \Ro rely on strong assumptions, especially about the generation-interval dispersion.
+In particular, estimates that rely on narrow generation-interval distributions are overly sensitive to estimates of the exponential growth rate.
 
 \subsection*{Interpretation}
 
@@ -133,6 +133,11 @@ Our results emphasize the importance of propagating uncertainties in all compone
 \subsection*{Funding}
 
 BMB and DJDE were supported by Natural Sciences and Engineering Research Council (NSERC). ML was supported by Canadian Institutes of Health Research (CIHR).
+
+\pagebreak
+
+\section*{Research in context}
+
 
 \pagebreak
 
@@ -288,7 +293,6 @@ We find that incorporating uncertainties one at a time increases the width of th
 We estimate narrower confidence intervals for Study 3, Study 6, and Study 7 when we account for proper uncertainties in the generation-interval dispersion because they assume a narrow generation-interval distribution (compare \textbf{base} with \textbf{GI variation} in \fref{R0});
 when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
 We estimate narrower confidence intervals for Study 5 and Study 7 when we account for proper uncertainties in the mean generation interval (compare \textbf{base} with \textbf{GI mean} in \fref{R0}) because the range of uncertainty in the mean generation interval $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
-We also estimate narrower confidence intervals for Study 1 when we substitute their estimated $r$ or $\bar G$ with our pooled estimates for similar reasons.
 Substituting the reported $r$ or $\bar G$ from Study 1 with our pooled estimates give narrower confidence intervals for similar reasons.
 
 We find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro\ in most cases (\fref{R0}).

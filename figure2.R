@@ -82,6 +82,9 @@ g2 <- ggplot(dd_combine2) +
     axis.line = element_line()
   )
 
+print(g1)
+print(g2)
+
 gtot <- arrangeGrob(g1, g2, nrow=1)
 
 ggsave("figure2.pdf", gtot, width=12, height=6)

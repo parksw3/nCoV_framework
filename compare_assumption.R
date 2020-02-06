@@ -1,3 +1,4 @@
+library(coda)
 library(ggplot2); theme_set(theme_bw())
 library(dplyr)
 library(gridExtra)

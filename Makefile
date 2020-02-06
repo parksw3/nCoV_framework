@@ -10,6 +10,8 @@ current: target
 
 # Content
 
+Sources += $(wildcard *.R)
+
 vim_session:
 	bash -cl "vmt"
 
@@ -23,6 +25,18 @@ compare_R0.Rout: compare_R0.R
 Ignore += compare_R0.jpg compare_R0.png
 compare_R0.%g: compare_R0.pdf
 	$(convert)
+
+compare_assumption.jpg: compare_assumption.pdf Makefile
+	convert -density 300 $< $@
+
+assumption_1.jpg: compare_assumption.jpg
+	convert -crop 1000x900+0+0 $< $@
+
+assumption_2.jpg: compare_assumption.jpg
+	convert -crop 1000x900+1000+0 $< $@
+
+assumption_3.jpg: compare_assumption.jpg
+	convert -crop 1000x900+2000+0 $< $@
 
 ######################################################################
 

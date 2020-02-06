@@ -90,6 +90,10 @@ g3 <- ggplot(kappadata2) +
     axis.title.y = element_blank()
   )
 
+print(g1)
+print(g2)
+print(g3)
+
 gtot <- arrangeGrob(g1, g2, g3, nrow=1)
 
 ggsave("compare_assumption.pdf", gtot, width=10, height=3)

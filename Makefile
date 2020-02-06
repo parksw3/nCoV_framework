@@ -42,8 +42,10 @@ makestuff/Makefile:
 
 -include makestuff/os.mk
 
+## Adding wrapR for now … 2020 Feb 06 (Thu)
 ## -include makestuff/wrapR.mk
 -include makestuff/texdeps.mk
+-include makestuff/wrapR.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk

@@ -1,6 +1,6 @@
 To whom it may concern:
   
-We are submitting our manuscript, “Reconciling early-outbreak preliminary estimates of the basic reproductive number and its uncertainty: framework and applications to the novel coronavirus (2019-nCoV) outbreak”, for consideration for publication in ???. This material has not previously been published elsewhere. We have submitted a preprint to medRxiv: https://www.medrxiv.org/content/10.1101/2020.01.30.20019877v2.
+We are submitting our manuscript, “Reconciling early-outbreak preliminary estimates of the basic reproductive number and its uncertainty: framework and applications to the novel coronavirus (2019-nCoV) outbreak”, for consideration for publication in The Lancet Infectious Diseases. This material has not previously been published elsewhere. We have submitted a preprint to medRxiv: https://www.medrxiv.org/content/10.1101/2020.01.30.20019877v2.
 
 The basic reproduction number (i.e., the average number of secondary cases caused by a primary case in a fully susceptible population) is a key quantity in models of disease spread. As the novel coronavirus (2019-nCoV) continues to spread in China and other parts of the world, many researchers have focused on analyzing the outbreak and estimating its basic reproductive number. Even though their analyses rely on similar data, their modeling approaches and the resulting estimates vary widely. It is crucial to compare and evaluate different estimates to accurately predict the course of an outbreak and assess the required amount of intervention.
 

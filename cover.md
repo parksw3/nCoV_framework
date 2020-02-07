@@ -1,4 +1,4 @@
-To whom it may concern:
+Dear Editors:
   
 We are submitting our manuscript, “Reconciling early-outbreak preliminary estimates of the basic reproductive number and its uncertainty: framework and applications to the novel coronavirus (2019-nCoV) outbreak”, for consideration for publication in Eurosurveillance. This material has not previously been published elsewhere. We have submitted a preprint to medRxiv: https://www.medrxiv.org/content/10.1101/2020.01.30.20019877v2.
 

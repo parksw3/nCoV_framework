@@ -10,12 +10,12 @@ current: target
 
 # Content
 
-Sources += $(wildcard *.R)
+Sources += $(wildcard *.R) cover.md
 
 vim_session:
 	bash -cl "vmt"
 
-Sources += ncov.tex
+Sources += ncov.tex 
 ncov.pdf: compare_R0.pdf ncov.tex
 
 compare_R0.pdf: compare_R0.Rout ;
@@ -26,9 +26,11 @@ Ignore += compare_R0.jpg compare_R0.png
 compare_R0.%g: compare_R0.pdf
 	$(convert)
 
+Ignore += compare_assumption.jpg
 compare_assumption.jpg: compare_assumption.pdf Makefile
 	convert -density 300 $< $@
 
+Ignore += assumption_*.jpg
 assumption_1.jpg: compare_assumption.jpg
 	convert -crop 1000x900+0+0 $< $@
 

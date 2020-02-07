@@ -15,8 +15,8 @@ Sources += $(wildcard *.R) cover.md
 vim_session:
 	bash -cl "vmt"
 
-Sources += ncov.tex 
-ncov.pdf: compare_R0.pdf ncov.tex
+Sources += $(wildcard *.tex)
+ncov_euro.pdf: compare_R0.pdf ncov_euro.tex
 
 compare_R0.pdf: compare_R0.Rout ;
 compare_R0.Rout: compare_R0.R

@@ -118,8 +118,8 @@ We present a framework for comparing and combining different estimates of \Ro ac
 \subsection*{Methods}
 
 We decompose \Ro into three key quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
-We use a Bayesian multilevel model tomeasure uncertainties associated with these quantities.
-We assess early estimates of \Ro for the 2019-nCoV outbreak across these ranges of uncertainties.
+We use a Bayesian multilevel model to construct pooled estimates and measure uncertainties associated with these quantities.
+We assess early estimates of \Ro for the 2019-nCoV outbreak using the pooled estimates.
 
 \subsection*{Findings}
 
@@ -138,6 +138,21 @@ BMB and DJDE were supported by Natural Sciences and Engineering Research Council
 
 \section*{Research in context}
 
+\subsection*{Evidence before this study}
+
+7 analyses of the 2019-nCoV outbreak were published online as pre-prints between January 23--26, 2020.
+Their modeling approaches varied widely and estimates of uncertainties in \Ro ranged from 1.5 to 7.1.
+
+
+This section should include a description of all the evidence that the authors considered before undertaking this study. Authors should briefly state: the sources (databases, journal or book reference lists, etc) searched; the criteria used to include or exclude studies (including the exact start and end dates of the search), which should not be limited to English language publications; the search terms used; the quality (risk of bias) of that evidence; and the pooled estimate derived from meta-analysis of the evidence, if appropriate
+
+\subsection*{Added value of this study}
+
+Authors should describe here how their findings add value to the existing evidence
+
+\subsection*{Implications of all the available evidence}
+
+Authors should state the implications for practice or policy and future research of their study combined with existing evidence.Research in context panels should not contain references; key studies mentioned here should be referenced in the main text.
 
 \pagebreak
 
@@ -166,7 +181,9 @@ We use these pooled estimates to illustrate the importance of propagating differ
 We also use our framework to tease apart which assumptions of these different models led to their different estimates and confidence intervals. 
 Despite the availability of more recent and/or updated estimates of \Ro, we restrict ourselves to the estimates above in order to focus on the resolution of uncertainty in the earliest stages of an epidemic.
 
-\section{Results}
+\section{Methods}
+
+\subsection{Description of the studies}
 
 \begin{table}[t]
 \begin{center}
@@ -200,13 +217,57 @@ $^\ddagger$The authors presented \Ro estimates under different assumptions regar
 \end{table}
 
 We gathered information on estimates of \Ro and their assumptions about the underlying generation-interval distributions from 7 articles that were published online between January 23--26, 2020 (Table 1).
+Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were uploaded to pre-print servers (bioRxiv, medRxiv, and SSRN); one report was posted on the web site of Imperial College London \citep{imaincov}; and one report was posted on nextstrain.org \citep{bedfordncov}.
+They vary widely in their modeling approaches: a branching process model \citep{bedfordncov, imaincov, riouncov}, a deterministic Susceptible-Exposed-Infected-Recovered (SEIR) model \citep{readncov}, an exponential growth model \citep{zhaoncov}, a Poisson offspring distribution model \citep{liuncov}, and the Incidence Decay and Exponential Adjustment (IDEA) model \citep{majumderncov}.
+Four studies estimated \Ro by directly fitting their models to incidence data \citep{readncov, zhaoncov, liuncov, majumderncov}.
+The remaining three studies estimated \Ro by comparing the predicted number of cases from their models with the estimated number of total cases by January 18 (between 1,000 and 9,7000 \citep{imaincov0})
+Some of these studies have now been published in peer-reviewed journals \citep{riou2020pattern, zhao2020preliminary} or have been updated with better uncertainty quantification \citep{readncov2}.
+
+\subsection{Gamma approximation framework for linking $r$ and $\Ro$}
+
+Early in an outbreak, \Ro is difficult to estimate directly;
+instead, \Ro is often inferred from the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{ma2014estimating}.
+Given an estimate of the exponential growth rate $r$ and an \emph{intrinsic} generation-interval distribution $g(\tau)$ \citep{champredon2015intrinsic}, the basic reproductive
+number can be estimated via the Euler-Lotka equation \citep{wallinga2007generation}:
+\begin{linenomath*}
+\begin{equation}
+1/\Ro = \int \exp(-r\tau) g(\tau) \, d\tau.
+\label{eq:euler}
+\end{equation}
+\end{linenomath*}
+In other words, estimates of \Ro must
+depend on the assumptions about the
+exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
+
+Here, we use the gamma approximation framework \citep{park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
+Assuming that generation intervals follow a gamma distribution
+with the mean $\bar G$ and the squared coefficient of variation $\kappa$, 
+we have
+\begin{linenomath*}
+\begin{equation}
+\Ro = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
+\label{eq:gamma}
+\end{equation}
+\end{linenomath*}
+This equation demonstrates that a generation-interval distribution
+that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
+will give a higher estimate of \Ro for the same value of $r$.
+
+\subsection{Statistical framework}
+
 As most studies do not report their estimates of the exponential growth rate, we first recalculate the exponential growth rate that correspond to their model assumptions.
 We do so by modeling reported distributions of the reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion parameter $\kappa$ with appropriate probability distributions;
 we used gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
-We then constructed a family of parameter sets --- which include $r$, $\bar G$, and $\kappa$ --- for each study and used these in a Bayesian multilevel model to build a distribution of pooled estimates for each parameter ($\mu_r$, $\mu_G$, and $\mu_\kappa$).
-The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches, while accounting for the uncertainties in the assumptions they make (see Methods).
+For each study $i$, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of \Rx{0i} and the assumed values of $\bar G_i$ and $\kappa_i$ and calculate the exponential growth rate $r_i$ via the inverse of \eref{gamma}:
+\begin{linenomath*}
+\begin{equation}
+r_i = \frac{\Rx{0i}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
+\end{equation}
+\end{linenomath*}
+This allows us to approximate the probability distributions of the estimated exponential growth rates by each study;
+uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
 
 \newcommand{\gammdist}{\mathrm{Gamma}}
 \begin{table}[t]
@@ -242,6 +303,47 @@ $^\dagger$Study 6 uses the IDEA model \citep{fisman2013idea}, through which the 
 Instead of modeling \Ro with a probability distribution and recalculating $r$, we use $r=0.114\,\mathrm{days}^{-1}$, which explains all uncertainty in the reported \Ro, when combined with the considered range of $\bar G$.
 }
 \end{table}
+
+We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
+\begin{linenomath*}
+\begin{equation}
+\begin{aligned}
+r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\mu_r^2/\sigma_r^2),\\
+\bar{G}_i &\sim \gammdist(\mathrm{mean}=\mu_G, \mathrm{shape}=\mu_G^2/\sigma_G^2),\\
+\kappa_i &\sim \gammdist(\mathrm{mean}=\mu_\kappa, \mathrm{shape}=\mu_\kappa^2/\sigma_\kappa^2),\\
+\end{aligned}
+\end{equation}
+\end{linenomath*}
+where $\sigma_r$, $\sigma_G$, and $\sigma_\kappa$ represent between-study standard deviations in $r$, $\bar G$, and $\kappa$, respectively.
+We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step.
+Since the gamma distribution does not allow zeros, we use $\kappa=0.02$ instead for Study 7.
+We note that this approach does not account for non-independence between the parameter estimates made by different modelers.
+As we add more models, the pooled estimates can become sharper even when the models no longer add more information.
+Thus, the pooled estimator should be interpreted with care.
+
+We use weakly informative priors on hyperparameters representing pooled means and non-informative priors on hyperparameters representing between-study standard deviations:
+\begin{linenomath*}
+\begin{equation}
+\begin{aligned}
+\mu_r &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week}^{-1},\,\mathrm{shape}=2)\\
+\mu_G &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week},\,\mathrm{shape}=2)\\
+\mu_\kappa &\sim \gammdist(\mathrm{mean}=0.5,\,\mathrm{shape}=2)\\
+(\sigma_r, \sigma_G, \sigma_\kappa) &\sim \textrm{half-normal}(0, 10).
+\end{aligned}
+\end{equation}
+\end{linenomath*}
+We followed recommendations outlined in Gelman \textit{et al.} \cite{gelman2006prior}, parameterizing the top-level gamma distributions in terms of their means and standard deviations and imposing weakly informative prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
+We had initially used gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) but found this put too much prior probability on large between-study variances. This phenomenon is a known problem \citep{gelman2006prior}.
+Alternative choices of prior for the between-study shape parameters are also suboptimal: imposing strong priors (e.g. half-Student-$t(\mu=0,\sigma=1,\nu=4)$  assumes \textit{a priori} that between-study variance is large,  while weak priors (e.g. half-Cauchy(0,5)) can lead to poor mixing.
+
+We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
+Posterior samples are thinned every 1000 steps.
+Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference};
+trace plots and marginal posterior distribution plots are presented in Appendix.
+95\% confidence intervals are calculated by taking 2.5\% and 97.5\% quantiles from the marginal posterior distribution for each parameter.
+\texttt{R} code is available in GitHub (\url{https://github.com/parksw3/nCoV_framework}).
+
+\section{Results}
 
 \fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
@@ -366,99 +468,18 @@ We suggest using methods based on open-source tools allow for maximal reproducib
 In summary, we have provided a basis for comparing exponential-growth based estimates of \Ro and its associated uncertainty in terms of three components: the exponential growth rate, mean generation interval, and generation interval dispersion. 
 We hope this framework will help researchers understand and reconcile disparate estimates of disease transmission early in an epidemic.
 
-\section{Methods}
+\section*{Contributors}
 
-\subsection{Gamma approximation framework for linking $r$ and $\Ro$}
+SWP and JD developed the statistical framework. 
+SWP reviewed the published literature.
+SWP performed the analysis. 
+SWP, BMB, and JD created the figures. 
+SWP and JD wrote the first draft.
+All authors contributed to the writing and approval of the final report.
 
-Early in an outbreak, \Ro is difficult to estimate directly;
-instead, \Ro is often inferred from the exponential growth rate $r$, which can be estimated reliably from incidence data \citep{ma2014estimating}.
-Given an estimate of the exponential growth rate $r$ and an \emph{intrinsic} generation-interval distribution $g(\tau)$ \citep{champredon2015intrinsic}, the basic reproductive
-number can be estimated via the Euler-Lotka equation \citep{wallinga2007generation}:
-\begin{linenomath*}
-\begin{equation}
-1/\Ro = \int \exp(-r\tau) g(\tau) \, d\tau.
-\label{eq:euler}
-\end{equation}
-\end{linenomath*}
-In other words, estimates of \Ro must
-depend on the assumptions about the
-exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
+\section*{Declaration of interests}
 
-Here, we use the gamma approximation framework \citep{park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
-Assuming that generation intervals follow a gamma distribution
-with the mean $\bar G$ and the squared coefficient of variation $\kappa$, 
-we have
-\begin{linenomath*}
-\begin{equation}
-\Ro = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
-\label{eq:gamma}
-\end{equation}
-\end{linenomath*}
-This equation demonstrates that a generation-interval distribution
-that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$)
-will give a higher estimate of \Ro for the same value of $r$.
-
-\subsection{Description of the studies}
-
-We reviewed 7 modeling studies of the novel coronavirus outbreak that were published online between January 23 and January 26, 2020 (Table 1).
-Five studies \citep{liuncov, majumderncov, readncov, riouncov, zhaoncov} were uploaded to pre-print servers (bioRxiv, medRxiv, and SSRN); one report was posted on the web site of Imperial College London \citep{imaincov}; and one report was posted on nextstrain.org \citep{bedfordncov}.
-They vary widely in their statistical methods and in the amount of data used to infer \Ro.
-Bedford \textit{et al.} \cite{bedfordncov}, Imai \textit{et al.} \cite{imaincov}, and Riou and Althaus \cite{riouncov} simulated branching process models and compared the predicted number of cases from their models with the estimated number of total cases by January 18 (between 1,000 and 9,7000 \citep{imaincov0}).
-Read \textit{et al.} \cite{readncov} fitted a deterministic, metapopulation Susceptible-Exposed-Infected-Recovered (SEIR) model to incidence data between January 1 and January 21 from major cities in China and other countries.
-Zhao \textit{et al.} \cite{zhaoncov} fitted an exponential growth model to incidence data up to January 22 and inferred \Ro via the Euler-Lotka equation (\eref{euler}).
-Liu \textit{et al.} \cite{liuncov} modeled the observed incidence up to January 23 as a function of the observed incidence at previous time steps, the generation-interval distribution, and the basic reproductive number using a Poisson likelihood \citep{forsberg2008likelihood}.
-Finally, Majumder and Mandl \textit{et al.} \cite{majumderncov} fitted the Incidence Decay and Exponential Adjustment (IDEA) model \citep{fisman2013idea} to incidence data up to January 26, which is equivalent to fitting an exponential growth model and assuming a fixed generation-interval distribution.
-Some of these studies have now been published in peer-reviewed journals \citep{riou2020pattern, zhao2020preliminary} or have been updated with better uncertainty quantification \citep{readncov2}.
-
-\subsection{Statistical framework}
-
-For each study $i$, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of \Rx{0i} and the assumed values of $\bar G_i$ and $\kappa_i$ and calculating the exponential growth rate $r_i$ via the inverse of \eref{gamma}:
-\begin{linenomath*}
-\begin{equation}
-r_i = \frac{\Rx{0i}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
-\end{equation}
-\end{linenomath*}
-This allows us to approximate the probability distributions of the estimated exponential growth rates by each study;
-uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
-
-We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution:
-\begin{linenomath*}
-\begin{equation}
-\begin{aligned}
-r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\mu_r^2/\sigma_r^2),\\
-\bar{G}_i &\sim \gammdist(\mathrm{mean}=\mu_G, \mathrm{shape}=\mu_G^2/\sigma_G^2),\\
-\kappa_i &\sim \gammdist(\mathrm{mean}=\mu_\kappa, \mathrm{shape}=\mu_\kappa^2/\sigma_\kappa^2),\\
-\end{aligned}
-\end{equation}
-\end{linenomath*}
-where $\sigma_r$, $\sigma_G$, and $\sigma_\kappa$ represent between-study standard deviations in $r$, $\bar G$, and $\kappa$, respectively.
-We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step.
-Since the gamma distribution does not allow zeros, we use $\kappa=0.02$ instead for Study 7.
-We note that this approach does not account for non-independence between the parameter estimates made by different modelers.
-As we add more models, we expect the pooled estimates to become sharper even when the models no longer add more information.
-Thus, the pooled estimator should be interpreted with care.
-
-We use weakly informative priors on hyperparameters representing pooled means and non-informative priors on hyperparameters representing between-study standard deviations:
-\begin{linenomath*}
-\begin{equation}
-\begin{aligned}
-\mu_r &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week}^{-1},\,\mathrm{shape}=2)\\
-\mu_G &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week},\,\mathrm{shape}=2)\\
-\mu_\kappa &\sim \gammdist(\mathrm{mean}=0.5,\,\mathrm{shape}=2)\\
-(\sigma_r, \sigma_G, \sigma_\kappa) &\sim \textrm{half-normal}(0, 10).
-\end{aligned}
-\end{equation}
-\end{linenomath*}
-We followed recommendations outlined in Gelman \textit{et al.} \cite{gelman2006prior}, parameterizing the top-level gamma distributions in terms of their means and standard deviations and imposing weakly informative prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
-We had initially used gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) but found this put too much prior probability on large between-study variances. This phenomenon is a known problem \citep{gelman2006prior}.
-Alternative choices of prior for the between-study shape parameters are also suboptimal: imposing strong priors (e.g. half-Student-$t(\mu=0,\sigma=1,\nu=4)$  assumes \textit{a priori} that between-study variance is large,  while weak priors (e.g. half-Cauchy(0,5)) can lead to poor mixing.
-
-We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
-Posterior samples are thinned every 1000 steps.
-Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference};
-trace plots and marginal posterior distribution plots are presented in Appendix.
-95\% confidence intervals are calculated by taking 2.5\% and 97.5\% quantiles from the marginal posterior distribution for each parameter.
-\texttt{R} code is available in GitHub (\url{https://github.com/parksw3/nCoV_framework}).
+We declare no competing interests.
 
 \section*{Acknowledgements}
 

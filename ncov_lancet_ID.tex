@@ -27,11 +27,8 @@
 
 \usepackage[pdfencoding=auto, psdextra]{hyperref}
 
-\usepackage{natbib}
-\usepackage[superscript,biblabel]{cite}
-\setcitestyle{numbers} 
-\setcitestyle{square}
-\bibliographystyle{unsrt}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
 \date{\today}
 
 \usepackage{xspace}
@@ -72,14 +69,14 @@
 }
 \newline
 \\
-Sang Woo Park BSc\textsuperscript{1,*}
-Benjamin M.\ Bolker PhD\textsuperscript{2,3,4}
-David Champredon PhD\textsuperscript{5}
-David J.\,D.\ Earn PhD\textsuperscript{3,4}
-Michael Li PhD\textsuperscript{2}
-Joshua S.\ Weitz PhD\textsuperscript{6, 7}
-Bryan T.\ Grenfell PhD\textsuperscript{1,8,9}
-Jonathan Dushoff PhD\textsuperscript{2,3,4,*}
+Sang Woo Park\textsuperscript{1,*}
+Benjamin M.\ Bolker\textsuperscript{2,3,4}
+David Champredon\textsuperscript{5}
+David J.\,D.\ Earn\textsuperscript{3,4}
+Michael Li\textsuperscript{2}
+Joshua S.\ Weitz\textsuperscript{6, 7}
+Bryan T.\ Grenfell\textsuperscript{1,8,9}
+Jonathan Dushoff\textsuperscript{2,3,4,*}
 \\
 \bigskip
 \textbf{1} Department of Ecology and Evolutionary Biology, Princeton University, Princeton, NJ, USA
@@ -105,8 +102,6 @@ Jonathan Dushoff PhD\textsuperscript{2,3,4,*}
 *Corresponding authors: swp2@princeton.edu and dushoff@mcmaster.ca
 \end{flushleft}
 
-\pagebreak
-
 \section*{Abstract}
 
 \subsection*{Background}
@@ -114,46 +109,50 @@ Jonathan Dushoff PhD\textsuperscript{2,3,4,*}
 A novel coronavirus (2019-nCoV) has recently emerged as a global threat.
 As the epidemic progresses, many disease modelers have focused on estimating the basic reproductive number \Ro, the average number of secondary cases caused by a primary case in an otherwise susceptible population.
 The modeling approaches and resulting estimates of \Ro vary widely, despite relying on similar data sources.
-We present a framework for comparing and combining different estimates of \Ro across a wide range of models.
+
+\subsection*{Aim}
+
+We aimed to develop a framework for comparing and combining different estimates of \Ro across a wide range of models.
 
 \subsection*{Methods}
 
-We reviewed 7 studies that were published online between January 23--26, 2020.
+We reviewed 7 model-based analyses of the 2019-nCoV outbreak that were published online between January 23--26, 2020.
 We decompose their \Ro estimates into three key quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 We use a Bayesian multilevel model to construct pooled estimates and measure uncertainties associated with these quantities.
-We assess early estimates of \Ro for the 2019-nCoV outbreak using the pooled estimates.
 
-\subsection*{Findings}
+\subsection*{Results}
 
 We find that most early estimates of \Ro rely on strong assumptions, especially about the generation-interval dispersion.
-In particular, estimates that rely on narrow generation-interval distributions are overly sensitive to estimates of the exponential growth rate.
+Estimates that rely on narrow generation-interval distributions are overly sensitive to estimates of the exponential growth rate.
 
-\subsection*{Interpretation}
+\subsection*{Conclusion}
 
 Our results emphasize the importance of propagating uncertainties in all components of \Ro, especially the shape of the generation-interval distribution in efforts to estimate \Ro at the outset of an epidemic.
 
-\subsection*{Funding}
+\section*{Keywords}
 
-BMB and DJDE were supported by Natural Sciences and Engineering Research Council (NSERC). ML was supported by Canadian Institutes of Health Research (CIHR).
+Basic reproductive number, 2019-nCoV
 
-\pagebreak
+\section*{Funding}
 
-\section*{Research in context}
+BMB and DJDE were supported by Natural Sciences and Engineering Research Council (NSERC). ML was supported by Canadian Institutes of Health Research (CIHR). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.
 
-\subsection*{Evidence before this study}
+\section*{Declaration of interests}
 
-% 7 analyses of the 2019-nCoV outbreak were published online as pre-prints between January 23--26, 2020.
-% Their modeling approaches varied widely and estimates of uncertainties in \Ro ranged from 1.5 to 7.1.
+We declare no competing interests.
 
-This section should include a description of all the evidence that the authors considered before undertaking this study. Authors should briefly state: the sources (databases, journal or book reference lists, etc) searched; the criteria used to include or exclude studies (including the exact start and end dates of the search), which should not be limited to English language publications; the search terms used; the quality (risk of bias) of that evidence; and the pooled estimate derived from meta-analysis of the evidence, if appropriate
+\section*{Acknowledgements}
 
-\subsection*{Added value of this study}
+We thank Daihai He for providing helpful comments on the manuscript.
 
-Authors should describe here how their findings add value to the existing evidence
+\section*{Contribution}
 
-\subsection*{Implications of all the available evidence}
-
-Authors should state the implications for practice or policy and future research of their study combined with existing evidence.Research in context panels should not contain references; key studies mentioned here should be referenced in the main text.
+SWP and JD developed the statistical framework. 
+SWP reviewed the published literature.
+SWP performed the analysis. 
+SWP, BMB, and JD created the figures. 
+SWP and JD wrote the first draft.
+All authors contributed to the writing and approval of the final report.
 
 \pagebreak
 
@@ -164,7 +163,7 @@ Although the virus is believed to have originated from animal reservoirs, the ab
 As of February 3, 2020, the World Health Organization (WHO) has confirmed 17391 cases, including 153 confirmed cases in 23 different countries, outside China \cite{who02report}.
 % Also on January 30, 2020, WHO declared the outbreak a Public Health Emergency of International Concern \cite{whoemer}.
 
-As the disease continues to spread, many researchers have published their preliminary analyses of the outbreak as pre-prints (e.g., \cite{bedfordncov, imaincov, liuncov, majumderncov, readncov, zhaoncov}), focusing in particular on estimates of the basic reproductive number \Ro (i.e., the average number of secondary cases generated by a primary case in a fully susceptible population \cite{anderson1991infectious}).
+As the disease continues to spread, many researchers have published their preliminary analyses of the outbreak as pre-prints\cite{bedfordncov, imaincov, liuncov, majumderncov, readncov, zhaoncov}, focusing in particular on estimates of the basic reproductive number \Ro (i.e., the average number of secondary cases generated by a primary case in a fully susceptible population \cite{anderson1991infectious}).
 Estimates of the basic reproductive number are of interest during an outbreak because they provide information about the level of intervention required to interrupt transmission, and about the final size of the outbreak \cite{anderson1991infectious}.
 We commend these researchers for their timely contribution and those who made the data publicly available.
 However, it can be difficult to compare a disparate set of estimates of \Ro from different research groups when the estimation methods and their underlying assumptions vary widely.
@@ -190,21 +189,21 @@ Despite the availability of more recent and/or updated estimates of \Ro, we rest
 \begin{center}
 \scriptsize
 \begin{tabular}{l|p{3.5cm}|p{2.5cm}|p{2.7cm}|l}
- & Basic reproductive\newline number \Ro & Mean generation\newline interval $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$ & Sources \\
+ & Basic reproductive\newline number \Ro & Mean generation\newline interval $\bar G$ (days) & Generation-interval\newline dispersion $\kappa$ & \\
 \hline
-Study 1 & 1.5--3.5 & 10 & 1 & \cite{bedfordncov} \\
+Study 1 & 1.5--3.5 & 10 & 1 & Bedford \textit{et al.} \cite{bedfordncov} \\
 \hline
-Study 2 & 2.5 (1.5--3.5)$^\ast$ & 8.4 & unspecified$^\dagger$ & \cite{imaincov} \\
+Study 2 & 2.5 (1.5--3.5)$^\ast$ & 8.4 & unspecified$^\dagger$ & Imai \textit{et al.} \cite{imaincov} \\
 \hline
-Study 3 & 2.92 (95\% CI: 2.28--3.67) & 8.4 & 0.2 & \cite{liuncov} \\
+Study 3 & 2.92 (95\% CI: 2.28--3.67) & 8.4 & 0.2 & Liu \textit{et al.} \cite{liuncov} \\
 \hline
-Study 4 & 3.8 (95\% CI: 3.6--4.0) & 7.6 & 0.5 & \cite{readncov} \\
+Study 4 & 3.8 (95\% CI: 3.6--4.0) & 7.6 & 0.5 & Read \textit{et al.} \cite{readncov} \\
 \hline
-Study 5 & 2.2 (90\% CI: 1.4--3.8) & 7--14 & 0.5 & \cite{riouncov} \\
+Study 5 & 2.2 (90\% CI: 1.4--3.8) & 7--14 & 0.5 & Riou and Althaus \cite{riouncov} \\
 \hline
-Study 6 & 5.47 (95\% CI: 4.16--7.10)$^\ddagger$ & 7.6--8.4 & 0.2 & \cite{zhaoncov} \\
+Study 6 & 5.47 (95\% CI: 4.16--7.10)$^\ddagger$ & 7.6--8.4 & 0.2 & Zhao \textit{et al.} \cite{zhaoncov} \\
 \hline
-Study 7 & 2.0--3.1 & 6--10 & 0 & \cite{majumderncov} \\
+Study 7 & 2.0--3.1 & 6--10 & 0 & Majumder and Mandl \cite{majumderncov} \\
 \hline
 \end{tabular}
 \end{center}
@@ -469,26 +468,9 @@ We suggest using methods based on open-source tools allow for maximal reproducib
 In summary, we have provided a basis for comparing exponential-growth based estimates of \Ro and its associated uncertainty in terms of three components: the exponential growth rate, mean generation interval, and generation interval dispersion. 
 We hope this framework will help researchers understand and reconcile disparate estimates of disease transmission early in an epidemic.
 
-\section*{Contributors}
-
-SWP and JD developed the statistical framework. 
-SWP reviewed the published literature.
-SWP performed the analysis. 
-SWP, BMB, and JD created the figures. 
-SWP and JD wrote the first draft.
-All authors contributed to the writing and approval of the final report.
-
-\section*{Declaration of interests}
-
-We declare no competing interests.
-
-\section*{Acknowledgements}
-
-We thank Daihai He for providing helpful comments on the manuscript.
-
 \pagebreak
 
-\bibliography{ncov}
+\bibliography{ncov_abbr}
 
 \pagebreak
 \appendix

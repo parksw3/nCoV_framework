@@ -1,4 +1,4 @@
-## This is wuhan, Daniel's nCoV directory
+## This is nCoV_framework, led by Sang Woo Park
 ## makestuff/project.Makefile
 
 current: target

@@ -27,7 +27,7 @@ compare_R0.%g: compare_R0.pdf
 	$(convert)
 
 Ignore += compare_assumption.jpg
-compare_assumption.jpg: compare_assumption.pdf Makefile
+compare_assumption.jpg: compare_assumption.pdf
 	convert -density 300 $< $@
 
 Ignore += assumption_*.jpg
@@ -39,6 +39,11 @@ assumption_2.jpg: compare_assumption.jpg
 
 assumption_3.jpg: compare_assumption.jpg
 	convert -crop 1000x900+2000+0 $< $@
+
+Ignore += figure2.jpg
+figure2.jpg: figure2.pdf
+	convert -density 300 $< $@
+
 
 ######################################################################
 

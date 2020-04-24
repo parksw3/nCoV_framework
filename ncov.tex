@@ -106,7 +106,7 @@ Jonathan Dushoff\textsuperscript{2,3,4,*}
 
 \section*{Abstract}
 A novel coronavirus (SARS-CoV-2) has recently emerged as a global threat. 
-As the epidemic progresses, many disease modelers have focused on estimating the basic reproductive number \Ro -- the average number of secondary cases caused by a primary case in an otherwise susceptible population.
+As the epidemic progresses, many disease modelers have focused on estimating the basic reproductive number \Ro\ --- the average number of secondary cases caused by a primary case in an otherwise susceptible population.
 The modeling approaches and resulting estimates of \Ro vary widely, despite relying on similar data sources.
 Here, we present a novel statistical framework for comparing and combining different estimates of \Ro across a wide range of models by decomposing the basic reproductive number into three key quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 We then apply our framework to early estimates of \Ro for the SARS-CoV-2 outbreak.
@@ -201,7 +201,7 @@ depend on the assumptions about the
 exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
 
 Here, we use the gamma approximation framework \citep{park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
-Assuming that generation intervals follow a gamma distribution with the mean $\bar G$ and the squared coefficient of variation $\kappa$, we have
+Assuming that generation intervals follow a gamma distribution with mean generation interval $\bar G$ and generation-interval dispersion $\kappa$, represented by the squared coefficient of variation of a gamma distribution, we have
 \begin{linenomath*}
 \begin{equation}
 \Ro = \left(1 + \kappa r \bar{G}\right)^{1/\kappa}.
@@ -213,7 +213,7 @@ This equation demonstrates that a generation-interval distribution that has a la
 \subsection{Statistical framework}
 
 As most studies do not report their estimates of the exponential growth rate, we first recalculate the exponential growth rate that correspond to their model assumptions.
-We do so by modeling reported distributions of the reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion parameter $\kappa$ with appropriate probability distributions;
+We do so by modeling reported distributions of the reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions;
 we used gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
@@ -298,7 +298,7 @@ We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 
 Posterior samples are thinned every 1000 steps.
 Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference};
 trace plots and marginal posterior distribution plots are presented in Appendix.
-95\% confidence intervals are calculated by taking 2.5\% and 97.5\% quantiles from the marginal posterior distribution for each parameter.
+95\% credible intervals (CI) are calculated by taking 2.5\% and 97.5\% quantiles from the marginal posterior distribution for each parameter.
 
 \section{Results}
 
@@ -322,8 +322,8 @@ Open triangle: we assumed $\kappa=0.5$ for Study 2 which does not report generat
 \fref{eff} shows how propagating uncertainty in different combinations would affect estimates and CIs for \Ro. For illustrative purposes, we use our pooled estimates, which may represent a reasonable proxy for the state of knowledge as of January 23--26 (\fref{eff}A).
 Comparing the models that include only some sources of uncertainty to the ``all'' model, we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: the middle bar (``GI mean''), which lacks growth-rate uncertainty, is relatively narrow.
 In this case, propagating error from the mean generation interval has negligible effect compared to propagating the uncertainty in $r$.
-Uncertainty in the generation-interval dispersion also has important effects as it determines the functional form of the relationship between $r$ and \Ro (compare ``growth rate + GI mean'' with ``all'').
-For example, reducing the dispersion parameter $\kappa$ from 1 (assuming exponentially distributed generation intervals) to 0 (assuming fixed generation intervals) changes the $r$--\Ro\ relationship from linear to exponential, therefore increasing the sensitivity of \Ro estimates to $r$ and $\bar G$.
+Uncertainty in the generation-interval dispersion $\kappa$ also has important effects as it determines the functional form of the relationship between $r$ and \Ro (compare ``growth rate + GI mean'' with ``all'').
+For example, reducing $\kappa$ from 1 (assuming exponentially distributed generation intervals) to 0 (assuming fixed generation intervals) changes the $r$--\Ro\ relationship from linear to exponential, therefore increasing the sensitivity of \Ro estimates to $r$ and $\bar G$.
 
 As uncertainty associated with the exponential growth rate decreases, accounting for uncertainties in generation intervals becomes even more important (\fref{eff}B).
 Propagating error only from the growth rate gives very narrow confidence intervals in this case. 
@@ -367,7 +367,7 @@ This is because Study 1 assumes an exponentially distributed generation interval
 \includegraphics[width=\textwidth]{compare_R0.pdf}
 \caption{
 \textbf{Sensitivity of the reported \Ro estimates with respect to our pooled estimates of the underlying parameters.}
-We replace the reported parameter values (growth rate $r$, GI mean $\bar G$, and GI variation $\kappa$) with our corresponding pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate \Ro (\textbf{growth rate}, \textbf{GI mean}, and \textbf{GI variation}).
+We replace the reported parameter values (growth rate $r$, mean generation interval $\bar G$, and generation-interval dispersion $\kappa$) with our corresponding pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate \Ro (\textbf{growth rate}, \textbf{GI mean}, and \textbf{GI variation}).
 The pooled estimate of \Ro is calculated from the joint posterior distribution of $\mu_r$, $\mu_G$, and $\mu_\kappa$ (\textbf{all});
 this corresponds to replacing all reported parameter values with our pooled estimates, which gives identical results across all studies.
 Horizontal dashed lines represent the 95\% confidence intervals of our pooled estimate of \Ro.

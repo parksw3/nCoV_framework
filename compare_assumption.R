@@ -85,7 +85,7 @@ g3 <- ggplot(kappadata2) +
              size=c(2, 2, 2, 2, 2, 2, 2, 4)) +
   geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 1, 2),
                lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
-  scale_x_continuous("Squared coefficient of variation",
+  scale_x_continuous("Generation-interval dispersion",
                      breaks=c(0, 0.25, 0.5, 0.75, 1)) +
   theme(
     axis.title.y = element_blank()

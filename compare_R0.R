@@ -20,7 +20,7 @@ R0all <- Rdata_adj %>%
   ) %>%
   mutate(
     type=factor(type, levels=c("base", "r", "gbar", "kappa", "all"),
-                labels=c("base", "growth rate", "GI mean", "GI variation", "all"))
+                labels=c("base", "growth rate", "mean generation interval", "generation-interval dispersion", "all"))
   ) %>%
   merge(study_number) %>%
   mutate(

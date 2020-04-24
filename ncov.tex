@@ -139,7 +139,7 @@ We compare seven disparate models published online between January 23--26, 2020 
 We use a Bayesian multilevel model to construct pooled estimates for the three key quantities: $r$, $\bar G$, and $\kappa$;
 the pooled estimates reflect the uncertainties present in modeling approaches and their underlying assumptions.
 We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval. 
-We also use our framework to tease apart which assumptions of these different models led to their different estimates and confidence intervals.
+We also use our framework to tease apart which assumptions of these different models led to their different estimates and credible intervals.
 Despite the availability of more recent and/or updated estimates of \Ro, we restrict ourselves to the estimates above in order to focus on the resolution of uncertainty in the earliest stages of an epidemic.
 
 \section{Methods}
@@ -171,7 +171,7 @@ Study 7 & 2.0--3.1 & 6--10 & 0 & \cite{majumderncov} \\
 \caption{
 \textbf{Reported estimates of the basic reproductive number and the assumptions about the generation-interval distributions.}
 Estimates of \Ro and their assumptions about the shape of the generation interval distributions were collected from 7 studies.
-$^\ast$We treat these intervals as a 95\% confidence interval in our analysis.
+$^\ast$We treat these intervals as a 95\% credible interval in our analysis.
 $^\dagger$We assume $\kappa = 0.5$ in our analysis.
 $^\ddagger$The authors presented \Ro estimates under different assumptions regarding the reporting rate; we use their baseline scenario in our analysis to remain consistent with other studies, which do not account for changes in the reporting rate.
 }
@@ -214,7 +214,7 @@ This equation demonstrates that a generation-interval distribution that has a la
 
 As most studies do not report their estimates of the exponential growth rate, we first recalculate the exponential growth rate that correspond to their model assumptions.
 We do so by modeling reported distributions of the reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions;
-we used gamma distributions to model values reported with confidence intervals and uniform distributions to model values reported with ranges.
+we used gamma distributions to model values reported with confidence/credible intervals and uniform distributions to model values reported with ranges.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
 For each study $i$, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of \Rx{0i} and the assumed values of $\bar G_i$ and $\kappa_i$ and calculate the exponential growth rate $r_i$ via the inverse of \eref{gamma}:
@@ -283,8 +283,8 @@ We use weakly informative priors on hyperparameters:
 \begin{linenomath*}
 \begin{equation}
 \begin{aligned}
-\mu_r &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week}^{-1},\,\mathrm{shape}=2)\\
-\mu_G &\sim \gammdist(\mathrm{mean}=1\,\mathrm{week},\,\mathrm{shape}=2)\\
+\mu_r &\sim \gammdist(\mathrm{mean}=1/7\,\mathrm{days}^{-1},\,\mathrm{shape}=2)\\
+\mu_G &\sim \gammdist(\mathrm{mean}=7\,\mathrm{days},\,\mathrm{shape}=2)\\
 \mu_\kappa &\sim \gammdist(\mathrm{mean}=0.5,\,\mathrm{shape}=2)\\
 (\sigma_r, \sigma_G, \sigma_\kappa) &\sim \textrm{half-normal}(0, 10).
 \end{aligned}
@@ -305,7 +305,7 @@ trace plots and marginal posterior distribution plots are presented in Appendix.
 \fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates that we calculate from our multilevel model.
 We find that there is a large uncertainty associated with the underlying parameters;
 many models rely on stronger assumptions that ignore these uncertainties.
-Surprisingly, no studies take into account how the variation in generation intervals affects their estimates of \Ro:
+Surprisingly, no studies take into account how generation-interval dispersion affects their estimates of \Ro:
 all studies assumed fixed values for $\kappa$, ranging from 0 to 1.
 Assuming fixed parameter values can lead to overly strong conclusions \citep{elderd2006uncertainty}.
 
@@ -313,7 +313,7 @@ Assuming fixed parameter values can lead to overly strong conclusions \citep{eld
 \includegraphics[width=\textwidth]{compare_assumption.pdf}
 \caption{
 \textbf{Comparisons of the reported parameter values with our pooled estimates.}
-We inferred point estimates (black), uniform distributions (orange) or confidence intervals (purple) for each parameter from each study, and combined them into pooled estimates (red; see text).
+We inferred point estimates (black), uniform distributions (orange) or confidence/credible intervals (purple) for each parameter from each study, and combined them into pooled estimates (red; see text).
 Open triangle: we assumed $\kappa=0.5$ for Study 2 which does not report generation-interval dispersion.
 }
 \label{fig:assumption}
@@ -326,8 +326,8 @@ Uncertainty in the generation-interval dispersion $\kappa$ also has important ef
 For example, reducing $\kappa$ from 1 (assuming exponentially distributed generation intervals) to 0 (assuming fixed generation intervals) changes the $r$--\Ro\ relationship from linear to exponential, therefore increasing the sensitivity of \Ro estimates to $r$ and $\bar G$.
 
 As uncertainty associated with the exponential growth rate decreases, accounting for uncertainties in generation intervals becomes even more important (\fref{eff}B).
-Propagating error only from the growth rate gives very narrow confidence intervals in this case. 
-Likewise, propagating errors from the growth rate and the mean generation interval gives wider but still too narrow confidence intervals.
+Propagating error only from the growth rate gives very narrow credible intervals in this case. 
+Likewise, propagating errors from the growth rate and the mean generation interval gives wider but still too narrow credible intervals.
 We expect this hypothetical example to better reflect more recent scenarios, as increased data availability will allow researchers to estimate $r$ with more certainty.
 
 \begin{figure}[!ht]
@@ -340,7 +340,7 @@ We compare estimates of \Ro under five scenarios that propagate different combin
 \textbf{GI mean}: \Ro estimates based on the the posterior distribution of $\mu_G$ while using median estimates of $\mu_r$ and $\mu_\kappa$.
 \textbf{growth rate + GI mean}: \Ro estimates based on the the joint posterior distributions of $\mu_r$ and $\mu_G$ while using a median estimate of $\mu_\kappa$.
 \textbf{all}: \Ro estimates based on the joint posterior distributions of  $\mu_r$, $\mu_G$, and $\mu_\kappa$.
-Vertical lines represent the 95\% confidence intervals.
+Vertical lines represent the 95\% credible intervals.
 }
 \label{fig:eff}
 \end{figure}
@@ -348,11 +348,11 @@ Vertical lines represent the 95\% confidence intervals.
 We also compare the estimates of \Ro across different studies by 
 replacing their values of $r$, $\bar G$, and $\kappa$ with our pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$, respectively) one at a time and recalculating the basic reproductive number \Ro (\fref{R0}).
 This procedure allows us to assess the sensitivity of the estimates of \Ro across appropriate ranges of uncertainties.
-We find that incorporating uncertainties one at a time increases the width of the confidence intervals in all but 7 cases.
-We estimate narrower confidence intervals for Study 3, Study 6, and Study 7 when we account for proper uncertainties in the generation-interval dispersion because they assume a narrow generation-interval distribution (compare ``base'' with ``GI variation'');
-when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower confidence intervals.
-We estimate narrower confidence intervals for Study 5 and Study 7 when we account for proper uncertainties in the mean generation interval (compare ``base'' with ``GI mean'') because the range of uncertainty in the mean generation interval $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
-Substituting the reported $r$ or $\bar G$ from Study 1 with our pooled estimates give narrower confidence intervals for similar reasons.
+We find that incorporating uncertainties one at a time increases the width of the credible intervals in all but 7 cases.
+We estimate narrower credible intervals for Study 3, Study 6, and Study 7 when we account for proper uncertainties in the generation-interval dispersion because they assume a narrow generation-interval distribution (compare ``base'' with ``generation-interval dispersion'');
+when higher values of $\kappa$ are used, their estimates of \Ro become less sensitive to the values of $r$ and $\bar G$, giving narrower credible intervals.
+We estimate narrower credible intervals for Study 5 and Study 7 when we account for proper uncertainties in the mean generation interval (compare ``base'' with ``mean generation interval'') because the range of uncertainty in the mean generation interval $\bar G$ they consider is much wider than the pooled range (\fref{assumption}).
+Substituting the reported $r$ or $\bar G$ from Study 1 with our pooled estimates give narrower credible intervals for similar reasons.
 
 We find that accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro\ in most cases (\fref{R0}).
 For example, recalculating \Ro for Study 7 by using our pooled estimate of $r$ gives $\Ro = 3.9$ (95\% CI: 2.3--8.6), which is much wider than the uncertainty range they reported (2.0--3.1).
@@ -361,26 +361,26 @@ First, even though the exponential growth rate $r$ and the mean generation inter
 $r$ is more influential in this case because it is associated with more uncertainty (\fref{assumption}).
 Second, assuming a fixed generation interval ($\kappa=0$) makes the estimate of \Ro too sensitive to $r$ and $\bar G$.
 One exception is Study 1: we find this estimate of \Ro is most sensitive to generation-interval dispersion $\kappa$.
-This is because Study 1 assumes an exponentially distributed generation interval ($\kappa=1$): estimates that rely on this assumption make \Ro relatively insensitive and thus tend to have particularly narrow confidence intervals.
+This is because Study 1 assumes an exponentially distributed generation interval ($\kappa=1$): estimates that rely on this assumption make \Ro relatively insensitive and thus tend to have particularly narrow credible intervals.
 
 \begin{figure}[!th]
 \includegraphics[width=\textwidth]{compare_R0.pdf}
 \caption{
 \textbf{Sensitivity of the reported \Ro estimates with respect to our pooled estimates of the underlying parameters.}
-We replace the reported parameter values (growth rate $r$, mean generation interval $\bar G$, and generation-interval dispersion $\kappa$) with our corresponding pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate \Ro (\textbf{growth rate}, \textbf{GI mean}, and \textbf{GI variation}).
+We replace the reported parameter values (growth rate $r$, mean generation interval $\bar G$, and generation-interval dispersion $\kappa$) with our corresponding pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) one at a time and recalculate \Ro (\textbf{growth rate}, \textbf{mean generation interval}, and \textbf{generation-interval dispersion}).
 The pooled estimate of \Ro is calculated from the joint posterior distribution of $\mu_r$, $\mu_G$, and $\mu_\kappa$ (\textbf{all});
 this corresponds to replacing all reported parameter values with our pooled estimates, which gives identical results across all studies.
-Horizontal dashed lines represent the 95\% confidence intervals of our pooled estimate of \Ro.
-The reported \Ro estimates (\textbf{base}) have been adjusted to show the approximate 95\% confidence interval using the probability distributions that we defined if they had relied on different measures for parameter uncertainties.
+Horizontal dashed lines represent the 95\% credible intervals of our pooled estimate of \Ro.
+The reported \Ro estimates (\textbf{base}) have been adjusted to show the approximate 95\% credible interval using the probability distributions that we defined if they had relied on different measures for parameter uncertainties.
 }
 \label{fig:R0}
 \end{figure}
 
 Finally, we incorporate all uncertainties by using posterior samples for $\mu_r$, $\mu_G$, and $\mu_\kappa$ to recalculate \Ro and compare it with the reported \Ro estimates.
 Our estimated \Ro from the pooled distribution has a median of 2.9 (95\% CI: 2.1--4.5).
-While the point estimate of \Ro is similar to other reported values from this date range, the confidence intervals are wider than all but one study.
+While the point estimate of \Ro is similar to other reported values from this date range, the credible intervals are wider than all but one study.
 This result does not imply that assumptions based on the pooled estimate are too weak;
-we believe that this confidence interval more accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
+we believe that this credible interval more accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
 In fact, because the pooled estimate does not account for overlap in data sources used by the models, we feel that it is more likely to be over-confident than under-confident.
 Our median estimate averages over the various studies, and therefore particular studies have higher or lower median estimates.
 We note in particular that, while the baseline example we used from Study 6 may appear to be an outlier, the authors of this study also explore different scenarios involving changes in reporting rate over time, under which their estimates of \Ro are similar to other reported estimates.
@@ -407,13 +407,13 @@ Examples that seem relevant to this outbreak include: changing reporting rates, 
 For emerging pathogens such as SARS-CoV-2, there may be an early period of time when the reporting rate is very low due to limited awareness or diagnostic resources;
 for example, \cite{zhaoncov} (Study 6) demonstrated that estimates of \Ro can change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 17, when the official diagnostic guidelines were released \citep{who17protocol}, and January 20.
 Delays between key epidemiological timings (e.g., infection, symptom onset, and detection) can also shift the shape of an observed epidemic curve and, therefore, affect parameter estimates as well as predictions of the course of an outbreak \citep{tariq2019assessing}.
-Even though a constant delay between infection and detection may not affect the estimate of the growth rate, it can still affect the associated confidence intervals.
+Even though a constant delay between infection and detection may not affect the estimate of the growth rate, it can still affect the associated credible intervals.
 Finally, generation intervals can become shorter throughout an epidemic as intervention strategies, such as quarantine, can reduce the infectious period \citep{hethcote2002effects}.
 Accounting for these factors is crucial for making accurate inferences.
 
 Here, we focused on the estimates of \Ro that were published within a very short time frame (January 23--26).
 During early phases of an outbreak, it is reasonable to assume that the epidemic grows exponentially \citep{anderson1991infectious}. However, as the number of susceptible individuals decreases, the epidemic will saturate, and estimates of $r$ used for \Ro should account for the possibility that $r$ is decreasing through time.
-Although our analysis only reflects a snapshot of a fast-moving epidemic, we expect certain lessons to hold: confidence intervals must combine different sources of uncertainty. 
+Although our analysis only reflects a snapshot of a fast-moving epidemic, we expect certain lessons to hold: credible intervals must combine different sources of uncertainty. 
 In fact, as epidemics progress and more data becomes available, it is likely that inferences about exponential growth rate (and other epidemiological parameters) will become more precise; thus the risk of over-confidence when uncertainty about the generation-interval distribution is neglected will become greater.
 
 We strongly emphasize the value of attention to accurate characterization of the transmission chains via contact tracing and better statistical frameworks for inferring generation-interval distributions from such data \citep{britton2019estimation}.

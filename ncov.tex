@@ -142,7 +142,7 @@ Early in an epidemic, information is scarce and there is inevitably a great deal
 Ignoring these uncertainties inevitably leads to strong conclusions.
 We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty in \Ro should propagate error from all three sources \citep{elderd2006uncertainty}.
 
-We present a statistical framework for averaging across estimated basic reproductive number \Ro from multiple studies and apply the method to seven disparate models published online as pre-prints between January 23--26, 2020 that estimated \Ro for the SARS-CoV-2 outbreak \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}.
+We present a statistical framework for averaging across estimates of basic reproductive number \Ro from multiple studies and apply the method to seven disparate models published online as pre-prints between January 23--26, 2020 that estimated \Ro for the SARS-CoV-2 outbreak \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}.
 Previous studies have directly calculated the average of reported \Ro values but such methods undermine differences in underlying model assumptions and statistical methods \citep{majumder2020early, liu2020reproductive}.
 Instead, we decompose estimated \Ro into three key quantities ($r$, $\bar G$, and $\kappa$) and calculate the average (pooled estimates) of these key parameters.
 Calculating \Ro based on the pooled estimates allow us to appropriately average across the uncertainties present in modeling approaches and their underlying assumptions.
@@ -209,7 +209,7 @@ When the epidemic is growing exponentially, the estimated basic reproductive num
 \end{linenomath*}
 In other words, all model assumptions come down to assumptions about the exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
 For example, if a model relies on strong assumptions about the underlying observation or process model, the estimated confidence intervals associated with the exponential growth rates or parameters of the generation-interval distributions will be necessarily narrow.
-Therefore, it is sufficient to consider the estimates and assumptions about the exponential growth rates and the shapes of the generation-interval distributions to understand disparate estimates of the basic reproduction number.
+Therefore, it is sufficient to consider the estimates and assumptions about the exponential growth rates and the shapes of the generation-interval distributions to understand disparate estimates of the basic reproductive number.
 
 As most studies do not report their estimates of the exponential growth rate, we summarize model outcomes using reported (either estimated or assumed) values of the basic reproductive number \Ro, mean generation interval $\bar G$ and generation-interval dispersion $\kappa$, represented by the squared coefficient of variation (Table 1);
 we re-estimate the corresponding exponential growth rates later.
@@ -241,33 +241,35 @@ Assuming that generation intervals follow a gamma distribution with mean generat
 \end{linenomath*}
 This equation demonstrates that a generation-interval distribution that has a larger mean (higher $\bar{G}$) or is less variable (lower $\kappa$) will give a higher estimate of \Ro for the same value of $r$ \citep{wallinga2007generation}.
 
-\subsection{Statistical framework}
+\subsection{Re-estimation of the exponential growth rate}
 
-\rev{The authors consider that all the 7 studies have the same weight in the estimation of basic
-reproduction weight even though their estimations and precision vary a lot. The authors might
-explain why they make this hypothesis and why they did not explore a weighted estimation
-based on the confidence of the estimation of R0.}
-
-\rev{In each chain, the authors use 500,000 sampling steps and remove every 1000th step.
-Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
-per chain with 4 independent chains). Is it sufficient for the effective sample size? Is it too much
-for the burn-in steps of 500,000 and the thinning steps of 1,000?}
-
-As most studies do not report their estimates of the exponential growth rate, we first re-estimate the exponential growth rate that correspond to their model assumptions:
+As most studies do not report their estimates of the exponential growth rate, we first re-estimate the exponential growth rate that correspond to their model assumptions.
 Since the estimates of the basic reproductive number \Ro entirely depends on the exponential growth rate and the shape of generation-interval distributions, we can calulate the exponential growth rate from the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
-First, to account for uncertainties in these parameters, we model reported values of the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions;
-we used gamma distributions to model values reported with confidence/credible intervals and uniform distributions to model values reported with ranges (Table 2).
+First, to account for uncertainties in these parameters, we model reported values of the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions.
+We used gamma distributions to model values reported with confidence/credible intervals and uniform distributions to model values reported with ranges;
+when confidence/credible intervals are reported, we parameterize the gamma distribution such that (i) its mean matches the estimate value and (ii) the probability that a random variable following the specified gamma distribution falls between the lower and upper confidence/credible limits is equal to the reported confidence/credible level. This probability does not need to be equi-tailed.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
 
-For each study $i$, we construct a family of parameter sets by drawing 100,000 random samples from the probability distributions (Table 2) that represent the estimates of \Rx{0i} and the assumed values of $\bar G_i$ and $\kappa_i$ and calculate the exponential growth rate $r_i$ via the inverse of \eref{gamma}:
+For each study $i$, we construct a family of parameter sets by drawing $10^5$ random samples from the probability distributions (Table 2) that represent the estimates of $(\Ro)_{i,m}$ and the assumed values of $\bar G_{i,m}$ and $\kappa_{i,m}$ and calculate the exponential growth rate $r_{i,m}$ via the inverse of \eref{gamma}:
 \begin{linenomath*}
 \begin{equation}
-r_i = \frac{\Rx{0i}^{\kappa_i} - 1}{\kappa_i \bar{G}_i}.
+r_{i,m} = \frac{\left[(\Ro)_{i,m}\right]^{\kappa_{i,m}} - 1}{\kappa_{i,m} \bar{G}_{i,m}},
 \end{equation}
 \end{linenomath*}
-This allows us to approximate the probability distributions of the estimated exponential growth rates by each study;
-uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
+where $m=1,\dots,10^5$.
+This allows us to approximate the probability distributions of the estimated exponential growth rates by each study.
+Uncertainties in the probability distributions that we calculate for the estimated exponential growth rates will reflect the methods and assumptions that the studies rely on.
+Then, the set $(\bar{G}_{i}, \kappa_{i}, r_{i})$ defines an empirical parameter distribution for each study without having to re-fit each model.
+
+For most cases, we model $(\Ro)_i$, $\bar G_i$, and $\kappa_i$ using independent distributions (as specified in Table 2) to calculate $r_i$.
+In practice, this assumption does not affect our analysis because we are re-calculating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
+in other words, we still obtain the same estimates and the associated uncertainty of $(\Ro)_i$ if we calculate it from $r_i$, $\bar G_i$, and $\kappa_i$.
+For study 6, we fix $\bar G=8\,\textrm{days}$ and use the gamma distribution (Table 2) that corresponds to $\mathcal R_0 = 5.47$ (95\% CI: 4.16--7.10) during the re-estimation step for $r$ to remain consistent with the original study that assumed $\bar G=8\,\textrm{days}$ to obtain this particular estimate;
+the original article reports three $\mathcal R_0$ (and 95\% CIs) estimates using three different values of $\bar G$: 7.6 (MERS-like), 8 (average), and 8.4 (SARS-like) days.
+We account for uncertainties in $\bar G$ for Study 6 (Table 1) in all other steps in order to properly incorporate parameter uncertainties in the estimate of \Ro.
+Study 7 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
+Instead of modeling \Ro with a probability distribution and recalculating $r$, we use $r=0.114\,\mathrm{days}^{-1}$, which explains all uncertainty in the reported \Ro, when combined with the considered range of $\bar G$ in the original article.
 
 \newcommand{\gammdist}{\mathrm{Gamma}}
 \begin{table}[t]
@@ -299,10 +301,22 @@ The gamma distribution is parameterized by its mean and shape $\alpha$.
 Constant values are fixed according to Table 1.
 $^\ast$We do not account for this uncertainty during our recalculation of the exponential growth rate $r$ because the reported estimate of $\mathcal R_0$ and its uncertainty assumes $\bar G = 8$; the original article reports three $\mathcal R_0$ (and 95\% CIs) estimates using three different values of $\bar G$: 7.6 (MERS-like), 8 (average), and 8.4 (SARS-like).
 We still account for this uncertainty in our pooled estimates ($\mu_G$).
-$^\dagger$Study 6 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
+$^\dagger$Study 7 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
 Instead of modeling \Ro with a probability distribution and recalculating $r$, we use $r=0.114\,\mathrm{days}^{-1}$, which explains all uncertainty in the reported \Ro, when combined with the considered range of $\bar G$.
 }
 \end{table}
+
+\subsection{Pooled-estimates}
+
+\rev{The authors consider that all the 7 studies have the same weight in the estimation of basic
+reproduction weight even though their estimations and precision vary a lot. The authors might
+explain why they make this hypothesis and why they did not explore a weighted estimation
+based on the confidence of the estimation of R0.}
+
+\rev{In each chain, the authors use 500,000 sampling steps and remove every 1000th step.
+Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
+per chain with 4 independent chains). Is it sufficient for the effective sample size? Is it too much
+for the burn-in steps of 500,000 and the thinning steps of 1,000?}
 
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution.
 The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches, while accounting for the uncertainties in the assumptions they make:

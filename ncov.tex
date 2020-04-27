@@ -308,16 +308,6 @@ Instead of modeling \Ro with a probability distribution and recalculating $r$, w
 
 \subsection{Pooled-estimates}
 
-\rev{The authors consider that all the 7 studies have the same weight in the estimation of basic
-reproduction weight even though their estimations and precision vary a lot. The authors might
-explain why they make this hypothesis and why they did not explore a weighted estimation
-based on the confidence of the estimation of R0.}
-
-\rev{In each chain, the authors use 500,000 sampling steps and remove every 1000th step.
-Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
-per chain with 4 independent chains). Is it sufficient for the effective sample size? Is it too much
-for the burn-in steps of 500,000 and the thinning steps of 1,000?}
-
 We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) using a Bayesian multilevel modeling approach, which assumes that the parameters across different studies come from the same gamma distribution.
 The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches, while accounting for the uncertainties in the assumptions they make:
 \begin{linenomath*}
@@ -339,14 +329,15 @@ Moreover, we cannot assess which assumptions are more realistic during the initi
 Therefore, it is difficult to come up with a sensible way to weigh different estimates, and we do not explore weighted estimation.
 
 We note that this approach does not account for non-independence between the parameter estimates made by different modelers.
-Typically, Bayesian hierarchical epidemic modeling seeks to leverage estimates across different outbreaks of a same disease.
-In this case, most estimates are based on reported number of cases from China, particularly from Wuhan province; thus, differences in estimates are likely to be driven by differences in the methods and assumptions, rather than epidemiological differences.
-In other words, the pooled estimates can become sharper as we add more models even when the models no longer add more information about the epidemic.
+Typically, Bayesian multilevel models seek to leverage estimates across spatially and/or temporally varying outbreaks of a same disease.
+In this case, most estimates are based on reported number of cases from China, particularly from Wuhan province. Differences among estimates are likely to reflect differences in estimation methods and underlying assumptions, rather than epidemiological differences.
+The pooled estimates can become sharper as we add more models even when the models no longer add more information about the epidemic.
 Thus, the pooled estimator should be interpreted with care.
+
 \rev{Authors state that “We note that this approach does not account for non- independence between the parameter estimates made by different modelers.” Authors should discuss this point more in depth. This seems to me an important limitation. With this respect I wonder what data the studies focus on. Are all analyzing the same epidemic (in China) considering same or similar data? Again, more details on these studies (in this case the location, period of the epidemic, and data source) should be provided.}
 
-\rev{Page 6, Line 29. Are the priors for $\mu_r$, $\mu_G$, and $\mu_\kappa$ weakly informative? Did the
-authors check the sensibility with new priors?}
+\subsection{Prior distributions}
+
 We use weakly informative priors on hyperparameters:
 \begin{linenomath*}
 \begin{equation}
@@ -358,11 +349,15 @@ We use weakly informative priors on hyperparameters:
 \end{aligned}
 \end{equation}
 \end{linenomath*}
+These priors are chosen such that their 95\% quantiles are sufficiently wider than biologically realistic parameter ranges.
+Specifically, 95\% quantiles for $\mu_r$, $\mu_G$, and $\mu_\kappa$ are 0.02--0.40 $\mathrm{days}^{-1}$, 0.8--19.5 days, and 0.1--1.4, respectively.
+Therefore, we do not expect our results to be sensitive to these priors.
+
 We followed recommendations outlined in \cite{gelman2006prior}, parameterizing the top-level gamma distributions in terms of their means and standard deviations and imposing weakly informative prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
 We had initially used gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) but found this put too much prior probability on large between-study variances. This phenomenon is a known problem \citep{gelman2006prior}.
-Alternative choices of prior for the between-study shape parameters are also suboptimal: imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$  assumes \textit{a priori} that between-study variance is large,  while weak priors (e.g. half-Cauchy(0,5)) can lead to poor mixing.
-\rev{Page 6 Lines 44-47. Please clarify the sentence: “Alternative choices of prior … can lead to
-poor mixing”.}
+Alternative choices of prior for the between-study shape parameters are also suboptimal. 
+Imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$ assumes \textit{a priori} that between-study variance is large (and therefore do not pool different estimates sufficiently).
+Weak priors (e.g. half-Cauchy(0,5)) can lead to inefficient sampling and poor convergence.
 
 We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
 Posterior samples are thinned every 1000 steps.

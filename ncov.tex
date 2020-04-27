@@ -323,17 +323,25 @@ The pooled estimates, which are represented as probability distributions rather 
 \begin{linenomath*}
 \begin{equation}
 \begin{aligned}
-r_i &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\mu_r^2/\sigma_r^2),\\
-\bar{G}_i &\sim \gammdist(\mathrm{mean}=\mu_G, \mathrm{shape}=\mu_G^2/\sigma_G^2),\\
-\kappa_i &\sim \gammdist(\mathrm{mean}=\mu_\kappa, \mathrm{shape}=\mu_\kappa^2/\sigma_\kappa^2),\\
+(r_1, \dots, r_7) &\sim \gammdist(\mathrm{mean}=\mu_r, \mathrm{shape}=\mu_r^2/\sigma_r^2),\\
+(\bar{G}_1, \dots, \bar{G}_7) &\sim \gammdist(\mathrm{mean}=\mu_G, \mathrm{shape}=\mu_G^2/\sigma_G^2),\\
+(\kappa_1, \dots, \kappa_7) &\sim \gammdist(\mathrm{mean}=\mu_\kappa, \mathrm{shape}=\mu_\kappa^2/\sigma_\kappa^2),\\
 \end{aligned}
 \end{equation}
 \end{linenomath*}
 where $\mu_r$, $\mu_G$, $\mu_\kappa$ represent the pooled estimates, and $\sigma_r$, $\sigma_G$, and $\sigma_\kappa$ represent between-study standard deviations.
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets for each study at each Metropolis-Hastings step.
 Since the gamma distribution does not allow zeros, we use $\kappa=0.02$ instead for Study 7.
+
+Here, we assume that all 7 studies are equally weighted.
+During the initial phase of an outbreak of a novel virus such as SARS-CoV-2, uncertainties in parameter estimates are primarily driven by the underlying assumptions; narrow confidence intervals from a study are likely to reflect their strong assumptions rather than its precision of inference.
+Moreover, we cannot assess which assumptions are more realistic during the initial phase of an outbreak a novel virus due to the scarcity of information.
+Therefore, it is difficult to come up with a sensible way to weigh different estimates, and we do not explore weighted estimation.
+
 We note that this approach does not account for non-independence between the parameter estimates made by different modelers.
-As we add more models, the pooled estimates can become sharper even when the models no longer add more information.
+Typically, Bayesian hierarchical epidemic modeling seeks to leverage estimates across different outbreaks of a same disease.
+In this case, most estimates are based on reported number of cases from China, particularly from Wuhan province; thus, differences in estimates are likely to be driven by differences in the methods and assumptions, rather than epidemiological differences.
+In other words, the pooled estimates can become sharper as we add more models even when the models no longer add more information about the epidemic.
 Thus, the pooled estimator should be interpreted with care.
 \rev{Authors state that “We note that this approach does not account for non- independence between the parameter estimates made by different modelers.” Authors should discuss this point more in depth. This seems to me an important limitation. With this respect I wonder what data the studies focus on. Are all analyzing the same epidemic (in China) considering same or similar data? Again, more details on these studies (in this case the location, period of the epidemic, and data source) should be provided.}
 

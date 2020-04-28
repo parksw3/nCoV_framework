@@ -10,7 +10,7 @@ priorfun <- function(theta) {
     dgamma(theta[5], 2, 2/0.5, log=TRUE)
 }
 
-sample_data$`Majumder et al. (2020)`$kappa <- 0.02
+sample_data$`Majumder and Mandl (2020)`$kappa <- 0.02
 
 postfun <- function(theta) {
   if (any(theta < 0))

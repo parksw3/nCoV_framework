@@ -2,8 +2,22 @@ library(ggplot2); theme_set(theme_bw())
 library(gridExtra)
 library(colorspace)
 library(dplyr)
-source("published_estimate.R")
 source("study_number.R")
+
+load("sample_data.rda")
+
+Rdata_adj <- sample_data %>%
+  bind_rows(.id="study") %>%
+  group_by(study) %>%
+  mutate(
+    R2=(1 + kappa * r * gbar)^(1/kappa),
+    R2=ifelse(kappa==0, exp(r * gbar), R2),
+  ) %>%
+  summarize(
+    est=median(R2),
+    lwr=quantile(R2, 0.025),
+    upr=quantile(R2, 0.975)
+  )
 
 load("R0_r.rda")
 load("R0_gbar.rda")
@@ -20,7 +34,7 @@ R0all <- Rdata_adj %>%
   ) %>%
   mutate(
     type=factor(type, levels=c("base", "r", "gbar", "kappa", "all"),
-                labels=c("base", "growth rate", "mean generation interval", "generation-interval dispersion", "all"))
+                labels=c("base", "exponential growth rate", "mean generation interval", "generation-interval dispersion", "all"))
   ) %>%
   merge(study_number) %>%
   mutate(
@@ -42,7 +56,7 @@ R0all %>%
   mutate(
     width=upr-lwr
   ) %>%
-  merge(summarize(group_by(Rdata, study), bwidth=upr-lwr)) %>%
+  merge(summarize(group_by(Rdata_adj, study), bwidth=upr-lwr)) %>%
   mutate(
     ww=width>bwidth
   )
@@ -65,5 +79,7 @@ g1 <- ggplot(R0all) +
     legend.title = element_blank()
   )
 
-ggsave("compare_R0.pdf", g1, width=7, height=4)
-ggsave("compare_R0.png", g1, width=7, height=4)
+tikz(file = "compare_R0.tex", width = 8, height = 4, standAlone = T)
+g1
+dev.off()
+tools::texi2dvi('compare_R0.tex', pdf = T, clean = T)

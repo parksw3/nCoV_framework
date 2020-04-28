@@ -2,7 +2,7 @@ library(coda)
 library(ggplot2); theme_set(theme_bw())
 library(dplyr)
 library(gridExtra)
-source("published_estimate.R")
+library(tikzDevice)
 source("study_number.R")
 
 load("sample_data.rda")
@@ -19,82 +19,111 @@ rdata2 <- sample_data %>%
   }) %>%
   bind_rows(.id="study")
 
+gdata2 <- sample_data %>%
+  lapply(function(x) {
+    data.frame(
+      est=median(x$gbar),
+      lwr=quantile(x$gbar, 0.025),
+      upr=quantile(x$gbar, 0.975)
+    )
+  }) %>%
+  bind_rows(.id="study")
+
+kappadata2 <- sample_data %>%
+  lapply(function(x) {
+    data.frame(
+      est=median(x$kappa),
+      lwr=quantile(x$kappa, 0.025),
+      upr=quantile(x$kappa, 0.975)
+    )
+  }) %>%
+  bind_rows(.id="study")
+
 avg_r <- data.frame(
-  est=median(unlist(unlist(MCMC_all[,1]))),
-  lwr=quantile(unlist(unlist(MCMC_all[,1])), 0.025),
-  upr=quantile(unlist(unlist(MCMC_all[,1])), 0.975),
+  est=unlist(unlist(MCMC_all[,1])),
   anon="Pooled estimate"
-)
+) %>%
+  mutate(
+    anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 7:1)))
+  )
+
+quantile(avg_r$est, c(0.025, 0.5, 0.975))
 
 avg_gen <- data.frame(
-  est=median(unlist(unlist(MCMC_all[,3]))),
-  lwr=quantile(unlist(unlist(MCMC_all[,3])), 0.025),
-  upr=quantile(unlist(unlist(MCMC_all[,3])), 0.975),
+  est=unlist(unlist(MCMC_all[,3])),
   anon="Pooled estimate"
-)
+) %>%
+  mutate(
+    anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 7:1)))
+  )
+
+quantile(avg_gen$est, c(0.025, 0.5, 0.975))
 
 avg_kappa <- data.frame(
-  est=median(unlist(unlist(MCMC_all[,5]))),
-  lwr=quantile(unlist(unlist(MCMC_all[,5])), 0.025),
-  upr=quantile(unlist(unlist(MCMC_all[,5])), 0.975),
+  est=unlist(unlist(MCMC_all[,5])),
   anon="Pooled estimate"
-)
+) %>%
+  mutate(
+    anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 7:1)))
+  )
+
+quantile(avg_kappa$est, c(0.025, 0.5, 0.975))
 
 rdata3 <- mutate(merge(rdata2, study_number)) %>%
-  bind_rows(avg_r) %>%
   mutate(
     anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 7:1)))
   )
 
 g1 <- ggplot(rdata3) +
-  geom_point(aes(est, anon), col=c("orange", "purple", "purple", 1, "purple", "purple", "purple", 2),
-             size=c(2, 2, 2, 2, 2, 2, 2, 4)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c("orange", "purple", "purple", 1, "purple", "purple", "purple", 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
+  geom_point(aes(est, anon, col=anon), size=2) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon, col=anon), lwd=0.7) +
+  ggstance::geom_violinh(data=avg_r, aes(est, anon, col=anon, fill=anon), alpha=0.2, width=1) +
+  scale_color_manual(values=c("red", "orange", "purple", "purple", "purple", "purple", "purple", 1)) +
+  scale_fill_manual(values=c("red", "orange", "purple", "purple", "purple", "purple", "purple", 1)) +
   scale_x_continuous(expression(Exponential~growth~rate~(days^{-1}))) +
   theme(
-    axis.title.y = element_blank()
+    axis.title.y = element_blank(),
+    legend.position = "none"
   )
 
-gdata2 <- mutate(merge(gdata, study_number)) %>%
-  bind_rows(avg_gen) %>%
+gdata3 <- mutate(merge(gdata2, study_number)) %>%
   mutate(
     anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 7:1)))
   )
 
-g2 <- ggplot(gdata2) +
-  geom_point(aes(est, anon), col=c(1, 1, 1, "orange", 1, "orange", "orange", 2),
-             size=c(2, 2, 2, 2, 2, 2, 2, 4)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, "orange", 1, "orange", "orange", 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
+g2 <- ggplot(gdata3) +
+  geom_point(aes(est, anon, col=anon), size=2) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon, col=anon), lwd=0.7) +
+  ggstance::geom_violinh(data=avg_gen, aes(est, anon, col=anon, fill=anon), alpha=0.2, width=1) +
+  scale_color_manual(values=c("red", "black", "black", "black", "black", "orange", "orange", "orange")) +
+  scale_fill_manual(values=c("red", "black", "black", "black", "black", "orange", "orange", "orange")) +
   scale_x_continuous("Mean generation interval (days)") +
   theme(
-    axis.title.y = element_blank()
+    axis.title.y = element_blank(),
+    legend.position = "none"
   )
 
-kappadata2 <- mutate(merge(kappadata, study_number)) %>%
-  bind_rows(avg_kappa) %>%
+kappadata3 <- mutate(merge(kappadata2, study_number)) %>%
   mutate(
     anon=factor(anon, levels=c("Pooled estimate", paste0("Study ", 7:1))),
     est=ifelse(anon=="Study 2", 0.5, est)
   )
 
-g3 <- ggplot(kappadata2) +
-  geom_point(aes(est, anon), shape=c(16, 2, 16, 16, 16, 16, 16, 16),
-             col=c(1, 1, 1, 1, 1, 1, 1, 2),
-             size=c(2, 2, 2, 2, 2, 2, 2, 4)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon), col=c(1, 1, 1, 1, 1, 1, 1, 2),
-               lwd=c(0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 1.2)) +
-  scale_x_continuous("Generation-interval dispersion",
-                     breaks=c(0, 0.25, 0.5, 0.75, 1)) +
+g3 <- ggplot(kappadata3) +
+  geom_point(aes(est, anon, col=anon), size=2, shape=c(16, 2, 16, 16, 16, 16, 16)) +
+  geom_segment(aes(lwr, anon, xend=upr, yend=anon, col=anon), lwd=0.7) +
+  ggstance::geom_violinh(data=avg_kappa, aes(est, anon, col=anon, fill=anon), alpha=0.2, width=1) +
+  scale_color_manual(values=c("red", "black", "black", "black", "black", "black", "black", "black")) +
+  scale_fill_manual(values=c("red", "black", "black", "black", "black", "black", "black", "black")) +
+  scale_x_continuous("Generation-interval dispersion") +
   theme(
-    axis.title.y = element_blank()
+    axis.title.y = element_blank(),
+    legend.position = "none"
   )
-
-print(g1)
-print(g2)
-print(g3)
 
 gtot <- arrangeGrob(g1, g2, g3, nrow=1)
 
-ggsave("compare_assumption.pdf", gtot, width=10, height=3)
+tikz(file = "compare_assumption.tex", width = 10, height = 3, standAlone = T)
+plot(gtot)
+dev.off()
+tools::texi2dvi('compare_assumption.tex', pdf = T, clean = T)

@@ -9,24 +9,12 @@ sample_bedford <- function(n=1) {
 }
 
 sample_imai <- function(n=1) {
-  # pgamma(3.5, 28, 28/2.6)-pgamma(1.5, 28, 28/2.6)
+  # pgamma(3.5, 18, 18/2.6)-pgamma(1.5, 18, 18/2.6)
   
   dplyr::data_frame(
     gbar=8.4,
     kappa=0.5,
-    R=rgamma(n, 28, rate=28/2.6),
-    r=(R^kappa-1)/(kappa*gbar),
-    rho=r*gbar
-  )
-}
-
-sample_imai <- function(n=1) {
-  # pgamma(3.5, 28, 28/2.6)-pgamma(1.5, 28, 28/2.6)
-  
-  dplyr::data_frame(
-    gbar=8.4,
-    kappa=0.5,
-    R=rgamma(n, 28, rate=28/2.6),
+    R=rgamma(n, 18, rate=18/2.6),
     r=(R^kappa-1)/(kappa*gbar),
     rho=r*gbar
   )

@@ -349,6 +349,7 @@ We use weakly informative priors on hyperparameters:
 \end{linenomath*}
 These priors are chosen such that their 95\% quantiles are sufficiently wider than biologically realistic parameter ranges.
 Specifically, 95\% quantiles for $\mu_r$, $\mu_G$, and $\mu_\kappa$ are 0.02--0.40 $\mathrm{days}^{-1}$, 0.8--19.5 days, and 0.1--1.4, respectively.
+Parameters that are outside these ranges are biologically unrealistic for SARS-CoV-2 outbreaks.
 Therefore, we do not expect our results to be sensitive to these priors.
 
 We followed recommendations outlined in \cite{gelman2006prior}, parameterizing the top-level gamma distributions in terms of their means and standard deviations and imposing weakly informative prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
@@ -373,7 +374,7 @@ For example, $r$-substitute estimate for Study $i$ is computed as:
 \end{equation}
 where $\kappa_i$ and $\bar{G}_i$ are taken from their corresponding parameter sets and $\mu_r$ is taken from the posterior distribution.
 This procedure allows us to assess the sensitivity of the estimates of \Ro across appropriate ranges of uncertainties.
-We compare substitute estimates with the base estimates of \Ro (based on $r_i$, $\bar G_i$, and $\kappa_i$) as well as pooled estimates of \Ro (baed on $\mu_r$, $\mu_G$, and $\mu_\kappa$).
+We compare substitute estimates with the base estimates of \Ro (based on $r_i$, $\bar G_i$, and $\kappa_i$) as well as pooled estimates of \Ro (based on $\mu_r$, $\mu_G$, and $\mu_\kappa$).
 
 \section{Results}
 
@@ -382,7 +383,7 @@ pooled estimates mu ($\mu_r$, $\mu_G$, and $\mu_\kappa$). The authors do not giv
 the other sources of uncertainty linked with the variation of parameter sigma ($\sigma_r$, $\sigma_G$,
 $\sigma_\kappa$).}
 
-\fref{assumption} compares the reported values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates that we calculate from our multilevel model:
+\fref{assumption} compares the estimated values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates that we calculate from our multilevel model:
 $\mu_r = 0.17\,\textrm{days}^{-1}$ (95\% CI: 0.12--0.25 $\textrm{days}^{-1}$),
 $\mu_G = 8.51\,\textrm{days}$ (95\% CI: 7.60--9.63 days),
 and
@@ -399,8 +400,8 @@ Assuming fixed parameter values can lead to overly strong conclusions \citep{eld
 \textbf{Comparisons of the reported parameter values with our pooled estimates.}
 We inferred point estimates (black), uniform distributions (orange) or confidence/credible intervals (purple) for each parameter from each study, and combined them into pooled estimates using a Bayesian multilevel model (red).
 Points represent medians calculated from the parameter set $(\bar{G}_{i}, \kappa_{i}, r_{i})$ for each study $i$ (orange and purple).
-Error bars represent 95\% quantiles calculated from the parameter set $(\bar{G}_{i}, \kappa_{i}, r_{i})$ for each study $i$.
-Red violin plots represent posterior distributions.
+Error bars represent 95\% equi-tailed quantiles calculated from the parameter set $(\bar{G}_{i}, \kappa_{i}, r_{i})$ for each study $i$.
+Red violin plots represent distributions of 2000 posterior samples.
 Open triangle: we assumed $\kappa=0.5$ for Study 2 which does not report generation-interval dispersion.
 }
 \label{fig:assumption}

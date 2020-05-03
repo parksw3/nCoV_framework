@@ -49,7 +49,8 @@ R0all %>%
   merge(summarize(group_by(Rdata_adj, study), bwidth=upr-lwr)) %>%
   mutate(
     ww=width>bwidth
-  )
+  ) %>%
+  filter(!ww)
 
 R0all %>%
   filter(type=="all") %>%

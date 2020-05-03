@@ -16,7 +16,7 @@ vim_session:
 	bash -cl "vmt"
 
 Sources += $(wildcard *.tex)
-ncov_euro.pdf: compare_R0.pdf ncov_euro.tex
+ncov.pdf: ncov.tex
 
 compare_R0.pdf: compare_R0.Rout ;
 compare_R0.Rout: compare_R0.R

@@ -265,6 +265,8 @@ where $m=1,\dots,10^5$.
 This allows us to approximate the probability distributions of the estimated exponential growth rates by each study.
 We note that uncertainties in the probability distributions that we calculate for the estimated exponential growth rates reflects model assumptions, statistical methods, as well as quality of the data that each study relies on.
 Then, the the family of parameter sets $(\bar{G}_{i,m}, \kappa_{i,m}, r_{i,m})$ defines an empirical parameter distribution for each study $i$ without having to re-fit each model.
+In other words, we do not explicitly rely on the observed data or dynamical models; 
+we simply rely on reported estimates.
 
 For most cases, we model $(\Ro)_i$, $\bar G_i$, and $\kappa_i$ using independent distributions (as specified in Table 2) to calculate $r_i$.
 This assumption does not affect our analysis because we are re-estimating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
@@ -322,6 +324,7 @@ We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) u
 \end{linenomath*}
 where $\mu_r$, $\mu_G$, $\mu_\kappa$ represent the pooled estimates, and $\sigma_r$, $\sigma_G$, and $\sigma_\kappa$ represent between-study standard deviations.
 The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches, while accounting for the uncertainties in the assumptions they make.
+Here, we do so by averaging across reported values, without explicitly re-fitting their models.
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets $(\bar{G}_{i,m}, \kappa_{i,m}, r_{i,m})$ for each study $i$ at each Metropolis-Hastings step.
 Since the gamma distribution does not allow zeros, we use $\kappa=0.02$ instead for Study 7.
 

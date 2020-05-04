@@ -1,5 +1,5 @@
 library(coda)
-library(ggplot2); theme_set(theme_bw(base_size=12))
+library(ggplot2); theme_set(theme_bw(base_size=16))
 library(gridExtra)
 library(tikzDevice)
 
@@ -15,7 +15,7 @@ compfun <- function(x) {
     est=(1+median(kappa)*median(gbar)*median(x))^(1/median(kappa)),
     lwr=(1+median(kappa)*median(gbar)*median(x))^(1/median(kappa)),
     upr=(1+median(kappa)*median(gbar)*median(x))^(1/median(kappa)),
-    type="base"
+    type="none"
   )
   
   dd_r <- data.frame(

@@ -202,10 +202,10 @@ Model details and corresponding data are summarized in Table 1.
 
 Despite a wide range of models considered across Study 1--7, all of them assume that the epidemic grows exponentially in the beginning.
 The IDEA model (used in Study 7) includes a discount parameter $d$ that allows the model to deviate from the exponential growth when $d \neq 0$ \citep{fisman2013idea}, but Study 7 estimates $d=0$ across all parameters they consider.
-Even though some studies consider reported cases up to Janaury 26, 2020 --- three days after the travel restricion that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
+Even though some studies consider reported cases up to Janaury 26, 2020 --- three days after the travel restriction that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
 given the incubation period of around 5 days \citep{lauer2020incubation} as well as reporting delay of around 5 days \citep{sun2020early}, the majority of reported cases during study periods are likely to have been infected prior to the travel ban.
 
-When the epidemic is growing exponentially, the estimated basic reproductive number entirely depends on the exponential growth rate $r$ and the \emph{intrinsic} generation-interval distribution $g(\tau)$, which describes the infection time of secondary cases caused by a primary case in a fully susceptible population, via the Euler-Loka equation \citep{wallinga2007generation}:
+When the epidemic is growing exponentially, the estimated basic reproductive number entirely depends on the exponential growth rate $r$ and the \emph{intrinsic} generation-interval distribution $g(\tau)$, which describes the infection time of secondary cases caused by a primary case in a fully susceptible population, via the Euler-Lotka equation \citep{wallinga2007generation}:
 \begin{linenomath*}
 \begin{equation}
 \frac{1}{\Ro} = \int \exp(-r\tau) g(\tau) \, d\tau.
@@ -224,7 +224,7 @@ we use their baseline scenario in our analysis to remain consistent with other s
 While estimates of \Ro and associated confidence intervals for Study 6 in Table 1 represents estimates of \Ro based on $\bar G = 8\,\mathrm{days}$, we account for the uncertainty they consider for $\bar G$ in our formal analysis.
 
 While most studies report confidence or credible intervals to quantify uncertainties associated with their estimates, some rely on different measures.
-In particular, study 2 reports a range of \Ro for the worst and best case scenarios, which correspond to the values of \Ro such that 95\% and 5\% of the simulated total number of cases by Janaury 18, 2020 is greater than or equal to 4000, respectively;
+In particular, study 2 reports a range of \Ro for the worst and best case scenarios, which correspond to the values of \Ro such that 95\% and 5\% of the simulated total number of cases by January 18, 2020 is greater than or equal to 4000, respectively;
 for brevity, we treat these intervals as a 90\% credible interval in our analysis.
 Uncertainty ranges reported by Study 1 and Study 7 are assumed to be uniform ranges.
 
@@ -249,7 +249,7 @@ This equation demonstrates that a generation-interval distribution that has a la
 \subsection{Re-estimation of the exponential growth rate}
 
 As most studies do not report their estimates of the exponential growth rate, we first re-estimate the exponential growth rate that correspond to their model assumptions.
-Since the estimates of the basic reproductive number \Ro entirely depends on the exponential growth rate and the shape of generation-interval distributions, we can calulate the exponential growth rate from the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
+Since the estimates of the basic reproductive number \Ro entirely depends on the exponential growth rate and the shape of generation-interval distributions, we can calculate the exponential growth rate from the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 First, to account for uncertainties in these parameters, we model reported values of the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions.
 We used gamma distributions to model values reported with confidence/credible intervals and uniform distributions to model values reported with ranges;
 when confidence/credible intervals are reported, we parameterize the gamma distribution such that (i) its mean matches the estimate value and (ii) the probability that a random variable following the specified gamma distribution falls between the lower and upper confidence/credible limits is equal to the reported confidence/credible level. This probability does not need to be equi-tailed.
@@ -375,11 +375,11 @@ trace plots and marginal posterior distribution plots are presented in Appendix.
 
 In order to compare estimates of the basic reproduction number \Ro (and particularly their associated uncertainties) across different studies, we need a consistent measure of uncertainty.
 Instead of using reported uncertainty ranges from the original studies, we re-calculate the basic reproduction number from the parameter sets ($r_i$, $\bar G_i$, and $\kappa_i$) for each study using \eref{gamma} and calculate the median and 95\% quantiles.
-We refer to these estimates as the base estimtes.
+We refer to these estimates as the base estimates.
 We note that the distribution of the basic reproduction number for each study corresponds to the assumed distributions in Table 2 for all studies except for Study 6.
-The assumed distribution in Study 6 does not account for the uncertainty in the meang generation interval $\bar G$, whereas the base estimates acconunt for this uncertainty.
+The assumed distribution in Study 6 does not account for the uncertainty in the mean generation interval $\bar G$, whereas the base estimates account for this uncertainty.
 Furthermore, since the distribution in Table 2 are constructed by matching the mean and the probabilities associated with the reported uncertainty ranges, the exact values of the base estimates and their 95\% quantiles could differ slightly from the reported values.
-We compare the base estimates with pooled estimate the basic reproduction number \Rpool based on the pooled estimates of underying parameters (by substituting $\mu_r$, $\mu_G$, $\mu_\kappa$ in \eref{gamma}). 
+We compare the base estimates with pooled estimate the basic reproduction number \Rpool based on the pooled estimates of underlying parameters (by substituting $\mu_r$, $\mu_G$, $\mu_\kappa$ in \eref{gamma}). 
 
 \subsection{Sensitivity analysis}
 
@@ -449,7 +449,7 @@ Vertical error bars represent the 95\% credible intervals.
 \end{figure}
 
 Finally, \fref{R0} compares the ``base'' estimates (based on $r_i$, $\bar G_i$, and $\kappa_i$ for each study $i$) and 21 substitute estimates (3 parameter substitutions $\times$ 7 studies).
-All but 8 substitute estimates have wider credible intervals compared to their corresponding base estimates --- namely, $\bar G$-substitute estimtates for Study 1 and 7, $r$-substitute estimates for Study 1 and 2, and  $\kappa$-substitute estimates for Study 3, 6, and 7.
+All but 8 substitute estimates have wider credible intervals compared to their corresponding base estimates --- namely, $\bar G$-substitute estimates for Study 1 and 7, $r$-substitute estimates for Study 1 and 2, and  $\kappa$-substitute estimates for Study 3, 6, and 7.
 Furthermore, accounting for uncertainties in the estimate of $r$ has the largest effect on the estimates of \Ro\ in most cases (\fref{R0}).
 For example, the $r$-substitute estimate of \Ro for Study 7 is $\Ro = 3.9$ (95\% CI: 2.3--8.8), which is much wider than the uncertainty range they reported (2.0--3.1).
 This is consistent with our earlier results (\fref{eff}) that demonstrated the importance of accounting for uncertainty in the exponential growth rate $r$.

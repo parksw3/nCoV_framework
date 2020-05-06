@@ -199,7 +199,7 @@ reproduction weight even though their estimations and precision vary a lot. The 
 explain why they make this hypothesis and why they did not explore a weighted estimation
 based on the confidence of the estimation of R0.}
 
-We do not make that hypothesis. Bayesian multilevel models implicitly weight parameters by certainty.
+We used Bayesian multilevel models precisely for this reason (to weight the studies appropriately based on reported certainty.)
 
 \revtext{In each chain, the authors use 500,000 sampling steps and remove every 1000th step.
 Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
@@ -216,8 +216,7 @@ pooled estimates mu ($\mu_r$, $\mu_G$, and $\mu_\kappa$). The authors do not giv
 the other sources of uncertainty linked with the variation of parameter sigma ($\sigma_r$, $\sigma_G$,
 $\sigma_\kappa$).}
 
-We have sampled appropriately from the Bayesian posteriors. We talk about pooled estimates of $\mu_r$, $\mu_G$, and $\mu_\kappa$ because those are used directly to calculate the reproduction number; $\sigma_r$, $\sigma_G$, and
-$\sigma_\kappa$ do not affect the calculation of the reproduction number.
+We have sampled appropriately from the Bayesian posteriors. We talk about pooled estimates of $\mu_r$, $\mu_G$, and $\mu_\kappa$ because those are used directly to calculate the reproduction number.
 
 \revtext{The authors do not provide the validation on their estimates, e.g., a posterior predictive check
 and comparisons with the reported cases during the study period.}

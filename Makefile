@@ -46,7 +46,8 @@ figure2.jpg: figure2.pdf
 
 ## Revision
 
-response.pdf: review/response.tex
+Ignore += review/
+response.pdf: response.tex
 	pdflatex $<
 
 ######################################################################

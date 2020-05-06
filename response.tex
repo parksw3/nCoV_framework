@@ -177,7 +177,7 @@ Done.
 \revtext{Please clearly explain the formula in the caption of Figure 2 (Page 8, line 33) in the Methods
 section.}
 
-We have removed the formula from the caption. However, we decided to include the formula in the Results section as we think it provides better flow:
+We have moved the formula to the Results section to provide a better context for improved explanation: 
 
 ``We further explore how the effects of uncertainties in generation-interval distributions change when there is less uncertainty associated with the exponential growth rate.
 This hypothetical example reflects recent scenarios, as increased data availability will allow researchers to estimate $r$ with more certainty.
@@ -192,13 +192,15 @@ suggest that the authors should provide a directed acyclic graph (DAG) represent
 model, which is a common practice for the Bayesian estimation.}
 
 We have made significant revisions to the Methods section. 
-In particular, we made it very clear that we are simply averaging across the reported estimates and are not relying on any data or dynamical model.
-Therefore, we do not think that a directed acyclic graph is necessary with the current text, particularly given that we are simply averaging across reported values.
+In particular, we made it very clear that we are simply using Bayesian estimation to average across the reported estimates and are not relying on any data or dynamical model.
+We hope that the new text is sufficiently clear; a directed acyclic graph to explain that we are doing Bayesian averaging seems like overkill.
 
 \revtext{The authors consider that all the 7 studies have the same weight in the estimation of basic
 reproduction weight even though their estimations and precision vary a lot. The authors might
 explain why they make this hypothesis and why they did not explore a weighted estimation
 based on the confidence of the estimation of R0.}
+
+\jd{I'm confused. Isn't the reason to use Bayesian averaging is that it does weight implicitly by certainty?}
 
 Done.
 
@@ -211,6 +213,8 @@ Therefore, it is difficult to come up with a sensible way to weigh different est
 Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
 per chain with 4 independent chains). Is it sufficient for the effective sample size? Is it too much
 for the burn-in steps of 500,000 and the thinning steps of 1,000?}
+
+\jd{Do we examine effective sample size? Can we report them?}
 
 This may be an overkill but we wanted to make sure that the posterior samples are not autocorrelated.
 On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we're only averaging across previously estimated parameter values, rather than explicitly fitting a model to data.
@@ -369,6 +373,7 @@ Thank you for the review. We have made significant revisions to our manuscript t
 
 \pagebreak
 
-\bibliography{../ncov_abbr.bib}
+%% \bibliography{../ncov_abbr.bib} Sorry!
+\bibliography{ncov_abbr.bib}
 
 \end{document}

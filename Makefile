@@ -44,6 +44,10 @@ Ignore += figure2.jpg
 figure2.jpg: figure2.pdf
 	convert -density 300 $< $@
 
+## Revision
+
+response.pdf: review/response.tex
+	pdflatex $<
 
 ######################################################################
 

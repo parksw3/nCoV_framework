@@ -56,9 +56,8 @@ We have made significant revisions to our manuscript to make it approachable for
 
 \revtext{I am not sure whether authors incorporate well all assumptions of the studies they consider.} 
 
-During the exponential growth period, the basic reproduction number entirely depends on the exponential growth rate and the generation-interval distributions.
-Therefore, all model assumptions can be boiled down to assumptions about the exponential growth rate and the shape of the generation-interval distribution.
-So we are effectively considering all model assumptions.
+This is a key point. During the exponential growth period, the basic reproduction number entirely depends on the exponential growth rate and the generation-interval distributions.
+Therefore, the effect of model assumptions on the inferred reproductive number can in fact be considered via their effects on exponential growth rate and the shape of the generation-interval distribution.
 We have tried to make this point clearer in the main text:
 
 ``Despite a wide range of models considered across Study 1--7, all of them assume that the epidemic grows exponentially in the beginning.
@@ -77,16 +76,18 @@ Therefore, it is sufficient to consider the estimates and assumptions about the 
 
 \revtext{In addition, it is not clear to me on what extent the assumptions made by authors themselves affect the results - e.g. the assumption of a gamma and uniform distribution for the estimates adopted to compute the growth rate.}
 
-Since we are interested in the uncertainty, expressed by probability distributions, the overall probabilities are not affected by the assumptions of gamma or uniform distributions. We have added following sentences in the main text:
+Since we are interested in the uncertainty, expressed by probability distributions, our analysis is consistent with the uncertainty reported by the authors. We have added following sentences in the main text:
 
 ``This assumption does not affect our analysis because we are re-estimating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
 in other words, we still obtain the same estimates and the associated uncertainty of $(\Ro)_i$ if we calculate it from $r_i$, $\bar G_i$, and $\kappa_i$.''
 
 \revtext{Other hypotheses underlie these works other than average generation interval, its coefficient of variation and the exponential growth. For instance, what about the offspring distribution (Poisson vs. negative binomial), or the observation model? Authors should provide a synthesis of all assumptions of these studies}
 
-See above. We have also added a table to provide a better overview of the models and data used in each study.
+See above. These assumptions will be reflected in the uncertainty distributions reported by the authors, which we then incorporate into our analysis. We have added a new table to provide a better overview of the models and data used in each study.
 
 \revtext{and discuss how well the gamma approximation framework embrace all cases.}
+
+\jd{I think all of the papers we reviewed actually used exponential, fixed or gamma, no? Should we say that?}
 
 The gamma approximation framework assumes that the generation-interval distribution is gamma distributed.
 Other assumptions mentioned above (e.g., offspring distributions or the observation model) do not affect the generation-interval distributions.
@@ -116,9 +117,9 @@ Therefore, comparing the growth rate with generation-interval distribution param
 
 \rev{Reviewer \#2}
 
-We might have inadvertently confused reviewer 2 to some extent.
-Our method does not rely on any data or dynamical models but the reviewer asks us to compare our results with the reported number of cases (this is not possible as we do not make any predictions about the epidemic trajectory).
-We use a multi-level model to calculate pooled estimates of parameters that have already been estimated or assumed from other studies.
+Our exposition may not have been clear enough for reviewer 2.
+Our method does not directly rely on data, and does not depend on a specific dynamical model, but the reviewer asks us to compare our results with the reported number of cases.
+We use a multi-level model to calculate pooled estimates of parameters that have already been estimated or assumed from other studies, based on fits to case reports.
 Then, we use the pooled estimates to calculate $\mathcal R_0$.
 We have made significant improvement to our manuscript to make our methods clearer.
 

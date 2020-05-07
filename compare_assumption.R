@@ -1,5 +1,6 @@
 library(coda)
 library(ggplot2); theme_set(theme_bw())
+library(see)
 library(dplyr)
 library(gridExtra)
 library(tikzDevice)
@@ -75,12 +76,13 @@ rdata3 <- mutate(merge(rdata2, study_number)) %>%
   )
 
 g1 <- ggplot(rdata3) +
-  geom_point(aes(est, anon, col=anon), size=2) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon, col=anon), lwd=0.7) +
-  ggstance::geom_violinh(data=avg_r, aes(est, anon, col=anon, fill=anon), alpha=0.2, width=1) +
+  geom_point(aes(anon, est, col=anon), size=2) +
+  geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=anon), lwd=0.7, width=0) +
+  geom_violinhalf(data=avg_r, aes(anon, est, col=anon, fill=anon), alpha=0.2, width=1) +
   scale_color_manual(values=c("red", "orange", "purple", "purple", "purple", "purple", "purple", 1)) +
   scale_fill_manual(values=c("red", "orange", "purple", "purple", "purple", "purple", "purple", 1)) +
-  scale_x_continuous(expression(Exponential~growth~rate~(days^{-1}))) +
+  scale_y_continuous(expression(Exponential~growth~rate~(days^{-1}))) +
+  coord_flip() +
   theme(
     axis.title.y = element_blank(),
     legend.position = "none"
@@ -92,12 +94,13 @@ gdata3 <- mutate(merge(gdata2, study_number)) %>%
   )
 
 g2 <- ggplot(gdata3) +
-  geom_point(aes(est, anon, col=anon), size=2) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon, col=anon), lwd=0.7) +
-  ggstance::geom_violinh(data=avg_gen, aes(est, anon, col=anon, fill=anon), alpha=0.2, width=1) +
+  geom_point(aes(anon, est, col=anon), size=2) +
+  geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=anon), lwd=0.7, width=0) +
+  geom_violinhalf(data=avg_gen, aes(anon, est, col=anon, fill=anon), alpha=0.2, width=1) +
   scale_color_manual(values=c("red", "black", "black", "black", "black", "orange", "orange", "orange")) +
   scale_fill_manual(values=c("red", "black", "black", "black", "black", "orange", "orange", "orange")) +
-  scale_x_continuous("Mean generation interval (days)") +
+  scale_y_continuous("Mean generation interval (days)") +
+  coord_flip() +
   theme(
     axis.title.y = element_blank(),
     legend.position = "none"
@@ -110,12 +113,13 @@ kappadata3 <- mutate(merge(kappadata2, study_number)) %>%
   )
 
 g3 <- ggplot(kappadata3) +
-  geom_point(aes(est, anon, col=anon), size=2, shape=c(16, 2, 16, 16, 16, 16, 16)) +
-  geom_segment(aes(lwr, anon, xend=upr, yend=anon, col=anon), lwd=0.7) +
-  ggstance::geom_violinh(data=avg_kappa, aes(est, anon, col=anon, fill=anon), alpha=0.2, width=1) +
+  geom_point(aes(anon, est, col=anon), size=2, shape=c(16, 2, 16, 16, 16, 16, 16)) +
+  geom_errorbar(aes(anon, ymin=lwr, ymax=upr, col=anon), lwd=0.7, width=0) +
+  geom_violinhalf(data=avg_kappa, aes(anon, est, col=anon, fill=anon), alpha=0.2, width=1) +
   scale_color_manual(values=c("red", "black", "black", "black", "black", "black", "black", "black")) +
   scale_fill_manual(values=c("red", "black", "black", "black", "black", "black", "black", "black")) +
-  scale_x_continuous("Generation-interval dispersion") +
+  scale_y_continuous("Generation-interval dispersion") +
+  coord_flip() +
   theme(
     axis.title.y = element_blank(),
     legend.position = "none"

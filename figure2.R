@@ -79,7 +79,7 @@ g2 <- ggplot(dd_combine2) +
   geom_errorbar(aes(type, min=lwr, max=upr), width=0, lwd=2) +
   xlab("Uncertainty type") +
   ggtitle("B. Reduced uncertainty in $r$") +
-  scale_y_continuous("Basic reproductive number", limits=c(2.3, 3.8), expand=c(0, 0)) +
+  scale_y_continuous("Basic reproductive number", limits=c(2, 4.6), expand=c(0, 0)) +
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),

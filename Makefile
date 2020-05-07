@@ -44,6 +44,10 @@ Ignore += figure2.jpg
 figure2.jpg: figure2.pdf
 	convert -density 300 $< $@
 
+# propagate_pix.pdf: propagate_pix.R
+propagate_pix.tex: propagate_pix.Rout ;
+propagate_pix.Rout: figure2.Rout propagate_pix.R
+
 ## Revision
 
 Ignore += review/

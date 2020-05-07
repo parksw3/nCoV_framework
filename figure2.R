@@ -1,4 +1,5 @@
 library(coda)
+library(dplyr)
 library(ggplot2); theme_set(theme_bw(base_size=16))
 library(gridExtra)
 library(tikzDevice)

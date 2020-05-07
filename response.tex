@@ -87,15 +87,14 @@ See above. These assumptions will be reflected in the uncertainty distributions 
 
 \revtext{and discuss how well the gamma approximation framework embrace all cases.}
 
-\jd{I think all of the papers we reviewed actually used exponential, fixed or gamma, no? Should we say that?}
-
 The gamma approximation framework assumes that the generation-interval distribution is gamma distributed.
 Other assumptions mentioned above (e.g., offspring distributions or the observation model) do not affect the generation-interval distributions.
 Moreover, this approximation has been widely used previously and has been tested across multiple diseases.
 We have clarified the text and included appropriate citations:
 
 ``Here, we use the gamma approximation framework to the generation-interval distribution \citep{nishiura2009transmission, mcbryde2009early, roberts2011early, trichereau2012estimation, nishiura2015theoretical, park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
-The gamma distribution provides a reasonable approximation for generation-interval distributions of many diseases, including Ebola, influenza, measles, and rabies.''
+The gamma distribution provides a reasonable approximation for generation-interval distributions of many diseases, including Ebola, influenza, measles, and rabies.
+Study 1, 5, 6, and 7 also used a gamma distribution (including delta and exponential distributions) to model the generation-interval distribution for SARS-CoV-2.''
 
 \revtext{
 Authors state that “We note that this approach does not account for non- independence between the parameter estimates made by different modelers.” Authors should discuss this point more in depth. This seems to me an important limitation. With this respect I wonder what data the studies focus on. Are all analyzing the same epidemic (in China) considering same or similar data? Again, more details on these studies (in this case the location, period of the epidemic, and data source) should be provided.}
@@ -121,7 +120,7 @@ Our exposition may not have been clear enough for reviewer 2.
 Our method does not directly rely on data, and does not depend on a specific dynamical model, but the reviewer asks us to compare our results with the reported number of cases.
 We use a multi-level model to calculate pooled estimates of parameters that have already been estimated or assumed from other studies, based on fits to case reports.
 Then, we use the pooled estimates to calculate $\mathcal R_0$.
-We have made significant improvement to our manuscript to make our methods clearer.
+We hope we have made significant improvement to our manuscript to make our methods clearer.
 
 \revtext{The subject is interesting for the ongoing pandemic. The authors propose an estimation method
 for the basic reproduction number and describe its uncertainty from the estimates made by
@@ -200,24 +199,15 @@ reproduction weight even though their estimations and precision vary a lot. The 
 explain why they make this hypothesis and why they did not explore a weighted estimation
 based on the confidence of the estimation of R0.}
 
-\jd{I'm confused. Isn't the reason to use Bayesian averaging is that it does weight implicitly by certainty?}
-
-Done.
-
-``Here, we assume that all 7 studies are equally weighted.
-During the initial phase of an outbreak of a novel virus such as SARS-CoV-2, uncertainties in parameter estimates are primarily driven by the underlying assumptions; narrow confidence intervals from a study are likely to reflect their strong assumptions rather than its precision of inference.
-Moreover, we cannot assess which assumptions are more realistic during the initial phase of an outbreak a novel virus due to the scarcity of information.
-Therefore, it is difficult to come up with a sensible way to weigh different estimates, and we do not explore weighted estimation.''
+We used Bayesian multilevel models precisely for this reason (to weight the studies appropriately based on reported certainty.)
 
 \revtext{In each chain, the authors use 500,000 sampling steps and remove every 1000th step.
 Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
 per chain with 4 independent chains). Is it sufficient for the effective sample size? Is it too much
 for the burn-in steps of 500,000 and the thinning steps of 1,000?}
 
-\jd{Do we examine effective sample size? Can we report them?}
-
 This may be an overkill but we wanted to make sure that the posterior samples are not autocorrelated.
-On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we're only averaging across previously estimated parameter values, rather than explicitly fitting a model to data.
+On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we're only averaging across previously estimated parameter values, rather than explicitly fitting a model to data. We now ensure that effective sample sizes are greater than at least 1,000 for all parameters.
 
 \revtext{Results}
 
@@ -227,8 +217,6 @@ the other sources of uncertainty linked with the variation of parameter sigma ($
 $\sigma_\kappa$).}
 
 We have sampled appropriately from the Bayesian posteriors. We talk about pooled estimates of $\mu_r$, $\mu_G$, and $\mu_\kappa$ because those are used directly to calculate the reproduction number.
-
-\jd{Is there anything we can clarify in the MS?}
 
 \revtext{The authors do not provide the validation on their estimates, e.g., a posterior predictive check
 and comparisons with the reported cases during the study period.}

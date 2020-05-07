@@ -235,6 +235,7 @@ As our primary focus is on the resolution of uncertainty in the available inform
 
 Here, we use the gamma approximation framework to the generation-interval distribution \citep{nishiura2009transmission, mcbryde2009early, roberts2011early, trichereau2012estimation, nishiura2015theoretical, park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
 The gamma distribution provides a reasonable approximation for generation-interval distributions of many diseases, including Ebola, influenza, measles, and rabies.
+Study 1, 5, 6, and 7 also used a gamma distribution (including delta and exponential distributions) to model the generation-interval distribution for SARS-CoV-2.
 Assuming that generation intervals follow a gamma distribution with mean generation interval $\bar G$ and generation-interval dispersion $\kappa$, represented by the squared coefficient of variation of a gamma distribution, we have
 \begin{linenomath*}
 \begin{equation}
@@ -323,11 +324,6 @@ Here, we do so by averaging across reported values, without explicitly re-fittin
 We account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and their correlations), by drawing a random set from the family of parameter sets $(\bar{G}_{i,m}, \kappa_{i,m}, r_{i,m})$ for each study $i$ at each Metropolis-Hastings step.
 Since the gamma distribution does not allow zeros, we use $\kappa=0.02$ instead for Study 7.
 
-Here, we assume that all 7 studies are equally weighted.
-During the initial phase of an outbreak of a novel virus such as SARS-CoV-2, uncertainties in parameter estimates are primarily driven by the underlying assumptions; narrow confidence intervals from a study are likely to reflect their strong assumptions rather than its precision of inference.
-Moreover, we cannot assess which assumptions are more realistic during the initial phase of an outbreak a novel virus due to the scarcity of information.
-Therefore, it is difficult to come up with a sensible way to weigh different estimates, and we do not explore weighted estimation.
-
 We note that this approach does not account for non-independence between the parameter estimates made by different modelers.
 In this case, most estimates primarily depend on reported cases from China, particularly from Hubei Province.
 Differences among estimates are likely to driven by differences in estimation methods and underlying assumptions, rather than epidemiological differences.
@@ -363,7 +359,7 @@ Weak priors (e.g. half-Cauchy(0,5)) can lead to inefficient sampling and poor co
 
 We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps.
 Posterior samples are thinned every 1000 steps to remove autocorrelations among posterior samples.
-Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 for all hyperparameters \citep{gelman1992inference};
+Convergence is assessed by ensuring that the Gelman-Rubin statistic is below 1.01 and the effective sample size is greater than 1000 for all hyperparameters \citep{gelman1992inference};
 trace plots and marginal posterior distribution plots are presented in Appendix.
 95\% credible intervals (CI) are calculated by taking 2.5\% and 97.5\% quantiles from the marginal posterior distribution for each parameter.
 

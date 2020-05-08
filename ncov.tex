@@ -410,9 +410,10 @@ Open triangle: we assumed $\kappa=0.5$ for Study 2 which does not report generat
 \label{fig:assumption}
 \end{figure}
 
+\jd{This \P\ seems awkward to me. I'd like to shorten it. The stuff about why $\kappa$ can matter seems badly out of place.}
 \fref{eff} shows how propagating uncertainty in different combinations would affect estimates and CIs for \Ro. 
 For illustrative purposes, we use our pooled estimates, which may represent a reasonable proxy for the state of knowledge as of January 23--26, 2020 (\fref{eff}A).
-Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in \fref{eff}), we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: two middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, is relatively narrow.
+Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in \fref{eff}), we see that propagating error from the growth rate (which all but one of the studies reviewed did) is absolutely crucial: both middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, are quite narrow.
 In this case, propagating error from the mean generation interval has negligible effect compared to propagating the uncertainty in $r$.
 Uncertainty in the generation-interval dispersion $\kappa$ also has important effects as it determines the functional form of the relationship between $r$ and \Ro (compare $\mu_G$ with $\mu_\kappa$).
 For example, reducing $\kappa$ from 1 (assuming exponentially distributed generation intervals) to 0 (assuming fixed generation intervals) changes the $r$--\Ro\ relationship from linear to exponential (see \eref{gamma}), therefore increasing the sensitivity of \Ro estimates to $r$ and $\bar G$.
@@ -525,8 +526,8 @@ Model estimates during an outbreak, even in pre-prints, should include code link
 We suggest using methods based on open-source tools allow for maximal reproducibility.
 
 \cite{flaxman2020estimating} recently estimated the basic reproductive number for SARS-CoV-2 outbreaks in 11 European countries to be around 3.87 (3.01--4.66), on average.
-While these estimates appear to be broadly consistent with to earlier estimates from China, comparing the exponential growth rate and the underlying generation-interval distributions suggest otherwise.
-They assumed a shorter mean generation interval ($\bar G = 6.5\,\textrm{days}$) but similar generation-interval dispersion ($\kappa = 0.38$);
+While these estimates appear to be broadly consistent with earlier estimates from China, comparing the exponential growth rate and the underlying generation-interval distributions suggest otherwise.
+The later paper assumed a shorter mean generation interval ($\bar G = 6.5\,\textrm{days}$) but similar generation-interval dispersion ($\kappa = 0.38$);
 based on these values, the exponential growth rate has to be much higher ($r = 0.27\,\textrm{days}^{-1}$) to obtain $\Ro = 3.87$ compared to the exponential growth rate observed in China ($\mu_r = 0.17\,\textrm{days}^{-1}$; 95\% CI: 0.12--0.25 $\textrm{days}^{-1}$).
 We caution that naively comparing estimates of the basic reproductive number without accounting for differences in underlying assumptions can underestimate the differences in the estimates.
 

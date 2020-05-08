@@ -52,15 +52,15 @@ R0all %>%
   ) %>%
   filter(!ww)
 
-R0all %>%
-  filter(type=="all") %>%
+R0_all %>%
   mutate(
     width=upr-lwr
   ) %>%
-  merge(summarize(group_by(Rdata_adj, study), bwidth=upr-lwr)) %>%
+  merge(summarize(group_by(Rdata_adj, study), bwidth=upr-lwr), all=TRUE) %>%
   mutate(
     ww=width>bwidth
-  )
+  ) %>%
+  merge(study_number)
 
 all_col <- "#000000" ## black
 g1 <- ggplot(R0all) +

@@ -142,11 +142,12 @@ Understanding the differences between \Ro estimates is critical to controlling a
 Here, we show that a wide range of approaches to estimating \Ro can be understood and compared in terms of estimates of three quantities: the exponential growth rate $r$, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 The generation interval, defined as the interval between the time when an individual becomes infected and the time when that individual infects another individual \citep{svensson2007note}, characterizes the relationship between $r$ and \Ro \citep{wearing2005appropriate, roberts2007model, wallinga2007generation, park2019practical};
 therefore, estimates of \Ro depend directly on their assumptions about the generation-interval distribution and the exponential growth rate.
-Early in an epidemic, information is scarce and there is inevitably a great deal of uncertainty surrounding both case reports (affecting the estimates of the exponential growth rate) and contact tracing (affecting the estimates of the generation-interval distribution).
+Early in an epidemic, information is scarce and there is uncertainty surrounding both case reports (affecting the estimates of the exponential growth rate) and contact tracing (affecting the estimates of the generation-interval distribution).
 Ignoring these uncertainties leads to overly confident conclusions.
-We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty in \Ro should propagate error from all three sources \citep{elderd2006uncertainty}.
+% We suggest that disease modelers should make sure their assumptions about these three quantities are clear and reasonable, and that estimates of uncertainty in \Ro should propagate error from all three sources \citep{elderd2006uncertainty}.
 
-We present a statistical framework for averaging across estimates of basic reproductive number \Ro from multiple studies and apply the method to seven disparate models published online as pre-prints between January 23--26, 2020 that estimated \Ro for the SARS-CoV-2 outbreak in Wuhan City, China \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}.
+To formalize the estimation of uncertainty at the onset of an outbreak, we present a statistical framework for averaging across estimates of basic reproductive number \Ro from multiple studies. 
+We apply the method to seven disparate models published online as pre-prints between January 23--26, 2020 that estimated \Ro for the SARS-CoV-2 outbreak in Wuhan City, China \citep{bedfordncov, imaincov, liuncov, majumderncov, readncov, riouncov, zhaoncov}.
 Previous studies have directly calculated the average of reported \Ro values  \citep{majumder2020early, liu2020reproductive} but such methods mask differences in underlying model assumptions and statistical methods.
 Instead, we decompose estimated \Ro into three key quantities ($r$, $\bar G$, and $\kappa$) and calculate the average (pooled estimates) of these key parameters.
 Calculating \Ro based on the pooled estimates allows us to average appropriately across the uncertainties present in modeling approaches and in their underlying assumptions.
@@ -185,7 +186,7 @@ Study 7 & Incidence Decay and Exponential Adjustment (IDEA) model & Reported cas
 \caption{
 \textbf{Summary of the models, analyzed data, reported estimates of the basic reproductive number, and the assumptions about the generation-interval distributions.}
 Model details, estimates of \Ro, and their assumptions about the shape of the generation interval distributions were collected from 7 studies.
-Generation-interval dispersiosn represent the squared coefficients of variation in generation intervals.
+Generation-interval dispersion represent the squared coefficients of variation in generation intervals.
 $^\ast$These intervals reflect \Ro values for best and worst scenarios. We treat these intervals as a 90\% credible interval in our analysis.
 $^\dagger$We assume $\kappa = 0.5$ in our analysis.
 $^\ddagger$The authors presented \Ro estimates under different assumptions regarding the reporting rate; we use their baseline scenario in our analysis to remain consistent with other studies, which do not account for changes in the reporting rate.
@@ -250,7 +251,7 @@ This equation demonstrates that a generation-interval distribution that has a la
 As most studies do not report their estimates of the exponential growth rate, we first re-estimate the exponential growth rate that corresponds to their model assumptions.
 Since the estimates of the basic reproductive number \Ro depend entirely on the exponential growth rate and the shape of generation-interval distributions, we can calculate the exponential growth rate from the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$.
 First, to account for uncertainties in these parameters, we model reported values of the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions.
-We used gamma distributions to model values reported with confidence or credible intervals and uniform distributions to model values reported with ranges;
+We used gamma distributions to model values reported with confidence or credible intervals (CI) and uniform distributions to model values reported with ranges;
 when confidence or credible intervals are reported, we parameterize the gamma distribution such that (i) its mean matches the estimated value and (ii) the probability that a random variable following the specified gamma distribution falls between the lower and upper confidence or credible limits is equal to the reported confidence or credible level. 
 This probability does not need to be equi-tailed.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
@@ -353,7 +354,7 @@ Therefore, we do not expect our results to be sensitive to these priors.
 We followed recommendations outlined in \cite{gelman2006prior}, parameterizing the top-level gamma distributions in terms of their means and standard deviations and imposing weakly informative prior distributions on between-study standard deviations, i.e., $\textrm{half-normal}(0, 10)$.
 We had initially used gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) but found this put too much prior probability on large between-study variances --- a known problem \citep{gelman2006prior}.
 Alternative choices of prior for the between-study shape parameters are also suboptimal. 
-Imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$ assumes \textit{a priori} that between-study variance is large (and therefore does not pool different estimates sufficiently).
+Imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$) assumes \textit{a priori} that between-study variance is large (and therefore does not pool different estimates sufficiently).
 Overly weak priors (e.g. half-Cauchy(0,5)) leads to inefficient sampling and poor convergence.
 
 \subsection{Markov Chain Monte Carlo}
@@ -413,13 +414,13 @@ Open triangle: we assumed $\kappa=0.5$ for Study 2 which does not report generat
 
 \fref{eff} shows how propagating uncertainty in underlying parameters affect estimates and CIs for \Ro. 
 For illustrative purposes, we use our pooled estimates, which may represent a reasonable proxy for the state of knowledge as of January 23--26, 2020 (\fref{eff}A).
-Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in \fref{eff}), we see that propagating error from the growth rate (as done by all but one studies reviewed) is absolutely crucial: both middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, are overly narrow.
+Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in \fref{eff}), we see that propagating error from the growth rate (as done by all but one studies reviewed) is absolutely crucial: uncertainty in the pooled estimates for both middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, are overly narrow.
 In this case, propagating error from the mean generation interval has a negligible effect compared to propagating the uncertainty in $r$.
 Uncertainty in the generation-interval dispersion $\kappa$ also has important effects (compare $\mu_G$ credible intervals with $\mu_\kappa$ credible intervals in \fref{eff}A).
 However, our estimate of \Rpool is relatively insensitive to our assumption of $\kappa=0.5$ for Study 2: assuming $\kappa=0.1$ gives $\Rpool = 3.0$ (95\% CI: 2.2--4.7), whereas assuming $\kappa=0.9$ gives $\Rpool = 2.9$ (95\% CI: 2.1--4.4).
 
 We further explore how the effects of uncertainties in generation-interval distributions change when the exponential growth rate is more certain.
-This hypothetical example reflects recent scenarios, as increased data availability allows researchers to estimate $r$ with more certainty.
+This hypothetical example reflects scenarios, in which increased data availability allows researchers to estimate $r$ with more certainty.
 To simulate estimates of the exponential growth rate with stronger confidence, we use $\hat{\mu}_r = (\mu_r + 3\times\mathrm{median}(\mu_r))/4$ instead of $\mu_r$ (\fref{eff}B); 
 then $\hat{\mu}_r$ has the same median as $\mu_r$ but the associated 95\% CI is 4 times narrower (0.16--0.19 $\textrm{days}^{-1}$).
 As uncertainty associated with the exponential growth rate decreases, accounting for uncertainties in generation intervals becomes even more important.
@@ -467,7 +468,7 @@ However, comparing disparate estimates of \Ro can be difficult when they rely on
 Here, we use a gamma approximation \citep{park2019practical} to decompose \Ro estimates into three key quantities ($r$, $\bar G$, and $\kappa$) and apply a multilevel Bayesian framework to compare estimates of \Ro for the SARS-CoV-2 outbreak.
 Our results demonstrate the importance of accounting for uncertainties associated with the underlying generation-interval distributions, including uncertainties in the degree of dispersion in the generation intervals.
 
-Our analysis shows that many early estimates of \Ro rely on strong assumptions.
+Our analysis shows that many early estimates of \Ro rely on overly confident assumptions.
 The neglect of uncertainties in the generation-interval dispersion is particularly important because it determines the shape of the $r$--\Ro relationship (\fref{assumption}):
 reducing $\kappa$ from 1 (assuming exponentially distributed generation intervals) to 0 (assuming fixed generation intervals) changes the $r$--\Ro relationship from linear to exponential (see \eref{gamma}).
 Assuming fixed parameter values here will lead to overly confident conclusions \citep{elderd2006uncertainty}.
@@ -477,7 +478,7 @@ One exception is Study 1: this estimate of \Ro is most sensitive to generation-i
 because the study assumes an exponentially distributed generation interval ($\kappa=1$). 
 Estimates that rely on this assumption make \Ro relatively insensitive --- implicitly assuming a linear $r$--\Ro relationship.
 
-As most studies rely on overly confident assumptions, the credible intervals associated with the base estimates of \Ro are necessarily narrower than the credible intervals of the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6).
+As most studies rely on overly confident assumptions, the credible intervals associated with the base estimates of \Ro should tend to be narrower than the credible intervals of the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6).
 While the point estimate of \Rpool is similar to other reported values from this date range, the credible intervals are wider than all but one study.
 This result does not mean that assumptions underlying the pooled estimate are too weak;
 rather, this credible interval more accurately reflects the level of uncertainties present in the information that was available when these models were fitted.
@@ -487,7 +488,7 @@ In particular, while the baseline example we used from Study 6 may appear to be 
 
 Of the seven studies that we reviewed, two of them directly fit their models to the cumulative number of confirmed cases.
 This approach is appealing because of its simplicity and apparent robustness, but fitting a model to cumulative incidence neglects autocorrelation between successive counts of cumulative cases. 
-As a result, this approach both biases parameter estimates and gives verly narrow confidence intervals \citep{ma2014estimating, king2015avoidable}.
+As a result, this approach both biases parameter estimates and gives very narrow confidence intervals \citep{ma2014estimating, king2015avoidable}.
 Narrow uncertainties in the estimates of the exponential growth rate are probably driven by this approach.
 
 Many sources of noise affect real-world incidence data, including both dynamical, or ``process'', noise (randomness that directly or indirectly affects the actual number of cases occurring); and observation noise (randomness underlying how many of these cases are reported).  
@@ -507,7 +508,7 @@ since we are primarily focusing on the outbreak in Wuhan City before confinement
 All of these factors, including fitting to cumulative curves or ignoring process errors, affect the estimation of the exponential growth rate (as well as the associated uncertainties), which in turn affects the estimation of the basic reproductive number.
 
 Here, we focused on the estimates of \Ro that were published within a very short time frame (January 23--26, 2020).
-Since the estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates have not been finalized.
+Since the estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates were not necessarily finalized.
 For example, Study 4 initially estimated $\Ro = 3.8$ (95\% CI: 3.6--4.0; \cite{readncov}) but revised their estimate on January 28, 2020 to $\Ro = 3.11$ (95\% CI: 2.39--4.13; \cite{readncov2});
 we did not include their revised estimates in our analysis in order to focus on available information at the very beginning of the outbreak.
 Some studies also lack detailed description of their methods, data, and/or assumptions.
@@ -515,7 +516,7 @@ The variation in quality of these analyses adds further uncertainty to their res
 While pre-prints can play an important role in disseminating information, they should always be interpreted with care.
 
 During early phases of an outbreak, it is reasonable to assume that the epidemic grows exponentially \citep{anderson1991infectious}.
-However, as the number of susceptible individuals decreases or behaviour changes in response to perception of the epidemic, the growth rate will decrease: estimates of $r$ used for \Ro should account for the possibility that $r$ is decreasing through time.
+However, as the number of susceptible individuals decreases or behavior changes in response to perception of the epidemic, the growth rate will decrease: estimates of $r$ used for \Ro should account for the possibility that $r$ is decreasing through time.
 Although our analysis strictly to the earliest stages of an epidemic, we expect certain lessons to hold more generally: credible intervals must combine as many sources of uncertainty as possible. 
 In fact, as epidemics progress and more data becomes available, it is likely that inferences about exponential growth rate (and other epidemiological parameters) will generally become more precise; thus the risk of over-confidence (when uncertainty about the generation-interval distribution is neglected) will become greater.
 
@@ -525,11 +526,12 @@ We also emphasize the value of transparency from modelers.
 Model estimates during an outbreak, even in pre-prints, should include code links and complete explanations.
 Methods based on open-source tools allow for maximal reproducibility.
 
-\cite{flaxman2020estimating} recently estimated the basic reproductive number for SARS-CoV-2 outbreaks in 11 European countries to be around 3.87 (3.01--4.66), on average.
+Despite our focus on estimating \Ro at the onset of an outbreak, many of the issues persist now. 
+For example, \cite{flaxman2020estimating} recently estimated the basic reproductive number for SARS-CoV-2 outbreaks in 11 European countries to be around 3.87 (3.01--4.66), on average.
 While these estimates appear to be broadly consistent with earlier estimates from China, comparing the exponential growth rate and the underlying generation-interval distributions suggest otherwise.
 The later paper assumed a shorter mean generation interval ($\bar G = 6.5\,\textrm{days}$) but similar generation-interval dispersion ($\kappa = 0.38$);
 based on these values, the exponential growth rate has to be considerably higher ($r = 0.27\,\textrm{days}^{-1}$) to obtain $\Ro = 3.87$ than the exponential growth rate observed in China ($\mu_r = 0.17\,\textrm{days}^{-1}$; 95\% CI: 0.12--0.25 $\textrm{days}^{-1}$).
-Naively comparing estimates of the basic reproductive number without accounting for differences in underlying assumptions can underestimate the differences in the estimates.
+Naively comparing estimates of the basic reproductive number without accounting for differences in underlying assumptions can lead to over-interpretation of apparent differences in the estimates.
 
 We have provided a basis for comparing exponential-growth based estimates of \Ro and its associated uncertainty in terms of three components: the exponential growth rate, mean generation interval, and generation interval dispersion. 
 We hope this framework will help researchers understand and reconcile disparate estimates of disease transmission early in an epidemic.
@@ -550,9 +552,9 @@ We thank Daihai He for providing helpful comments on the manuscript.
 
 \section*{Contribution}
 
-SWP and JD developed the statistical framework. 
+SWP and JD developed the statistical framework, with contributions from all authors. 
 SWP reviewed the published literature.
-SWP performed the analysis. 
+SWP performed the analysis.
 SWP, BMB, and JD created the figures. 
 SWP and JD wrote the first draft.
 All authors contributed to the writing and approval of the final report.

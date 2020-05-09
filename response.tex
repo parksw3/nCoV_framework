@@ -39,6 +39,10 @@
 \noindent Dear Editor:
 
 Thank you for the chance to revise and resubmit our manuscript. 
+We have re-written a considerable amount of the manuscript in order to convince a more general readership (suggested by reviewer 1) and to provide a clearer explanation of the methods (suggested by reviewer 2).
+A large proportion of the Results section has been moved to the Discussion section, as suggested by reviewer 2.
+We have also included a new paragraph in the Discussion section to compare early estimates with more recent estimates of the basic reproduction number.
+The main figures and the overall conclusions remain unchanged.
 Below please find our responses to reviewers.
 
 \rev{Reviewer \#1}
@@ -60,26 +64,26 @@ This is a key point. During the exponential growth period, the basic reproductio
 Therefore, the effect of model assumptions on the inferred reproductive number can in fact be considered via their effects on exponential growth rate and the shape of the generation-interval distribution.
 We have tried to make this point clearer in the main text:
 
-``Despite a wide range of models considered across Study 1--7, all of them assume that the epidemic grows exponentially in the beginning.
-The IDEA model (used in Study 7) includes a discount parameter $d$ that allows the model to deviate from the exponential growth when $d \neq 0$ \citep{fisman2013idea}, but Study 7 estimates $d=0$ across all parameters they consider.
-Even though some studies consider reported cases up to Janaury 26, 2020 --- three days after the travel restriction that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
-given the incubation period of around 5 days \citep{lauer2020incubation} as well as reporting delay of around 5 days \citep{sun2020early}, the majority of reported cases during study periods are likely to have been infected prior to the travel ban.
+``Despite a wide range of models considered across Study 1--7, all of them assume that the epidemic initially grows exponentially.
+The IDEA model (used in Study 7) includes a discount parameter $d$ that allows the model to deviate from exponential growth when $d \neq 0$ \citep{fisman2013idea}, but Study 7 estimates $d=0$ across all parameters they consider.
+Even though some studies consider reported cases up to January 26, 2020 --- three days after the travel restriction that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
+given the incubation period of around 5 days \citep{lauer2020incubation} as well as reporting delays of around 5 days \citep{sun2020early}, the majority of reported cases during the study periods are likely to have been infected prior to the travel ban.
 
-When the epidemic is growing exponentially, the estimated basic reproductive number entirely depends on the exponential growth rate $r$ and the \emph{intrinsic} generation-interval distribution $g(\tau)$, which describes the infection time of secondary cases caused by a primary case in a fully susceptible population, via the Euler-Lotka equation \citep{wallinga2007generation}:
+When the epidemic is growing exponentially, the estimated basic reproductive number depends entirely on the exponential growth rate $r$ and the intrinsic generation-interval distribution $g(\tau)$, which describes the infection time of secondary cases caused by a primary case in a fully susceptible population \citep{champredon2015intrinsic}, via the Euler-Lotka equation \citep{wallinga2007generation}:
 \begin{equation}
 \frac{1}{\Ro} = \int \exp(-r\tau) g(\tau) \, d\tau.
 \label{eq:euler}
 \end{equation}
-In other words, all model assumptions come down to assumptions about the exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
-For example, if a model relies on strong assumptions about the underlying observation or process model, the estimated confidence or credible intervals associated with the exponential growth rates or parameters of the generation-interval distributions will be necessarily narrow.
+In other words, all model assumptions reduce to assumptions about the exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
+If a model relies on strong assumptions about the underlying observation or process model, the estimated confidence or credible intervals associated with the exponential growth rates or parameters of the generation-interval distributions will necessarily be narrow.
 Therefore, it is sufficient to consider the estimates and assumptions about the exponential growth rates and the shapes of the generation-interval distributions to understand disparate estimates of the basic reproductive number.''
 
 \revtext{In addition, it is not clear to me on what extent the assumptions made by authors themselves affect the results - e.g. the assumption of a gamma and uniform distribution for the estimates adopted to compute the growth rate.}
 
 Since we are interested in the uncertainty, expressed by probability distributions, our analysis is consistent with the uncertainty reported by the authors. We have added following sentences in the main text:
 
-``This assumption does not affect our analysis because we are re-estimating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
-in other words, we still obtain the same estimates and the associated uncertainty of $(\Ro)_i$ if we calculate it from $r_i$, $\bar G_i$, and $\kappa_i$.''
+``This approach of re-estimating the exponential growth rate does not affect the uncertainty captured by our analysis because we are re-estimating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
+in other words, we still obtain the same degree of associated uncertainty in $(\Ro)_i$ if we calculate it from $r_i$, $\bar G_i$, and $\kappa_i$.''
 
 \revtext{Other hypotheses underlie these works other than average generation interval, its coefficient of variation and the exponential growth. For instance, what about the offspring distribution (Poisson vs. negative binomial), or the observation model? Authors should provide a synthesis of all assumptions of these studies}
 
@@ -93,19 +97,19 @@ Moreover, this approximation has been widely used previously and has been tested
 We have clarified the text and included appropriate citations:
 
 ``Here, we use the gamma approximation framework to the generation-interval distribution \citep{nishiura2009transmission, mcbryde2009early, roberts2011early, trichereau2012estimation, nishiura2015theoretical, park2019practical} to (i) characterize the amount of uncertainty present in the exponential growth rates and the shape of the generation-interval distribution and (ii) assess the degree to which these uncertainties affect the estimate of \Ro.
-The gamma distribution provides a reasonable approximation for generation-interval distributions of many diseases, including Ebola, influenza, measles, and rabies.
-Study 1, 5, 6, and 7 also used a gamma distribution (including delta and exponential distributions) to model the generation-interval distribution for SARS-CoV-2.''
+The gamma distribution provides a reasonable approximation for generation-interval distributions of many diseases, including Ebola, measles, and rabies \citep{park2019practical}.
+Studies 1, 5, 6, and 7 also used a gamma distribution (including the special cases of Dirac delta and exponential distributions) to model the generation-interval distribution for SARS-CoV-2.''
 
 \revtext{
 Authors state that “We note that this approach does not account for non- independence between the parameter estimates made by different modelers.” Authors should discuss this point more in depth. This seems to me an important limitation. With this respect I wonder what data the studies focus on. Are all analyzing the same epidemic (in China) considering same or similar data? Again, more details on these studies (in this case the location, period of the epidemic, and data source) should be provided.}
 
 We now provide a table that summarizes this information. We have also added the following text:
 
-``We note that this approach does not account for non-independence between the parameter estimates made by different modelers.
-In this case, most estimates primarily depend on reported cases from China, particularly from Hubei Province.
-Differences among estimates are likely to driven by differences in estimation methods and underlying assumptions, rather than epidemiological differences.
-The pooled estimates can become sharper (i.e., give narrower credible intervals) as we add more models even when the models or the data no longer add more information about the epidemic.
-Since SARS-CoV-2 had primarily spread in Hubei Province, China during this period, it is not possible to include independent sources of data from other countries.
+``Our approach does not account for non-independence between the parameter estimates made by different modelers.
+In this case, most estimates primarily depend on reported cases from China, particularly from Wuhan City.
+Differences among estimates are primarily driven by differences in estimation methods and underlying assumptions, rather than by epidemiological differences.
+The pooled estimates can become sharper (i.e., have narrower credible intervals) as we add more models even when the models or the data no longer add more information about the epidemic.
+Since SARS-CoV-2 had primarily spread in Wuhan City, China during this period, it was not possible to include independent sources of data from other countries.
 Thus, the pooled estimator should be interpreted with care.''
 
 \revtext{
@@ -115,12 +119,6 @@ All of these issues raised here directly affect estimates of growth rate $r$, wh
 Therefore, comparing the growth rate with generation-interval distribution parameters allow us to take these assumptions into account implicitly. We have made this clearer in the main text.
 
 \rev{Reviewer \#2}
-
-Our exposition may not have been clear enough for reviewer 2.
-Our method does not directly rely on data, and does not depend on a specific dynamical model, but the reviewer asks us to compare our results with the reported number of cases.
-We use a multi-level model to calculate pooled estimates of parameters that have already been estimated or assumed from other studies, based on fits to case reports.
-Then, we use the pooled estimates to calculate $\mathcal R_0$.
-We hope we have made significant improvement to our manuscript to make our methods clearer.
 
 \revtext{The subject is interesting for the ongoing pandemic. The authors propose an estimation method
 for the basic reproduction number and describe its uncertainty from the estimates made by
@@ -157,31 +155,39 @@ Done.
 \revtext{As in the Bayesian inference, there are no Confidence Intervals like in frequentist inference, but
 Credible Interval. The authors should replace Confidence Intervals with Credible Intervals.}
 
-Done.
+We refer to uncertainty intervals that we estimate as credible intervals as suggested. We still use confidence intervals to refer to uncertainty intervals reported in the original study if it relies on frequentist inference.
 
 \revtext{Methods}
 
 \revtext{The authors should clearly explain the hypotheses they have done in the Methods section (e.g.,
 the source of the uncertainty).}
 
-We have made significant changes to our Methods section.
+We have tried to clarify assumptions of our Bayesian multilevel model as much as possible. 
+In particular, we made it clear that we do not rely on time series data or fit a model to time series data; 
+we take reported estimates and average them.
+We also explain potential sources of uncertainty in the reported estimates.
 
 \revtext{The authors do not describe all the methods used in this article within the Methods section.
 Some of them are in the figure captions, e.g., Figures 2 and 3. Also, the authors should describe
 all the methods in this section. Using subheadings could help the reader to better understand
 the methods, e.g., likelihood, prior distributions, sensitivity analysis, etc.}
 
-Done.
+We now explain all methods, including those that were described in figure and table captions, within the Methods section.
+We left simplified versions of the descriptions in captions to assist readers in interpreting the tables and figures.
+We have also added subheadings in the Methods section.
 
 \revtext{Please clearly explain the formula in the caption of Figure 2 (Page 8, line 33) in the Methods
 section.}
 
 We have moved the formula to the Results section to provide a better context for improved explanation: 
 
-``We further explore how the effects of uncertainties in generation-interval distributions change when there is less uncertainty associated with the exponential growth rate.
-This hypothetical example reflects recent scenarios, as increased data availability will allow researchers to estimate $r$ with more certainty.
-To simulate estimates of the exponential growth rate with stronger confidence, we use $\hat{\mu}_r = (\mu_r + 3\times\mathrm{median}(\mu_r))/4$ instead of $\mu_r$; 
-then $\hat{\mu}_r$ has the same median as $\mu_r$ but the associated 95\% CI is 4 times narrower (0.16--0.19 $\textrm{days}^{-1}$).''
+``We further explore how the effects of uncertainties in generation-interval distributions change when the exponential growth rate is more certain.
+This hypothetical example reflects scenarios, in which increased data availability allows researchers to estimate $r$ with more certainty.
+To simulate estimates of the exponential growth rate with stronger confidence, we use $\hat{\mu}_r = (\mu_r + 3\times\mathrm{median}(\mu_r))/4$ instead of $\mu_r$ (\fref{eff}B); 
+then $\hat{\mu}_r$ has the same median as $\mu_r$ but the associated 95\% CI is 4 times narrower (0.16--0.19 $\textrm{days}^{-1}$).
+As uncertainty associated with the exponential growth rate decreases, accounting for uncertainties in generation intervals becomes even more important.
+Propagating error only from the growth rate gives very narrow credible intervals in this case. 
+Propagating errors from the mean generation interval or generation-interval dispersion gives more realistic but still narrow credible intervals.''
 
 \revtext{The Bayesian estimation framework is not clearly explained. Readers could easily get confused
 about which variables serve as observed data, parameters, or hyperparameters. It is also not
@@ -191,7 +197,7 @@ suggest that the authors should provide a directed acyclic graph (DAG) represent
 model, which is a common practice for the Bayesian estimation.}
 
 We have made significant revisions to the Methods section. 
-In particular, we made it very clear that we are simply using Bayesian estimation to average across the reported estimates and are not relying on any data or dynamical model.
+In particular, we made it very clear that we are simply using Bayesian estimation to average across the reported estimates and are not relying on any time series data or dynamical model.
 We hope that the new text is sufficiently clear; a directed acyclic graph to explain that we are doing Bayesian averaging seems like overkill.
 
 \revtext{The authors consider that all the 7 studies have the same weight in the estimation of basic
@@ -221,7 +227,7 @@ We have sampled appropriately from the Bayesian posteriors. We talk about pooled
 \revtext{The authors do not provide the validation on their estimates, e.g., a posterior predictive check
 and comparisons with the reported cases during the study period.}
 
-We do not rely on data or fit a model to data. Therefore, it is not possible to compare with the reported cases.
+We do not rely on time series data or fit a model to time series data. Therefore, it is not possible to compare with the reported cases.
 
 \revtext{In figure 1, the posterior density distribution for the 3 parameters [exponential growth rate (r),
 Mean generation interval ($\bar G$), Generation interval dispersion (kappa))] must replace the
@@ -233,25 +239,33 @@ We have changed the figure caption as follows:
 ``We inferred point estimates (black), uniform distributions (orange) or confidence/credible intervals (purple) for each parameter from each study, and combined them into pooled estimates using a Bayesian multilevel model (red).
 Points represent medians calculated from the parameter set $(\bar{G}_{i}, \kappa_{i}, r_{i})$ for each study $i$ (orange and purple).
 Error bars represent 95\% equi-tailed quantiles calculated from the parameter set $(\bar{G}_{i}, \kappa_{i}, r_{i})$ for each study $i$.
-Red violin plots represent distributions of 2000 posterior samples.
-Open triangle: we assumed $\kappa=0.5$ for Study 2, which does not report generation-interval assumptions.''
+Red density plots represent distributions of 2000 posterior samples.
+Open triangle: we assumed $\kappa=0.5$ for Study 2 which does not report generation-interval assumptions.''
 
 \revtext{In the first paragraph of the Results page 7 the value of the median and the CI of the 3
 parameters must be presented.}
 
-Done.
+Done:
+
+``Figure 1 compares the estimated values of the exponential growth rate $r$, mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ from different studies with the pooled estimates that we calculate from our multilevel model:
+$\mu_r = 0.17\,\textrm{days}^{-1}$ (95\% CI: 0.12--0.25 $\textrm{days}^{-1}$),
+$\mu_G = 8.51\,\textrm{days}$ (95\% CI: 7.60--9.63 days),
+and
+$\mu_\kappa = 0.50$ (95\% CI: 0.26--1.10).''
 
 \revtext{The estimation of R0 median and its credible interval “2.9 (95\% CI: 2.1-4.5)” must be presented
 in page 7 with the figure 2 in the second paragraph of Results and not at the end of the Results
 part (page 9 line 26).}
 
-Done.
+Done:
+
+``Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in \fref{eff}), we see that propagating error from the growth rate (as done by all but one studies reviewed) is absolutely crucial: uncertainty in the pooled estimates for both middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, are overly narrow.''
 
 \revtext{The uncertainty related to kappa is not described in Figure 2. Even the authors mentioned in
 Page 7, Lines 44-50, the results should also be visualized in Figure 2 along with other
 parameters.}
 
-Done.
+We now incorporate the uncertainty related to kappa in Figure 2.
 
 \revtext{Discussions}
 
@@ -268,12 +282,11 @@ R0.}
 This is a very good point. We have added the following paragraph to the main text:
 
 ``Here, we focused on the estimates of \Ro that were published within a very short time frame (January 23--26, 2020).
-Since the estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates have not been finalized.
-For example, Study 4 initially estimated $\Ro = 3.8$ (95\% CI: 3.6--4.0; \cite{readncov}) but revised their estimate on January 28, 2020: $\Ro = 3.11$ (95\% CI: 2.39--4.13; \cite{readncov2});
+Since the estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates were not necessarily finalized.
+For example, Study 4 initially estimated $\Ro = 3.8$ (95\% CI: 3.6--4.0; \cite{readncov}) but revised their estimate on January 28, 2020 to $\Ro = 3.11$ (95\% CI: 2.39--4.13; \cite{readncov2});
 we did not include their revised estimates in our analysis in order to focus on available information at the very beginning of the outbreak.
-Some studies also do not provide detailed description of their methods, data, and/or assumptions.
-The quality of these analyses adds further uncertainty to their results that are not captured by their uncertainty quantification (e.g., reported credible intervals) or by our analysis.
-While pre-prints can play an important role in disseminating information, they should be interpreted with care.''
+Some studies also lack detailed description of their methods, data, and/or assumptions.
+The variation in quality of these analyses adds further uncertainty to their results that is not captured by their uncertainty quantification (e.g., reported credible intervals) or by our analysis.''
 
 \revtext{Although the authors are in the case of the COVID-19 epidemic in Hubei before any
 confinement, the authors do not mention in the introduction or in the discussion the other
@@ -283,15 +296,15 @@ representativeness of samples and improvement of detection capacity as time goes
 
 Some of the issues raised here (e.g., day of the week effect and limited diagnostic resources) were already mentioned in the Discussion of the previous version of the manuscript. We now mention other points as well:
 
-``There are other important phenomena not covered by our simple framework.
-Examples that seem relevant to this outbreak include: changing reporting rates, reporting delays (including the effects of weekends and holidays), and changing generation intervals.
+``Our simple framework neglects some other important phenomena.
+Examples that seem relevant to this outbreak include: changing reporting rates; reporting delays (including the effects of weekends and holidays); and changing generation intervals.
 For emerging pathogens such as SARS-CoV-2, there may be an early period of time when the reporting rate is very low due to limited awareness or diagnostic resources;
 for example, \cite{zhaoncov} (Study 6) demonstrated that estimates of \Ro can change from 5.47 (95\% CI: 4.16--7.10) to 3.30 (95\% CI: 2.73--3.96) when they assume 2-fold changes in the reporting rate between January 17, when the official diagnostic guidelines were released \citep{who17protocol}, and January 20.
 Delays between key epidemiological timings (e.g., infection, symptom onset, and detection) can also shift the shape of an observed epidemic curve and, therefore, affect parameter estimates as well as predictions of the course of an outbreak \citep{tariq2019assessing}.
 Even though a constant delay between infection and detection may not affect the estimate of the growth rate, it can still affect the associated credible intervals.
-Other factors related to reporting --- including changes in case definition, saturation in diagnostic test capacity, transparency of data, and representativeness of samples --- will also affect the inference.
-Finally, generation intervals can become shorter throughout an epidemic as intervention strategies, such as quarantine, can reduce the infectious period \citep{hethcote2002effects};
-since we are primarily focusing on the outbreak in Wuhan city before confinement, generation intervals are unlikely to vary significantly.
+Other factors related to reporting --- including changes in case definition, saturation in diagnostic test capacity, transparency of data, and representativeness of samples --- will also affect estimation and inference.
+Finally, generation intervals can become shorter throughout an epidemic as intervention strategies such as isolation of detected cases can reduce the infectious period \citep{hethcote2002effects};
+since we are primarily focusing on the outbreak in Wuhan City before confinement, generation intervals are unlikely to vary significantly.
 All of these factors, including fitting to cumulative curves or ignoring process errors, affect the estimation of the exponential growth rate (as well as the associated uncertainties), which in turn affects the estimation of the basic reproductive number.''
 
 \revtext{Page 4, Table 1. Please check Study 4, the article has been revised since 27 January 2020,
@@ -306,7 +319,7 @@ confidence interval in Table 1. The 90\% confidence interval for a Gamma distrib
 We match probability, not necessarily equi-tailed quantiles. A Gamma distribution distribution with mean
 2.2 and shape 12 has a 90\% probability of containing a value between 1.27 and 3.34. We make this clear in our main text now:
 
-``We used gamma distributions to model values reported with confidence or credible intervals and uniform distributions to model values reported with ranges;
+``We used gamma distributions to model values reported with confidence or credible intervals (CI) and uniform distributions to model values reported with ranges;
 when confidence or credible intervals are reported, we parameterize the gamma distribution such that (i) its mean matches the estimated value and (ii) the probability that a random variable following the specified gamma distribution falls between the lower and upper confidence or credible limits is equal to the reported confidence or credible level. 
 This probability does not need to be equi-tailed.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
@@ -315,10 +328,13 @@ we model this estimate as a gamma distribution with a mean of 2.92 and a shape p
 \revtext{Page 6, Line 29. Are the priors for $\mu_r$, $\mu_G$, and $\mu_\kappa$ weakly informative? Did the
 authors check the sensibility with new priors?}
 
-We believe that these priors are sufficiently wide and therefore did not try different priors. We provide a better justification in the main text:
+We believe that these priors are sufficiently wide and therefore did not try different priors.
+We also perform a prior predictive simulations on \Ro based on $\mu_r$, $\mu_G$, and $\mu_\kappa$ to provide further justification.
+We provide a better justification in the main text:
 
-``These priors are chosen such that their 95\% quantiles are sufficiently wider than biologically realistic parameter ranges.
-Specifically, 95\% quantiles for $\mu_r$, $\mu_G$, and $\mu_\kappa$ are 0.02--0.40 $\mathrm{days}^{-1}$, 0.8--19.5 days, and 0.1--1.4, respectively.
+``These priors are chosen such that their 95\% quantile ranges are sufficiently wider than biologically realistic parameter ranges.
+Specifically, 95\% quantile ranges for $\mu_r$, $\mu_G$, and $\mu_\kappa$ are 0.02--0.40 $\mathrm{days}^{-1}$, 0.8--19.5 days, and 0.1--1.4, respectively;
+95\% prior quantile range for \Ro then corresponds to 1.05--12.00.
 Parameters that are outside these ranges are biologically unrealistic for SARS-CoV-2 outbreaks.
 Therefore, we do not expect our results to be sensitive to these priors.''
 
@@ -327,14 +343,16 @@ poor mixing”.}
 
 Done.
 
-``Weak priors (e.g. half-Cauchy(0,5)) can lead to inefficient sampling and poor convergence.''
+``Alternative choices of prior for the between-study shape parameters are also suboptimal. 
+Imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$) assumes \textit{a priori} that between-study variance is large (and therefore does not pool different estimates sufficiently).
+Overly weak priors (e.g. half-Cauchy(0,5)) leads to inefficient sampling and poor convergence.''
 
 \revtext{Page 7, Line 20. Figure 1 - Caption: Did the authors test the sensitivity of the value of kappa of
 Study 2 (e.g., 0 or 1) on the pooled estimate?}
 
 We now check the sensitivity of the value of kappa of Study 2 on the pooled estimate of the basic reproduction number.
 
-``We note that our estimate of \Rpool is relatively insensitive to our assumption of $\kappa=0.5$ for Study 2: assuming $\kappa=0.1$ gives $\Rpool = 3.0$ (95\% CI: 2.2--4.7), whereas assuming $\kappa=0.9$ gives $\Rpool = 2.9$ (95\% CI: 2.1--4.4).''
+``However, our estimate of \Rpool is relatively insensitive to our assumption of $\kappa=0.5$ for Study 2: assuming $\kappa=0.1$ gives $\Rpool = 3.0$ (95\% CI: 2.2--4.7), whereas assuming $\kappa=0.9$ gives $\Rpool = 2.9$ (95\% CI: 2.1--4.4).''
 
 \revtext{Page 7, Line 38. The authors might give some information about the incubation period of
 COVID-19. It could explain why using the data of 26 January is still acceptable even if it was the
@@ -342,8 +360,8 @@ COVID-19. It could explain why using the data of 26 January is still acceptable 
 
 Done.
 
-``Even though some studies consider reported cases up to Janaury 26, 2020 --- three days after the travel restriction that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
-given the incubation period of around 5 days \citep{lauer2020incubation} as well as reporting delay of around 5 days \citep{sun2020early}, the majority of reported cases during study periods are likely to have been infected prior to the travel ban.''
+``Even though some studies consider reported cases up to January 26, 2020 --- three days after the travel restriction that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
+given the incubation period of around 5 days \citep{lauer2020incubation} as well as reporting delays of around 5 days \citep{sun2020early}, the majority of reported cases during the study periods are likely to have been infected prior to the travel ban.''
 
 \revtext{Page 8, Line 50. Please clarify the sentence: ”We find that incorporating uncertainties one at a
 time increases the width of the confidence intervals in all but 7 cases”. It is not clear particularly
@@ -352,18 +370,17 @@ at “in all but 7 cases”.}
 We have changed this explanation (and added Sensitivity Analysis section in the Methods): 
 
 ``Finally, Figure 3 compares the base estimates (based on $r_i$, $\bar G_i$, and $\kappa_i$ for each study $i$) and 21 substitute estimates (3 parameter substitutions $\times$ 7 studies).
-All but 8 substitute estimates have wider credible intervals compared to their corresponding base estimates --- namely, $\bar G$-substitute estimates for Study 1 and 7, $r$-substitute estimates for Study 1 and 2, and  $\kappa$-substitute estimates for Study 3, 6, and 7.''
+All but 8 substitute estimates have wider credible intervals compared to their corresponding base estimates --- the cases with more certain substitute estimates are the $\bar G$-substitute estimates for Study 1 and 7, $r$-substitute estimates for Study 1 and 2, and  $\kappa$-substitute estimates for Study 3, 6, and 7.''
 
 \rev{Reviewer \#3}
 
 \revtext{
 Here, Park and colleagues present a straight-forward, but important analysis of 7 early estimates of R0 for the ongoing covid outbreak. They stress that multiple forms of uncertainty have to be taken into account when calculating R0 and its confidence intervals, lest the intervals be too narrow and/or the estimates over-confident. The methods are sound, and the results compelling. I really don’t have any major comments, though I wonder if it would be better suited to another journal. I do apologize to the authors for the tardiness of my review.}
 
-Thank you for the review. We have made significant revisions to our manuscript to make it approachable for a wider audience.
+As stated in the journal scope, JRSI publishes research applying mathematics and physics to the biological and medical sciences. We assume that the ``and-s'' and both sides implies that any combination is sufficiently in scope, i.e., math+bio, math+medical sciences, physics+bio, physics+medical sciences, or a combination. This paper applies mathematical methods to pressing epidemiological questions of broad relevance, both within the field of epidemiology and outside given the impacts of $\Ro$ estimation on forecasting and control efforts.
 
 \pagebreak
 
-%% \bibliography{../ncov_abbr.bib} Sorry!
 \bibliography{ncov_abbr.bib}
 
 \end{document}

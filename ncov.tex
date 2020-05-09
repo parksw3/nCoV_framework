@@ -266,8 +266,8 @@ r_{i,m} = \frac{\left[(\Ro)_{i,m}\right]^{\kappa_{i,m}} - 1}{\kappa_{i,m} \bar{G
 where $m=1,\dots,10^5$.
 This allows us to approximate the probability distributions of the exponential growth rates estimated by each study.
 Uncertainties in the probability distributions that we calculate for the estimated exponential growth rates reflect model assumptions, statistical methods, as well as quality of the data that each study relies on.
-This approach of re-estimating the exponential growth rate does not affect our analysis because we are re-estimating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
-in other words, we still obtain the same estimate and the same associated uncertainty of $(\Ro)_i$ if we calculate it from $r_i$, $\bar G_i$, and $\kappa_i$.
+This approach of re-estimating the exponential growth rate does not affect the uncertainty captured by our analysis because we are re-estimating the probability distribution of $r_i$ that is consistent with the reported values of $(\Ro)_i$, $\bar G_i$, and $\kappa_i$;
+in other words, we still obtain the same degree of associated uncertainty in $(\Ro)_i$ if we calculate it from $r_i$, $\bar G_i$, and $\kappa_i$.
 For study 6, we fix $\bar G=8\,\textrm{days}$ and use the gamma distribution (Table 2) that corresponds to $\mathcal R_0 = 5.47$ (95\% CI: 4.16--7.10) during the re-estimation step for $r$ to remain consistent with the original study, which assumed $\bar G=8\,\textrm{days}$ for this particular estimate.
 We account for uncertainties in $\bar G$ for Study 6 (Table 1) in all other steps in order to properly incorporate parameter uncertainties in the estimate of \Ro.
 Study 7 uses the IDEA model \citep{fisman2013idea}, through which the authors effectively fit an exponential curve to the cumulative number of confirmed cases without propagating any statistical uncertainty.
@@ -519,11 +519,11 @@ However, as the number of susceptible individuals decreases or behavior changes 
 Although our analysis strictly to the earliest stages of an epidemic, we expect certain lessons to hold more generally: credible intervals must combine as many sources of uncertainty as possible. 
 In fact, as epidemics progress and more data becomes available, it is likely that inferences about exponential growth rate (and other epidemiological parameters) will generally become more precise; thus the risk of over-confidence (when uncertainty about the generation-interval distribution is neglected) will become greater.
 
-We strongly emphasize the value of attention to accurate characterization of the transmission chains via contact tracing and better statistical frameworks for inferring generation-interval distributions from such data \citep{britton2019estimation}.
-A combined effort between public-health workers and modelers in this direction will be crucial for predicting the course of an epidemic and controlling it.
+We strongly emphasize the value of attention to accurate characterization of the transmission chains via both contact tracing and improved statistical frameworks for inferring generation-interval distributions from such data \citep{britton2019estimation}.
+A combined effort between public-health workers and modelers in this direction will be crucial both for predicting the course of an epidemic and for controlling it.
 We also emphasize the value of transparency from modelers.
 Model estimates during an outbreak, even in pre-prints, should include code links and complete explanations.
-Methods based on open-source tools allow for maximal reproducibility.
+Methods based on open-source tools allow for maximal reproducibility \citep{barton2020call}.
 
 Despite our focus on estimating \Ro at the onset of an outbreak, many of the issues persist now. 
 For example, \cite{flaxman2020estimating} recently estimated the basic reproductive number for SARS-CoV-2 outbreaks in 11 European countries to be around 3.87 (3.01--4.66), on average.

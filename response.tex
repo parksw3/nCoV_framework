@@ -41,8 +41,9 @@
 Thank you for the chance to revise and resubmit our manuscript. 
 We have re-written a considerable amount of the manuscript in order to convince a more general readership (suggested by reviewer 1) and to provide a clearer explanation of the methods (suggested by reviewer 2).
 A large proportion of the Results section has been moved to the Discussion section, as suggested by reviewer 2.
-We have also included a new paragraph in the Discussion section to compare early estimates with more recent estimates of the basic reproduction number.
-The main figures and the overall conclusions remain unchanged.
+We have also included a new paragraph in the Discussion section to compare early estimates with more recent estimates of the basic reproductive number.
+We had previous interpreted the uncertainty range reported by Study 2 as a 95\% credible interval; we now interpret it as 90\% credible interval as it better suits their definition.
+Otherwise, the main figures and the overall conclusions remain unchanged.
 Below please find our responses to reviewers.
 
 \rev{Reviewer \#1}
@@ -60,7 +61,7 @@ We have made significant revisions to our manuscript to make it approachable for
 
 \revtext{I am not sure whether authors incorporate well all assumptions of the studies they consider.} 
 
-This is a key point. During the exponential growth period, the basic reproduction number entirely depends on the exponential growth rate and the generation-interval distributions.
+This is a key point. During the exponential growth period, the basic reproductive number is determined by the exponential growth rate and the generation-interval distributions.
 Therefore, the effect of model assumptions on the inferred reproductive number can in fact be considered via their effects on exponential growth rate and the shape of the generation-interval distribution.
 We have tried to make this point clearer in the main text:
 
@@ -69,7 +70,7 @@ The IDEA model (used in Study 7) includes a discount parameter $d$ that allows t
 Even though some studies consider reported cases up to January 26, 2020 --- three days after the travel restriction that took place on January 23, 2020 \citep{Tianeabb6105} --- the exponential growth assumption can still describe the number of reported cases reasonably well;
 given the incubation period of around 5 days \citep{lauer2020incubation} as well as reporting delays of around 5 days \citep{sun2020early}, the majority of reported cases during the study periods are likely to have been infected prior to the travel ban.
 
-When the epidemic is growing exponentially, the estimated basic reproductive number depends entirely on the exponential growth rate $r$ and the intrinsic generation-interval distribution $g(\tau)$, which describes the infection time of secondary cases caused by a primary case in a fully susceptible population \citep{champredon2015intrinsic}, via the Euler-Lotka equation \citep{wallinga2007generation}:
+When the epidemic is growing exponentially, the estimated basic reproductive number is determined by the exponential growth rate $r$ and the intrinsic generation-interval distribution $g(\tau)$, which describes the infection time of secondary cases caused by a primary case in a fully susceptible population \citep{champredon2015intrinsic}, via the Euler-Lotka equation \citep{wallinga2007generation}:
 \begin{equation}
 \frac{1}{\Ro} = \int \exp(-r\tau) g(\tau) \, d\tau.
 \label{eq:euler}
@@ -115,7 +116,7 @@ Thus, the pooled estimator should be interpreted with care.''
 \revtext{
 At the beginning of the Discussion section authors list a series of important issues and possible sources of errors that often limit the utility of early outbreak analyses (e.g. fitting the cumulative curve of cases, assuming a fixed generation interval when in fact it varies during the outbreak, changing reporting rate, etc.). Compared with these issues the main focus of the paper (not properly accounting for the uncertainty in the generation time and growth rate parameters) appears a small caveat. Maybe author could give a sense of the importance of the element they are focusing on with the respect to the other issues?}
 
-All of these issues raised here directly affect estimates of growth rate $r$, which in turn affect estimates of the basic reproduction number \Ro.
+All of these issues raised here directly affect estimates of growth rate $r$, which in turn affect estimates of the basic reproductive number \Ro.
 Therefore, comparing the growth rate with generation-interval distribution parameters allow us to take these assumptions into account implicitly. We have made this clearer in the main text.
 
 \rev{Reviewer \#2}
@@ -213,7 +214,7 @@ per chain with 4 independent chains). Is it sufficient for the effective sample 
 for the burn-in steps of 500,000 and the thinning steps of 1,000?}
 
 This may be an overkill but we wanted to make sure that the posterior samples are not autocorrelated.
-On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we're only averaging across previously estimated parameter values, rather than explicitly fitting a model to data. We now ensure that effective sample sizes are greater than at least 1,000 for all parameters.
+On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we're only averaging across previously estimated parameter values, rather than explicitly fitting a model to data. We now ensure that effective sample sizes are greater than at least 1,000 for all hyperparameters.
 
 \revtext{Results}
 
@@ -222,7 +223,7 @@ pooled estimates mu ($\mu_r$, $\mu_G$, and $\mu_\kappa$). The authors do not giv
 the other sources of uncertainty linked with the variation of parameter sigma ($\sigma_r$, $\sigma_G$,
 $\sigma_\kappa$).}
 
-We have sampled appropriately from the Bayesian posteriors. We talk about pooled estimates of $\mu_r$, $\mu_G$, and $\mu_\kappa$ because those are used directly to calculate the reproduction number.
+We have sampled appropriately from the Bayesian posteriors. We talk about pooled estimates of $\mu_r$, $\mu_G$, and $\mu_\kappa$ because those are used directly to calculate the reproductive number.
 
 \revtext{The authors do not provide the validation on their estimates, e.g., a posterior predictive check
 and comparisons with the reported cases during the study period.}
@@ -310,7 +311,7 @@ All of these factors, including fitting to cumulative curves or ignoring process
 \revtext{Page 4, Table 1. Please check Study 4, the article has been revised since 27 January 2020,
 and their estimates also changed.}
 
-We now clearly explain why we do not consider revised estimates. See above in the discussion about pre-prints. 
+We now clearly explain why we do not consider revised estimates. See above in the discussion about pre-prints.
 
 \revtext{Page 6, Table 2. Please recheck the parameters of Study 5, which is inconsistent with the 90\%
 confidence interval in Table 1. The 90\% confidence interval for a Gamma distribution with mean
@@ -350,7 +351,7 @@ Overly weak priors (e.g. half-Cauchy(0,5)) leads to inefficient sampling and poo
 \revtext{Page 7, Line 20. Figure 1 - Caption: Did the authors test the sensitivity of the value of kappa of
 Study 2 (e.g., 0 or 1) on the pooled estimate?}
 
-We now check the sensitivity of the value of kappa of Study 2 on the pooled estimate of the basic reproduction number.
+We now check the sensitivity of the value of kappa of Study 2 on the pooled estimate of the basic reproductive number.
 
 ``However, our estimate of \Rpool is relatively insensitive to our assumption of $\kappa=0.5$ for Study 2: assuming $\kappa=0.1$ gives $\Rpool = 3.0$ (95\% CI: 2.2--4.7), whereas assuming $\kappa=0.9$ gives $\Rpool = 2.9$ (95\% CI: 2.1--4.4).''
 

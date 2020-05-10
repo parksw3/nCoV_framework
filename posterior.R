@@ -7,7 +7,7 @@ library(gridExtra)
 
 load("MCMC_all.rda")
 
-parnames <- c("mu[r]~(days^{-1})", "sigma[r]", "mu[G]~(days)", "sigma[G]", "mu[kappa]", "sigma[kappa]")
+parnames <- c("mu[r]~(days^{-1})", "sigma[r]~(days^{-1})", "mu[G]~(days)", "sigma[G]~(days)", "mu[kappa]", "sigma[kappa]")
 
 gelman.diag(MCMC_all)
 
@@ -108,4 +108,4 @@ gpost <- ggplot(MCMC_summ) +
     strip.background = element_blank()
   )
 
-ggsave("posterior_dist.pdf", gpost, width=8, height=8)
+ggsave("posterior_dist.pdf", gpost, width=6, height=6)

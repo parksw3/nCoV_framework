@@ -321,7 +321,7 @@ We construct pooled estimates for each parameter ($r$, $\bar G$, and $\kappa$) u
 where $\mu_r$, $\mu_G$, $\mu_\kappa$ represent the pooled estimates, and $\sigma_r$, $\sigma_G$, and $\sigma_\kappa$ represent between-study standard deviations.
 The pooled estimates, which are represented as probability distributions rather than point estimates, allow us to average across different modeling approaches while accounting for the uncertainties in their assumptions.
 Here, we do so by averaging across reported values, without explicitly re-fitting their models.
-We use an Markov Chain Monte Carlo approach (cf.~S\ref{section:MCMC)} and account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and correlation among them), by drawing a random set from the family of parameter sets $(\bar{G}_{i,m}, \kappa_{i,m}, r_{i,m})$ for each study $i$ at each Metropolis-Hastings step.
+We use a Markov Chain Monte Carlo approach (cf.~S\ref{section:MCMC}) and account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and correlation among them), by drawing a random set from the family of parameter sets $(\bar{G}_{i,m}, \kappa_{i,m}, r_{i,m})$ for each study $i$ at each Metropolis-Hastings step.
 Since the gamma distribution does not allow $\kappa=0$ (this corresponds to a Dirac delta generation-interval distribution), we substitute $\kappa=0.02$ for Study 7.
 
 Our approach does not account for non-independence between the parameter estimates made by different modelers.

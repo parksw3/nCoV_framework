@@ -359,7 +359,7 @@ Overly weak priors (e.g. half-Cauchy(0,5)) leads to inefficient sampling and poo
 
 \subsection{Markov Chain Monte Carlo}
 
-We ran 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps using Metropolis-Hastings algorithm.
+We run 4 independent Markov Chain Monte Carlo chains each consisting of 500,000 burnin steps and 500,000 sampling steps using the Metropolis-Hastings algorithm.
 Proposal distributions are modeled using independent normal distributions.
 Initial values and variances of the proposal distributions are chosen by trial-and-error to ensure a reasonable acceptance rate (around 10\%) and convergence within 1,000,000 steps.
 Posterior samples are thinned every 1000 steps to remove autocorrelations among posterior samples.

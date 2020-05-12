@@ -41,7 +41,7 @@
 Thank you for the chance to revise and resubmit our manuscript. 
 We have re-written a considerable amount of the manuscript in order to convince a more general readership (suggested by reviewer 1) and to provide a clearer explanation of the methods (suggested by reviewer 2).
 A large proportion of the Results section has been moved to the Discussion section, as suggested by reviewer 2.
-We have also included a new paragraph in the Discussion section to compare early estimates with more recent estimates of the basic reproductive number.
+We have also included a new paragraph in the Discussion section to compare early estimates  of the basic reproductive number with more recent estimates.
 We had previous interpreted the uncertainty range reported by Study 2 as a 95\% credible interval; we now interpret it as 90\% credible interval as it better suits their definition.
 Otherwise, the main figures and the overall conclusions remain unchanged.
 Below please find our responses to reviewers.
@@ -75,9 +75,9 @@ When the epidemic is growing exponentially, the estimated basic reproductive num
 \frac{1}{\Ro} = \int \exp(-r\tau) g(\tau) \, d\tau.
 \label{eq:euler}
 \end{equation}
-In other words, all model assumptions reduce to assumptions about the exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
-If a model relies on strong assumptions about the underlying observation or process model, the estimated confidence or credible intervals associated with the exponential growth rates or parameters of the generation-interval distributions will necessarily be narrow.
-Therefore, it is sufficient to consider the estimates and assumptions about the exponential growth rates and the shapes of the generation-interval distributions to understand disparate estimates of the basic reproductive number.''
+Therefore, it is sufficient to consider the estimates and assumptions about the exponential growth rates and the shapes of the generation-interval distributions to understand disparate estimates of the basic reproductive number.
+All model assumptions reduce to properties of the exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
+For example, if a model relies on overly confident assumptions about the underlying observation (how new cases are reported) or process (how new cases are generated) model, the estimated confidence or credible intervals associated with the exponential growth rates or parameters of the generation-interval distributions will necessarily be narrow.''
 
 \revtext{In addition, it is not clear to me on what extent the assumptions made by authors themselves affect the results - e.g. the assumption of a gamma and uniform distribution for the estimates adopted to compute the growth rate.}
 
@@ -110,7 +110,7 @@ We now provide a table that summarizes this information. We have also added the 
 In this case, most estimates primarily depend on reported cases from China, particularly from Wuhan City.
 Differences among estimates are primarily driven by differences in estimation methods and underlying assumptions, rather than by epidemiological differences.
 The pooled estimates can become sharper (i.e., have narrower credible intervals) as we add more models even when the models or the data no longer add more information about the epidemic.
-Since SARS-CoV-2 had primarily spread in Wuhan City, China during this period, it was not possible to include independent sources of data from other countries.
+Since SARS-CoV-2 spread primarily in Wuhan City, China, during this period, it is not possible to include independent sources of data from other countries.
 Thus, the pooled estimator should be interpreted with care.''
 
 \revtext{
@@ -184,11 +184,8 @@ We have moved the formula to the Results section to provide a better context for
 
 ``We further explore how the effects of uncertainties in generation-interval distributions change when the exponential growth rate is more certain.
 This hypothetical example reflects scenarios, in which increased data availability allows researchers to estimate $r$ with more certainty.
-To simulate estimates of the exponential growth rate with stronger confidence, we use $\hat{\mu}_r = (\mu_r + 3\times\mathrm{median}(\mu_r))/4$ instead of $\mu_r$ (\fref{eff}B); 
-then $\hat{\mu}_r$ has the same median as $\mu_r$ but the associated 95\% CI is 4 times narrower (0.16--0.19 $\textrm{days}^{-1}$).
-As uncertainty associated with the exponential growth rate decreases, accounting for uncertainties in generation intervals becomes even more important.
-Propagating error only from the growth rate gives very narrow credible intervals in this case. 
-Propagating errors from the mean generation interval or generation-interval dispersion gives more realistic but still narrow credible intervals.''
+To simulate estimates of the exponential growth rate with stronger confidence, we use $\hat{\mu}_r = (\mu_r + 3\times\mathrm{median}(\mu_r))/4$ instead of $\mu_r$ (Fig.~2B); 
+then $\hat{\mu}_r$ has the same median as $\mu_r$ but the associated 95\% CI is 4 times narrower (0.16--0.19 $\textrm{days}^{-1}$).''
 
 \revtext{The Bayesian estimation framework is not clearly explained. Readers could easily get confused
 about which variables serve as observed data, parameters, or hyperparameters. It is also not
@@ -206,7 +203,7 @@ reproduction weight even though their estimations and precision vary a lot. The 
 explain why they make this hypothesis and why they did not explore a weighted estimation
 based on the confidence of the estimation of R0.}
 
-We used Bayesian multilevel models precisely for this reason (to weight the studies appropriately based on reported certainty.)
+We used Bayesian multilevel models precisely for this reason (to weight the studies appropriately based on reported certainty).
 
 \revtext{In each chain, the authors use 500,000 sampling steps and remove every 1000th step.
 Therefore, the posterior distributions of each parameter consist of 2,000 samples (500 samples
@@ -214,7 +211,7 @@ per chain with 4 independent chains). Is it sufficient for the effective sample 
 for the burn-in steps of 500,000 and the thinning steps of 1,000?}
 
 This may be an overkill but we wanted to make sure that the posterior samples are not autocorrelated.
-On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we're only averaging across previously estimated parameter values, rather than explicitly fitting a model to data. We now ensure that effective sample sizes are greater than at least 1,000 for all hyperparameters.
+On the other hand, this is definitely sufficient for the effective sample size to reliably calculate the 95\% confidence intervals, especially given that we are simply averaging across previously estimated parameter values, rather than explicitly fitting a model to data. We now ensure that effective sample sizes are greater than at least 1,000 for all hyperparameters.
 
 \revtext{Results}
 
@@ -260,7 +257,7 @@ part (page 9 line 26).}
 
 Done:
 
-``Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in \fref{eff}), we see that propagating error from the growth rate (as done by all but one studies reviewed) is absolutely crucial: uncertainty in the pooled estimates for both middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, are overly narrow.''
+``Comparing the estimates that include only some sources of uncertainty to the pooled estimate ($\Rpool = 3.0$; 95\% CI: 2.1--4.6; see `all' in Fig.~2), we see that propagating error from the growth rate (as done by all but one studies reviewed) is absolutely crucial: uncertainty in the pooled estimates for both middle bars ($\mu_G$ and $\mu_\kappa$), which lack growth-rate uncertainty, are overly narrow.''
 
 \revtext{The uncertainty related to kappa is not described in Figure 2. Even the authors mentioned in
 Page 7, Lines 44-50, the results should also be visualized in Figure 2 along with other
@@ -282,10 +279,10 @@ R0.}
 
 This is a very good point. We have added the following paragraph to the main text:
 
-``Here, we focused on the estimates of \Ro that were published within a very short time frame (January 23--26, 2020).
-Since the estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates were not necessarily finalized.
+``Here, we focus on the estimates of \Ro that are published within a very short time frame (January 23--26, 2020).
+Since these estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates were not necessarily finalized.
 For example, Study 4 initially estimated $\Ro = 3.8$ (95\% CI: 3.6--4.0; \cite{readncov}) but revised their estimate on January 28, 2020 to $\Ro = 3.11$ (95\% CI: 2.39--4.13; \cite{readncov2});
-we did not include their revised estimates in our analysis in order to focus on available information at the very beginning of the outbreak.
+we do not include their revised estimates in our analysis in order to focus on available information at the very beginning of the outbreak.
 Some studies also lack detailed description of their methods, data, and/or assumptions.
 The variation in quality of these analyses adds further uncertainty to their results that is not captured by their uncertainty quantification (e.g., reported credible intervals) or by our analysis.''
 
@@ -311,18 +308,21 @@ All of these factors, including fitting to cumulative curves or ignoring process
 \revtext{Page 4, Table 1. Please check Study 4, the article has been revised since 27 January 2020,
 and their estimates also changed.}
 
-We now clearly explain why we do not consider revised estimates. See above in the discussion about pre-prints.
+We now clearly explain why we do not consider revised estimates. See above in the discussion about pre-prints. We have also added the following text to the Methods section:
+
+``Some of these studies have now been published in peer-reviewed journals \citep{riou2020pattern, zhao2020preliminary} or have been updated with better uncertainty quantification \citep{readncov2}.
+As our primary focus is on the resolution of uncertainty in the available information during the earliest stages of an epidemic, rather than to provide more precise or accurate estimates of \Ro, we focus strictly on estimates that were published between January 23--26, 2020.''
 
 \revtext{Page 6, Table 2. Please recheck the parameters of Study 5, which is inconsistent with the 90\%
 confidence interval in Table 1. The 90\% confidence interval for a Gamma distribution with mean
 2.2 and shape 12 is 1.27 to 3.34, while the interval in Table 1 is 1.4 to 3.8.}
 
 We match probability, not necessarily equi-tailed quantiles. A Gamma distribution distribution with mean
-2.2 and shape 12 has a 90\% probability of containing a value between 1.27 and 3.34. We make this clear in our main text now:
+2.2 and shape 12 has a 90\% probability of containing a value between 1.4 and 3.8. We make this clear in our main text now:
 
-``We used gamma distributions to model values reported with confidence or credible intervals (CI) and uniform distributions to model values reported with ranges;
+``We use gamma distributions to model values reported with confidence or credible intervals (CI) and uniform distributions to model values reported with ranges;
 when confidence or credible intervals are reported, we parameterize the gamma distribution such that (i) its mean matches the estimated value and (ii) the probability that a random variable following the specified gamma distribution falls between the lower and upper confidence or credible limits is equal to the reported confidence or credible level. 
-This probability does not need to be equi-tailed.
+This probability does not need to be calculated from equi-tailed quantiles.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).''
 
@@ -346,7 +346,7 @@ Done.
 
 ``Alternative choices of prior for the between-study shape parameters are also suboptimal. 
 Imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$) assumes \textit{a priori} that between-study variance is large (and therefore does not pool different estimates sufficiently).
-Overly weak priors (e.g. half-Cauchy(0,5)) leads to inefficient sampling and poor convergence.''
+Overly weak priors (e.g. half-Cauchy(0,5)) lead to inefficient sampling and poor convergence.''
 
 \revtext{Page 7, Line 20. Figure 1 - Caption: Did the authors test the sensitivity of the value of kappa of
 Study 2 (e.g., 0 or 1) on the pooled estimate?}

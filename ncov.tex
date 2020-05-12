@@ -115,7 +115,7 @@ Jonathan Dushoff\textsuperscript{2,3,4,*}
 A novel coronavirus (SARS-CoV-2) emerged as a global threat in December 2019. 
 As the epidemic progresses, disease modelers continue to focus on estimating the basic reproductive number \Ro\ --- the average number of secondary cases caused by a primary case in an otherwise susceptible population.
 The modeling approaches and resulting estimates of \Ro during the beginning of the outbreak vary widely, despite relying on similar data sources.
-Here, we present a novel statistical framework for comparing and combining different estimates of \Ro across a wide range of models by decomposing the basic reproductive number into three key quantities: the exponential growth rate, the mean generation interval, and the generation-interval dispersion.
+Here, we present a statistical framework for comparing and combining different estimates of \Ro across a wide range of models by decomposing the basic reproductive number into three key quantities: the exponential growth rate, the mean generation interval, and the generation-interval dispersion.
 We apply our framework to early estimates of \Ro for the SARS-CoV-2 outbreak, showing that many \Ro estimates are overly confident.
 Our results emphasize the importance of propagating uncertainties in all components of \Ro, including the shape of the generation-interval distribution, in efforts to estimate \Ro at the outset of an epidemic.
 
@@ -214,7 +214,7 @@ When the epidemic is growing exponentially, the estimated basic reproductive num
 \end{linenomath*}
 Therefore, it is sufficient to consider the estimates and assumptions about the exponential growth rates and the shapes of the generation-interval distributions to understand disparate estimates of the basic reproductive number.
 All model assumptions reduce to properties of the exponential growth rate $r$ and the shape of the generation-interval distribution $g(\tau)$.
-For example, if a model relies on strong assumptions about the underlying observation (how new cases are reported) or process (how new cases are generated) model, the estimated confidence or credible intervals associated with the exponential growth rates or parameters of the generation-interval distributions will necessarily be narrow.
+For example, if a model relies on overly confident assumptions about the underlying observation (how new cases are reported) or process (how new cases are generated) model, the estimated confidence or credible intervals associated with the exponential growth rates or parameters of the generation-interval distributions will necessarily be narrow.
 
 As most studies do not report their estimates of the exponential growth rate, we first summarize model outcomes using reported (either estimated or assumed) values of the basic reproductive number \Ro, mean generation interval $\bar G$ and generation-interval dispersion $\kappa$, represented by the squared coefficient of variation (Table 1) ---
 we re-estimate the corresponding exponential growth rates from these values later.
@@ -252,7 +252,7 @@ Since the estimates of the basic reproductive number \Ro is determined by the ex
 First, to account for uncertainties in these parameters, we model reported values of the basic reproductive number \Ro, the mean generation interval $\bar G$, and the generation-interval dispersion $\kappa$ with appropriate probability distributions.
 We use gamma distributions to model values reported with confidence or credible intervals (CI) and uniform distributions to model values reported with ranges;
 when confidence or credible intervals are reported, we parameterize the gamma distribution such that (i) its mean matches the estimated value and (ii) the probability that a random variable following the specified gamma distribution falls between the lower and upper confidence or credible limits is equal to the reported confidence or credible level. 
-This probability does not need to depend on equi-tailed quantiles.
+This probability does not need to be calculated from equi-tailed quantiles.
 For example, Study 3 estimated $\Ro = 2.92$ (95\% CI: 2.28--3.67);
 we model this estimate as a gamma distribution with a mean of 2.92 and a shape parameter of 67, which has a 95\% probability of containing a value between 2.28 and 3.67 (see Table 2 for a complete description).
 
@@ -355,7 +355,7 @@ We follow recommendations outlined in \cite{gelman2006prior}, parameterizing the
 We initially used gamma priors with small shape parameters ($< 1$) on between-study shape parameters ($=\mu^2/\sigma^2$) but found this put too much prior probability on large between-study variances --- a known problem \citep{gelman2006prior}.
 Alternative choices of prior for the between-study shape parameters are also suboptimal. 
 Imposing strong priors (e.g. half-$t(\mu=0,\sigma=1,\nu=4)$) assumes \textit{a priori} that between-study variance is large (and therefore does not pool different estimates sufficiently).
-Overly weak priors (e.g. half-Cauchy(0,5)) leads to inefficient sampling and poor convergence.
+Overly weak priors (e.g. half-Cauchy(0,5)) lead to inefficient sampling and poor convergence.
 
 \subsection{Markov Chain Monte Carlo}
 \label{section:MCMC}
@@ -460,7 +460,7 @@ The pooled estimate represents \Rpool, which is calculated from the joint poster
 this corresponds to replacing all reported parameter values with our pooled estimates, which gives identical results across all studies.
 Points represent the medians of our base, substitute, and pooled estimates.
 Vertical error bars represent the 95\% credible intervals of our base, substitute, and pooled estimates.
-Horizontal dashed lines represent the 95\% credible intervals of our pooled estimates.
+Horizontal dashed lines represent the 95\% credible intervals of our pooled estimate.
 }
 \label{fig:R0}
 \end{figure}

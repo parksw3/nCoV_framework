@@ -3,6 +3,7 @@ library(gridExtra)
 library(colorspace)
 library(dplyr)
 source("study_number.R")
+source("study_estimate.R")
 
 load("sample_data.rda")
 
@@ -30,19 +31,20 @@ R0all <- Rdata_adj %>%
   ) %>%
   bind_rows(
     R0_r, R0_gbar, R0_kappa,
-    mutate(filter(R0_all, study=="Imai et al. (2020)"))
+    mutate(filter(R0_all, study=="Imai et al. (2020)")),
+    mutate(study_estimate, type="reported")
   ) %>%
   mutate(
-    type=factor(type, levels=c("base", "r", "gbar", "kappa", "all"),
-                labels=c("base", "exponential growth rate", "mean generation interval", "generation-interval dispersion", "all"))
+    type=factor(type, levels=c("reported", "base", "r", "gbar", "kappa", "all"),
+                labels=c("reported", "base", "exponential growth rate", "mean generation interval", "generation-interval dispersion", "all"))
   ) %>%
   merge(study_number) %>%
   mutate(
     anon=ifelse(type=="all", "Pooled estimate", as.character(anon))
   )
-  
+
 R0all %>%
-  filter(type!="all", type!="base") %>%
+  filter(type!="all", type!="base", type!="reported") %>%
   mutate(
     width=upr-lwr
   ) %>%
@@ -73,7 +75,7 @@ g1 <- ggplot(R0all) +
                 width=0, lwd=1) +
   scale_y_continuous("Basic reproductive number", breaks=c(2, 4, 6, 8, 10)) +
   ## scale_colour_discrete_qualitative() +
-  scale_colour_manual(values=c(colorspace::qualitative_hcl(4),"#000000")) +
+  scale_colour_manual(values=c("#000000", colorspace::qualitative_hcl(5))) +
   theme(
     axis.title.x = element_blank(),
     legend.position = "top",

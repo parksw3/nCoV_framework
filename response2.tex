@@ -1,0 +1,143 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{color}
+
+\usepackage{xspace}
+
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+
+\usepackage[pdfencoding=auto, psdextra]{hyperref}
+
+\usepackage{natbib}
+\bibliographystyle{chicago}
+
+\newcommand{\rR}{\mbox{$r$--$\cal R$}}
+\newcommand{\RR}{\ensuremath{{\cal R}}}
+\newcommand{\RRhat}{\ensuremath{{\hat \cal R}}}
+\newcommand{\Rx}[1]{\ensuremath{{\cal R}_{#1}}} 
+\newcommand{\Ro}{\ensuremath{{\mathcal R}_{0}}\xspace}
+\newcommand{\Rpool}{\ensuremath{{\mathcal R}_{\textrm{\tiny{pool}}}}\xspace}
+\newcommand{\Reff}{\Rx{\mathit{eff}}}
+\newcommand{\Tc}{\ensuremath{C}}
+
+\newcommand{\rev}{\subsection*}
+\newcommand{\revtext}{\textsf}
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0em}
+
+\newcommand{\comment}[3]{\textcolor{#1}{\textbf{[#2: }\textsl{#3}\textbf{]}}}
+\newcommand{\jd}[1]{\comment{cyan}{JD}{#1}}
+\newcommand{\swp}[1]{\comment{magenta}{SWP}{#1}}
+\newcommand{\dc}[1]{\comment{blue}{DC}{#1}}
+\newcommand{\jsw}[1]{\comment{green}{JSW}{#1}}
+\newcommand{\hotcomment}[1]{\comment{red}{HOT}{#1}}
+
+\begin{document}
+
+\noindent Dear Editor:
+
+Thank you for the chance to revise and resubmit our manuscript.
+Below please find our responses to reviewers.
+
+\rev{Reviewer \#1}
+
+\revtext{Authors have properly addressed my comments and I believe that the manuscript is now suitable for publication}
+
+Thank you.
+
+\rev{Reviewer \#2}
+
+\revtext{
+The authors have made a good effort of explanation in the writing of the material and methods
+part. They did not wish to carry out a DAG. Indeed, the Bayesian estimation part is relatively
+simple and does not necessarily require a DAG. However, the whole process is complex and
+to facilitate the understanding of the readers a conceptual framework of the whole study is
+more than necessary.}
+
+We have added the following text in the last paragraph of the introduction to provide a conceptual overview of the framework:
+
+``Instead, we model the estimate of \Ro (as well as the associated generation-interval parameters, $\bar G$, and $\kappa$) from each study with probability distributions that account for the uncertainty in the estimates;
+this allows us to re-estimate the corresponding distributions of the exponential growth rates $r$.
+We then use a Bayesian multi-level model to calculate the average (pooled estimates) of three key quantities ($r$, $\bar G$, and $\kappa$).
+The resulting pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) are used to calculate the pooled estimate of the basic reproduction number, \Rpool.
+Calculating \Rpool based on the pooled estimates allows us to average appropriately across the uncertainties present in modeling approaches and in their underlying assumptions.''
+
+\revtext{There is still a confusion between credible intervals and confidence
+intervals. When the authors use a frequentist approach, they estimate a confidence interval;
+while the authors use a bayesian approach they estimate a credible interval. So it is study,
+they estimate credible intervals but they estimated intervals they used from the literature can
+be both confidence and credible intervals. Therefore, it is case, use the terms
+confidence/credible intervals.}
+
+We tried to be as careful as possible in the uses of confidence and credible intervals.
+When we refer to based estimates, however, we still use credible intervals because the base estimates are our approximations of the reported estimates (taken from each study); we have tried to make this distinction clear in the text.
+
+\revtext{In this work, all the studies have all the same weight 1/7 when they calculated pooled estimates
+cf. Equation 4. They did not give more weight to the studies, which were the more likely}
+
+We now provide a better justification:
+
+``Although this approach assumes that all studies are equally weighted, the overall pooled estimate will still be weighted by the certainty of the reported estimates (e.g., $r_i$ will be sampled from a narrow distribution and therefore have stronger influence on $\mu_r$ if the reported confidence/credible interval on $r_i$ is narrow).''
+
+\revtext{More specific comments}
+
+\revtext{The authors do not yet give information about the other sources of uncertainty linked
+with the variation of parameter sigma ($\sigma_r$, $\sigma_G$, $\sigma_\kappa$).}
+
+We have added the following sentences:
+
+``The estimates of the between-study standard deviations further suggests that there is a large variability in the underlying parameters among the seven studies, particularly in $r$ and $\kappa$:
+$\sigma_r = 0.07\,\textrm{days}^{-1}$ (95\% CI: 0.04--0.19 $\textrm{days}^{-1}$),
+$\sigma_G = 1.02\,\textrm{days}$ (95\% CI: 0.54--2.50 days),
+and
+$\sigma_\kappa = 0.51$ (95\% CI: 0.24--1.52).
+This variability is likely driven by the differences in modeling approaches and assumptions.''
+
+\revtext{Keep the same order for exemple always $r$, $\bar G$ and $\kappa$.}
+
+Done.
+
+\revtext{
+The new figure 2 is nice. Change the caption of the figure 2 “Effects of the uncertainties of $r$, $\bar G$, and $\kappa$ on the estimates of $\Ro$” by “Effects of growth rate ($r$), Mean generation interval ($\bar G$), and Generation-interval dispersion ($\kappa$) on the estimates of $\Ro$”. The caption must be explicit by itself.
+}
+
+Done.
+
+\revtext{
+The new figure 3 is nice but please represent on figure 3 the value of the R0
+and its IC published in the 7 studies (Cf table1) for example in black.
+}
+
+Done.
+
+\revtext{
+Indicate the number of posterior samples used (2000? or 1000?).
+}
+
+Done.
+
+\revtext{
+When the authors speak about “credible intervals” from the literature, they must
+replace every time by “confidence/credible” because it depends on the methods
+of previous studies.
+}
+
+Done.
+
+\revtext{
+The mutation of the virus or the presence of a new clade of the virus having
+different R0 can also affect estimation and inference.
+}
+
+We have added the following sentence in the discussion:
+
+``Emergence of a new strain (or a clade) with different transmissibility can also affect disease dynamics as well as inference, although it is less likely to be of a concern in the beginning of an epidemic.''
+
+\pagebreak
+
+
+\bibliography{ncov_abbr.bib}
+
+\end{document}

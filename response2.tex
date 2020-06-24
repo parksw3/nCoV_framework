@@ -10,9 +10,6 @@
 
 \usepackage[pdfencoding=auto, psdextra]{hyperref}
 
-\usepackage{natbib}
-\bibliographystyle{chicago}
-
 \newcommand{\rR}{\mbox{$r$--$\cal R$}}
 \newcommand{\RR}{\ensuremath{{\cal R}}}
 \newcommand{\RRhat}{\ensuremath{{\hat \cal R}}}
@@ -60,9 +57,9 @@ We have added the following text in the last paragraph of the introduction to pr
 
 ``Instead, we model the estimate of \Ro (as well as the associated generation-interval parameters, $\bar G$, and $\kappa$) from each study with probability distributions that account for the uncertainty in the estimates;
 this allows us to re-estimate the corresponding distributions of the exponential growth rates $r$.
-We then use a Bayesian multi-level model to calculate the average (pooled estimates) of three key quantities ($r$, $\bar G$, and $\kappa$).
+We then use a Bayesian multi-level model to estimate the three  key quantities ($r$, $\bar G$, and $\kappa$).
 The resulting pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) are used to calculate the pooled estimate of the basic reproduction number, \Rpool.
-Calculating \Rpool based on the pooled estimates allows us to average appropriately across the uncertainties present in modeling approaches and in their underlying assumptions.''
+Using pooled estimates allows us to average appropriately across the uncertainties present in modeling approaches and in their underlying assumptions.''
 
 \revtext{There is still a confusion between credible intervals and confidence
 intervals. When the authors use a frequentist approach, they estimate a confidence interval;
@@ -72,14 +69,14 @@ be both confidence and credible intervals. Therefore, it is case, use the terms
 confidence/credible intervals.}
 
 We tried to be as careful as possible in the uses of confidence and credible intervals.
-When we refer to based estimates, however, we still use credible intervals because the base estimates are our approximations of the reported estimates (taken from each study); we have tried to make this distinction clear in the text.
+We still describe our base estimates with credible intervals because the base estimates are our Bayesian approximations based on the reported estimates taken from each study; we have tried to make this distinction clear in the text.
 
 \revtext{In this work, all the studies have all the same weight 1/7 when they calculated pooled estimates
 cf. Equation 4. They did not give more weight to the studies, which were the more likely}
 
 We now provide a better justification:
 
-``Although this approach assumes that all studies are equally weighted, the overall pooled estimate will still be weighted by the certainty of the reported estimates (e.g., $r_i$ will be sampled from a narrow distribution and therefore have stronger influence on $\mu_r$ if the reported confidence/credible interval on $r_i$ is narrow).''
+``Although this approach nominally treats all studies are equally weighted, the overall pooled estimate will still be weighted by the certainty of the reported estimates (e.g., $r_i$ will be sampled from a narrow distribution and therefore have stronger influence on $\mu_r$ if the reported confidence/credible interval on $r_i$ is narrow).''
 
 \revtext{More specific comments}
 
@@ -133,11 +130,6 @@ different R0 can also affect estimation and inference.
 
 We have added the following sentence in the discussion:
 
-``Emergence of a new strain (or a clade) with different transmissibility can also affect disease dynamics as well as inference, although it is less likely to be of a concern in the beginning of an epidemic.''
-
-\pagebreak
-
-
-\bibliography{ncov_abbr.bib}
+``Emergence of a new strain (or a clade) with different transmissibility could also affect disease dynamics, and complicate inference; this study does not address this possibility.''
 
 \end{document}

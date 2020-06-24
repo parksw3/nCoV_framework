@@ -55,6 +55,8 @@ Ignore += review/
 response.pdf: response.tex
 	pdflatex $<
 
+response2.pdf: response2.tex
+
 ######################################################################
 
 ### Makestuff

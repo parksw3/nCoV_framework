@@ -150,9 +150,9 @@ We apply the method to seven disparate models published online as pre-prints bet
 Previous studies have directly calculated the average of reported \Ro values \citep{majumder2020early, liu2020reproductive} but such methods mask differences in underlying model assumptions and statistical methods.
 Instead, we model the estimate of \Ro (as well as the associated generation-interval parameters, $\bar G$, and $\kappa$) from each study with probability distributions that account for the uncertainty in the estimates;
 this allows us to re-estimate the corresponding distributions of the exponential growth rates $r$.
-We then use a Bayesian multi-level model to calculate the average (pooled estimates) of three key quantities ($r$, $\bar G$, and $\kappa$).
+We then use a Bayesian multi-level model to average the three key quantities ($r$, $\bar G$, and $\kappa$).
 The resulting pooled estimates ($\mu_r$, $\mu_G$, and $\mu_\kappa$) are used to calculate the pooled estimate of the basic reproduction number, \Rpool.
-Calculating \Rpool based on the pooled estimates allows us to average appropriately across the uncertainties present in modeling approaches and in their underlying assumptions.
+Using pooled estimates allows us to average appropriately across the uncertainties present in modeling approaches and in their underlying assumptions.
 We use these pooled estimates to illustrate the importance of propagating different sources of error, particularly uncertainty in both the growth rate and the generation interval.
 
 \section{Methods}
@@ -327,7 +327,7 @@ The pooled estimates, which are represented as probability distributions rather 
 Here, we do so by averaging across reported values, without explicitly re-fitting their models.
 We use a Markov Chain Monte Carlo approach (cf.~Section \ref{section:MCMC}) and account for uncertainties associated with $r_i$, $\bar G_i$ and $\kappa_i$ (and correlation among them), by drawing a random set from the family of parameter sets $(r_{i,m}, \bar{G}_{i,m}, \kappa_{i,m})$ for each study $i$ at each Metropolis-Hastings step.
 Since the gamma distribution does not allow $\kappa=0$ (this corresponds to a Dirac delta generation-interval distribution), we substitute $\kappa=0.02$ for Study 7.
-Although this approach assumes that all studies are equally weighted, the overall pooled estimate will still be weighted by the certainty of the reported estimates (e.g., $r_i$ will be sampled from a narrow distribution and therefore have stronger influence on $\mu_r$ if the reported confidence/credible interval on $r_i$ is narrow).
+Although this approach nominally treats all studies are equally weighted, the overall pooled estimate will still be weighted by the certainty of the reported estimates (e.g., $r_i$ will be sampled from a narrow distribution and therefore have stronger influence on $\mu_r$ if the reported confidence/credible interval on $r_i$ is narrow).
 
 Our approach does not account for non-independence between the parameter estimates made by different modelers.
 In this case, most estimates primarily depend on reported cases from China, particularly from Wuhan City.
@@ -525,7 +525,7 @@ Other factors related to reporting --- including changes in case definition, sat
 Finally, generation intervals can become shorter throughout an epidemic as intervention strategies such as isolation of detected cases can reduce the infectious period \citep{hethcote2002effects};
 since we are primarily focusing on the outbreak in Wuhan City before confinement, generation intervals are unlikely to vary significantly.
 All of these factors, including fitting to cumulative curves or ignoring process errors, affect the estimation of the exponential growth rate (as well as the associated uncertainties), which in turn affects the estimation of the basic reproductive number.
-Emergence of a new strain (or a clade) with different transmissibility can also affect disease dynamics as well as inference, although it is less likely to be of a concern in the beginning of an epidemic.
+Emergence of a new strain (or a clade) with different transmissibility could also affect disease dynamics, and complicate inference; this study does not address this possibility.
 
 Here, we focus on the estimates of \Ro that are published within a very short time frame (January 23--26, 2020).
 Since these estimates were published as pre-prints, rather than in peer-reviewed journals, the quality of the analyses as well as the resulting estimates were not necessarily finalized.

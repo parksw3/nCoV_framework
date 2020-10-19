@@ -16,6 +16,7 @@ vim_session:
 	bash -cl "vmt"
 
 Sources += $(wildcard *.tex)
+Ignore += ncov.pdf
 ncov.pdf: ncov.tex
 
 compare_R0.pdf: compare_R0.Rout ;
@@ -54,9 +55,6 @@ propagate_pix.Rout: figure2.Rout propagate_pix.R
 Ignore += review/
 response.pdf: response.tex
 	pdflatex $<
-
-## response2.pdf: response2.tex
-## ncov_diff.pdf: 
 
 ######################################################################
 

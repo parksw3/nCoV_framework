@@ -10,7 +10,7 @@ current: target
 
 # Content
 
-Sources += $(wildcard *.R) cover.md
+Sources += $(wildcard *.R)
 
 vim_session:
 	bash -cl "vmt"

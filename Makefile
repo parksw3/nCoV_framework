@@ -52,7 +52,7 @@ propagate_pix.Rout: figure2.Rout propagate_pix.R
 
 ## Revision
 
-Ignore += review/
+Ignore += response.pdf
 response.pdf: response.tex
 	pdflatex $<
 
